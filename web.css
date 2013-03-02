@@ -9,8 +9,28 @@
 	font-family: monospace, "Courier New", Courier, mono;
 }
 
-:serviceblock {
+.navlink {
+	list-style-type: none;
+	display: inline;
+}
 
+footer {
+	text-align: center;
+}
+
+.navlink, footer {
+	text-transform: uppercase;
+	font-size: .75em;
+}
+
+#navlabel {
+	color: #686868;
+}
+
+:serviceblock {
+ /* originally, there was going to be a responsive grid of fancy, purty squares with different services.
+    however, i think that the current unstyled look fits into the site better.
+    therefore, this is left blank. */
 }
 
 #ssh {
