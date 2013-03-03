@@ -34,7 +34,7 @@ footer {
 	color: #686868;
 }
 
-:serviceblock {
+.serviceblock {
  /* originally, there was going to be a responsive grid of fancy, purty squares with different services.
 	however, i think that the current unstyled look fits into the site better.
 	therefore, this is left blank. */
