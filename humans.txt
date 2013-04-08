@@ -3,7 +3,7 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Alex Jordan -- everything -- @strugee2 (twitter) -- @strugee (github)
 
 # THANKS
 
