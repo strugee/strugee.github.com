@@ -42,7 +42,7 @@
 			</nav> <!-- /navbar -->
 			<h2>Services</h2>
 			<p>
-				In order to use any of these services, you will need to authenticate either with a BrowserID account or a local Ubuntu account, depending on the type of service. Please be aware that every single service here is broken, for various reasons.
+				In order to use any of these services, you will need to authenticate either with a BrowserID account or a local Ubuntu account, depending on the type of service. Please be aware that every single service here is broken for various reasons, except for SSH.
 			</p>
 			<!--<div class="serviceblock" id="emergence">
 				<h3><a href="http://emergence.alexj.jumpingcrab.com">Emergence Story Project</a></h3>
@@ -54,18 +54,18 @@
 				</p>
 			</div>-->
 			<div class="serviceblock" id="ssh">
-				<h3><a href="ssh://strugee.net">SSH</a></h3>
+				<h3><a href="ssh://ssh.strugee.net">SSH</a></h3>
 				<p>
 					SSH requires a command-line shell (such as <code>bash</code>), an SSH client (like <code>ssh</code>), and an account on the local Ubuntu system (to request an account, <a href="mailto:alexander3223098@gmail.com">email me</a>). If you can't connect on Windows, I recommend PuTTY if you don't feel like setting anything up. Otherwise, I recommend Cygwin. It's way more than just an SSH client, it provides a *nix-like environment on Windows.
 				</p>
 				<p>
-					In case this link doesn't work, you can connect to <code>strugee.net</code>, usually by running the command <code>ssh [username]@strugee.net</code> in a terminal, replacing <code>[username]</code> with your username.
+					In case this link doesn't work, you can connect to <code>ssh.strugee.net</code>, usually by running the command <code>ssh [username]@strugee.net</code> in a terminal, replacing <code>[username]</code> with your username. <strong>Note:</strong> do <em>not</em> connect to <code>strugee.net</code>. If you do so, you will get "Permission denied (publickey).". This is because <code>strugee.net</code> is hosted by <a href="http://pages.github.com">GitHub Pages</a>. Thus, when you try to SSH into it, you're not reaching my server, you're reaching GitHub Pages. The workaround is to use <code>ssh.strugee.net</code>, which is properly set up to point to my server.
 				</p>
 			</div>
 			<div class="serviceblock" id="gateone">
 				<h3><a href="https://gateone.private.strugee.net/">Web SSH</a></h3>
 				<p>
-					Web SSH via Gate One requires a modern browser and a local Ubuntu system. To request one, <a href="mailto:alexander3223098@gmail.com">email me</a>.
+					Web SSH via Gate One requires a modern browser and a local Ubuntu system account. To request one, <a href="mailto:alexander3223098@gmail.com">email me</a>.
 				</p>
 			</div>
 			<div class="serviceblock" id="ftp">
