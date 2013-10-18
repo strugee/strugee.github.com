@@ -31,59 +31,65 @@
 		<![endif]-->
 
 		<div id="container">
-		  	<header>
-				<h1 id="topheader">strugee.net</h1>
-				<nav id="navbar">
-					<ul>
-						<li class="navlink" id="navlabel">Nav ::</li>
-						<li class="navlink"><a href="index.html">Home</a></li>
-						<li class="navlink">Services</li>
-						<li class="navlink"><a href="projects.html">Projects</a></li>
-						<li class="navlink"><a href="gpg.html">GPG Key</a></li>
-						<li class="navlink"><a href="http://tumblr.strugee.net">Tumblr</a></li>
-					</ul>
-				</nav> <!-- /navbar -->
-			</header>
-			<h2>Services</h2>
-			<p>
-				In order to use any of these services, you will need to authenticate either with a BrowserID account or a local Arch Linux account, depending on the type of service. Please be aware that every single service here is broken for various reasons, except for SSH.
-			</p>
-			<!--<div class="serviceblock" id="emergence">
-				<h3><a href="http://emergence.alexj.jumpingcrab.com">Emergence Story Project</a></h3>
+			<section>
+			  	<header>
+					<h1 id="topheader">strugee.net</h1>
+					<nav id="navbar">
+						<ul>
+							<li class="navlink" id="navlabel">Nav ::</li>
+							<li class="navlink"><a href="index.html">Home</a></li>
+							<li class="navlink">Services</li>
+							<li class="navlink"><a href="projects.html">Projects</a></li>
+							<li class="navlink"><a href="gpg.html">GPG Key</a></li>
+							<li class="navlink"><a href="http://tumblr.strugee.net">Tumblr</a></li>
+						</ul>
+					</nav> <!-- /navbar -->
+				</header>
+			</section>
+			<section>
+				<h2>Services</h2>
 				<p>
-					The Emergence Story Project requires a modern browser (Firefox and Chrome are the best) and a BrowserID account. You can also look at an exact <a href="emergence_requirements.html">list of browser requirements</a> if you want.
+				  In order to use any of these services, you will need to authenticate either with a BrowserID account or a local Arch Linux account, depending on the type of service. Please be aware that every single service here is broken for various reasons, except for SSH.
 				</p>
-				<p>
-					The Emergence Story Project is currently in an incomplete form and is not functional. When it is done, it will run a check to make sure that your browser has the necessary capabilities to run it. If your browser is not supported, you will have to upgrade it - the Story Project depends on modern HTML5 features like WebSockets in order to run. For advanced users, the Story Project will provide a list of test faliures so that you can see exactly where your browser falls short.
-				</p>
-			</div>-->
-			<div class="serviceblock" id="ssh">
-				<h3><a href="ssh://ssh.strugee.net">SSH</a></h3>
-				<p>
-					SSH requires a command-line shell (such as <code>bash</code>), an SSH client (like <code>ssh</code>), and an account on the local Arch Linux system (to request an account, <a href="mailto:alexander3223098@gmail.com">email me</a>). If you can't connect on Windows, I recommend PuTTY if you don't feel like setting anything up. Otherwise, I recommend Cygwin. It's way more than just an SSH client, it provides a *nix-like environment on Windows.
-				</p>
-				<p>
-					In case this link doesn't work, you can connect to <code>ssh.strugee.net</code>, usually by running the command <code>ssh [username]@strugee.net</code> in a terminal, replacing <code>[username]</code> with your username. <strong>Note:</strong> do <em>not</em> connect to <code>strugee.net</code>. If you do so, you will get "Permission denied (publickey).". This is because <code>strugee.net</code> is hosted by <a href="http://pages.github.com">GitHub Pages</a>. Thus, when you try to SSH into it, you're not reaching my server, you're reaching GitHub Pages. The workaround is to use <code>ssh.strugee.net</code>, which is properly set up to point to my server.
-				</p>
-			</div>
-			<div class="serviceblock" id="gateone">
-				<h3><a href="https://gateone.private.strugee.net/">Web SSH</a></h3>
-				<p>
-					Web SSH via Gate One requires a modern browser and a local Arch Linux system account. To request one, <a href="mailto:alexander3223098@gmail.com">email me</a>.
-				</p>
-			</div>
-			<div class="serviceblock" id="ftp">
-				<h3><a href="ftp://strugee.net">FTP</a></h3>
-				<p>
-					FTP will only provide access to your home directory. FTP requires an FTP client (one may be included in your browser) and an account on the local Arch Linux system (to request an account, <a href="mailto:alexander3223098@gmail.com">email me</a>).
-				</p>
-				<p>
-					In case this link doesn't work, just connect to <code>strugee.net</code> in your FTP client.
-				</p>
+				<!--<div class="serviceblock" id="emergence">
+					<h3><a href="http://emergence.alexj.jumpingcrab.com">Emergence Story Project</a></h3>
+					<p>
+						The Emergence Story Project requires a modern browser (Firefox and Chrome are the best) and a BrowserID account. You can also look at an exact <a href="emergence_requirements.html">list of browser requirements</a> if you want.
+					</p>
+					<p>
+						The Emergence Story Project is currently in an incomplete form and is not functional. When it is done, it will run a check to make sure that your browser has the necessary capabilities to run it. If your browser is not supported, you will have to upgrade it - the Story Project depends on modern HTML5 features like WebSockets in order to run. For advanced users, the Story Project will provide a list of test faliures so that you can see exactly where your browser falls short.
+					</p>
+				</div>-->
+				<div class="serviceblock" id="ssh">
+					<h3><a href="ssh://ssh.strugee.net">SSH</a></h3>
+					<p>
+						SSH requires a command-line shell (such as <code>bash</code>), an SSH client (like <code>ssh</code>), and an account on the local Arch Linux system (to request an account, <a href="mailto:alexander3223098@gmail.com">email me</a>). If you can't connect on Windows, I recommend PuTTY if you don't feel like setting anything up. Otherwise, I recommend Cygwin. It's way more than just an SSH client, it provides a *nix-like environment on Windows.
+					</p>
+					<p>
+						In case this link doesn't work, you can connect to <code>ssh.strugee.net</code>, usually by running the command <code>ssh [username]@strugee.net</code> in a terminal, replacing <code>[username]</code> with your username. <strong>Note:</strong> do <em>not</em> connect to <code>strugee.net</code>. If you do so, you will get "Permission denied (publickey).". This is because <code>strugee.net</code> is hosted by <a href="http://pages.github.com">GitHub Pages</a>. Thus, when you try to SSH into it, you're not reaching my server, you're reaching GitHub Pages. The workaround is to use <code>ssh.strugee.net</code>, which is properly set up to point to my server.
+					</p>
+				</div>
+				<div class="serviceblock" id="gateone">
+					<h3><a href="https://gateone.private.strugee.net/">Web SSH</a></h3>
+					<p>
+						Web SSH via Gate One requires a modern browser and a local Arch Linux system account. To request one, <a href="mailto:alexander3223098@gmail.com">email me</a>.
+					</p>
+				</div>
+				<div class="serviceblock" id="ftp">
+					<h3><a href="ftp://strugee.net">FTP</a></h3>
+					<p>
+						FTP will only provide access to your home directory. FTP requires an FTP client (one may be included in your browser) and an account on the local Arch Linux system (to request an account, <a href="mailto:alexander3223098@gmail.com">email me</a>).
+					</p>
+					<p>
+						In case this link doesn't work, just connect to <code>strugee.net</code> in your FTP client.
+					</p>
+				</div>
+			</section>
+			<section>
 				<footer>
 					Hosting from <a href="http://pages.github.com">GitHub:Pages</a>. Free DNS from <a href="http://afraid.org">afraid.org</a>.
 				</footer>
-			</div>
+			</section>
 		</div> <!-- /container -->
 		
 		<!-- Jquery? Psh! I'm good without JavaScript, browsing in Lynx. -->
