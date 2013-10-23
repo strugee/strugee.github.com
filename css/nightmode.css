@@ -1,0 +1,19 @@
+#container, body {
+	background-color: black;
+}
+
+h1, h2, p, li, footer, #navlabel {
+	color: rgb(255, 255, 221);
+}
+
+h1, h2 {
+	text-shadow: 0px 0px 1em rgb(255, 255, 221);
+}
+
+code, pre {
+	background-color: black;
+}
+
+#toys {
+	background-color: black;
+}

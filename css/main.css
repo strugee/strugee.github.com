@@ -51,3 +51,37 @@ footer {
 #ftp {
 
 }
+
+#toys {
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	background-color: #D8D8D8;
+	padding: 4px;
+	border-radius: 3px;
+}
+
+/* Night mode transitions */
+#container, body {
+	transition: background-color, 1.5s;
+}
+
+h1, h2, p, li, footer, #navlabel {
+	transition: color, 1.75s;
+	transition: text-shadow, 1.5s;
+}
+
+code, pre, #toys {
+	transition: background-color, 1.5s;
+}
+
+/* Mobile responsive */
+@media (max-width: 375px) {
+	.navlink {
+		display: inline;
+	}
+	
+	#navlabel {
+		display: none;
+	}
+}
