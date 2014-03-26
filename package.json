@@ -4,9 +4,11 @@
   "description": "",
   "main": "js/main.js",
   "dependencies": {
+    
+  },
+  "devDependencies": {
     "grunt": "~0.4.4"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
