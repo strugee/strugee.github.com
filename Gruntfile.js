@@ -6,10 +6,18 @@ module.exports = function(grunt) {
 				force: true
 			},
 			all: ['Gruntfile.js', 'js/*.js']
+		},
+		
+		csslint: {
+			lax: {
+				src: ['css/main.css', 'css/nightmode.css', 'css/ie9.css']
+			}
 		}
 	});
 	
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-csslint');
 	
-	grunt.registerTask('default', ['jshint']);
+	grunt.registerTask('lint', ['jshint', 'csslint']);
+	grunt.registerTask('default', ['lint']);
 };
