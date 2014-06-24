@@ -28,7 +28,7 @@ h1, h2, p, li, footer, #navlabel {
 }
 
 h1, h2 {
-	text-shadow: 0px 0px 1em rgb(255, 255, 221);
+	text-shadow: 0 0 1em rgb(255, 255, 221);
 }
 
 code, pre {

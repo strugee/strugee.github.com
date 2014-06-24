@@ -26,7 +26,7 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.x
 
 #container {
 	max-width: 50em;
-	margin: 0px auto;
+	margin: 0 auto;
 	padding: 1.5em;
 	background-color: #F0F0F0;
 }
@@ -51,24 +51,6 @@ footer {
 
 #navlabel {
 	color: #686868;
-}
-
-.serviceblock {
- /* originally, there was going to be a responsive grid of fancy, purty squares with different services.
-	however, i think that the current unstyled look fits into the site better.
-	therefore, this is left blank. */
-}
-
-#ssh {
-
-}
-
-#emergence {
-
-}
-
-#ftp {
-
 }
 
 #toys {
