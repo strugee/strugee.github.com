@@ -1,7 +1,7 @@
 {
   "name": "strugee.github.com",
   "version": "1.0.0",
-  "description": "",
+  "description": "Personal website for Alex Jordan, powering strugee.net",
   "main": "js/main.js",
   "dependencies": {},
   "devDependencies": {

@@ -1,6 +1,6 @@
 /*
 
-Â© Copyright 2012, 2013, 2014 Alex Jordan
+© Copyright 2012, 2013, 2014 Alex Jordan
 
 This file is part of strugee.net.
 
