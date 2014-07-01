@@ -6,7 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.8.5",
-    "gulp-build": "^0.5.3",
+    "gulp-build": "^0.5.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
