@@ -1,19 +1,22 @@
 var gulp = require('gulp');
-var build = require('gulp-build');
+var handlebars = require('gulp-build');
+var fs = require('fs');
 
 var options = {
 	partials: [{
 		name: 'footer',
-		tpl: 'something'
+		tpl: fs.readFileSync('license.html', {
+		                                 	encoding: 'utf8'
+		                                 })
 	}]
 }
 
-gulp.task('build', function() {
-	gulp.src('./index.html')
-	    .pipe(build({}, options))
+gulp.task('handlebars', function() {
+	gulp.src('index.html')
+	    .pipe(handlebars({}, options))
 	    .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('default', function() {
+gulp.task('default', ['handlebars'], function() {
 	
 });
