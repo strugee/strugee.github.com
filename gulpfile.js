@@ -11,12 +11,33 @@ var options = {
 	}]
 }
 
+/* Regular tasks */
+
+/* TODO: validate HTML */
+
+gulp.task('csslint', function() {
+	
+});
+
+gulp.task('jshint', function() {
+	gulp.src(['js/*.js', '!vendor/*', '!plugins.js'])
+	    .pipe(
+});
+
 gulp.task('handlebars', function() {
 	gulp.src('index.html')
 	    .pipe(handlebars({}, options))
 	    .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('default', ['handlebars'], function() {
+/* Helper tasks */
+
+gulp.task('lint', ['csslint', 'jshint'], function() {
+	
+});
+
+/* Default task */
+
+gulp.task('default', ['handlebars', 'lint'], function() {
 	
 });
