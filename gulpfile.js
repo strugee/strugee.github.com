@@ -1,6 +1,9 @@
 var gulp = require('gulp');
-var handlebars = require('gulp-build');
+
 var fs = require('fs');
+
+var handlebars = require('gulp-build');
+var jshint = require('gulp-jshint');
 
 var options = {
 	partials: [{
@@ -21,7 +24,7 @@ gulp.task('csslint', function() {
 
 gulp.task('jshint', function() {
 	gulp.src(['js/*.js', '!vendor/*', '!plugins.js'])
-	    .pipe(
+	    .pipe(jshint());
 });
 
 gulp.task('handlebars', function() {
