@@ -5,10 +5,10 @@
   "main": "js/main.js",
   "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.4",
-    "grunt-contrib-jshint": "~0.9.2",
-    "grunt-contrib-handlebars": "~0.7.0",
-    "grunt-contrib-csslint": "~0.2.0"
+    "gulp": "^3.8.5",
+    "gulp-build": "^0.5.3",
+    "gulp-ignore": "^1.1.0",
+    "gulp-jshint": "^1.6.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
