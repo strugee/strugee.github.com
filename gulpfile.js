@@ -5,15 +5,6 @@ var fs = require('fs');
 var handlebars = require('gulp-build');
 var jshint = require('gulp-jshint');
 
-var options = {
-	partials: [{
-		name: 'footer',
-		tpl: fs.readFileSync('license.html', {
-		                                 	encoding: 'utf8'
-		                                 })
-	}]
-}
-
 /* Regular tasks */
 
 /* TODO: validate HTML */
@@ -29,7 +20,6 @@ gulp.task('jshint', function() {
 
 gulp.task('handlebars', function() {
 	gulp.src('index.html')
-	    .pipe(handlebars({}, options))
 	    .pipe(gulp.dest('dist/'));
 });
 
