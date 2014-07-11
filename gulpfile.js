@@ -1,8 +1,5 @@
 var gulp = require('gulp');
 
-var fs = require('fs');
-
-var handlebars = require('gulp-build');
 var jshint = require('gulp-jshint');
 
 /* Regular tasks */
@@ -18,11 +15,6 @@ gulp.task('jshint', function() {
 	    .pipe(jshint());
 });
 
-gulp.task('handlebars', function() {
-	gulp.src('index.html')
-	    .pipe(gulp.dest('dist/'));
-});
-
 /* Helper tasks */
 
 gulp.task('lint', ['csslint', 'jshint'], function() {
@@ -31,6 +23,6 @@ gulp.task('lint', ['csslint', 'jshint'], function() {
 
 /* Default task */
 
-gulp.task('default', ['handlebars', 'lint'], function() {
+gulp.task('default', [, 'lint'], function() {
 	
 });

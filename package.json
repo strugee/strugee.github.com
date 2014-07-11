@@ -6,7 +6,6 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.8.5",
-    "gulp-build": "^0.5.3",
     "gulp-ignore": "^1.1.0",
     "gulp-jshint": "^1.6.4"
   },
