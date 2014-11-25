@@ -18,14 +18,24 @@ gulp.task('html', function() {
 	return gulp.src('src/index.jade')
 	           .pipe(jade({ pretty: true }))
 	           .pipe(rename('index.html'))
-		       .pipe(gulp.dest('dist'));
+	           .pipe(gulp.dest('dist'));
 });
 
 gulp.task('css', function() {
-
 	return gulp.src('css/*')
 	           .pipe(gulp.dest('dist/css'));
 });
+
+gulp.task('font', function() {
+	return gulp.src('font/*')
+	           .pipe(gulp.dest('dist/font'));
+});
+
+gulp.task('js', function() {
+	return gulp.src('js/*')
+	           .pipe(gulp.dest('dist/js'));
+});
+
 
 gulp.task('build', function() {
 	/* legacy build logic */
