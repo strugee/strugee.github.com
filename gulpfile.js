@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 
+var jade = require('gulp-jade');
 var filter = require('gulp-filter');
 var jshint = require('gulp-jshint');
 var rev = require('gulp-rev');
@@ -7,12 +8,28 @@ var revReplace = require('gulp-rev-replace');
 var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
 var csso = require('gulp-csso');
+var rename = require('gulp-rename');
 
 /* Regular tasks */
 
 /* TODO: validate HTML */
 
+gulp.task('html', function() {
+	return gulp.src('src/index.jade')
+	           .pipe(jade({ pretty: true }))
+	           .pipe(rename('index.html'))
+		       .pipe(gulp.dest('dist'));
+});
+
+gulp.task('css', function() {
+
+	return gulp.src('css/*')
+	           .pipe(gulp.dest('dist/css'));
+});
+
 gulp.task('build', function() {
+	/* legacy build logic */
+	
 	var jsFilter = filter('**/*.js');
 	var cssFilter = filter('**/*.css');
 	

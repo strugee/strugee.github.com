@@ -1,0 +1,130 @@
+doctype html
+html.no-js(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+		title Home - strugee.net
+		meta(name='description', content='Alex Jordan\'s home page')
+		meta(name='viewport', content='width=device-width')
+		link(rel='stylesheet', href='css/bootstrap.min.css')
+		link(rel='stylesheet', href='css/bootstrap-responsive.min.css')
+		link(rel='stylesheet', href='css/font-awesome.min.css')
+		//
+			 IE7 support isn't really needed, but this addition is so easy I might as well 
+		//if lte IE 7
+			link(rel='stylesheet', href='css/font-awesome-ie7.min.css')
+		//
+			 endbuild 
+		link(rel='stylesheet', href='css/main.css')
+		//if gte IE 8
+			link(rel='stylesheet', href='css/ie9.css')
+		//
+			 I don't really need Modernizr on this page, so this is wasting bandwidth 
+		//
+			<script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	body
+		//if lt IE 7
+			p.chromeframe
+				You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.
+		#container
+			header
+				section
+					h1#topheader strugee.net
+					nav#navbar
+						ul
+							li#navlabel.navlink Nav ::
+							li.navlink Home
+							li.navlink
+								a(href='services') Services
+							li.navlink
+								a(href='projects') Projects
+							li.navlink
+								a(href='gpg') GPG Key
+							li.navlink
+								a(href='http://ramblingsfromalex.blogspot.com') Blog
+					//
+						 /navbar 
+			section
+				h2#hi Hi!
+				p
+					Heyo, I'm Alex Jordan, also known as AJ. I'm 16, live in Washington, and cofounded <a href="http://nightlightweb.github.com">Nightlight Web</a> with my buddy <a href="http://jacksondc.com">Jackson</a>. Love that guy.
+			section
+				h2#interesting Q: Shut up about yourself, do you have anything interesting to show me?
+				p Take a look at the Services page in the navbar. Currently, no.
+				p
+					Note: this section is specifically aimed towards those of you who will think about accusing me of not having real content, and will make a remark about <a href="http://catb.org/esr/html-hell.html">retiring to Aruba tomorrow with a bevy of supermodels</a>.
+			section
+				h2#passions Passions of mine
+				p I freaking love code. I'm actually really good at theoretical programming, meaning I just know a ton of random useful stuff, mostly from Wikipedia, FreeDesktop, and the GNOME Wiki. Like, I know about GObject Introspection, and ioctl()s, and the difference between the W3C and the WHATWG, and why you should use git, and a bunch of other things ranging from pretty dang useful to semi-useful all the way down to fascinating and useless. I'm not extremely good at practical code-writing, but I'm working on it.
+				p On this page, I used to say that I'm a passionate Mozillian. I still consider myself a Mozillian, and occasionally flit into SUMO and Live Chat and help people, but I'm more interested in other things now, primarily GNU, operating system design (for example, <a href="http://plan9.bell-labs.com/plan9/">Plan 9 from Bell Labs</a> and the <a href="https://en.wikipedia.org/wiki/Mach_kernel">Mach kernel</a>), and system administration.
+				p I'm a vocal supporter of digital freedom. I'm strongly opposed to things like SOPA, DRM, and Restricted Boot. I'm also a proud GNU, *nix, and free and libre software heretic.
+			section
+				h2#learn Stuff I want to learn
+				p Like I said, I love code. So here's an incomplete, unorganized list of technologies that I want to learn:
+					p
+						ul
+							li C
+							li Plan 9-style C
+							li Limbo
+							li Vala and associated technologies (GObject, mostly)
+							li GTK+
+							li Common Lisp
+							li Scheme
+							li Racket
+							li Haskell
+							li Brainfuck
+							li Perl
+				
+				p ...and also some technologies that I'm <em>vaguely</em> interested in learning:
+				
+				ul
+					li Swift
+					li x86 assembler
+					li Scheme
+					li
+						PHP - basically only so I can contribute to existing projects using it. Otherwise I'm completely uninterested.
+				p
+					...and also some technologies that I've learned to varying degrees but want to learn more of:
+				p
+					ul
+						li
+							HTML/CSS/JavaScript - I know these fairly well, but I could improve. (Also, as an aside, this site is deliberately bare-bones, because I like that style and not because I can't do better.)
+						li bash
+						li
+							| node.js, specifically the streams API. I understand some stuff, but can't actually write any code. I also want to learn Express, which I know nothing about.
+						li make
+						li Java, mostly for Android development
+						li C++
+						li Python
+						li DebHelper
+						li RobotC
+						li ELisp
+			section
+				h2#steevie steevie
+				p
+					I run a server called steevie. steevie is supposed to be a traditional UNIX server, which isn't really relevant anymore - now that you can run Xorg on a laptop without swapping - but still fun. He has a longish history of installations, but he currently runs Debian Wheezy.
+			section
+				footer
+					Hosting from <a href="http://pages.github.com">GitHub:Pages</a>. Free DNS from <a href="http://afraid.org">afraid.org</a>.
+		//
+			 /container 
+		#toys
+			a#lightbulb-icon(href='javascript:void(0);')
+				.icon-lightbulb
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+		script.
+			window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\\/script>')
+		//
+			 Bootstrap's JavaScript isn't really used in this page 
+		//
+			<script src="js/vendor/bootstrap.min.js"></script>
+		script(src='js/plugins.js')
+		script(src='js/main.js')
+		//
+			<script>
+						var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+						(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+						g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+						s.parentNode.insertBefore(g,s)}(document,'script'));
+					</script>
+		script(type='text/javascript', src='js/idl.js')
