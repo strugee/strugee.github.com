@@ -26,8 +26,10 @@ gulp.task('html', function() {
 });
 
 gulp.task('css', function() {
-	return gulp.src('css/*')
-	           .pipe(gulp.dest('dist/css'));
+	gulp.src('src/styles/*')
+	    .pipe(gulp.dest('css'));
+	gulp.src('css/*')
+	    .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('font', function() {
@@ -43,10 +45,10 @@ gulp.task('js', function() {
 
 gulp.task('build', function() {
 	/* legacy build logic */
-	
+
 	var jsFilter = filter('**/*.js');
 	var cssFilter = filter('**/*.css');
-	
+
 	gulp.src('index.html')
 	    .pipe(useref.assets())      // Concatenate with gulp-useref
 	    .pipe(jsFilter)
@@ -63,7 +65,7 @@ gulp.task('build', function() {
 });
 
 gulp.task('csslint', function() {
-	
+
 });
 
 gulp.task('jshint', function() {
@@ -74,11 +76,11 @@ gulp.task('jshint', function() {
 /* Helper tasks */
 
 gulp.task('lint', ['csslint', 'jshint'], function() {
-	
+
 });
 
 /* Default task */
 
 gulp.task('default', ['build', 'lint'], function() {
-	
+
 });

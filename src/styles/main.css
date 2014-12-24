@@ -1,0 +1,88 @@
+/*
+
+© Copyright 2012, 2013, 2014 Alex Jordan
+
+This file is part of strugee.net.
+
+strugee.net is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+strugee.net is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.x
+
+*/
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+#container {
+	max-width: 50em;
+	margin: 0 auto;
+	padding: 1.5em;
+	background-color: #F0F0F0;
+}
+
+#topheader {
+	font-family: monospace, "Courier New", Courier, mono;
+}
+
+.navlink {
+	list-style-type: none;
+	display: inline;
+}
+
+footer {
+	text-align: center;
+}
+
+.navlink, footer {
+	text-transform: uppercase;
+	font-size: .75em;
+}
+
+#navlabel {
+	color: #686868;
+}
+
+#toys {
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	background-color: #D8D8D8;
+	padding: 4px;
+	border-radius: 3px;
+}
+
+/* Night mode transitions */
+#container, body {
+	transition: background-color, 1.5s;
+}
+
+h1, h2, p, li, footer, #navlabel {
+	transition: color, 1.75s;
+	transition: text-shadow, 1.5s;
+}
+
+code, pre, #toys {
+	transition: background-color, 1.5s;
+}
+
+/* Mobile responsive */
+@media (max-width: 375px) {
+	.navlink {
+		display: inline;
+	}
+	
+	#navlabel {
+		display: none;
+	}
+}
