@@ -1,0 +1,94 @@
+doctype
+//
+	© Copyright 2012, 2013, 2014 Alex Jordan
+	This file is part of strugee.net.
+	strugee.net is free software: you can redistribute it and/or modify
+	it under the terms of the GNU Affero General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	strugee.net is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+	GNU Affero General Public License for more details.
+	You should have received a copy of the GNU Affero General Public License
+	along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
+// Made and coded by Alex Jordan
+<!--[if lt IE 7]>	  <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>		 <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>		 <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+html.no-js(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+		title Projects - strugee.net
+		meta(name='description', content='')
+		meta(name='viewport', content='width=device-width')
+		link(rel='stylesheet', href='css/bootstrap.min.css')
+		link(rel='stylesheet', href='css/bootstrap-responsive.min.css')
+		link(rel='stylesheet', href='css/font-awesome.min.css')
+		// IE7 support isn't really needed, but this addition is so easy I might as well
+		<!--[if lte IE 7]><link rel="stylesheet" href="css/font-awesome-ie7.min.css"><![endif]-->
+		link(rel='stylesheet', href='css/main.css')
+		// I don't really use Modernizr on this page, so this is wasting bandwidth
+		// <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	body
+		<!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+		#container
+			section
+				header
+					h1#topheader strugee.net
+					nav#navbar
+						ul
+							li#navlabel.navlink Nav ::
+							li.navlink
+								a(href='index') Home
+							li.navlink
+								a(href='services') Services
+							li.navlink Projects
+							li.navlink
+								a(href='gpg') GPG Key
+							li.navlink
+								a(href='http://ramblingsfromalex.blogspot.com') Blog
+					// /navbar
+			h1 Projects
+			section
+				h2 Completed projects
+				h3
+					a(href='http://easyc.saasrobotics.com/') EasyC
+				p
+					| EasyC is a web application that was written by me and a friend for our robotics club. Essentially, it lets builders
+				h3
+					a(href='http://strugee.net/textingwhiledriving/index.html') Texting While Driving
+				| &#x9;&#x9;&#x9;&#x9;
+				p
+					| For a Health project, I created a PSA website on texting while driving. It's written almost completely from scratch, only using a base of HTML5 Boilerplate, Twitter Bootstrap, and Font Awesome.
+				h3
+					a(href='http://strugee.net/tidal-waves/index.html') Tidal &amp; Wave Power
+				p
+					| This is a site giving information on Tidal/Wave power. It's intended as a reference, and was created for a Lab Science project with the assistance of a friend.
+			section
+				h2 Incomplete projects
+				h3 gridcontrol
+				p
+					| gridcontrol will eventually power Grid Control, the name of the service I will run. gridcontrol is hosted on 
+					a(href='https://github.com/strugee/gridcontrol') GitHub
+					| . The README details what it's about pretty thouroughly.
+		// /container
+		// Jquery isn't used here
+		//
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+			<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+		// I don't need Bootstrap's JavaScript in this page
+		// <script src="js/vendor/bootstrap.min.js"></script>
+		script(src='js/plugins.js')
+		| &#x9;&#x9;
+		script(src='js/main.js')
+		//
+			<script>
+			var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+			g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+			s.parentNode.insertBefore(g,s)}(document,'script'));
+			</script>
+		script(type='text/javascript', src='js/idl.js')
