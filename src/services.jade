@@ -68,22 +68,17 @@ html.no-js(lang='en')
 				#ssh.serviceblock
 					h3
 						a(href='ssh://ssh.strugee.net') SSH
-					p
-						SSH requires a command-line shell (such as <code>bash</code>), an SSH client (like <code>ssh</code>), and an account on the local Arch Linux system (to request an account, <a href="mailto:alex@strugee.net">email me</a>). If you can't connect on Windows, I recommend PuTTY if you don't feel like setting anything up. Otherwise, I recommend Cygwin. It's way more than just an SSH client, it provides a *nix-like environment on Windows.
-					p
-						In case this link doesn't work, you can connect to <code>ssh.strugee.net</code>, usually by running the command <code>ssh [username]@strugee.net</code> in a terminal, replacing <code>[username]</code> with your username. <strong>Note:</strong> do <em>not</em>	connect to <code>strugee.net</code>. If you do so, you will get "Permission denied (publickey).". This is because <code>strugee.net</code> is hosted by <a href="http://pages.github.com">GitHub Pages</a>. Thus, when you try to SSH into it, you're not reaching my server, you're reaching GitHub Pages. The workaround is to use <code>ssh.strugee.net</code>, which is properly set up to point to my server.
+					p	SSH requires a command-line shell (such as <code>bash</code>), an SSH client (like <code>ssh</code>), and an account on the local Arch Linux system (to request an account, <a href="mailto:alex@strugee.net">email me</a>). If you can't connect on Windows, I recommend PuTTY if you don't feel like setting anything up. Otherwise, I recommend Cygwin. It's way more than just an SSH client, it provides a *nix-like environment on Windows.
+					p	In case this link doesn't work, you can connect to <code>ssh.strugee.net</code>, usually by running the command <code>ssh [username]@strugee.net</code> in a terminal, replacing <code>[username]</code> with your username. <strong>Note:</strong> do <em>not</em>	connect to <code>strugee.net</code>. If you do so, you will get "Permission denied (publickey).". This is because <code>strugee.net</code> is hosted by <a href="http://pages.github.com">GitHub Pages</a>. Thus, when you try to SSH into it, you're not reaching my server, you're reaching GitHub Pages. The workaround is to use <code>ssh.strugee.net</code>, which is properly set up to point to my server.
 				#gateone.serviceblock
 					h3
 						a(href='https://gateone.private.strugee.net/') Web SSH
-					p
-						Web SSH via Gate One requires a modern browser and a local Arch Linux system account. To request one, <a href="mailto:alex@strugee.net">email me</a>.
+					p	Web SSH via Gate One requires a modern browser and a local Arch Linux system account. To request one, <a href="mailto:alex@strugee.net">email me</a>.
 				#ftp.serviceblock
 					h3
 						a(href='ftp://strugee.net') FTP
-					p
-						FTP will only provide access to your home directory. FTP requires an FTP client (one may be included in your browser) and an account on the local Arch Linux system (to request an account, <a href="mailto:alex@strugee.net">email me</a>).
-					p
-						In case this link doesn't work, just connect to <code>strugee.net</code> in your FTP client.
+					p	FTP will only provide access to your home directory. FTP requires an FTP client (one may be included in your browser) and an account on the local Arch Linux system (to request an account, <a href="mailto:alex@strugee.net">email me</a>).
+					p In case this link doesn't work, just connect to <code>strugee.net</code> in your FTP client.
 			include ./includes/footer.jade
 		// /container
 		// Jquery? Psh! I'm good without JavaScript, browsing in Lynx.
