@@ -18,11 +18,11 @@ gulp.task('html', function() {
 	gulp.src(['src/hacks/*.jade'])
 	    .pipe(jade({ pretty: true }))
 	    .pipe(rename({ extname: '.html' }))
-	    .pipe(gulp.dest('dist/hacks'));
+	    .pipe(gulp.dest('./hacks'));
 	return gulp.src(['src/*.jade'])
 	           .pipe(jade({ pretty: true }))
 	           .pipe(rename({ extname: '.html' }))
-	           .pipe(gulp.dest('dist'));
+	           .pipe(gulp.dest('.'));
 });
 
 gulp.task('css', function() {

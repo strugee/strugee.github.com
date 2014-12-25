@@ -1,134 +1,106 @@
 <!DOCTYPE html>
-
 <!--
-
 © Copyright 2012, 2013, 2014 Alex Jordan
-
 This file is part of strugee.net.
-
 strugee.net is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-
 strugee.net is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
 GNU Affero General Public License for more details.
-
 You should have received a copy of the GNU Affero General Public License
-along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
-
+along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 -->
-
-<!-- Made and coded by Alex Jordan -->
-
-<!--[if lt IE 7]>	  <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!-- Made and coded by Alex Jordan--><!--[if lt IE 7]>	  <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>		 <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>		 <html lang="en" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Services - strugee.net</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
-
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-		
-		<link rel="stylesheet" href="css/font-awesome.min.css">
-		<!-- IE7 support isn't really needed, but this addition is so easy I might as well -->
-		<!--[if lte IE 7]> <link rel="stylesheet" href="css/font-awesome-ie7.min.css"> <![endif]-->
-		
-		<link rel="stylesheet" href="css/main.css">
-		
-		<!-- I don't really use Modernizr -->
-		<!--<script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>-->
-	</head>
-	<body>
-		<!--[if lt IE 7]>
-			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-		<![endif]-->
-
-		<div id="container">
-			<section>
-			  	<header>
-					<h1 id="topheader">strugee.net</h1>
-					<nav id="navbar">
-						<ul>
-							<li class="navlink" id="navlabel">Nav ::</li>
-							<li class="navlink"><a href="index">Home</a></li>
-							<li class="navlink">Services</li>
-							<li class="navlink"><a href="projects">Projects</a></li>
-							<li class="navlink"><a href="gpg">GPG Key</a></li>
-							<li class="navlink"><a href="http://ramblingsfromalex.blogspot.com">Blog</a></li>
-						</ul>
-					</nav> <!-- /navbar -->
-				</header>
-			</section>
-			<section>
-				<h2>Services</h2>
-				<p>
-				  <strike>In order to use any of these services, you will need to authenticate either with a BrowserID account or a local Arch Linux account, depending on the type of service. Please be aware that every single service here is broken for various reasons, except for SSH.</strike> Almost everything on this page is inaccurate, and I can't be bothered to update it. I'll probably get around to it when I finish rewriting the build backend for this site.
-				</p>
-				<!--<div class="serviceblock" id="emergence">
-					<h3><a href="http://emergence.alexj.jumpingcrab.com">Emergence Story Project</a></h3>
-					<p>
-						The Emergence Story Project requires a modern browser (Firefox and Chrome are the best) and a BrowserID account. You can also look at an exact <a href="emergence_requirements.html">list of browser requirements</a> if you want.
-					</p>
-					<p>
-						The Emergence Story Project is currently in an incomplete form and is not functional. When it is done, it will run a check to make sure that your browser has the necessary capabilities to run it. If your browser is not supported, you will have to upgrade it - the Story Project depends on modern HTML5 features like WebSockets in order to run. For advanced users, the Story Project will provide a list of test faliures so that you can see exactly where your browser falls short.
-					</p>
-				</div>-->
-				<div class="serviceblock" id="ssh">
-					<h3><a href="ssh://ssh.strugee.net">SSH</a></h3>
-					<p>
-						SSH requires a command-line shell (such as <code>bash</code>), an SSH client (like <code>ssh</code>), and an account on the local Arch Linux system (to request an account, <a href="mailto:alex@strugee.net">email me</a>). If you can't connect on Windows, I recommend PuTTY if you don't feel like setting anything up. Otherwise, I recommend Cygwin. It's way more than just an SSH client, it provides a *nix-like environment on Windows.
-					</p>
-					<p>
-						In case this link doesn't work, you can connect to <code>ssh.strugee.net</code>, usually by running the command <code>ssh [username]@strugee.net</code> in a terminal, replacing <code>[username]</code> with your username. <strong>Note:</strong> do <em>not</em> connect to <code>strugee.net</code>. If you do so, you will get "Permission denied (publickey).". This is because <code>strugee.net</code> is hosted by <a href="http://pages.github.com">GitHub Pages</a>. Thus, when you try to SSH into it, you're not reaching my server, you're reaching GitHub Pages. The workaround is to use <code>ssh.strugee.net</code>, which is properly set up to point to my server.
-					</p>
-				</div>
-				<div class="serviceblock" id="gateone">
-					<h3><a href="https://gateone.private.strugee.net/">Web SSH</a></h3>
-					<p>
-						Web SSH via Gate One requires a modern browser and a local Arch Linux system account. To request one, <a href="mailto:alex@strugee.net">email me</a>.
-					</p>
-				</div>
-				<div class="serviceblock" id="ftp">
-					<h3><a href="ftp://strugee.net">FTP</a></h3>
-					<p>
-						FTP will only provide access to your home directory. FTP requires an FTP client (one may be included in your browser) and an account on the local Arch Linux system (to request an account, <a href="mailto:alex@strugee.net">email me</a>).
-					</p>
-					<p>
-						In case this link doesn't work, just connect to <code>strugee.net</code> in your FTP client.
-					</p>
-				</div>
-			</section>
-			<section>
-				<footer>
-					Hosting from <a href="http://pages.github.com">GitHub:Pages</a>. Free DNS from <a href="http://afraid.org">afraid.org</a>.
-				</footer>
-			</section>
-		</div> <!-- /container -->
-		
-		<!-- Jquery? Psh! I'm good without JavaScript, browsing in Lynx. -->
-		<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>-->
-		
-		<!-- I never really use Bootstrap's JavaScript -->
-		<!--<script src="js/vendor/bootstrap.min.js"></script>-->
-
-		<script src="js/plugins.js"></script>
-		<script src="js/main.js"></script>
-
-		<!--<script>
-			var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-			g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-			s.parentNode.insertBefore(g,s)}(document,'script'));
-		</script>-->
-		<script type="text/javascript" src="js/idl.js"></script>
-	</body>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Services - strugee.net</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- IE7 support isn't really needed, but this addition is so easy I might as well--><!--[if lte IE 7]><link rel="stylesheet" href="css/font-awesome-ie7.min.css"><![endif]-->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- I don't really use Modernizr-->
+    <!-- <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>-->
+  </head>
+  <body><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+    <div id="container">
+      <section>
+        <header>
+          <h1 id="topheader">strugee.net</h1>
+          <nav id="navbar">
+            <ul>
+              <li id="navlabel" class="navlink">Nav ::</li>
+              <li class="navlink"><a href="index">Home</a></li>
+              <li class="navlink">Services</li>
+              <li class="navlink"><a href="projects">Projects</a></li>
+              <li class="navlink"><a href="gpg">GPG Key</a></li>
+              <li class="navlink"><a href="http://ramblingsfromalex.blogspot.com">Blog</a></li>
+            </ul>
+          </nav>
+          <!-- /navbar-->
+        </header>
+      </section>
+      <section>
+        <h2>Services</h2>
+        <p><strike>In order to use any of these services, you will need to authenticate either with a BrowserID account or a local Arch Linux account, depending on the type of service. Please be aware that every single service here is broken for various reasons, except for SSH.</strike> Almost everything on this page is inaccurate, and I can&apos;t be bothered to update it. I&apos;ll probably get around to it when I finish rewriting the build backend for this site.</p>
+        <!--
+        <div class="serviceblock" id="emergence">
+        <h3><a href="http://emergence.alexj.jumpingcrab.com">Emergence Story Project</a></h3>
+        <p>
+        The Emergence Story Project requires a modern browser (Firefox and Chrome are the best) and a BrowserID account. You can also look at an exact <a href="emergence_requirements.html">list of browser requirements</a> if you want.
+        </p>
+        <p>
+        The Emergence Story Project is currently in an incomplete form and is not functional. When it is done, it will run a check to make sure that your browser has the necessary capabilities to run it. If your browser is not supported, you will have to upgrade it - the Story Project depends on modern HTML5 features like WebSockets in order to run. For advanced users, the Story Project will provide a list of test faliures so that you can see exactly where your browser falls short.
+        </p>
+        </div>
+        -->
+        <div id="ssh" class="serviceblock">
+          <h3><a href="ssh://ssh.strugee.net">SSH</a></h3>
+          <p>	SSH requires a command-line shell (such as <code>bash</code>), an SSH client (like <code>ssh</code>), and an account on the local Arch Linux system (to request an account, <a href="mailto:alex@strugee.net">email me</a>). If you can't connect on Windows, I recommend PuTTY if you don't feel like setting anything up. Otherwise, I recommend Cygwin. It's way more than just an SSH client, it provides a *nix-like environment on Windows.</p>
+          <p>	In case this link doesn't work, you can connect to <code>ssh.strugee.net</code>, usually by running the command <code>ssh [username]@strugee.net</code> in a terminal, replacing <code>[username]</code> with your username. <strong>Note:</strong> do <em>not</em>	connect to <code>strugee.net</code>. If you do so, you will get "Permission denied (publickey).". This is because <code>strugee.net</code> is hosted by <a href="http://pages.github.com">GitHub Pages</a>. Thus, when you try to SSH into it, you're not reaching my server, you're reaching GitHub Pages. The workaround is to use <code>ssh.strugee.net</code>, which is properly set up to point to my server.</p>
+        </div>
+        <div id="gateone" class="serviceblock">
+          <h3><a href="https://gateone.private.strugee.net/">Web SSH</a></h3>
+          <p>	Web SSH via Gate One requires a modern browser and a local Arch Linux system account. To request one, <a href="mailto:alex@strugee.net">email me</a>.</p>
+        </div>
+        <div id="ftp" class="serviceblock">
+          <h3><a href="ftp://strugee.net">FTP</a></h3>
+          <p>	FTP will only provide access to your home directory. FTP requires an FTP client (one may be included in your browser) and an account on the local Arch Linux system (to request an account, <a href="mailto:alex@strugee.net">email me</a>).</p>
+          <p>In case this link doesn't work, just connect to <code>strugee.net</code> in your FTP client.</p>
+        </div>
+      </section>
+      <section>
+        <footer>Free DNS from <a href="http://afraid.org">afraid.org</a>.</footer>
+      </section>
+    </div>
+    <!-- /container-->
+    <!-- Jquery? Psh! I'm good without JavaScript, browsing in Lynx.-->
+    <!--
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+    -->
+    <!-- I never really use Bootstrap's JavaScript-->
+    <!-- <script src="js/vendor/bootstrap.min.js"></script>-->
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <!--
+    <script>
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+    -->
+    <script type="text/javascript" src="js/idl.js"></script>
+  </body>
 </html>
