@@ -15,7 +15,11 @@ var rename = require('gulp-rename');
 /* TODO: validate HTML */
 
 gulp.task('html', function() {
-	return gulp.src('src/*.jade')
+	gulp.src(['src/hacks/*.jade'])
+	    .pipe(jade({ pretty: true }))
+	    .pipe(rename({ extname: '.html' }))
+	    .pipe(gulp.dest('dist/hacks'));
+	return gulp.src(['src/*.jade'])
 	           .pipe(jade({ pretty: true }))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist'));
