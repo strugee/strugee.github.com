@@ -29,7 +29,7 @@ gulp.task('css', function() {
 	gulp.src('src/styles/*')
 	    .pipe(gulp.dest('css'));
 	gulp.src('css/*')
-	    .pipe(gulp.dest('dist/css'));
+	    .pipe(gulp.dest('./css'));
 });
 
 gulp.task('font', function() {
