@@ -42,32 +42,24 @@ html.no-js(lang='en')
 								a(href='http://ramblingsfromalex.blogspot.com') Blog
 			section
 				h2 Services
-				p
-					<strike>In order to use any of these services, you will need to authenticate either with a BrowserID account or a local Arch Linux account, depending on the type of service. Please be aware that every single service here is broken for various reasons, except for SSH.</strike> Almost everything on this page is inaccurate, and I can&apos;t be bothered to update it. I&apos;ll probably get around to it when I finish rewriting the build backend for this site.
-				//
-					<div class="serviceblock" id="emergence">
-					<h3><a href="http://emergence.alexj.jumpingcrab.com">Emergence Story Project</a></h3>
-					<p>
-					The Emergence Story Project requires a modern browser (Firefox and Chrome are the best) and a BrowserID account. You can also look at an exact <a href="emergence_requirements.html">list of browser requirements</a> if you want.
-					</p>
-					<p>
-					The Emergence Story Project is currently in an incomplete form and is not functional. When it is done, it will run a check to make sure that your browser has the necessary capabilities to run it. If your browser is not supported, you will have to upgrade it - the Story Project depends on modern HTML5 features like WebSockets in order to run. For advanced users, the Story Project will provide a list of test faliures so that you can see exactly where your browser falls short.
-					</p>
-					</div>
+				p All services here will eventually be backed by an LDAP directory, but for now, they're kind of all hacked together with different account backends.
 				#ssh.serviceblock
 					h3
 						a(href='ssh://ssh.strugee.net') SSH
-					p	SSH requires a command-line shell (such as <code>bash</code>), an SSH client (like <code>ssh</code>), and an account on the local Arch Linux system (to request an account, <a href="mailto:alex@strugee.net">email me</a>). If you can't connect on Windows, I recommend PuTTY if you don't feel like setting anything up. Otherwise, I recommend Cygwin. It's way more than just an SSH client, it provides a *nix-like environment on Windows.
-					p	In case this link doesn't work, you can connect to <code>ssh.strugee.net</code>, usually by running the command <code>ssh [username]@strugee.net</code> in a terminal, replacing <code>[username]</code> with your username. <strong>Note:</strong> do <em>not</em>	connect to <code>strugee.net</code>. If you do so, you will get "Permission denied (publickey).". This is because <code>strugee.net</code> is hosted by <a href="http://pages.github.com">GitHub Pages</a>. Thus, when you try to SSH into it, you're not reaching my server, you're reaching GitHub Pages. The workaround is to use <code>ssh.strugee.net</code>, which is properly set up to point to my server.
-				#gateone.serviceblock
+					p	SSH requires an SSH client and an account on the local Debian system (to request an account, <a href="mailto:hostmaster@strugee.net">email hostmaster</a>).
+					p	In case this link doesn't work, you can connect to <code>strugee.net</code> as usual on port 22 (<code>ssh [username]@strugee.net</code>). (This page used to recommend you connect to <code>ssh.strugee.net</code>, but that is no longer necessary as of the move away from <a href="https://pages.github.com/">GitHub Pages</a>.)
+				#mail.serviceblock
+					h3 Mail
+					p I run all my personal mail off <code>strugee.net</code>. If you're having problems with the mail services running on strugee.net, contact <a href="mailto:postmaster@strugee.net">postmaster</a>.
+				#owncloud.serviceblock
 					h3
-						a(href='https://gateone.private.strugee.net/') Web SSH
-					p	Web SSH via Gate One requires a modern browser and a local Arch Linux system account. To request one, <a href="mailto:alex@strugee.net">email me</a>.
-				#ftp.serviceblock
+						a(href='https://cloud.strugee.net/') ownCloud
+					p I run an instance of <a href="https://owncloud.org/">ownCloud</a> at <a href="https://cloud.strugee.net/">this location</a>.
+
+				#wiki.serviceblock
 					h3
-						a(href='ftp://strugee.net') FTP
-					p	FTP will only provide access to your home directory. FTP requires an FTP client (one may be included in your browser) and an account on the local Arch Linux system (to request an account, <a href="mailto:alex@strugee.net">email me</a>).
-					p In case this link doesn't work, just connect to <code>strugee.net</code> in your FTP client.
+						a(href='https://wiki.strugee.net/') MediaWiki
+					p <a href="https://wiki.strugee.net/"><code>wiki.strugee.net</code></a> currently runs an instance of <a href="https://mediawiki.org/">MediaWiki</a>. It's used to document server configuration. You can find the exact details of services on <code>strugee.net</code> there, as well as less important services not listed here.
 			include ./includes/footer.jade
 		script(src='js/plugins.js')
 		script(src='js/main.js')
