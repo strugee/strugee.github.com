@@ -9,8 +9,11 @@ var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
 var csso = require('gulp-csso');
 var rename = require('gulp-rename');
+var frontMatter = require('gulp-front-matter');
 
-/* Regular tasks */
+/* Shared configurations */
+
+/* Build tasks */
 
 /* TODO: validate HTML */
 
@@ -42,8 +45,25 @@ gulp.task('js', function() {
 	           .pipe(gulp.dest('dist/js'));
 });
 
+gulp.task('post-index', function() {
 
 });
+
+gulp.task('posts', function() {
+
+});
+
+gulp.task('rss', function() {
+	gulp.src('src/posts/*.md')
+	    .pipe(frontMatter())
+	.pipe(rss({
+		render: 'rss-2.0',
+		title: 'fancy blog title',
+	}))
+	.pipe(gulp.dest('dist/posts/rss.xml'));
+});
+
+/* Lint tasks */
 
 gulp.task('csslint', function() {
 
@@ -55,6 +75,10 @@ gulp.task('jshint', function() {
 });
 
 /* Helper tasks */
+
+gulp.task('blog', ['postindex', 'posts', 'rss'], function() {
+
+});
 
 gulp.task('build', ['html', 'css', 'js', 'font', 'blog'], function() {
 
