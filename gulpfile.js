@@ -88,6 +88,13 @@ gulp.task('lint', ['csslint', 'jshint'], function() {
 
 });
 
+gulp.task('watch', function() {
+	gulp.watch('src/*.jade', ['html']);
+	gulp.watch('src/styles/*.stylus', ['css']);
+	gulp.watch('src/js/*.js', ['js']);
+	gulp.watch('src/posts/*.md', ['blog']);
+});
+
 /* Default task */
 
 gulp.task('default', ['build', 'lint'], function() {
