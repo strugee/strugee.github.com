@@ -43,25 +43,6 @@ gulp.task('js', function() {
 });
 
 
-gulp.task('build', function() {
-	/* legacy build logic */
-
-	var jsFilter = filter('**/*.js');
-	var cssFilter = filter('**/*.css');
-
-	gulp.src('index.html')
-	    .pipe(useref.assets())      // Concatenate with gulp-useref
-	    .pipe(jsFilter)
-	    .pipe(uglify())             // Minify any javascript sources
-	    .pipe(jsFilter.restore())
-	    .pipe(cssFilter)
-	    .pipe(csso())               // Minify any CSS sources
-	    .pipe(cssFilter.restore())
-	    .pipe(rev())                // Rename the concatenated files
-	    .pipe(useref.restore())
-	    .pipe(useref())
-	    .pipe(revReplace())         // Substitute in new filenames
-	    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('csslint', function() {
@@ -74,6 +55,10 @@ gulp.task('jshint', function() {
 });
 
 /* Helper tasks */
+
+gulp.task('build', ['html', 'css', 'js', 'font', 'blog'], function() {
+
+});
 
 gulp.task('lint', ['csslint', 'jshint'], function() {
 
