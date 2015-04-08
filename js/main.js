@@ -1,6 +1,6 @@
 /*
 
-© Copyright 2012, 2013, 2014 Alex Jordan
+Â© Copyright 2012, 2013, 2014 Alex Jordan
 
 This file is part of strugee.net.
 
@@ -19,23 +19,51 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-$(document).ready(function(){
-	// Register an event handler for the lightbulb
-	$('#lightbulb-icon').click(nightmode);
-});
+(function() {
 
-function nightmode() {
-	$('head').append('<link id="nightmode-stylesheet" rel="stylesheet" type="text/css" href="css/nightmode.css" />');
-	$('#lightbulb-icon').unbind('click').click(daymode);
-	$('#lightbulb-icon').attr("href", "#");
-	$('#lightbulb-icon').attr("alt", "Lightbulb icon");
-	console.log("welcome to night mode, you beautiful person!");
-}
+	'use strict';
 	
-function daymode() {
-	$('#nightmode-stylesheet').remove();
-	$('#lightbulb-icon').unbind('click').click(nightmode);
-	$('#lightbulb-icon').attr("href", "#");
-	$('#lightbulb-icon').attr("alt", "Lightbulb icon");
-	console.log("let the sun shine upon all! welcome to day mode.");
-}
+	var nightmodeStylesheet, icon;
+	var isNightMode = false;
+	
+	// Wait for the DOM to be ready
+	document.addEventListener('DOMContentLoaded', init);
+	document.onreadystatechange = function() {
+		if (document.readyState === 'interactive') {
+			init();
+		}
+	};
+	
+	function init() {
+		// Sets up event handlers, initializes element variables, etc.
+		nightmodeStylesheet = document.createElement('link');
+		nightmodeStylesheet.id = 'nightmode-stylesheet';
+		nightmodeStylesheet.rel = 'stylesheet';
+		nightmodeStylesheet.type = 'text/css';
+		nightmodeStylesheet.href = 'css/nightmode.css';
+		
+		icon = document.getElementById('lightbulb-icon');
+		
+		icon.addEventListener('click', handleIconClick);
+	}
+	
+	function handleIconClick() {
+		if (isNightMode) {
+			dayMode();
+		} else {
+			nightMode();
+		}
+	}
+	
+	function nightMode() {
+		document.getElementsByTagName('head').item(0).appendChild(nightmodeStylesheet);
+		isNightMode = true;
+		console.log("welcome to night mode, you beautiful person!");
+	}
+	
+	function dayMode() {
+		document.getElementsByTagName('head').item(0).removeChild(nightmodeStylesheet);
+		isNightMode = false;
+		console.log("let the sun shine upon all! welcome to day mode.");
+	}
+})();
