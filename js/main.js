@@ -56,13 +56,13 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 	}
 	
 	function nightMode() {
-		document.getElementsByTagName('head').item(0).appendChild(nightmodeStylesheet);
+		document.head.appendChild(nightmodeStylesheet);
 		isNightMode = true;
 		console.log("welcome to night mode, you beautiful person!");
 	}
 	
 	function dayMode() {
-		document.getElementsByTagName('head').item(0).removeChild(nightmodeStylesheet);
+		document.head.removeChild(nightmodeStylesheet);
 		isNightMode = false;
 		console.log("let the sun shine upon all! welcome to day mode.");
 	}
