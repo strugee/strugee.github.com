@@ -10,6 +10,7 @@ var uglify = require('gulp-uglify');
 var csso = require('gulp-csso');
 var rename = require('gulp-rename');
 var frontMatter = require('gulp-front-matter');
+var markdown = require('gulp-markdown');
 
 /* Shared configurations */
 
@@ -50,7 +51,9 @@ gulp.task('post-index', function() {
 });
 
 gulp.task('posts', function() {
-
+	gulp.src('src/blog/*.md')
+	    .pipe(markdown())
+	    .pipe(gulp.dest('dist/blog'));
 });
 
 gulp.task('rss', function() {
