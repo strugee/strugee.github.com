@@ -62,6 +62,10 @@ footer {
 	border-radius: 3px;
 }
 
+.image-center {
+	margin: auto;
+}
+
 /* Night mode transitions */
 #container, body {
 	transition: background-color, 1.5s;

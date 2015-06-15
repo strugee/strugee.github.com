@@ -23,6 +23,10 @@ gulp.task('html', function() {
 	    .pipe(jade({ pretty: true }))
 	    .pipe(rename({ extname: '.html' }))
 	    .pipe(gulp.dest('./hacks'));
+	gulp.src(['src/cryptoparty-seattle/*.jade'])
+	    .pipe(jade({ pretty: true }))
+	    .pipe(rename({ extname: '.html' }))
+	    .pipe(gulp.dest('./cryptoparty-seattle'));
 	return gulp.src(['src/*.jade'])
 	           .pipe(jade({ pretty: true }))
 	           .pipe(rename({ extname: '.html' }))
@@ -34,6 +38,11 @@ gulp.task('css', function() {
 	    .pipe(gulp.dest('css'));
 	gulp.src('css/*')
 	    .pipe(gulp.dest('./css'));
+});
+
+gulp.task('images', function() {
+	return gulp.src('src/images/*')
+	           .pipe(gulp.dest('images'));
 });
 
 gulp.task('font', function() {
