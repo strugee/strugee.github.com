@@ -22,27 +22,27 @@ gulp.task('html', function() {
 	gulp.src(['src/hacks/*.jade'])
 	    .pipe(jade({ pretty: true }))
 	    .pipe(rename({ extname: '.html' }))
-	    .pipe(gulp.dest('./hacks'));
+	    .pipe(gulp.dest('dist/hacks'));
 	gulp.src(['src/cryptoparty-seattle/*.jade'])
 	    .pipe(jade({ pretty: true }))
 	    .pipe(rename({ extname: '.html' }))
-	    .pipe(gulp.dest('./cryptoparty-seattle'));
+	    .pipe(gulp.dest('dist/cryptoparty-seattle'));
 	return gulp.src(['src/*.jade'])
 	           .pipe(jade({ pretty: true }))
 	           .pipe(rename({ extname: '.html' }))
-	           .pipe(gulp.dest('.'));
+	           .pipe(gulp.dest('dist'));
 });
 
 gulp.task('css', function() {
 	gulp.src('src/styles/*')
 	    .pipe(gulp.dest('css'));
 	gulp.src('css/*')
-	    .pipe(gulp.dest('./css'));
+	    .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('images', function() {
 	return gulp.src('src/images/*')
-	           .pipe(gulp.dest('images'));
+	           .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('font', function() {
@@ -68,10 +68,6 @@ gulp.task('posts', function() {
 gulp.task('rss', function() {
 	gulp.src('src/posts/*.md')
 	    .pipe(frontMatter())
-	.pipe(rss({
-		render: 'rss-2.0',
-		title: 'fancy blog title',
-	}))
 	.pipe(gulp.dest('dist/posts/rss.xml'));
 });
 
@@ -88,11 +84,11 @@ gulp.task('jshint', function() {
 
 /* Helper tasks */
 
-gulp.task('blog', ['postindex', 'posts', 'rss'], function() {
+gulp.task('blog', ['posts', 'rss'], function() {
 
 });
 
-gulp.task('build', ['html', 'css', 'js', 'font', 'blog'], function() {
+gulp.task('build', ['html', 'css', 'js', 'font', 'images', 'blog'], function() {
 
 });
 
