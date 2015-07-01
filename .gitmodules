@@ -1,0 +1,7 @@
+[submodule "original"]
+	path = cryptoparty-seattle/original
+	url = git://github.com/strugee/cryptoparty-seattle.git
+	branch = origin/2014-build
+[submodule "cryptoparty-seattle/redux"]
+	path = cryptoparty-seattle/redux
+	url = git://github.com/strugee/cryptoparty-seattle.git
