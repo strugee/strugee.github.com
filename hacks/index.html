@@ -57,6 +57,24 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a href="https://github.com/strugee/strugee.github.com.git">on GitHub</a>. Free DNS from <a href="http://afraid.org">afraid.org</a>.</p>
         </footer>
       </section>
+      <!-- Piwik-->
+      <!-- Note that this Piwik instance is self-hosted and so doesn't leak metadata. Also, critically, it respects Do Not Track.-->
+      <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="//piwik.strugee.net/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
+      <noscript>
+        <p><img src="//piwik.strugee.net/piwik.php?idsite=1" style="border:0;" alt=""></p>
+      </noscript>
+      <!-- End Piwik Code-->
     </div>
     <script src="js/main.js"></script>
     <script type="text/javascript" src="js/idl.js"></script>
