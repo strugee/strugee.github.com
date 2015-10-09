@@ -1,0 +1,65 @@
+doctype html
+
+//
+	© Copyright 2012, 2013, 2014 Alex Jordan
+	This file is part of strugee.net.
+	strugee.net is free software: you can redistribute it and/or modify
+	it under the terms of the GNU Affero General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	strugee.net is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+	GNU Affero General Public License for more details.
+	You should have received a copy of the GNU Affero General Public License
+	along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
+
+// Made and coded by Alex Jordan
+
+<!--[if lt IE 7]>	  <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>		 <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>		 <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+html.no-js(lang='en')
+	head
+		include ./includes/header.jade
+		include ./includes/indieweb.jade
+		title Contact - strugee.net
+		meta(name='description', content='Alex Jordan\'s contact page')
+	body
+		<!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+		#container
+			header
+				section
+					h1#topheader strugee.net
+					nav#navbar
+						ul
+							li#navlabel.navlink Nav ::
+							li.navlink
+								a(href='index') Home
+							li.navlink
+								a(href='services') Services
+							li.navlink
+								a(href='projects') Projects
+							li.navlink
+								a(href='gpg') GPG Key
+							li.navlink
+								a(href='http://ramblingsfromalex.blogspot.com') Blog
+			section
+				h2#hi Contact
+				p There are numerous ways to contact me:
+				ul
+					li
+						a(rel='me', href='mailto:alex@strugee.net') By email
+					li
+						a(rel='me', href='sms:17607054581') By SMS
+					li
+						a(rel='me', href='https://github.com/strugee') On GitHub
+					li
+						a(rel='me', href='https://pump.strugee.net/alex') On Pump.io
+					li
+						a(rel='me', href='https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c') On diaspora*
+				p You can also contact me <a rel="me" href="https://twitter.com/strugee2">on Twitter</a> and <a rel="me" href="https://plus.google.com/+AlexJordan">on Google+</a>, but you really should not do so. These networks run non-free network services, and so I tend to avoid them if at all possible (and you should too!).
+			include ./includes/footer.jade
+		script(src='js/main.js')
+		script(type='text/javascript', src='js/idl.js')
