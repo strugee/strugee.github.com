@@ -1,6 +1,6 @@
 # Post information
 
-This post was published as "Revisiting my Tor relay" at "1441413269 UTC-8" by "Alex Jordan", and was categorized as "sysadmina".
+This post was published as "Revisiting my Tor relay" at "1441413269 UTC-8" by "Alex Jordan", and was categorized as "sysadmin".
 
 # Post text
 
