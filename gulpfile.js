@@ -35,7 +35,7 @@ gulp.task('html', function() {
 
 gulp.task('css', function() {
 	gulp.src('src/styles/*')
-	    .pipe(gulp.dest('css'));
+	    .pipe(gulp.dest('dist/css'));
 	gulp.src('css/*')
 	    .pipe(gulp.dest('dist/css'));
 });
