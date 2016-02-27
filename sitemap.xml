@@ -24,19 +24,18 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 <urlset  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 	<url>
-		<loc>http://strugee.net/index</loc>
+		<loc>https://strugee.net/index</loc>
 	</url>
 
 	<url>
-		<loc>http://strugee.net/projects</loc>
+		<loc>https://strugee.net/projects</loc>
 	</url>
 
 	<url>
-		<loc>http://strugee.net/services</loc>
+		<loc>https://strugee.net/services</loc>
 	</url>
 
 	<url>
-		<loc>http://strugee.net/gpg</loc>
+		<loc>https://strugee.net/gpg</loc>
 	</url>
-
 </urlset>
