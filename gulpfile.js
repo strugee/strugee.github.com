@@ -105,11 +105,11 @@ gulp.task('lint', ['csslint', 'jshint'], function() {
 
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['build'], function() {
 	gulp.watch('src/*.jade', ['html']);
-	gulp.watch('src/styles/*.stylus', ['css']);
+	gulp.watch('src/styles/*.styl', ['css']);
 	gulp.watch('src/js/*.js', ['js']);
-	gulp.watch('src/posts/*.md', ['blog']);
+	gulp.watch(['src/posts/*.md', 'src/posts/*.jade'], ['blog']);
 });
 
 /* Default task */
