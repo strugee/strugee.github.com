@@ -14,6 +14,7 @@ var markdown = require('gulp-markdown');
 var parse = require('stratic-parse-header');
 var straticToJson = require('stratic-post-to-json-data');
 var jadeTemplate = require('gulp-jade-template');
+var dateInPath = require('stratic-date-in-path');
 
 /* Shared configurations */
 
@@ -66,6 +67,7 @@ gulp.task('posts', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(parse())
 	           .pipe(markdown())
+	           .pipe(dateInPath())
 	           .pipe(straticToJson())
 	           .pipe(jadeTemplate('src/blog/post.jade'))
 	           .pipe(rename({ extname: '.html' }))
