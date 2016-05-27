@@ -59,10 +59,10 @@ So! This is a blog post without a blog. Soon, I'll finish up Stratic and this wi
  [9]: https://youtu.be/gJzJUveTyyo
  [10]: https://youtu.be/bdcG_WOOLwU
  [11]: https://bugzilla.mozilla.org/show_bug.cgi?id=1106353
- [12]: mailto: alex@strugee.net
- [13]: mailto: postmaster@strugee.net
- [14]: mailto: webmaster@strugee.net
- [15]: mailto: hostmaster@strugee.net
+ [12]: mailto:alex@strugee.net
+ [13]: mailto:postmaster@strugee.net
+ [14]: mailto:webmaster@strugee.net
+ [15]: mailto:hostmaster@strugee.net
  [16]: https://github.com/strugee/generator-stratic
  [17]: https://wintersmith.io/
  [18]: http://gulpjs.com
