@@ -23,4 +23,12 @@ html(lang='en')
 		block head
 
 	body
-		block content
+		#container
+			<!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+			block content
+			include ../includes/footer.jade
+			#toys
+				a#lightbulb-icon(href='#')
+					.icon-lightbulb
+			script(src='js/main.js')
+			script(type='text/javascript', src='js/idl.js')
