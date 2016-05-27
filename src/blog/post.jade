@@ -18,7 +18,7 @@ doctype html
 
 html(lang='en')
 	head
-		include ../includes/header-subdir.jade
+		include ../includes/header.jade
 		include ../includes/indieweb.jade
 		title #{metadata.title} - strugee.net
 	body
@@ -31,17 +31,17 @@ html(lang='en')
 						ul
 							li#navlabel.navlink Nav ::
 							li.navlink
-								a(href='../index') Home
+								a(href='/index') Home
 							li.navlink
-								a(href='../services') Services
+								a(href='/services') Services
 							li.navlink
-								a(href='../projects') Projects
+								a(href='/projects') Projects
 							li.navlink
-								a(href='../gpg') GPG Key
+								a(href='/gpg') GPG Key
 							li.navlink
 								a(href='http://ramblingsfromalex.blogspot.com') Blog
 			section
-				h1 #{metadata.text} (published by #{metadata.author})
+				h1 #{metadata.title} (published by #{metadata.author})
 
 			section!= text
 
