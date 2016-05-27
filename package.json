@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Personal website for Alex Jordan, powering strugee.net",
   "main": "js/main.js",
-  "dependencies": {},
+  "dependencies": {
+    "gulp-jade-template": "0.0.7",
+    "stratic-parse-header": "^1.0.2",
+    "stratic-post-to-json-data": "^1.0.0"
+  },
   "devDependencies": {
     "gulp": "^3.8.5",
     "gulp-csso": "^0.2.9",

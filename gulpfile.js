@@ -11,6 +11,9 @@ var csso = require('gulp-csso');
 var rename = require('gulp-rename');
 var frontMatter = require('gulp-front-matter');
 var markdown = require('gulp-markdown');
+var parse = require('stratic-parse-header');
+var straticToJson = require('stratic-post-to-json-data');
+var jadeTemplate = require('gulp-jade-template');
 
 /* Shared configurations */
 
@@ -60,9 +63,13 @@ gulp.task('post-index', function() {
 });
 
 gulp.task('posts', function() {
-	gulp.src('src/blog/*.md')
-	    .pipe(markdown())
-	    .pipe(gulp.dest('dist/blog'));
+	return gulp.src('src/blog/*.md')
+	           .pipe(parse())
+	           .pipe(markdown())
+	           .pipe(straticToJson())
+	           .pipe(jadeTemplate('src/blog/post.jade'))
+	           .pipe(rename({ extname: '.html' }))
+	           .pipe(gulp.dest('dist/blog'));
 });
 
 gulp.task('rss', function() {
