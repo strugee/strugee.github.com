@@ -25,7 +25,29 @@ html(lang='en')
 	body
 		#container
 			<!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+			section
+				header
+					h1#topheader strugee.net
+					nav#navbar
+						ul
+							li#navlabel.navlink Nav ::
+							block nav-home
+								li.navlink
+									a(href='/index') Home
+							block nav-services
+								li.navlink
+									a(href='/services') Services
+							block nav-projects
+								li.navlink
+									a(href='/projects') Projects
+							block nav-gpg
+								li.navlink
+									a(href='/gpg') GPG Key
+							li.navlink
+								a(href='http://ramblingsfromalex.blogspot.com') Blog
+
 			block content
+
 			include ../includes/footer.jade
 			#toys
 				a#lightbulb-icon(href='#')
