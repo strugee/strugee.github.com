@@ -15,6 +15,9 @@ var parse = require('stratic-parse-header');
 var straticToJson = require('stratic-post-to-json-data');
 var jadeTemplate = require('gulp-jade-template');
 var dateInPath = require('stratic-date-in-path');
+var ghpages = require('gh-pages');
+var path = require('path');
+var gutil = require('gulp-util');
 
 /* Shared configurations */
 
@@ -104,6 +107,10 @@ gulp.task('build', ['html', 'css', 'js', 'font', 'images', 'blog'], function() {
 
 gulp.task('lint', ['csslint', 'jshint'], function() {
 
+});
+
+gulp.task('deploy', ['build'], function(done) {
+	ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log, branch: 'master' }, done);
 });
 
 gulp.task('watch', ['build'], function() {
