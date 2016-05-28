@@ -1,50 +1,18 @@
-doctype
-//
-	© Copyright 2012, 2013, 2014 Alex Jordan
-	This file is part of strugee.net.
-	strugee.net is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Affero General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-	strugee.net is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU Affero General Public License for more details.
-	You should have received a copy of the GNU Affero General Public License
-	along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
-// Made and coded by Alex Jordan
-html.no-js(lang='en')
-	head
-		include ./includes/header.jade
-		include ./includes/indieweb.jade
-		title GPG Key - strugee.net
-	body
-		<!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
-		#container
-			section
-				header
-					h1#topheader strugee.net
-					nav#navbar
-						ul
-							li#navlabel.navlink Nav ::
-							li.navlink
-								a(href='index') Home
-							li.navlink
-								a(href='services') Services
-							li.navlink
-								a(href='projects') Projects
-							li.navlink GPG Key
-							li.navlink
-								a(href='http://ramblingsfromalex.blogspot.com') Blog
-			section
-				h1 GPG Key
-				p I use OpenPGP via GnuPG. I am the owner of three keys:
-					ul
-						li 0x43BF769C4ACA8B96 is the master key. It is 4096-bit RSA and has the fingerprint <code>C46D 8E7A 3F13 AD1C 8EC6	7848 43BF 769C 4ACA 8B96</code>. You should sign this key at keyparties and other events. I will use this key to sign your key at keyparties and other events.
-						li 0x26794034633DBBC0 is the signing subkey. It is 4096-bit RSA. You should use this key to verify signatures created by me.
-						li 0xC62DAAAE93A31C56 is the encryption subkey. It is 4096-bit RSA. You should use this key to encrypt emails sent to me.
-				p Of course, you should verify that the details above are correct by meeting me in person. All three of these keys have been uploaded to the <code>keys.gnupg.net</code> network.
-				p I also own the key 0xa8da10c057f65fa7. It was uploaded to <code>keys.gnupg.net</code> and <code>keyserver.ubuntu.com</code>. This GPG key has the following fingerprint: <pre>B105 3164 B6C8 F4F7 C2B4	356F A8DA 10C0 57F6 5FA7</pre> This key has been revoked due to the fact that it has been superceded by the above keys. See the revocation text for details.
-			include ./includes/footer.jade
-		script(src='js/main.js')
-		script(type='text/javascript', src='js/idl.js')
+extends ./includes/layout.jade
+
+block head
+	title GPG Key - strugee.net
+
+block nav-gpg
+	li.navlink GPG Key
+
+block content
+	section
+		h1 GPG Key
+		p I use OpenPGP via GnuPG. I am the owner of three keys:
+			ul
+				li 0x43BF769C4ACA8B96 is the master key. It is 4096-bit RSA and has the fingerprint <code>C46D 8E7A 3F13 AD1C 8EC6	7848 43BF 769C 4ACA 8B96</code>. You should sign this key at keyparties and other events. I will use this key to sign your key at keyparties and other events.
+				li 0x26794034633DBBC0 is the signing subkey. It is 4096-bit RSA. You should use this key to verify signatures created by me.
+				li 0xC62DAAAE93A31C56 is the encryption subkey. It is 4096-bit RSA. You should use this key to encrypt emails sent to me.
+		p Of course, you should verify that the details above are correct by meeting me in person. All three of these keys have been uploaded to the <code>keys.gnupg.net</code> network.
+		p I also own the key 0xa8da10c057f65fa7. It was uploaded to <code>keys.gnupg.net</code> and <code>keyserver.ubuntu.com</code>. This GPG key has the following fingerprint: <pre>B105 3164 B6C8 F4F7 C2B4	356F A8DA 10C0 57F6 5FA7</pre> This key has been revoked due to the fact that it has been superceded by the above keys. See the revocation text for details.
