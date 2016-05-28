@@ -84,6 +84,11 @@ gulp.task('rss', function() {
 	.pipe(gulp.dest('dist/posts/rss.xml'));
 });
 
+gulp.task('misc', function() {
+	gulp.src(['.gitmodules', 'COPYING', 'favicon.ico', 'humans.txt', 'robots.txt', 'sitemap.xml'])
+	    .pipe(gulp.dest('dist'));
+});
+
 /* Lint tasks */
 
 gulp.task('csslint', function() {
