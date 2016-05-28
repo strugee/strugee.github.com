@@ -39,6 +39,7 @@ gulp.task('html', function() {
 
 gulp.task('css', function() {
 	gulp.src('src/styles/*')
+	    .pipe(rename({ extname: '.css' }))
 	    .pipe(gulp.dest('dist/css'));
 	gulp.src('css/*')
 	    .pipe(gulp.dest('dist/css'));
