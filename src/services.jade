@@ -1,62 +1,30 @@
-doctype
-//
-	© Copyright 2012, 2013, 2014 Alex Jordan
-	This file is part of strugee.net.
-	strugee.net is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Affero General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-	strugee.net is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
-	GNU Affero General Public License for more details.
-	You should have received a copy of the GNU Affero General Public License
-	along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
-// Made and coded by Alex Jordan
-html.no-js(lang='en')
-	head
-		include ./includes/header.jade
-		include ./includes/indieweb.jade
-		title Services - strugee.net
-		meta(name='description', content='')
-	body
-		<!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
-		#container
-			section
-				header
-					h1#topheader strugee.net
-					nav#navbar
-						ul
-							li#navlabel.navlink Nav ::
-							li.navlink
-								a(href='index') Home
-							li.navlink Services
-							li.navlink
-								a(href='projects') Projects
-							li.navlink
-								a(href='gpg') GPG Key
-							li.navlink
-								a(href='http://ramblingsfromalex.blogspot.com') Blog
-			section
-				h2 Services
-				p All services here will eventually be backed by an LDAP directory, but for now, they're kind of all hacked together with different account backends.
-				#ssh.serviceblock
-					h3
-						a(href='ssh://ssh.strugee.net') SSH
-					p	SSH requires an SSH client and an account on the local Debian system (to request an account, <a href="mailto:hostmaster@strugee.net">email hostmaster</a>).
-					p	In case this link doesn't work, you can connect to <code>strugee.net</code> as usual on port 22 (<code>ssh [username]@strugee.net</code>). (This page used to recommend you connect to <code>ssh.strugee.net</code>, but that is no longer necessary as of the move away from <a href="https://pages.github.com/">GitHub Pages</a>.)
-				#mail.serviceblock
-					h3 Mail
-					p I run all my personal mail off <code>strugee.net</code>. If you're having problems with the mail services running on strugee.net, contact <a href="mailto:postmaster@strugee.net">postmaster</a>.
-				#owncloud.serviceblock
-					h3
-						a(href='https://cloud.strugee.net/') ownCloud
-					p I run an instance of <a href="https://owncloud.org/">ownCloud</a> at <a href="https://cloud.strugee.net/">this location</a>.
+extends ./includes/layout.jade
 
-				#wiki.serviceblock
-					h3
-						a(href='https://wiki.strugee.net/') MediaWiki
-					p <a href="https://wiki.strugee.net/"><code>wiki.strugee.net</code></a> currently runs an instance of <a href="https://mediawiki.org/">MediaWiki</a>. It's used to document server configuration. You can find the exact details of services on <code>strugee.net</code> there, as well as less important services not listed here.
-			include ./includes/footer.jade
-		script(src='js/main.js')
-		script(type='text/javascript', src='js/idl.js')
+block head
+	title Services - strugee.net
+	meta(name='description', content='')
+
+block nav-services
+	li.navlink Services
+
+block content
+	section
+		h2 Services
+		p All services here will eventually be backed by an LDAP directory, but for now, they're kind of all hacked together with different account backends.
+		#ssh.serviceblock
+			h3
+				a(href='ssh://ssh.strugee.net') SSH
+			p	SSH requires an SSH client and an account on the local Debian system (to request an account, <a href="mailto:hostmaster@strugee.net">email hostmaster</a>).
+			p	In case this link doesn't work, you can connect to <code>strugee.net</code> as usual on port 22 (<code>ssh [username]@strugee.net</code>). (This page used to recommend you connect to <code>ssh.strugee.net</code>, but that is no longer necessary as of the move away from <a href="https://pages.github.com/">GitHub Pages</a>.)
+		#mail.serviceblock
+			h3 Mail
+			p I run all my personal mail off <code>strugee.net</code>. If you're having problems with the mail services running on strugee.net, contact <a href="mailto:postmaster@strugee.net">postmaster</a>.
+		#owncloud.serviceblock
+			h3
+				a(href='https://cloud.strugee.net/') ownCloud
+			p I run an instance of <a href="https://owncloud.org/">ownCloud</a> at <a href="https://cloud.strugee.net/">this location</a>.
+
+		#wiki.serviceblock
+			h3
+				a(href='https://wiki.strugee.net/') MediaWiki
+			p <a href="https://wiki.strugee.net/"><code>wiki.strugee.net</code></a> currently runs an instance of <a href="https://mediawiki.org/">MediaWiki</a>. It's used to document server configuration. You can find the exact details of services on <code>strugee.net</code> there, as well as less important services not listed here.
