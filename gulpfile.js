@@ -18,6 +18,7 @@ var dateInPath = require('stratic-date-in-path');
 var ghpages = require('gh-pages');
 var path = require('path');
 var gutil = require('gulp-util');
+var sort = require('gulp-sort');
 
 /* Shared configurations */
 
@@ -64,7 +65,16 @@ gulp.task('js', function() {
 });
 
 gulp.task('post-index', function() {
+	return gulp.src('src/blog/*.md')
+	           .pipe(parse())
+	           .pipe(dateInPath())
+	           .pipe(sort(function(a, b) {
+	           	if (a.time.epoch === b.time.epoch) {
+	           		return 0;
+	           	}
 
+	           	return a.time.epoch > b.time.epoch ? 1 : -1;
+	           }));
 });
 
 gulp.task('posts', function() {
