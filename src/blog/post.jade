@@ -4,7 +4,6 @@ block head
 	title #{metadata.title} - strugee.net
 
 block content
-	section
+	article
 		h1 #{metadata.title} (published by #{metadata.author})
-
-	section!= text
+		!= text
