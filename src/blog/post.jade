@@ -4,6 +4,6 @@ block head
 	title #{metadata.title} - strugee.net
 
 block content
-	article
+	article(itemscope, itemtype='http://schema.org/BlogPosting')
 		h1 #{metadata.title} (published by #{metadata.author})
 		!= text
