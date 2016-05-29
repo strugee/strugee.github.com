@@ -120,9 +120,10 @@ gulp.task('deploy', ['build'], function(done) {
 
 gulp.task('watch', ['build'], function() {
 	gulp.watch('src/*.jade', ['html']);
+	gulp.watch(['src/blog/*.md', 'src/blog/*.jade'], ['blog']);
+	gulp.watch('src/includes/*.jade', ['html', 'blog']);
 	gulp.watch('src/styles/*.styl', ['css']);
 	gulp.watch('src/js/*.js', ['js']);
-	gulp.watch(['src/blog/*.md', 'src/blog/*.jade'], ['blog']);
 });
 
 /* Default task */
