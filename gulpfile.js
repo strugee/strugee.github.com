@@ -6,7 +6,6 @@ var jshint = require('gulp-jshint');
 var rev = require('gulp-rev');
 var revReplace = require('gulp-rev-replace');
 var useref = require('gulp-useref');
-var uglify = require('gulp-uglify');
 var csso = require('gulp-csso');
 var rename = require('gulp-rename');
 var frontMatter = require('gulp-front-matter');
