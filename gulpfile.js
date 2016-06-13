@@ -18,6 +18,7 @@ var ghpages = require('gh-pages');
 var path = require('path');
 var gutil = require('gulp-util');
 var sort = require('gulp-sort');
+var stylus = require('gulp-stylus');
 
 /* Shared configurations */
 
@@ -42,6 +43,7 @@ gulp.task('html', function() {
 
 gulp.task('css', function() {
 	gulp.src('src/styles/*')
+	    .pipe(stylus())
 	    .pipe(rename({ extname: '.css' }))
 	    .pipe(gulp.dest('dist/css'));
 	gulp.src('css/*')
