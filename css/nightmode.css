@@ -18,23 +18,28 @@ You should have received a copy of the GNU Affero General Public License
 along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-
-#container, body {
-	background-color: black;
+#container,
+body {
+  background-color: #000;
 }
-
-h1, h2, h3, p, li, footer, #navlabel {
-	color: rgb(255, 255, 221);
+h1,
+h2,
+h3,
+p,
+li,
+footer,
+#navlabel {
+  color: #ffd;
 }
-
-h1, h2, h3 {
-	text-shadow: 0 0 1em rgb(255, 255, 221);
+h1,
+h2,
+h3 {
+  text-shadow: 0 0 1em #ffd;
 }
-
-code, pre {
-	background-color: black;
+code,
+pre {
+  background-color: #000;
 }
-
 #toys {
-	background-color: black;
+  background-color: #000;
 }

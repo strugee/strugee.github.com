@@ -18,75 +18,70 @@ You should have received a copy of the GNU Affero General Public License
 along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.x
 
 */
-
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-
 #container {
-	max-width: 50em;
-	margin: 0 auto;
-	padding: 1.5em;
-	background-color: #F0F0F0;
+  max-width: 50em;
+  margin: 0 auto;
+  padding: 1.5em;
+  background-color: #f0f0f0;
 }
-
 #topheader {
-	font-family: monospace, "Courier New", Courier, mono;
+  font-family: monospace, "Courier New", Courier, mono;
 }
-
 .navlink {
-	list-style-type: none;
-	display: inline;
+  list-style-type: none;
+  display: inline;
 }
-
 footer {
-	text-align: center;
+  text-align: center;
 }
-
-.navlink, footer {
-	text-transform: uppercase;
-	font-size: .75em;
+.navlink,
+footer {
+  text-transform: uppercase;
+  font-size: 0.75em;
 }
-
 #navlabel {
-	color: #686868;
+  color: #686868;
 }
-
 #toys {
-	position: fixed;
-	bottom: 10px;
-	right: 10px;
-	background-color: #D8D8D8;
-	padding: 4px;
-	border-radius: 3px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: #d8d8d8;
+  padding: 4px;
+  border-radius: 3px;
 }
-
 .image-center {
-	margin: auto;
+  margin: auto;
 }
-
 /* Night mode transitions */
-#container, body {
-	transition: background-color, 1.5s;
+#container,
+body {
+  transition: background-color, 1.5s;
 }
-
-h1, h2, h3, p, li, footer, #navlabel {
-	transition: color, 1.75s;
-	transition: text-shadow, 1.5s;
+h1,
+h2,
+h3,
+p,
+li,
+footer,
+#navlabel {
+  transition: color, 1.75s;
+  transition: text-shadow, 1.5s;
 }
-
-code, pre, #toys {
-	transition: background-color, 1.5s;
+code,
+pre,
+#toys {
+  transition: background-color, 1.5s;
 }
-
 /* Mobile responsive */
 @media (max-width: 375px) {
-	.navlink {
-		display: inline;
-	}
-	
-	#navlabel {
-		display: none;
-	}
+  .navlink {
+    display: inline;
+  }
+  #navlabel {
+    display: none;
+  }
 }
