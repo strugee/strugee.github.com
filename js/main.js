@@ -40,7 +40,7 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 		nightmodeStylesheet.id = 'nightmode-stylesheet';
 		nightmodeStylesheet.rel = 'stylesheet';
 		nightmodeStylesheet.type = 'text/css';
-		nightmodeStylesheet.href = 'css/nightmode.css';
+		nightmodeStylesheet.href = '/css/nightmode.css';
 		
 		icon = document.getElementById('lightbulb-icon');
 		
