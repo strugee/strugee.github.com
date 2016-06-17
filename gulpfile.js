@@ -117,7 +117,7 @@ gulp.task('blog', ['posts', 'rss'], function() {
 
 });
 
-gulp.task('build', ['html', 'css', 'js', 'font', 'images', 'blog'], function() {
+gulp.task('build', ['html', 'css', 'js', 'font', 'images', 'blog', 'misc'], function() {
 
 });
 
