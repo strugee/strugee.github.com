@@ -96,7 +96,7 @@ gulp.task('rss', function() {
 });
 
 gulp.task('misc', function() {
-	gulp.src(['.gitmodules', 'COPYING', 'favicon.ico', 'humans.txt', 'robots.txt', 'sitemap.xml'])
+	gulp.src(['.gitmodules', 'COPYING', 'favicon.ico', 'humans.txt', 'robots.txt', 'sitemap.xml', 'CNAME'])
 	    .pipe(gulp.dest('dist'));
 });
 
