@@ -30,7 +30,7 @@ require('whatwg-fetch');
 	var isNightMode = false;
 	
 	// Wait for the DOM to be ready
-	document.addEventListener('DOMContentLoaded', init);
+	document.addEventListener('DOMContentLoaded', init, false);
 	document.onreadystatechange = function() {
 		if (document.readyState === 'interactive') {
 			init();
@@ -47,7 +47,7 @@ require('whatwg-fetch');
 		
 		icon = document.getElementById('lightbulb-icon');
 		
-		icon.addEventListener('click', handleIconClick);
+		icon.addEventListener('click', handleIconClick, false);
 	}
 	
 	function handleIconClick() {
