@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Personal website for Alex Jordan, powering strugee.net",
   "main": "js/main.js",
-  "dependencies": {},
+  "dependencies": {
+    "whatwg-fetch": "^1.0.0"
+  },
   "devDependencies": {
+    "browserify": "^13.0.1",
     "gh-pages": "^0.11.0",
     "gulp": "^3.8.5",
     "gulp-csso": "^0.2.9",

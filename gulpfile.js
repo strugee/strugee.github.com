@@ -19,6 +19,7 @@ var path = require('path');
 var gutil = require('gulp-util');
 var sort = require('gulp-sort');
 var stylus = require('gulp-stylus');
+var browserify = require('browserify');
 
 /* Shared configurations */
 
@@ -61,8 +62,12 @@ gulp.task('font', function() {
 });
 
 gulp.task('js', function() {
-	return gulp.src('src/js/*')
-	           .pipe(gulp.dest('dist/js'));
+	return browserify({
+	        	entries: 'src/js/main.js',
+	        	debug: true,
+	        	transform: []
+	        }).bundle()
+	        .pipe(gulp.dest('./dist/scripts/'));
 });
 
 gulp.task('post-index', function() {
