@@ -20,6 +20,7 @@ var gutil = require('gulp-util');
 var sort = require('gulp-sort');
 var stylus = require('gulp-stylus');
 var browserify = require('browserify');
+var source = require('vinyl-source-stream');
 
 /* Shared configurations */
 
@@ -62,12 +63,14 @@ gulp.task('font', function() {
 });
 
 gulp.task('js', function() {
+	gulp.src(['src/js/*.js', '!src/js/main.js']).pipe(gulp.dest('./dist/js'));
 	return browserify({
 	        	entries: 'src/js/main.js',
 	        	debug: true,
 	        	transform: []
 	        }).bundle()
-	        .pipe(gulp.dest('./dist/scripts/'));
+	        .pipe(source('main.js'))
+	        .pipe(gulp.dest('./dist/js'));
 });
 
 gulp.task('post-index', function() {
@@ -112,7 +115,7 @@ gulp.task('csslint', function() {
 });
 
 gulp.task('jshint', function() {
-	gulp.src(['js/*.js', '!vendor/*', '!plugins.js'])
+	gulp.src(['src/js/*.js', '!vendor/*', '!plugins.js'])
 	    .pipe(jshint());
 });
 
