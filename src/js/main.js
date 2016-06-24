@@ -19,6 +19,9 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+if (!window.Promise) require('es6-promise').polyfill();
+require('whatwg-fetch');
+
 (function() {
 
 	'use strict';
