@@ -19,6 +19,9 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+// Polyfills
+
+// TODO Array#forEach polyfill
 if (!window.Promise) require('es6-promise').polyfill();
 require('whatwg-fetch');
 
@@ -48,8 +51,78 @@ require('whatwg-fetch');
 		icon = document.getElementById('lightbulb-icon');
 		
 		icon.addEventListener('click', handleIconClick, false);
+
+		// Abort if the browser can't do what we're looking for
+		if (!Array.prototype.forEach || !document.querySelectorAll || !window.history.pushState || !window.DOMParser) {
+			console.warn('Either Array.prototype.forEach(), document.querySelectorAll(), DOMParser(), or history.pushState() support is missing from your browser! Night mode state will not persist. Please upgrade.');
+			return;
+		}
+
+		bindNavLinkHandlers(document.querySelectorAll('.navlink'));
+
+		window.onpopstate = handlePopState;
 	}
 	
+	function bindNavLinkHandlers(nodeList) {
+		console.log('Binding event handlers to some navigation links.');
+		var navLinks = [];
+
+		for (var i = 0; i < nodeList.length; i++) {
+			navLinks.push(nodeList[i]);
+		}
+
+		navLinks.forEach(function(el) {
+			el.addEventListener('click', handleNavLinkClick, false);
+		});
+	}
+
+	function handlePopState(event) {
+		console.log('Handling a popState event.');
+		replaceContentWithTarget(window.location.pathname);
+	}
+
+	function handleNavLinkClick(event) {
+		/* jshint validthis: true */
+		console.log('Handling navigation click.');
+
+		if (typeof this !== 'object') {
+			console.error('Something has gone seriously wrong, and `this` isn\'t an instance of Node. Letting the browser handle the link click.');
+			return;
+		}
+
+		event.preventDefault();
+
+		var element = this.children[0];
+		var target = element.attributes.href.value;
+
+		replaceContentWithTarget(target);
+	}
+
+	function replaceContentWithTarget(target) {
+		console.log('Requesting URL: ' + target);
+		fetch(target)
+			.then(function(response) {
+				return response.text();
+			})
+			.then(function(body) {
+				var parser = new DOMParser();
+				var doc = parser.parseFromString(body, 'text/html');
+
+				var nav = doc.getElementById('navbar');
+				var content = doc.getElementById('content');
+				var oldNav = document.getElementById('navbar');
+				var oldContent = document.getElementById('content');
+
+				bindNavLinkHandlers(nav.querySelectorAll('.navlink'));
+
+				document.title = doc.title;
+				oldNav.parentNode.replaceChild(nav, oldNav);
+				oldContent.parentNode.replaceChild(content, oldContent);
+
+				history.pushState({}, doc.title, target);
+			});
+	}
+
 	function handleIconClick() {
 		if (isNightMode) {
 			dayMode();
