@@ -13,7 +13,8 @@
 	    "error",
 	    { "functions": false }
 	],
-	"no-trailing-spaces": "warn",
+	"no-trailing-spaces": "error",
+	"no-warning-comments": "warn",
 	"id-length": "off",
         "indent": [
             "error",
@@ -23,6 +24,7 @@
             "error",
             "unix"
         ],
+	"func-names": "off",
 	"newline-after-var": [
 	    "error",
 	    "always"
@@ -43,9 +45,17 @@
             "error",
             "always"
         ],
+	"space-before-function-paren": [
+	    "error",
+	    "never"
+	],
 	"strict": [
 	    "error",
 	    "function"
+	],
+	"wrap-iife": [
+	    "error",
+	    "inside"
 	]
     }
 }

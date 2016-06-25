@@ -22,14 +22,15 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 // Polyfills
 
 // TODO Array#forEach polyfill
-if (!window.Promise) require('es6-promise').polyfill();
+if (!window.Promise) {
+	require('es6-promise').polyfill(); // eslint-disable-line global-require
+}
 require('whatwg-fetch');
 
 (function() {
-
 	'use strict';
 
-	var nightmodeStylesheet, icon;
+	var nightmodeStylesheet, icon; // eslint-disable-line init-declarations
 	var isNightMode = false;
 
 	// Wait for the DOM to be ready
@@ -54,7 +55,7 @@ require('whatwg-fetch');
 
 		// Abort if the browser can't do what we're looking for
 		if (!Array.prototype.forEach || !document.querySelectorAll || !window.history.pushState || !window.DOMParser) {
-			console.warn('Either Array.prototype.forEach(), document.querySelectorAll(), DOMParser(), or history.pushState() support is missing from your browser! Night mode state will not persist. Please upgrade.');
+			console.warn('Either Array.prototype.forEach(), document.querySelectorAll(), DOMParser(), or history.pushState() support is missing from your browser! Night mode state will not persist. Please upgrade.'); // eslint-disable-line max-len
 			return;
 		}
 
@@ -82,11 +83,11 @@ require('whatwg-fetch');
 	}
 
 	function handleNavLinkClick(event) {
-		/* jshint validthis: true */
+		/* eslint no-invalid-this: "off" */
 		console.log('Handling navigation click.');
 
 		if (typeof this !== 'object') {
-			console.error('Something has gone seriously wrong, and `this` isn\'t an instance of Node. Letting the browser handle the link click.');
+			console.error('Something has gone seriously wrong, and `this` isn\'t an instance of Node. Letting the browser handle the link click.'); // eslint-disable-line max-len
 			return;
 		}
 
