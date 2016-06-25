@@ -58,8 +58,9 @@ require('whatwg-fetch');
 			return;
 		}
 
-		console.log(document.querySelectorAll('.navlink'));
 		bindNavLinkHandlers(document.querySelectorAll('.navlink'));
+
+		window.onpopstate = handlePopState;
 	}
 	
 	function bindNavLinkHandlers(nodeList) {
@@ -75,12 +76,16 @@ require('whatwg-fetch');
 		});
 	}
 
+	function handlePopState(event) {
+		
+	}
+
 	function handleNavLinkClick(event) {
 		console.log('Handling navigation click.');
 		event.preventDefault();
 
 		var element = this.children[0];
-		var target = element.attributes.href.nodeValue;
+		var target = element.attributes.href.value;
 
 		console.log('Requesting URL: ' + target);
 		fetch(target)
@@ -98,6 +103,7 @@ require('whatwg-fetch');
 
 				bindNavLinkHandlers(nav.querySelectorAll('.navlink'));
 
+				document.title = doc.title;
 				oldNav.parentNode.replaceChild(nav, oldNav);
 				oldContent.parentNode.replaceChild(content, oldContent);
 
