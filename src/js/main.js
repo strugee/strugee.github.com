@@ -69,7 +69,7 @@ require('whatwg-fetch');
 
 		for (var i = 0; i < nodeList.length; i++) {
 			navLinks.push(nodeList[i]);
-		};
+		}
 
 		navLinks.forEach(function(el) {
 			el.addEventListener('click', handleNavLinkClick, false);
@@ -82,7 +82,14 @@ require('whatwg-fetch');
 	}
 
 	function handleNavLinkClick(event) {
+		/* jshint validthis: true */
 		console.log('Handling navigation click.');
+
+		if (typeof this !== 'object') {
+			console.error('Something has gone seriously wrong, and `this` isn\'t an instance of Node. Letting the browser handle the link click.');
+			return;
+		}
+
 		event.preventDefault();
 
 		var element = this.children[0];
