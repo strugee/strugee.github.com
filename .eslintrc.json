@@ -4,9 +4,17 @@
         "commonjs": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "extends": "strict/es5",
     "rules": {
         "no-console": "off",
+	"no-extra-parens": "error",
+	"no-unsafe-finally": "error",
+	"no-use-before-define": [
+	    "error",
+	    { "functions": false }
+	],
+	"no-trailing-spaces": "warn",
+	"id-length": "off",
         "indent": [
             "error",
             "tab"
@@ -22,6 +30,10 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+	"strict": [
+	    "error",
+	    "function"
+	]
     }
 }
