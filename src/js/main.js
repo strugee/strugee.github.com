@@ -76,7 +76,7 @@ require('whatwg-fetch');
 		});
 	}
 
-	function handlePopState(event) {
+	function handlePopState() {
 		console.log('Handling a popState event.');
 		replaceContentWithTarget(window.location.pathname);
 	}
@@ -134,12 +134,12 @@ require('whatwg-fetch');
 	function nightMode() {
 		document.head.appendChild(nightmodeStylesheet);
 		isNightMode = true;
-		console.log("welcome to night mode, you beautiful person!");
+		console.log('welcome to night mode, you beautiful person!');
 	}
 	
 	function dayMode() {
 		document.head.removeChild(nightmodeStylesheet);
 		isNightMode = false;
-		console.log("let the sun shine upon all! welcome to day mode.");
+		console.log('let the sun shine upon all! welcome to day mode.');
 	}
 })();
