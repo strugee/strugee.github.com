@@ -28,10 +28,10 @@ require('whatwg-fetch');
 (function() {
 
 	'use strict';
-	
+
 	var nightmodeStylesheet, icon;
 	var isNightMode = false;
-	
+
 	// Wait for the DOM to be ready
 	document.addEventListener('DOMContentLoaded', init, false);
 	document.onreadystatechange = function() {
@@ -39,7 +39,7 @@ require('whatwg-fetch');
 			init();
 		}
 	};
-	
+
 	function init() {
 		// Sets up event handlers, initializes element variables, etc.
 		nightmodeStylesheet = document.createElement('link');
@@ -47,9 +47,9 @@ require('whatwg-fetch');
 		nightmodeStylesheet.rel = 'stylesheet';
 		nightmodeStylesheet.type = 'text/css';
 		nightmodeStylesheet.href = '/css/nightmode.css';
-		
+
 		icon = document.getElementById('lightbulb-icon');
-		
+
 		icon.addEventListener('click', handleIconClick, false);
 
 		// Abort if the browser can't do what we're looking for
@@ -62,7 +62,7 @@ require('whatwg-fetch');
 
 		window.onpopstate = handlePopState;
 	}
-	
+
 	function bindNavLinkHandlers(nodeList) {
 		console.log('Binding event handlers to some navigation links.');
 		var navLinks = [];
@@ -130,13 +130,13 @@ require('whatwg-fetch');
 			nightMode();
 		}
 	}
-	
+
 	function nightMode() {
 		document.head.appendChild(nightmodeStylesheet);
 		isNightMode = true;
 		console.log('welcome to night mode, you beautiful person!');
 	}
-	
+
 	function dayMode() {
 		document.head.removeChild(nightmodeStylesheet);
 		isNightMode = false;

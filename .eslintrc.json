@@ -23,6 +23,18 @@
             "error",
             "unix"
         ],
+	"newline-after-var": [
+	    "error",
+	    "always"
+	],
+	"one-var": [
+	    "off",
+	    { "uninitialized": "never", "initialized": "always" }
+	],
+	"one-var-declaration-per-line": [
+	    "off",
+	    "initializations"
+	],
         "quotes": [
             "error",
             "single"
