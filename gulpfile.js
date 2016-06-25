@@ -1,12 +1,9 @@
+'use strict';
+
 var gulp = require('gulp');
 
 var jade = require('gulp-jade');
-var filter = require('gulp-filter');
 var jshint = require('gulp-jshint');
-var rev = require('gulp-rev');
-var revReplace = require('gulp-rev-replace');
-var useref = require('gulp-useref');
-var csso = require('gulp-csso');
 var rename = require('gulp-rename');
 var frontMatter = require('gulp-front-matter');
 var markdown = require('gulp-markdown');
@@ -21,6 +18,8 @@ var sort = require('gulp-sort');
 var stylus = require('gulp-stylus');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+
+/* eslint-env node */
 
 /* Shared configurations */
 
@@ -64,11 +63,7 @@ gulp.task('font', function() {
 
 gulp.task('js', function() {
 	gulp.src(['src/js/*.js', '!src/js/main.js']).pipe(gulp.dest('./dist/js'));
-	return browserify({
-	        	entries: 'src/js/main.js',
-	        	debug: true,
-	        	transform: []
-	        }).bundle()
+	return browserify({ entries: 'src/js/main.js', debug: true, transform: [] }).bundle()
 	        .pipe(source('main.js'))
 	        .pipe(gulp.dest('./dist/js'));
 });
@@ -82,7 +77,7 @@ gulp.task('post-index', function() {
 	           		return 0;
 	           	}
 
-	           	return a.time.epoch > b.time.epoch ? 1 : -1;
+	           	return a.time.epoch > b.time.epoch ? 1 : -1; // eslint-disable-line no-magic-numbers
 	           }));
 });
 
@@ -110,9 +105,7 @@ gulp.task('misc', function() {
 
 /* Lint tasks */
 
-gulp.task('csslint', function() {
-
-});
+gulp.task('csslint');
 
 gulp.task('jshint', function() {
 	gulp.src(['src/js/*.js', '!vendor/*', '!plugins.js'])
@@ -121,17 +114,11 @@ gulp.task('jshint', function() {
 
 /* Helper tasks */
 
-gulp.task('blog', ['posts', 'rss'], function() {
+gulp.task('blog', ['posts', 'rss']);
 
-});
+gulp.task('build', ['html', 'css', 'js', 'font', 'images', 'blog', 'misc']);
 
-gulp.task('build', ['html', 'css', 'js', 'font', 'images', 'blog', 'misc'], function() {
-
-});
-
-gulp.task('lint', ['csslint', 'jshint'], function() {
-
-});
+gulp.task('lint', ['csslint', 'jshint']);
 
 gulp.task('deploy', ['build'], function(done) {
 	ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log, branch: 'master' }, done);
@@ -147,6 +134,4 @@ gulp.task('watch', ['build'], function() {
 
 /* Default task */
 
-gulp.task('default', ['build', 'lint'], function() {
-
-});
+gulp.task('default', ['build', 'lint']);

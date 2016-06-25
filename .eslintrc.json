@@ -6,8 +6,21 @@
     },
     "extends": "strict/es5",
     "rules": {
+	"array-bracket-spacing": [
+	    "error",
+	    "never",
+	    { "objectsInArrays": true, "arraysInArrays": true }
+	],
+	"comma-dangle": [
+	    "error",
+	    "never"
+	],
         "no-console": "off",
 	"no-extra-parens": "error",
+	"no-mixed-spaces-and-tabs": [
+	    "error",
+	    "smart-tabs"
+	],
 	"no-unsafe-finally": "error",
 	"no-use-before-define": [
 	    "error",
@@ -48,10 +61,6 @@
 	"space-before-function-paren": [
 	    "error",
 	    "never"
-	],
-	"strict": [
-	    "error",
-	    "function"
 	],
 	"wrap-iife": [
 	    "error",
