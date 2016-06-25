@@ -53,8 +53,8 @@ require('whatwg-fetch');
 		icon.addEventListener('click', handleIconClick, false);
 
 		// Abort if the browser can't do what we're looking for
-		if (!Array.prototype.forEach || !document.querySelectorAll || !window.history.pushState) {
-			console.warn('Either Array.prototype.forEach(), document.querySelectorAll(), or history.pushState() support is missing from your browser! Night mode state will not persist. Please upgrade.');
+		if (!Array.prototype.forEach || !document.querySelectorAll || !window.history.pushState || !window.DOMParser) {
+			console.warn('Either Array.prototype.forEach(), document.querySelectorAll(), DOMParser(), or history.pushState() support is missing from your browser! Night mode state will not persist. Please upgrade.');
 			return;
 		}
 
@@ -77,7 +77,8 @@ require('whatwg-fetch');
 	}
 
 	function handlePopState(event) {
-		
+		console.log('Handling a popState event.');
+		replaceContentWithTarget(window.location.pathname);
 	}
 
 	function handleNavLinkClick(event) {
@@ -87,6 +88,10 @@ require('whatwg-fetch');
 		var element = this.children[0];
 		var target = element.attributes.href.value;
 
+		replaceContentWithTarget(target);
+	}
+
+	function replaceContentWithTarget(target) {
 		console.log('Requesting URL: ' + target);
 		fetch(target)
 			.then(function(response) {
