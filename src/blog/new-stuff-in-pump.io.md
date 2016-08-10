@@ -1,6 +1,6 @@
 # Post information
 
-This post was published as "New stuff in Pump.io" at "1470633992 UTC-5" by "Alex Jordan", and was categorized as "development,pump.io".
+This post was published as "New stuff in Pump.io" at "1470633992 UTC-4" by "Alex Jordan", and was categorized as "development,pump.io".
 
 # Post text
 
