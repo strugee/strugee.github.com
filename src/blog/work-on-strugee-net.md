@@ -16,7 +16,7 @@ Finally, I'd be remiss if I didn't mention that I now have a proper [`deploy` ta
 
 In conclusion: yay for progress! And yay for the fact that my codebase actually looks like someone competent wrote it! \o/
 
-(Final note: I haven't forgotten my promise to blog about stuff happening in Pump.io-land. But, not now.)
+(Final note: I haven't forgotten my promise to blog about stuff happening in pump.io-land. But, not now.)
 
  [1]: http://jade-lang.com
  [2]: https://strugee.net/blog/2014/12/new-blog-new-site

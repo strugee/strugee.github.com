@@ -1,28 +1,28 @@
 # Post information
 
-This post was published as "New stuff in Pump.io" at "1470633992 UTC-4" by "Alex Jordan", and was categorized as "development,pump.io".
+This post was published as "New stuff in pump.io" at "1470633992 UTC-4" by "Alex Jordan", and was categorized as "development,pump.io".
 
 # Post text
 
-So I promised [a (long) while ago][1] that I'd blog about all the stuff going on in [Pump.io][2]. And there is a _lot_ going on. Where to even begin?
+So I promised [a (long) while ago][1] that I'd blog about all the stuff going on in [pump.io][2]. And there is a _lot_ going on. Where to even begin?
 
 ## LFNW talk
 
-I think the first thing I should mention is [the talk][3] I gave at LinuxFest Northwest this year. It went really, really well (even though I finished half the slides the night before), and people seemed to be really engaged, especially during questions. It starts off by covering the history behind Pump.io: that includes the relevant protocols, like OStatus and [ActivityStreams][4], but also the motivation behind abandoning StatusNet (aka current GNU Social) in favor of a brand-new network. Next I move on to the way that Pump.io itself works, namely, its function as a generic ActivityStreams distribution engine. To put this another way, I explain why this quote from [the README][5]:
+I think the first thing I should mention is [the talk][3] I gave at LinuxFest Northwest this year. It went really, really well (even though I finished half the slides the night before), and people seemed to be really engaged, especially during questions. It starts off by covering the history behind pump.io: that includes the relevant protocols, like OStatus and [ActivityStreams][4], but also the motivation behind abandoning StatusNet (aka current GNU Social) in favor of a brand-new network. Next I move on to the way that pump.io itself works, namely, its function as a generic ActivityStreams distribution engine. To put this another way, I explain why this quote from [the README][5]:
 
 > I post something and my followers see it. That's the rough idea behind the pump.
 
-is a pretty accurate way of describing what Pump.io actually does. (I quote that quite a few times in the slides themselves.) I end with a discussion of the recent developments in the community, which are of course wonderful, and a short call-to-action for people to contribute - either directly to the software, or by joining the network and spreading Pump.io.
+is a pretty accurate way of describing what pump.io actually does. (I quote that quite a few times in the slides themselves.) I end with a discussion of the recent developments in the community, which are of course wonderful, and a short call-to-action for people to contribute - either directly to the software, or by joining the network and spreading pump.io.
 
-Oh, and by the way - the talk was recorded! So you can watch it [on YouTube][6] or, even better, [on my personal MediaGoblin][7]. Fitting, since (as I mention in the talk) MediaGoblin federation will soon be released, and it's based on (and fully interoperable with) the Pump.io protocol!
+Oh, and by the way - the talk was recorded! So you can watch it [on YouTube][6] or, even better, [on my personal MediaGoblin][7]. Fitting, since (as I mention in the talk) MediaGoblin federation will soon be released, and it's based on (and fully interoperable with) the pump.io protocol!
 
 ## Conservancy application
 
-Pump.io is applying to the [Software Freedom Conservancy][8]! This is super fantastic for us for a number of reasons. One of the biggest advantages is the fact that inside Conservancy (assuming our application is accepted), we'll be able to take donations much, much easier. This is primarily important because nodes in the Pump.io network are volunteer-run, but they still require funds to operate. We're thinking about models wherein people will be able to donate to "Pump.io", and then some (most?) of those funds will be used to pay for the network. (In particular, they'll be used to pay for the existing E14N nodes that Evan currently runs, which will become extremely useful once we transition those nodes to community owners). Conservancy also provides useful miscellaneous services, like owning our logo and making sure that if we encounter license violations, the license is properly enforced. But perhaps most importantly, becoming part of Conservancy cements Pump.io even more in the community - both the group of people working on the software & network, but also the larger free software world.
+Pump.io is applying to the [Software Freedom Conservancy][8]! This is super fantastic for us for a number of reasons. One of the biggest advantages is the fact that inside Conservancy (assuming our application is accepted), we'll be able to take donations much, much easier. This is primarily important because nodes in the pump.io network are volunteer-run, but they still require funds to operate. We're thinking about models wherein people will be able to donate to "pump.io", and then some (most?) of those funds will be used to pay for the network. (In particular, they'll be used to pay for the existing E14N nodes that Evan currently runs, which will become extremely useful once we transition those nodes to community owners). Conservancy also provides useful miscellaneous services, like owning our logo and making sure that if we encounter license violations, the license is properly enforced. But perhaps most importantly, becoming part of Conservancy cements pump.io even more in the community - both the group of people working on the software & network, but also the larger free software world.
 
 ## ReadTheDocs
 
-We've started a [dedicated space][20] for project documentation, hosted on ReadTheDocs. We're plannning to move a bunch of content from the GitHub wiki into this project, and hopefully it'll become a thorough and central place for Pump.io documentation - both for users and for deployers.
+We've started a [dedicated space][20] for project documentation, hosted on ReadTheDocs. We're plannning to move a bunch of content from the GitHub wiki into this project, and hopefully it'll become a thorough and central place for pump.io documentation - both for users and for deployers.
 
 ## Triage
 
@@ -44,13 +44,13 @@ Those are just the bigger ones, of course - there are a bunch of even smaller pr
 
 ## Express 3.x migration
 
-I've been putting in a lot of work to migrate Pump.io to Express 3.x. It's a huge amount of work, but when complete, it will bring us very, very close to being able to migrate onto Express 4.x, which is modern and fully-supported by upstream. Basically what I've been doing is just running the app, seeing where it crashes, going to the exception site, and fixing the problem. Rinse, repeat. You can check out this work on the [`express-3.x`][10] branch - currently, this branch can successfully start up the app, but will crash pretty soon after you try to do almost anything else.
+I've been putting in a lot of work to migrate pump.io to Express 3.x. It's a huge amount of work, but when complete, it will bring us very, very close to being able to migrate onto Express 4.x, which is modern and fully-supported by upstream. Basically what I've been doing is just running the app, seeing where it crashes, going to the exception site, and fixing the problem. Rinse, repeat. You can check out this work on the [`express-3.x`][10] branch - currently, this branch can successfully start up the app, but will crash pretty soon after you try to do almost anything else.
 
 This work, unfortunately, is on hold while another important project is completed: converting all the templates from utml to Jade.
 
 ## utml to Jade transition
 
-This is basically what it sounds like. Previously, the templates in Pump.io were based on [utml][11], which is essentially a thin wrapper around [Underscore.js's `_.template()`][12] function. However, utml doesn't work with Express 3.x (and it's not really worth _making_ it work), plus it's not the prettiest to work with. [Jade][13] is an extremely popular templating language in Node-land nowadays, so a couple months ago I spent somewhere between 14 and 18 hours going through and rewriting all the utml in Jade, which was absolutely brutal - but necessary. Then, of course, I had to fix the client-side templating logic to handle Jade instead of Underscore templates, which took quite a while, along with the fact that I made a very large number of minor (largely cosmetic) errors in my conversions.
+This is basically what it sounds like. Previously, the templates in pump.io were based on [utml][11], which is essentially a thin wrapper around [Underscore.js's `_.template()`][12] function. However, utml doesn't work with Express 3.x (and it's not really worth _making_ it work), plus it's not the prettiest to work with. [Jade][13] is an extremely popular templating language in Node-land nowadays, so a couple months ago I spent somewhere between 14 and 18 hours going through and rewriting all the utml in Jade, which was absolutely brutal - but necessary. Then, of course, I had to fix the client-side templating logic to handle Jade instead of Underscore templates, which took quite a while, along with the fact that I made a very large number of minor (largely cosmetic) errors in my conversions.
 
 As I said above, this was kind of awful work (_especially_ the beginning), but it's necessary and great, as it paves the way for Express 3.x _and_ massively improves the contributor experience.
 

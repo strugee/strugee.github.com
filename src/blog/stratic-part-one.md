@@ -42,7 +42,7 @@ And with that, we've successfully rendered a blog post. Whooooooooooo! I'm so pu
 
 It's worth noting that the real beauty in this code isn't what the code actually does, but the extreme modularity of the whole thing. Unlike projects like [Jekyll][8] or even [Wintersmith][9], this isn't a giant, monolithic framework. It's all standard Node and Gulp. Note how (for example) we didn't need a custom plugin for Markdown - we just used the standard `gulp-markdown`. Don't like Markdown? No problem. Write something to extract post metadata from your preferred format, replace `parse()` with that and `markdown()` with a different renderer, and you're golden. All the rest will continue to work the _exact_ same - adding dates to paths, rendering the template, etc. - because everything's decoupled from everything else. Each component can be trivially swapped out and replaced with something new and better, and the rest of the system continues to work. Gorgeous.
 
-I've got to go now, but I'm not done blogging. I'll be back soon to talk about the work going on in [Pump.io][10], and I'll be back (much?) later to talk about Stratic part two (aka, pretty indexes).
+I've got to go now, but I'm not done blogging. I'll be back soon to talk about the work going on in [pump.io][10], and I'll be back (much?) later to talk about Stratic part two (aka, pretty indexes).
 
 Whooooooooooooooooooooo!
 
