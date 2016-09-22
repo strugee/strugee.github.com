@@ -1,12 +1,14 @@
 extends /src/includes/layout.jade
 
+
 block head
 	if indexType === 'main'
 		title Blog - strugee.net
 	else if indexType === 'year'
 		title Posts from #{year} - strugee.net
 	else if indexType === 'month'
-		title Posts from #{month + '/' + year} - strugee.net
+		- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
+		title Posts from #{monthName + ' ' + year} - strugee.net
 	title Post index - Blog - strugee.net
 
 block content
@@ -20,12 +22,14 @@ block content
 		h1 Posts from #{year}
 		p
 			each month in includedMonths
+				- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
 				- var monthStr = month + 1;
 				- monthStr = monthStr < 10 ? '0' + monthStr.toString() : monthStr.toString();
-				a(href='/blog/' + year + '/' + monthStr + '/')= month
+				a(href='/blog/' + year + '/' + monthStr + '/')= monthName
 				| 
 	else if indexType === 'month'
-		h1 Posts from #{month + '/' + year}
+		- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
+		h1 Posts from #{monthName + ' ' + year}
 
 	each post in posts
 		article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
