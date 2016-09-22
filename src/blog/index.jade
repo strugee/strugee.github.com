@@ -7,9 +7,9 @@ block content
 	if indexType === 'main'
 		h1 Blog
 	else if indexType === 'year'
-		h1 Posts in #{year}
+		h1 Posts from #{year}
 	else if indexType === 'month'
-		h1 Posts in #{month + '/' + year}
+		h1 Posts from #{month + '/' + year}
 
 	each post in posts
 		article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
