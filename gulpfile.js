@@ -11,6 +11,7 @@ var parse = require('stratic-parse-header');
 var straticToJson = require('stratic-post-to-json-data');
 var jadeTemplate = require('gulp-jade-template');
 var dateInPath = require('stratic-date-in-path');
+var postsToIndex = require('stratic-posts-to-index');
 var ghpages = require('gh-pages');
 var path = require('path');
 var gutil = require('gulp-util');
@@ -18,6 +19,7 @@ var sort = require('gulp-sort');
 var stylus = require('gulp-stylus');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+var addsrc = require('gulp-add-src');
 
 /* eslint-env node */
 
@@ -78,7 +80,12 @@ gulp.task('post-index', function() {
 	           	}
 
 	           	return a.time.epoch > b.time.epoch ? 1 : -1; // eslint-disable-line no-magic-numbers
-	           }));
+	           }))
+	           .pipe(addsrc('src/blog/index.jade'))
+	           .pipe(postsToIndex('index.jade'))
+	           .pipe(jade({basedir: __dirname}))
+	           .pipe(rename({ extname: '.html' }))
+	           .pipe(gulp.dest('dist/blog'));
 });
 
 gulp.task('posts', function() {
