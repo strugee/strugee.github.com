@@ -9,7 +9,6 @@ block head
 	else if indexType === 'month'
 		- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
 		title Posts from #{monthName + ' ' + year} - strugee.net
-	title Post index - Blog - strugee.net
 
 block content
 	if indexType === 'main'
