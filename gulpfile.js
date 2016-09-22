@@ -75,13 +75,6 @@ gulp.task('post-index', function() {
 	           .pipe(parse())
 	           .pipe(markdown())
 	           .pipe(dateInPath())
-	           .pipe(sort(function(a, b) {
-	           	if (a.time.epoch === b.time.epoch) {
-	           		return 0;
-	           	}
-
-	           	return a.time.epoch > b.time.epoch ? 1 : -1; // eslint-disable-line no-magic-numbers
-	           }))
 	           .pipe(addsrc('src/blog/index.jade'))
 	           .pipe(postsToIndex('index.jade'))
 	           .pipe(jade({basedir: __dirname}))
