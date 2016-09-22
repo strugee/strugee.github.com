@@ -1,0 +1,73 @@
+<!DOCTYPE html><!--© Copyright 2012, 2013, 2014 Alex Jordan
+This file is part of strugee.net.
+strugee.net is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+strugee.net is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
+--><!-- Made and coded by Alex Jordan--><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/bootstrap-responsive.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]--><link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]--><!-- IndieWeb components, with <3--><link rel="me" href="mailto:alex@strugee.net"><link rel="me" href="sms:17607054581"><link rel="me" href="https://github.com/strugee"><link rel="me" href="https://twitter.com/strugee2"><link rel="me" href="https://plus.google.com/+AlexJordan"><link rel="me" href="https://pump.strugee.net/alex"><link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c"><title>Posts from September 2015 - strugee.net</title><title>Post index - Blog - strugee.net</title></head><body><div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]--><header><h1 id="topheader">strugee.net</h1><nav id="navbar"><ul><li id="navlabel" class="navlink">Nav ::</li><li class="navlink"><a href="/">Home</a></li><li class="navlink"><a href="/services">Services</a></li><li class="navlink"><a href="/projects">Projects</a></li><li class="navlink"><a href="/gpg">GPG Key</a></li><li class="navlink"><a href="http://ramblingsfromalex.blogspot.com">Blog</a></li></ul></nav></header><div id="content"><h1>Posts from September 2015</h1><article itemscope itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2015/09/revisiting-my-tor-relay"><h2 class="p-name">Revisiting my Tor relay</h2></a><div class="e-content"><p>(Okay, so I <em>miserably</em> failed my blog-every-day thing. Shut up. Maybe next time I&#39;ll try every week or something... anyway.)</p>
+<p>A couple of days ago I logged into the <a href="https://atlas.torproject.org/#details/710E9E3A0A443E3FD33D2801298042783CAD2EAE">Tor relay I run</a> to show someone the ARM graphs. I had a fair amount of traffic, so the graphs were fairly impressive, but I&#39;m also in the habit of running <code>apt-get update; apt-get upgrade</code> every time I log into a server, so I did that too. To my surprise, I got a message telling me that there was a dependency problem with my kernel! So like the great sysadmin I am, I looked at such a fundamental system problem, shrugged my shoulders, and said, &quot;oh, I should probably fix that&quot;. And then logged out.</p>
+<p>Well, I did end up fixing it today. And boy, was it an adventure. My first step was to ignore the APT problems and edit my <code>torrc</code>, to reflect a) the fact that I&#39;m not eligible for the AWS Free Tier anymore (so I needed to throttle bandwidth), b) my new email, and c) my new GPG key. With that being done, I knew that I could easily have the system fix dependency problems by doing a simple <code>apt-get install -f</code>. Easy!</p>
+<p>Well, no. That tried to install some Linux kernel headers, which seemed all well and good, until I got this:</p>
+<pre><code>Unpacking linux-headers-3.2.0-90 (from .../linux-headers-3.2.0-90_3.2.0-90.128_all.deb) ...
+dpkg: error processing /var/cache/apt/archives/linux-headers-3.2.0-90_3.2.0-90.128_all.deb (--unpack):
+unable to create `/usr/src/linux-headers-3.2.0-90/arch/arm/plat-pxa/include/plat/dma.h.dpkg-new&#39; (while processing `./usr/src/linux-headers-3.2.0-90/arch/arm/plat-pxa/include/plat/dma.h&#39;): No space left on device
+No apport report written because the error message indicates a disk full error
+dpkg-deb: error: subprocess paste was killed by signal (Broken pipe)
+</code></pre><p>Um, what? How am I out of free space? Okay, whatever. I knew that there were probably a lot of packages cached in <code>/var/cache/apt/</code>, including old, vulnerable packages that had been replaced by the unattended upgrades system. I did an <code>ls</code>, and found only about five <code>.deb</code> files - something must have been automatically cleaning that directory. I was getting a little worried now, but I nuked the files anyway and reran <code>apt-get install -f</code>. <em>Same thing</em>. Well, okay, maybe I didn&#39;t get rid of enough stuff? How much did I need?</p>
+<pre><code>$ df -h /
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/xvda1      4.0G  2.2G  1.6G  59% /
+</code></pre><p>At this point I&#39;m in full-on &quot;something-is-seriously-wrong-and-I-<em>need</em>-to-recover&quot; mode. How was it possible that I had only used 59% of the filesystem, but <code>dpkg</code> was saying my disk was full? A little searching the internet later, I found the culprit:</p>
+<pre><code>$ df -i
+Filesystem     Inodes  IUsed IFree IUse% Mounted on
+/dev/xvda1     262144 257479  4665   99% /
+udev            74758    377 74381    1% /dev
+tmpfs           76179    259 75920    1% /run
+none            76179      3 76176    1% /run/lock
+none            76179      1 76178    1% /run/shm
+</code></pre><p>I hadn&#39;t run out of disk space. But I <em>had</em> run out of inodes. (Isn&#39;t this supposed to happen to <em>other</em> people?)</p>
+<p>I tried removing some stuff via APT, but that refused to do anything due to the dependency problems. My next thought was that there were probably a bunch of old processes running that were essentially holding a bunch of inodes hostage. I couldn&#39;t install <code>debian-goodies</code>, so I couldn&#39;t use <code>checkrestart</code>, but I improvised by looping over all running services in a for loop, and restarting them.</p>
+<p>Still nothing.</p>
+<p>I&#39;m not proud of what I did next. But I was backed into a corner, so I did something only <code>dpkg</code> is supposed to do. I ran <code>rm -r</code> on a couple directories in <code>/usr/src</code>. And boy, it was like magic. Suddenly <code>apt-get install -f</code> worked like a charm. It started to upgrade a couple packages, rebuilding some GRUB configuration files... and then came to a screeching halt.</p>
+<pre><code>Setting up linux-headers-3.2.0-90-virtual (3.2.0-90.128) ...
+dpkg: dependency problems prevent configuration of linux-headers-virtual:
+linux-headers-virtual depends on linux-headers-3.2.0-68-virtual; however:
+Package linux-headers-3.2.0-68-virtual is not installed.
+dpkg: error processing linux-headers-virtual (--configure):
+dependency problems - leaving unconfigured
+No apport report written because the error message indicates its a followup error from a previous failure.
+dpkg: dependency problems prevent configuration of linux-virtual:
+linux-virtual depends on linux-headers-virtual (= 3.2.0.68.81); however:
+Package linux-headers-virtual is not configured yet.
+dpkg: error processing linux-virtual (--configure):
+dependency problems - leaving unconfigured
+No apport report written because the error message indicates its a followup error from a previous failure.
+Errors were encountered while processing:
+linux-headers-virtual
+linux-virtual
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+</code></pre><p>Are you kidding?? <em>More</em> errors?</p>
+<p>Turns out that APT is essentially the only thing on this system that makes large changes to the filesystem. So the probability that APT would be the program to trigger the inode limit was pretty high. It started an upgrade run, then got interrupted in the middle by the &quot;no space left on device&quot; error, leaving the dependency tree in a state that we in the tech community call &quot;100% totally screwed&quot;. (This is the technical term.)</p>
+<p>I&#39;ll spare you the gory details, but I ended up trying to chase down packages in the Ubuntu archive, running <code>ubuntu-support-status</code> beacuse I was wondering if the packages I was looking for actually <em>weren&#39;t in</em> the archive, because they were unsupported, using <code>aptitude</code> instead of <code>apt-get</code> (because <code>aptitude</code>&#39;s dependency resolver tends to be better), etc. Finally the solution turned out to be doing <code>dpkg --install</code> on the exact right <code>.deb</code>s in the exact right order, which finally satisfied APT&#39;s dependency woes, allowed <code>apt-get install -f</code> to fix the configuration problems, and allowed the hundreds of packages which had been waiting for an upgrade to <em>finally</em> install. Whew!</p>
+<p>Anyway, I need to upgrade the version of Ubuntu the system is on (currently it&#39;s 12.04.5 LTS), because Tor is out of date (among other reasons). However, since that will involve taking the system down for a reboot, I wanted to memorialize the following:</p>
+<pre><code>$ uptime
+00:01:47 up 392 days, 17:15,  1 user,  load average: 0.05, 0.04, 0.05
+</code></pre><p>Holy moly. This system is bordering on 400 days of uptime. That&#39;s over a year of continuous run time! Astonishing.</p>
+<p>Wish me luck with this upgrade...</p>
+<p><strong>tl;dr</strong>: inode limits are <em>killer</em>.</p>
+</div></article></div><footer><p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a href="https://github.com/strugee/strugee.github.com">on GitHub</a>.</p><p>&copy; Copyright 2012-2016 Alex Jordan.</p></footer><!-- Piwik--><!-- Note that this Piwik instance is self-hosted and so doesn't leak metadata. Also, critically, it respects Do Not Track.--><script type="text/javascript">var _paq = _paq || [];
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function() {
+var u="//piwik.strugee.net/";
+_paq.push(['setTrackerUrl', u+'piwik.php']);
+_paq.push(['setSiteId', 1]);
+var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+})();</script><noscript><p><img src="//piwik.strugee.net/piwik.php?idsite=1" style="border:0;" alt=""></p></noscript><!-- End Piwik Code--><div id="toys"><a id="lightbulb-icon" href="#"><div class="icon-lightbulb"></div></a></div><script type="text/javascript" src="/js/main.js"></script><script type="text/javascript" src="/js/idl.js"></script></div></body></html>

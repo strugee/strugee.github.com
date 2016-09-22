@@ -1,0 +1,9 @@
+extends ../layout.jade
+
+block head
+	title Test - strugee.net
+
+block body
+	h1 Test
+	each post in data.posts
+		p post.title
