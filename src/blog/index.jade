@@ -1,0 +1,18 @@
+extends /src/includes/layout.jade
+
+block head
+	title Post index - Blog - strugee.net
+
+block content
+	if indexType === 'main'
+		h1 Blog
+	else if indexType === 'year'
+		h1 Posts in #{year}
+	else if indexType === 'month'
+		h1 Posts in #{month + '/' + year}
+
+	each post in posts
+		article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
+			h2.p-name= post.title
+			//-p Published by #[a.p-author.h-card(href='https://strugee.net/', rel='author')= post.author]
+			.e-content!= post.contents.toString()

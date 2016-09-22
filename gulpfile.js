@@ -73,6 +73,7 @@ gulp.task('js', function() {
 gulp.task('post-index', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(parse())
+	           .pipe(markdown())
 	           .pipe(dateInPath())
 	           .pipe(sort(function(a, b) {
 	           	if (a.time.epoch === b.time.epoch) {
