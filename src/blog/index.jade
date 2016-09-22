@@ -13,6 +13,7 @@ block content
 
 	each post in posts
 		article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
-			h2.p-name= post.title
+			a(href='/blog/' + post.relative.replace('.html', ''))
+				h2.p-name= post.title
 			//-p Published by #[a.p-author.h-card(href='https://strugee.net/', rel='author')= post.author]
 			.e-content!= post.contents.toString()
