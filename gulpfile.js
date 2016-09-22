@@ -115,7 +115,7 @@ gulp.task('jshint', function() {
 
 /* Helper tasks */
 
-gulp.task('blog', ['posts', 'rss']);
+gulp.task('blog', ['posts','post-index', 'rss']);
 
 gulp.task('build', ['html', 'css', 'js', 'font', 'images', 'blog', 'misc']);
 
