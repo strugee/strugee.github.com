@@ -6,8 +6,18 @@ block head
 block content
 	if indexType === 'main'
 		h1 Blog
+		p
+			each year in includedYears
+				a(href='/blog/' + year + '/')= year
+				| 
 	else if indexType === 'year'
 		h1 Posts from #{year}
+		p
+			each month in includedMonths
+				- var monthStr = month + 1;
+				- monthStr = monthStr < 10 ? '0' + monthStr.toString() : monthStr.toString();
+				a(href='/blog/' + year + '/' + monthStr + '/')= month
+				| 
 	else if indexType === 'month'
 		h1 Posts from #{month + '/' + year}
 
