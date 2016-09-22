@@ -1,6 +1,12 @@
 extends /src/includes/layout.jade
 
 block head
+	if indexType === 'main'
+		title Blog - strugee.net
+	else if indexType === 'year'
+		title Posts from #{year} - strugee.net
+	else if indexType === 'month'
+		title Posts from #{month + '/' + year} - strugee.net
 	title Post index - Blog - strugee.net
 
 block content
