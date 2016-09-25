@@ -6,7 +6,9 @@ var jade = require('gulp-jade');
 var jshint = require('gulp-jshint');
 var rename = require('gulp-rename');
 var frontMatter = require('gulp-front-matter');
-var markdown = require('gulp-markdown');
+var remark = require('gulp-remark');
+var remarkHtml = require('remark-html');
+var adjustHeaders = require('remark-rewrite-headers');
 var parse = require('stratic-parse-header');
 var straticToJson = require('stratic-post-to-json-data');
 var jadeTemplate = require('gulp-jade-template');
@@ -73,7 +75,7 @@ gulp.task('js', function() {
 gulp.task('post-index', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(parse())
-	           .pipe(markdown())
+	           .pipe(remark().use(remarkHtml))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
 	           .pipe(postsToIndex('index.jade'))
@@ -85,7 +87,7 @@ gulp.task('post-index', function() {
 gulp.task('posts', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(parse())
-	           .pipe(markdown())
+	           .pipe(remark().use(remarkHtml))
 	           .pipe(dateInPath())
 	           .pipe(straticToJson())
 	           .pipe(jadeTemplate('src/blog/post.jade'))
