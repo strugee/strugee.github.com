@@ -9,7 +9,7 @@ block head
 		- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
 		title Posts from #{monthName + ' ' + year} - strugee.net
 	else if indexType === 'category'
-		title Posts categorized as #{category} - strugee.net
+		title Posts categorized as "#{category}" - strugee.net
 
 block content
 	if indexType === 'main'
@@ -31,7 +31,7 @@ block content
 		- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
 		h1 Posts from #{monthName + ' ' + year}
 	else if indexType === 'category'
-		h1 Posts categorized as #{category}
+		h1 Posts categorized as "#{category}"
 
 	each post in posts
 		article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
