@@ -75,7 +75,7 @@ gulp.task('js', function() {
 gulp.task('post-index', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(parse())
-	           .pipe(remark().use(remarkHtml))
+	           .pipe(remark().use(remarkHtml).use(adjustHeaders))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
 	           .pipe(postsToIndex('index.jade'))
