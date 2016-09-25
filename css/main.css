@@ -56,10 +56,14 @@ footer {
 .image-center {
   margin: auto;
 }
-#postsFrom {
+#postsFrom,
+.post-metadata {
   color: #686868;
   text-transform: uppercase;
   font-size: 0.75em;
+}
+hr {
+  border-color: #cecece;
 }
 /* Night mode transitions */
 #container,
