@@ -8,5 +8,5 @@ block head
 block content
 	article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
 		h1.p-name= metadata.title
-		p Published by #[a.p-author.h-card(href='https://strugee.net/', rel='author')= metadata.author]
+		include ../includes/post-metadata.jade
 		.e-content!= text

@@ -37,5 +37,5 @@ block content
 		article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
 			a(href='/blog/' + post.relative.replace('.html', ''))
 				h2.p-name= post.title
-			//-p Published by #[a.p-author.h-card(href='https://strugee.net/', rel='author')= post.author]
+			include /src/includes/post-metadata.jade
 			.e-content!= post.contents.toString()
