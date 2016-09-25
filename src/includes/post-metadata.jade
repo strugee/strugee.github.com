@@ -1,7 +1,6 @@
-- if (!metadata) var metadata = post;
-
-p.post-metadata Published by #[a.p-author.h-card(href='https://strugee.net/', rel='author')= metadata.author] and categorized as 
-	for category, index in metadata.categories
-		a(href='/blog/category/' + category + '/') #{category}
-		if index !==  metadata.categories.length - 1
+mixin postMetadata(author, categories)
+	p.post-metadata Published by #[a.p-author.h-card(href='https://strugee.net/', rel='author')= author] and categorized as 
+		for category, index in categories
+			a(href='/blog/category/' + category + '/') #{category}
+			if index < categories.length - 1
 			| ,  

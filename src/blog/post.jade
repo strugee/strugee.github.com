@@ -1,5 +1,7 @@
 extends ../includes/layout.jade
 
+include ../includes/post-metadata.jade
+
 block head
 	title #{metadata.title} - strugee.net
 	link(rel='pingback', href='https://webmention.io/strugee.net/xmlrpc')
@@ -8,5 +10,6 @@ block head
 block content
 	article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
 		h1.p-name= metadata.title
-		include ../includes/post-metadata.jade
+
+		+postMetadata(metadata.author, metadata.categories)
 		.e-content!= text
