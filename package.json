@@ -6,6 +6,7 @@
   "dependencies": {
     "es6-promise": "^3.2.1",
     "eslint": "^2.13.1",
+    "remark-rewrite-headers": "^1.0.0",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
