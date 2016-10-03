@@ -4,6 +4,7 @@
   "description": "Personal website for Alex Jordan, powering strugee.net",
   "main": "js/main.js",
   "dependencies": {
+    "ecstatic": "^2.1.0",
     "es6-promise": "^3.2.1",
     "eslint": "^2.13.1",
     "remark-rewrite-headers": "^1.0.0",

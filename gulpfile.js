@@ -22,6 +22,8 @@ var stylus = require('gulp-stylus');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var addsrc = require('gulp-add-src');
+var http = require('http');
+var ecstatic = require('ecstatic');
 
 /* eslint-env node */
 
@@ -133,6 +135,12 @@ gulp.task('watch', ['build'], function() {
 	gulp.watch('src/includes/*.jade', ['html', 'blog']);
 	gulp.watch('src/styles/*.styl', ['css']);
 	gulp.watch('src/js/*.js', ['js']);
+});
+
+gulp.task('serve', ['watch'], function() {
+	http.createServer(
+		ecstatic({ root: __dirname + '/dist' })
+	).listen(8080);
 });
 
 /* Default task */
