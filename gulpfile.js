@@ -2,6 +2,8 @@
 
 var gulp = require('gulp');
 
+var http = require('http');
+var path = require('path');
 var jade = require('gulp-jade');
 var jshint = require('gulp-jshint');
 var rename = require('gulp-rename');
@@ -15,14 +17,12 @@ var jadeTemplate = require('gulp-jade-template');
 var dateInPath = require('stratic-date-in-path');
 var postsToIndex = require('stratic-posts-to-index');
 var ghpages = require('gh-pages');
-var path = require('path');
 var gutil = require('gulp-util');
 var sort = require('gulp-sort');
 var stylus = require('gulp-stylus');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var addsrc = require('gulp-add-src');
-var http = require('http');
 var ecstatic = require('ecstatic');
 
 /* eslint-env node */
