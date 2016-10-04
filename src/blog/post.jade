@@ -11,5 +11,5 @@ block content
 	article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
 		h1.p-name= metadata.title
 
-		+postMetadata(metadata.author, metadata.categories)
+		+postMetadata(metadata.author, metadata.time, metadata.categories)
 		.e-content!= text

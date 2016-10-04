@@ -39,7 +39,7 @@ block content
 		article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
 			a(href='/blog/' + post.relative.replace('.md', ''))
 				h2.p-name= post.title
-			+postMetadata(post.author, post.categories)
+			+postMetadata(post.author, post.time, post.categories)
 			.e-content!= post.contents.toString()
 		if index < posts.length - 1
 			hr
