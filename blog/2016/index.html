@@ -52,8 +52,31 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       </header>
       <div id="content">
         <h1>Posts from 2016</h1>
-        <p id="postsFrom">Show only posts from <a href="/blog/2016/05/">May</a> <a href="/blog/2016/06/">June</a> <a href="/blog/2016/08/">August</a> 
+        <p id="postsFrom">Show only posts from <a href="/blog/2016/05/">May</a> <a href="/blog/2016/06/">June</a> <a href="/blog/2016/08/">August</a> <a href="/blog/2016/10/">October</a> 
         </p>
+        <article itemscope itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/10/android-freedom">
+            <h2 class="p-name">Android freedom</h2></a>
+          <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/10/">October</a> 17, <a href="/blog/2016/">2016</a> in <a href="/blog/category/musings/">musings</a>
+          </p>
+          <div class="e-content"><p>Recently I backed up and restored both my Android phone and my Android tablet. There were a couple reasons for both of these. The tablet had been borked for quite a long time (any time I tried to upgrade it from the Android 5.0 build it was running, it failed - also the thing just froze randomly). The phone was on the CyanogenMod nightly channel and I wanted to switch to the snapshot channel, plus within the past couple days both WiFi and the cell network data connection straight up stopped working so it was pretty unusable. At first I wanted to switch to <a href="https://copperhead.co/android/">CopperheadOS</a> on both devices. CopperheadOS doesn't support GApps and will probably never support GApps (for very good reasons), and I said, maybe I can make it work. Sadly, I couldn't - I still regrettably need stuff from the Google Play Store. (The tablet ended up back on stock because I want fast upgrades, and the phone ended up on CyanogenMod because they have the fastest upgrades while still offering root.)</p>
+<p>The whole experience made me think, though - what would it take to create something that functioned like GApps, but respected your freedom? I'm sure some people reading are already scrambling to link me to their favorite Google Play Services reimplementation, but this isn't the only thing that's in GApps. You gotta think about the user experience, too. Such a system should be able to:</p>
+<ul>
+<li>Provide the nice APIs that Google Play Services does</li>
+<li>Store your photos in the cloud, like Google Photos</li>
+<li>Related to the above, automatically backup and restore apps and their data</li>
+<li>Transfer from other devices, similar to the above item</li>
+<li>Support functionality like Google Now</li>
+<li>Ditto for Google Assistant</li>
+<li>Integrate into the initial device setup to configure all this stuff</li>
+</ul>
+<p>I'm sure there are more that I've missed.</p>
+<p>Honestly, we're actually quite close to this. The first bullet can be mostly accomplished with something like <a href="https://microg.org/">microG</a>. Automatic backup and photo storage needs a UI, but fundamentally can be accomplished with any generic WebDAV implementation. F-Droid can be used as the app store. Imagine this: you take a bunch of photos and install a bunch of freedom-respecting apps on your phone. Then, you get a new one. When you set it up, the phone prompts you to sign in to your WebDAV account (which could be e.g. ownCloud, or a WebDAV implementation on <a href="https://sandstorm.io/">Sandstorm</a>) and then automatically reinstalls all your apps from F-Droid, as well as retrieving their data from ownCloud. When you open the built-in gallery app, all your photos are already there because they're seamlessly backed up to the cloud. <em>Your</em> cloud. Transfer can be accomplished in a lot of ways, but I can easily see it building on the above.</p>
+<p>Supporting something like Google Now is non-trivial, but I've even already proposed <a href="https://github.com/cantino/huginn/issues/1583">a feature for Huginn</a> that would make this possible. Google Assistant would be very, very difficult, but even without that, we'd have come a long way.</p>
+<p>This reality is not that far off. What's missing is some UI pieces and a nice ZIP that can be flashed on top of ROMs, similar to how GApps are flashed today. So who's going to put it all together?</p>
+<p>(I suppose I've just volunteered myself - oh well... I'll just add it to my endless list of projects.)</p>
+</div>
+        </article>
+        <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/08/pump.io-1.0.0-is-now-available">
             <h2 class="p-name">Pump.io 1.0.0 is now available</h2></a>
           <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/08/">August</a> 26, <a href="/blog/2016/">2016</a> in <a href="/blog/category/development/">development</a> and <a href="/blog/category/pump.io/">pump.io</a>
