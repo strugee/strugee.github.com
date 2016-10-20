@@ -8,7 +8,7 @@ I'm back! Sort of. Very sort of.
 
 I've known for a while that I'm going to ditch Blogger. That's a large part of why I delayed posting stuff to my blog for so long: I didn't have blog software that I really wanted to use, but I didn't want to just put more data into Blogger. Eventually, though, I realized that it would take me a while to write software that a) built an actual blog from Markdown and b) worked the way I wanted it to, so I decided that I would just start cranking out posts and write the software to build them later. And then of course there was the week or three that I spent procrastinating on writing... oh well. I'm here now.
 
-Anyway, it's <strike>two</strike> three AM as I write this, so I should go to sleep soon. I have a lot of stuff I want to write about, so I'll be brief.
+Anyway, it's <s>two</s> three AM as I write this, so I should go to sleep soon. I have a lot of stuff I want to write about, so I'll be brief.
 
 ## Summer
 
