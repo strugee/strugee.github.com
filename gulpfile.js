@@ -68,7 +68,10 @@ gulp.task('font', function() {
 });
 
 gulp.task('js', function() {
-	gulp.src(['src/js/*.js', '!src/js/main.js']).pipe(gulp.dest('./dist/js'));
+	gulp.src(['src/js/*.js', '!src/js/main.js', '!src/js/webmentions.js']).pipe(gulp.dest('./dist/js'));
+	return browserify({ entries: 'src/js/webmentions.js', debug: true, transform: [] }).bundle()
+	        .pipe(source('webmentions.js'))
+	        .pipe(gulp.dest('./dist/js'));
 	return browserify({ entries: 'src/js/main.js', debug: true, transform: [] }).bundle()
 	        .pipe(source('main.js'))
 	        .pipe(gulp.dest('./dist/js'));
