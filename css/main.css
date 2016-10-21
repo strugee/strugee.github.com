@@ -57,13 +57,18 @@ footer {
   margin: auto;
 }
 #postsFrom,
-.post-metadata {
+.post-metadata,
+#webmention-replies-header {
   color: #686868;
   text-transform: uppercase;
   font-size: 0.75em;
 }
 hr {
   border-color: #cecece;
+}
+.webmention-avatar {
+  width: 25px;
+  height: 25px;
 }
 /* Night mode transitions */
 #container,
