@@ -14,4 +14,10 @@ block content
 
 		+postMetadata(metadata.author, metadata.time, metadata.categories)
 		.e-content!= text
+
+	hr
+	p#webmention-replies-header WebMention replies
+
 	div#webmentions
+	noscript
+		p Couldn't load WebMentions because you turned your JavaScript off. Sorry about that!

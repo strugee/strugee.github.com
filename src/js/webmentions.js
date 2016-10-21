@@ -29,21 +29,70 @@ require('whatwg-fetch');
 (function() {
 	'use strict';
 
-	fetch('https://webmention.io/api/mentions?target=https://strugee.net/blog/2016/08/pump.io-1.0.0-is-now-available')// + window.location)
+
+	function strip(html) {
+		// https://stackoverflow.com/a/822486/1198896
+		var div = document.createElement('div');
+		div.innerHTML = html;
+		return div.textContent || div.innerText || '';
+	}
+
+	// TODO this actually doesn't really handle the document load event
+	// ...but we get away with it because in practice the fetch will always take longer
+
+	fetch('https://webmention.io/api/mentions?target=' + window.location)
 		.then(function(response) {
 			return response.text();
 		})
 		.then(function(body) {
 			var data = JSON.parse(body);
-			console.dir(data);
 			var mentionsElement = document.getElementById('webmentions');
 
-			data.links.forEach(function(link) {
-				var el = document.createElement('p');
-				el.appendChild(document.createTextNode('WebMention'));
+			if (data.links.length === 0) {
+				// No replies, so we bail
+				var noReplies = document.createElement('p');
+				noReplies.appendChild(document.createTextNode('No replies (yet!)'));
+				mentionsElement.appendChild(noReplies);
+				return;
+			}
 
-				//  mentionsElement.appendChild(el);
+			data.links.forEach(function(link) {
+				// TODO this probably doesn't handle all types? But I couldn't find sufficient documentation
+
+				// TODO look at what "verified" actually means
+				if (!link.verified) return;
+
+				var p = document.createElement('p');
+
+				// Avatar
+				var avatarLink = document.createElement('a');
+				avatarLink.setAttribute('href', link.data.author.url);
+				var avatar = document.createElement('img');
+				avatar.classList.add('webmention-avatar');
+				avatar.setAttribute('src', link.data.author.photo);
+				avatar.setAttribute('alt', link.data.author.name + '\'s avatar');
+				avatarLink.appendChild(avatar);
+				p.appendChild(avatarLink);
+
+				p.appendChild(document.createTextNode(' '));
+
+				// Author
+				var author = document.createElement('a');
+				author.setAttribute('href', link.data.author.url);
+				author.appendChild(document.createTextNode(link.data.author.name));
+				p.appendChild(author);
+
+				p.appendChild(document.createTextNode(' posted '));
+
+				// Source
+				var source = document.createElement('a');
+				source.setAttribute('href', link.data.url);
+				source.appendChild(document.createTextNode(strip(link.data.content)));
+				p.appendChild(source);
+
+				mentionsElement.appendChild(p);
 			});
 		});
 	// TODO handle errors
+	// TODO add in some "Loading..." text or something
 })();
