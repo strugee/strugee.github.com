@@ -92,7 +92,7 @@ gulp.task('post-index', function() {
 gulp.task('posts', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(parse())
-	           .pipe(remark().use(remarkHtml))
+	           .pipe(remark().use(remarkHtml).use(adjustHeaders))
 	           .pipe(dateInPath())
 	           .pipe(straticToJson())
 	           .pipe(jadeTemplate('src/blog/post.jade'))

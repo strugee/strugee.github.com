@@ -15,13 +15,13 @@ block head
 
 block content
 	if indexType === 'main'
-		h1 Blog
+		h2 Blog
 		p#postsFrom Show only posts from 
 			each year in includedYears
 				a(href='/blog/' + year + '/')= year
 				| 
 	else if indexType === 'year'
-		h1 Posts from #{year}
+		h2 Posts from #{year}
 		p#postsFrom Show only posts from 
 			each month in includedMonths
 				- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
