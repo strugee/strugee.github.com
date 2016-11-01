@@ -18,6 +18,7 @@ var jadeTemplate = require('gulp-jade-template');
 var dateInPath = require('stratic-date-in-path');
 var postsToIndex = require('stratic-posts-to-index');
 var ghpages = require('gh-pages');
+var merge = require('merge-stream');
 var gutil = require('gulp-util');
 var sort = require('gulp-sort');
 var stylus = require('gulp-stylus');
@@ -69,13 +70,23 @@ gulp.task('font', function() {
 });
 
 gulp.task('js', function() {
-	gulp.src(['src/js/*.js', '!src/js/main.js', '!src/js/webmentions.js']).pipe(gulp.dest('./dist/js'));
-	return browserify({ entries: 'src/js/webmentions.js', debug: true, transform: [] }).bundle()
-	        .pipe(source('webmentions.js'))
-	        .pipe(gulp.dest('./dist/js'));
-	return browserify({ entries: 'src/js/main.js', debug: true, transform: [] }).bundle()
-	        .pipe(source('main.js'))
-	        .pipe(gulp.dest('./dist/js'));
+	var staticFiles = gulp.src(['src/js/*.js', '!src/js/main.js', '!src/js/webmentions.js']).pipe(gulp.dest('./dist/js'));
+	var webmentions = browserify({
+		entries: 'src/js/webmentions.js',
+		debug: true,
+		transform: []
+	}).bundle()
+	  .pipe(source('webmentions.js'))
+	  .pipe(gulp.dest('./dist/js'));
+	var main = browserify({
+		entries: 'src/js/main.js',
+		debug: true,
+		transform: []
+	}).bundle()
+	  .pipe(source('main.js'))
+	  .pipe(gulp.dest('./dist/js'));
+
+	return merge(staticFiles, webmentions, main);
 });
 
 gulp.task('post-index', function() {
