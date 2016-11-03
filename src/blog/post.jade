@@ -1,6 +1,6 @@
 extends ../includes/layout.jade
 
-include ../includes/post-metadata.jade
+include ../includes/post.jade
 
 block head
 	title #{metadata.title} - strugee.net
@@ -12,7 +12,7 @@ block content
 	article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
 		h1.p-name= metadata.title
 
-		+postMetadata(metadata.author, metadata.time, metadata.categories)
+		+post(metadata)
 		.e-content!= text
 
 	hr

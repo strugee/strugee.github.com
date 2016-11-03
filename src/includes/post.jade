@@ -1,4 +1,7 @@
-mixin postMetadata(author, time, categories)
+mixin post(post)
+	- var author = post.author;
+	- var time = post.time;
+	- var categories = post.categories;
 	- var date = new Date(time.epoch * 1000);
 	- var monthName = date.toLocaleString('en-us', {month: 'long'});
 	- var monthStr = date.getMonth() + 1;
