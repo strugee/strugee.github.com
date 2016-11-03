@@ -52,12 +52,13 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
         </nav>
       </header>
       <div id="content">
-        <h1>Posts from October 2016</h1>
-        <article itemscope itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/10/github-squash-and-merge-default-considered-harmful">
-            <h2 class="p-name">GitHub's 'squash and merge' default considered harmful</h2></a>
-          <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/10/">October</a> 19, <a href="/blog/2016/">2016</a> in <a href="/blog/category/musings/">musings</a>
-          </p>
-          <div class="e-content"><p>Recently GitHub launched two new ways to merge Pull Requests: "rebase and merge" and "squash and merge". That means that projects now have three ways to merge PRs:</p>
+        <div class="h-feed">
+          <h2 class="p-name">Posts from October 2016</h2>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/10/github-squash-and-merge-default-considered-harmful">
+              <h2 class="p-name">GitHub's 'squash and merge' default considered harmful</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/10/">October</a> 19, <a href="/blog/2016/">2016</a> in <a href="/blog/category/musings/">musings</a>
+            </p>
+            <div class="e-content"><p>Recently GitHub launched two new ways to merge Pull Requests: "rebase and merge" and "squash and merge". That means that projects now have three ways to merge PRs:</p>
 <ul>
 <li>Merge - creates a merge commit merging the branch (even if it's fast-forwardable)</li>
 <li>Rebase and merge - rebases on top of the target branch and fast-forwards</li>
@@ -78,13 +79,13 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p> [2]: I'm sure some of you are about to excitedly tell me about a fantastic tool called the reflog, and I really should read Pro Git because it's a fantastic book and has an entire chapter on data recovery. <em>I know</em>. The reflog is <em>not</em> the right answer for this; not only is it local to (likely) a single developer's machine, but it only stretches back a couple months and only works if the old, dangling commits aren't garbage-collected. By the time someone might be interested in looking at the history that was lost, it's probably far, far too late.</p>
 <p> [3]: Another rarely-encountered but very serious problem with both "squash and merge" <em>and</em> "rebase and merge" is when people merge upstream changes in a PR. This is a perfectly legitimate workflow - PRs are great for discussing changes, etc. (although a lot of people think they're the <em>only</em> way to merge things, so they open PRs and then immediately merge them - this, IMHO, is very much <em>not</em> a legitimate workflow) - but if you do anything but merge (which includes both GitHub's "Merge" option and fast-forwarding locally on the CLI), you may have a Very Bad Time the next time you go to merge upstream changes to your fork. Why? Because in Git's view, the changes you merged the first time <em>haven't actually been merged</em>. After all, commit SHAs are nowhere to be found in the tree, since when you rewrote history you changed those IDs! Git has no way of knowing that your rewritten commits and the supposedly "unmerged" commits are basically equivalent. (Mercurial, on the other hand, would've kept track of this information and would have no problem at all.)</p>
 </div>
-        </article>
-        <hr>
-        <article itemscope itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/10/android-freedom">
-            <h2 class="p-name">Android freedom</h2></a>
-          <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/10/">October</a> 17, <a href="/blog/2016/">2016</a> in <a href="/blog/category/musings/">musings</a>
-          </p>
-          <div class="e-content"><p>Recently I backed up and restored both my Android phone and my Android tablet. There were a couple reasons for both of these. The tablet had been borked for quite a long time (any time I tried to upgrade it from the Android 5.0 build it was running, it failed - also the thing just froze randomly). The phone was on the CyanogenMod nightly channel and I wanted to switch to the snapshot channel, plus within the past couple days both WiFi and the cell network data connection straight up stopped working so it was pretty unusable. At first I wanted to switch to <a href="https://copperhead.co/android/">CopperheadOS</a> on both devices. CopperheadOS doesn't support GApps and will probably never support GApps (for very good reasons), and I said, maybe I can make it work. Sadly, I couldn't - I still regrettably need stuff from the Google Play Store. (The tablet ended up back on stock because I want fast upgrades, and the phone ended up on CyanogenMod because they have the fastest upgrades while still offering root.)</p>
+          </article>
+          <hr>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/10/android-freedom">
+              <h2 class="p-name">Android freedom</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/10/">October</a> 17, <a href="/blog/2016/">2016</a> in <a href="/blog/category/musings/">musings</a>
+            </p>
+            <div class="e-content"><p>Recently I backed up and restored both my Android phone and my Android tablet. There were a couple reasons for both of these. The tablet had been borked for quite a long time (any time I tried to upgrade it from the Android 5.0 build it was running, it failed - also the thing just froze randomly). The phone was on the CyanogenMod nightly channel and I wanted to switch to the snapshot channel, plus within the past couple days both WiFi and the cell network data connection straight up stopped working so it was pretty unusable. At first I wanted to switch to <a href="https://copperhead.co/android/">CopperheadOS</a> on both devices. CopperheadOS doesn't support GApps and will probably never support GApps (for very good reasons), and I said, maybe I can make it work. Sadly, I couldn't - I still regrettably need stuff from the Google Play Store. (The tablet ended up back on stock because I want fast upgrades, and the phone ended up on CyanogenMod because they have the fastest upgrades while still offering root.)</p>
 <p>The whole experience made me think, though - what would it take to create something that functioned like GApps, but respected your freedom? I'm sure some people reading are already scrambling to link me to their favorite Google Play Services reimplementation, but this isn't the only thing that's in GApps. You gotta think about the user experience, too. Such a system should be able to:</p>
 <ul>
 <li>Provide the nice APIs that Google Play Services does</li>
@@ -101,7 +102,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>This reality is not that far off. What's missing is some UI pieces and a nice ZIP that can be flashed on top of ROMs, similar to how GApps are flashed today. So who's going to put it all together?</p>
 <p>(I suppose I've just volunteered myself - oh well... I'll just add it to my endless list of projects.)</p>
 </div>
-        </article>
+          </article>
+        </div>
       </div>
       <footer>
         <p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a href="https://github.com/strugee/strugee.github.com">on GitHub</a>.</p>
