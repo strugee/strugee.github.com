@@ -9,11 +9,7 @@ block head
 	script(src='/js/webmentions.js', type='text/javascript')
 
 block content
-	article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
-		h1.p-name= post.title
-
-		+post(post)
-		.e-content!= post.contents.toString()
+	+renderPost(post, false)
 
 	hr
 	p#webmention-replies-header WebMention replies
