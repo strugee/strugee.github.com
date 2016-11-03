@@ -21,7 +21,7 @@ mixin renderPost(post, isIndex)
 			a(href='/blog/'+date.getFullYear()+'/')= date.getFullYear()
 			|  in 
 			for category, index in categories
-				a(href='/blog/category/' + category + '/') #{category}
+				a.p-category(href='/blog/category/' + category + '/') #{category}
 				if index < categories.length - 2
 					| , 
 				else if index === categories.length - 2
