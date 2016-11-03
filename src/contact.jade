@@ -1,65 +1,46 @@
-doctype html
+extends ./includes/layout.jade
 
-//
-	© Copyright 2012, 2013, 2014 Alex Jordan
-	This file is part of strugee.net.
-	strugee.net is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Affero General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-	strugee.net is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
-	GNU Affero General Public License for more details.
-	You should have received a copy of the GNU Affero General Public License
-	along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
+block head
+	title Contact - strugee.net
+	meta(name='description', content='Alex Jordan\'s contact page')
 
-// Made and coded by Alex Jordan
+block nav-contact
+	li.navlink Contact
 
-<!--[if lt IE 7]>	  <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>		 <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>		 <html lang="en" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-html.no-js(lang='en')
-	head
-		include ./includes/header.jade
-		include ./includes/indieweb.jade
-		title Contact - strugee.net
-		meta(name='description', content='Alex Jordan\'s contact page')
-	body
-		<!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
-		#container
-			header
-				section
-					h1#topheader strugee.net
-					nav#navbar
-						ul
-							li#navlabel.navlink Nav ::
-							li.navlink
-								a(href='index') Home
-							li.navlink
-								a(href='services') Services
-							li.navlink
-								a(href='projects') Projects
-							li.navlink
-								a(href='gpg') GPG Key
-							li.navlink
-								a(href='http://ramblingsfromalex.blogspot.com') Blog
-			section
-				h2#hi Contact
-				p There are numerous ways to contact me:
-				ul
-					li
-						a(rel='me', href='mailto:alex@strugee.net') By email
-					li
-						a(rel='me', href='sms:17607054581') By SMS
-					li
-						a(rel='me', href='https://github.com/strugee') On GitHub
-					li
-						a(rel='me', href='https://pump.strugee.net/alex') On Pump.io
-					li
-						a(rel='me', href='https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c') On diaspora*
-				p You can also contact me <a rel="me" href="https://twitter.com/strugee2">on Twitter</a> and <a rel="me" href="https://plus.google.com/+AlexJordan">on Google+</a>, but you really should not do so. These networks run non-free network services, and so I tend to avoid them if at all possible (and you should too!).
-			include ./includes/footer.jade
-		script(src='js/main.js')
-		script(type='text/javascript', src='js/idl.js')
+block content
+	section
+		h2#hi Contact
+		p There are numerous ways to contact me:
+		ul
+			li
+				a(rel='me', href='xmpp:alex@strugee.net') By XMPP
+				|  (much preferred)
+			li On IRC (I am <code>strugee</code> on Freenode, MozNet, GIMPNet, OFTC, and the W3C IRC servers)
+			li
+				a(rel='me', href='mailto:alex@strugee.net') By email
+			li By SMS or preferably, Signal - number available upon request
+
+		p If you need to send files to me and you're on Nextcloud or ownCloud, you can and should send them using my <a href="https://owncloud.org/federation/">Federated Cloud ID</a>, <code>alex@cloud.strugee.net</code>:
+
+		p
+			a(target='_blank', href='https://owncloud.org/federation#alex@cloud.strugee.net', style='padding:10px;background-color:#1d2d44;color:#fff;border-radius:3px;padding-left:4px;')
+				img(src='https://cloud.strugee.net/core/img/logo-icon.svg', style='width:50px;position:relative ;')
+				| Share with me via ownCloud
+
+		p You can also find me on a couple other sites/networks:
+		ul
+			li
+				a(rel='me', href='https://pump.strugee.net/alex') pump.io
+				| , which I prefer for social networking (my account syndicates to Twitter)
+			li
+				a(rel='me', href='https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c') diaspora*
+			li
+				a(rel='me', href='https://media.strugee.net/alex') MediaGoblin
+				| , which I prefer for media sharing
+			li
+				a(rel='me', href='https://github.com/strugee') GitLab.com
+			li
+				a(rel='me', href='https://github.com/strugee') GitHub
+				| , which (sadly) I prefer for code hosting - at least until GitLab is federated
+
+		p You can also find me <a rel="me" href="https://twitter.com/strugee2">on Twitter</a>, <a rel="me" href="https://plus.google.com/+AlexJordan">on Google+</a>, and <a rel="me" href="https://www.instagram.com/strugee2/">on Instagram</a>, but you really should not do so. These networks run non-free network services, and so I tend to avoid them if at all possible (and you should too!). (The fact that I avoid them also means that I don't check them a lot, so they're also pretty bad ways of getting in touch.)
