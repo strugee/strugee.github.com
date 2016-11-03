@@ -7,6 +7,7 @@
     "ecstatic": "^2.1.0",
     "es6-promise": "^3.2.1",
     "eslint": "^2.13.1",
+    "gulp-attach-to-template": "^1.0.0",
     "merge-stream": "^1.0.0",
     "remark-rewrite-headers": "^1.0.0",
     "whatwg-fetch": "^1.0.0"

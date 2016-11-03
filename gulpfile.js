@@ -13,7 +13,7 @@ var remarkHtml = require('remark-html');
 var adjustHeaders = require('remark-rewrite-headers');
 var slug = require('remark-slug');
 var parse = require('stratic-parse-header');
-var postPage = require('stratic-posts-to-post-pages');
+var attachToTemplate = require('gulp-attach-to-template');
 var dateInPath = require('stratic-date-in-path');
 var postsToIndex = require('stratic-posts-to-index');
 var ghpages = require('gh-pages');
@@ -108,7 +108,7 @@ gulp.task('posts', function() {
 	           .pipe(remark().use(remarkHtml).use(adjustHeaders).use(slug))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/post.jade'))
-	           .pipe(postPage('post.jade'))
+	           .pipe(attachToTemplate('post.jade'))
 	           .pipe(jade({pretty: true, basedir: __dirname}))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist/blog'));
