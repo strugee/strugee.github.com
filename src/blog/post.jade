@@ -1,19 +1,19 @@
-extends ../includes/layout.jade
+extends /src/includes/layout.jade
 
-include ../includes/post.jade
+include /src/includes/post.jade
 
 block head
-	title #{metadata.title} - strugee.net
+	title #{post.title} - strugee.net
 	link(rel='pingback', href='https://webmention.io/strugee.net/xmlrpc')
 	link(rel='webmention', href='https://webmention.io/strugee.net/webmention')
 	script(src='/js/webmentions.js', type='text/javascript')
 
 block content
 	article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
-		h1.p-name= metadata.title
+		h1.p-name= post.title
 
-		+post(metadata)
-		.e-content!= text
+		+post(post)
+		.e-content!= post.contents.toString()
 
 	hr
 	p#webmention-replies-header WebMention replies

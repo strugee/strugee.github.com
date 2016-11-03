@@ -21,7 +21,6 @@
     "gulp-front-matter": "^1.2.2",
     "gulp-ignore": "^1.1.0",
     "gulp-jade": "^0.10.0",
-    "gulp-jade-template": "0.0.7",
     "gulp-jshint": "^1.6.4",
     "gulp-remark": "^3.0.0",
     "gulp-rename": "^1.2.0",
@@ -33,8 +32,8 @@
     "remark-slug": "^4.2.2",
     "stratic-date-in-path": "^2.0.0",
     "stratic-parse-header": "^1.0.2",
-    "stratic-post-to-json-data": "^1.0.0",
     "stratic-posts-to-index": "^1.0.0",
+    "stratic-posts-to-post-pages": "github:strugee/stratic-posts-to-post-pages",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
