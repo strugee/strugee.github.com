@@ -1,14 +1,14 @@
 # Post information
 
-This post was published as "Pump.io 2.0.1 is available" at "1478936954 UTC-8" by "Alex Jordan", and was categorized as "development,pump.io".
+This post was published as "Pump.io 2.0.4 is available" at "1478936954 UTC-8" by "Alex Jordan", and was categorized as "development,pump.io".
 
 # Post text
 
 Greetings!
 
-After a beta period of just over a week, pump.io 2.0.1 is now available on npm and GitHub. Whoohoo!
+After a beta period of just over a week, pump.io 2.0.4 is now available on npm and GitHub. Whoohoo!
 
-(This was originally going to be 2.0.0, but we had to do a patch release due to some outdated documentation. It's basically the same thing.)
+(This was originally going to be 2.0.0, but we had to do a couple patch releases due to some outdated documentation and several critical bugs. 2.0.4 is mostly the same thing as 2.0.0.)
 
 ## Changes
 
@@ -20,7 +20,7 @@ For the full list of changes, see [the change log][3].
 
 (As I said in [the beta announcement][0]:)
 
-Pump.io 2.0.1 is a drop-in replacement for 1.0.0 **unless** you have any plugins configured or you modify the templates.
+Pump.io 2.0.4 is a drop-in replacement for 1.0.0 **unless** you have any plugins configured or you modify the templates.
 
 Plugins are likely to be affected by the upgrade to Express 3.x. The easiest way to migrate is probably to just run pump.io, test out the relevant parts of the app, and see where your plugin crashes. You might also want to look at the [Express 3 change log][1].
 
@@ -47,7 +47,7 @@ If you installed from source, you can upgrade with:
     git fetch
     # If you modified templates, save the diff at this step
 	git checkout .
-    git checkout v2.0.1
+    git checkout v2.0.4
 	npm install
     # Restore your template changes
 	npm run lint:jade # Optional but recommended if you changed templates
