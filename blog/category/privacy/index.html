@@ -33,7 +33,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://plus.google.com/+AlexJordan">
     <link rel="me" href="https://pump.strugee.net/alex">
     <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
-    <title>Posts from November 2016 - strugee.net</title>
+    <title>Posts categorized as "privacy" - strugee.net</title>
   </head>
   <body>
     <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
@@ -53,7 +53,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       </header>
       <div id="content">
         <div class="h-feed">
-          <h2 class="p-name">Posts from November 2016</h2>
+          <h2 class="p-name">Posts categorized as "privacy"</h2>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/11/friendly-reminder-protect-yourself-while-protesting">
               <h2 class="p-name">Friendly reminder: protect yourself while protesting</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/11/">November</a> 17, <a href="/blog/2016/">2016</a> in <a href="/blog/category/politics/" class="p-category">politics</a> and <a href="/blog/category/privacy/" class="p-category">privacy</a>
@@ -114,106 +114,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>A lot of the above is based on the ACLU's excellent <a href="https://www.aclu.org/know-your-rights/what-do-when-encountering-law-enforcement-questioning?redirect=know-your-rights/when-encountering-law-enforcement-questioning">"Know Your Rights" booklet</a>. The ACLU also has a page specifically devoted to <a href="https://www.aclu.org/know-your-rights/what-do-if-your-rights-are-violated-demonstration-or-protest">rights violations at demonstrations and protests</a>.</p>
 <p><a href="https://en.wikipedia.org/wiki/Miranda_warning#The_Miranda_warnings">PRISM Break</a> is a good resource for technology that will help you resist mass surveillance. <a href="https://whispersystems.org/">Signal</a> is not on that list, but is also very, very good and extremely easy to use.</p>
 <p>If you have more resources or tips that should be listed here, <a href="/contact">contact me</a> (or <a href="https://github.com/strugee/strugee.github.com/blob/src/src/blog/friendly-reminder-protect-yourself-while-protesting.md">edit this on GitHub</a>) and I'll be sure to add them.</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/11/pump.io-2.0.1-is-available">
-              <h2 class="p-name">Pump.io 2.0.4 is available</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/11/">November</a> 11, <a href="/blog/2016/">2016</a> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
-            </p>
-            <div class="e-content"><p>Greetings!</p>
-<p>After a beta period of just over a week, pump.io 2.0.4 is now available on npm and GitHub. Whoohoo!</p>
-<p>(This was originally going to be 2.0.0, but we had to do a couple patch releases due to some outdated documentation and several critical bugs. 2.0.4 is mostly the same thing as 2.0.0.)</p>
-<h3>Changes</h3>
-<p>Note that this release includes security improvements - namely, a newer Express version and a better TLS configuration - and therefore <strong>admins are encouraged to upgrade ASAP</strong>.</p>
-<p>For the full list of changes, see <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#201---2016-11-10">the change log</a>.</p>
-<h4>Breaking changes</h4>
-<p>(As I said in <a href="">the beta announcement</a>:)</p>
-<p>Pump.io 2.0.4 is a drop-in replacement for 1.0.0 <strong>unless</strong> you have any plugins configured or you modify the templates.</p>
-<p>Plugins are likely to be affected by the upgrade to Express 3.x. The easiest way to migrate is probably to just run pump.io, test out the relevant parts of the app, and see where your plugin crashes. You might also want to look at the <a href="https://github.com/expressjs/express/blob/master/History.md#300--2012-10-23">Express 3 change log</a>.</p>
-<p>If you modified the templates, you'll be affected by the templates' rewrite from utml into Jade. Migration should be relatively painless but has to be done manually. Your best bet will be to save a copy of the diff you created, undo your changes, upgrade, then use the diff you saved to reintroduce your changes. You'll have to run <code>npm run build</code> after making changes to Jade files.</p>
-<h4>Non-breaking changes</h4>
-<p>This release is actually relatively minor in terms of non-breaking changes; however, we <em>do</em> have some nice new improvements:</p>
-<ul>
-<li>A pump(1) manpage is now included</li>
-<li>Any internal web UI link with a <code>data-bypass</code> attribute is now ignored by the routing logic (useful for e.g. custom pages added by the admin)</li>
-<li>YouTube links in posts are now shown as  embeds by the web UI (<a href="https://github.com/expressjs/express/blob/master/History.md#300--2012-10-23">#1158</a>)</li>
-<li>TLS connections now use Mozilla's "intermediate" cipher suite and forces server cipher suite preferences (<a href="https://github.com/pump-io/pump.io/issues/1061">#1061</a>)</li>
-<li>Various minor fixes and improvements</li>
-</ul>
-<h3>Upgrading</h3>
-<p>Upgrading is dead-simple. If you used our recommended install method, and installed from npm, you can upgrade with:</p>
-<pre><code>sudo npm install -g pump.io@2
-</code></pre>
-<p>If you installed from source, you can upgrade with:</p>
-<pre><code>git fetch
-# If you modified templates, save the diff at this step
-git checkout .
-git checkout v2.0.4
-npm install
-# Restore your template changes
-npm run lint:jade # Optional but recommended if you changed templates
-npm run build
-</code></pre>
-<p>Both of these methods will work whether you're running 0.3.0, 1.0.0, or 2.0.0 beta. Make sure to restart pump.io after performing the upgrade.</p>
-<h3>Getting help</h3>
-<p>If you have any issues with the upgrade, get in touch with <a href="https://github.com/pump-io/pump.io/wiki/Community">the community</a>. You can also email me at <a href="mailto:alex@strugee.net">alex@strugee.net</a>.</p>
-<p> [0]: </p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/11/free-software-phrasing-considered-harmful">
-              <h2 class="p-name">'Free software' phrasing considered harmful</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/11/">November</a> 9, <a href="/blog/2016/">2016</a> in <a href="/blog/category/musings/" class="p-category">musings</a>
-            </p>
-            <div class="e-content"><p>For a while now I've been avoiding using the term "free software."</p>
-<p>Why? It's just plain confusing to people. I know Richard Stallman will tell you that it means freedom, not gratis. <em>It doesn't matter</em>. It's still ambiguous and needlessly conflates two different concepts.</p>
-<p>Instead of "free software," I propose "freedom-respecting software" as a replacement. This phrasing is not only unambigous, it also does a much more effective job of communicating the general meaning of the term without further explanation. (Of course you'll probably still need to explain it, but you'll have to spend a lot less time doing so.) The one problem with this phrasing is that it's longer, but even that doesn't hold water - because of the aformentioned problems with "free software," people actually don't say "free software" all that much; instead, they say "free (as in freedom) software" which is unambiguous, but awkward on multiple levels. Not only is it a less eloquent way of describing the concept, but gramatically speaking it's really terrible as it puts a parenthetical qualifier in-between an adjective and a noun, which just sounds <em>terrible</em> and unnatural. Seriously, say both of them out loud. "Freedom-respecting software" and "free (as in freedom) software" - which one sounds like less of a mouthful?</p>
-<p>Hence, I think "free software" as a term should be considered harmful, and replaced with "freedom-respecting software" instead.</p>
-<p><em>Edit 0:58 10/10/16:</em></p>
-<p>Another advantage of "freedom-respecting software" is that it's still closely related to the old term, allowing for a much easier pivot. Consider "libre software" which AFAICT had the same goals as this proposal but never really took off - in part, I think, because it sounds very different from an already-established term. (Another way of putting this is that it's conceptually an improvement to an existing term instead of being something <em>brand-new</em>, and therefore all existing associations will carry over with far more ease.)</p>
-<p>I'd also point out that the problem of ambiguity is more serious than I've said above. First of all, generally speaking I'm suspicious of any proposal or argument that begins or ends with "we just need to educate people more." Education is an important part of the freedom-respecting software movement - remember, that movement is by and for the people - but I think that argument is too frequently simply an excuse for a poor initial design. (Security, I'm looking at you.) Second, such an ambiguity also muddles our search results. When people search for "free software" they <em>do</em> get our stuff (a fact that I was pleasantly surprised by!) but they also get loads and loads of pages for gratis Windows crapware. That's unideal and it is unlikely to change, ever. Even if people <em>were</em> able to readily grasp the distinction between freedom and gratis that we're pitching, we will never, ever have enough influence on the language people use to get them to <em>stop</em> using "free" to mean gratis - which means that Google will continue showing gratis crapware as "free software."</p>
-<p>Finally, as <a href="https://github.com/nylira/prism-break/issues/1601">pointed out</a> by some excellent PRISM Break contributors, me writing this blog post and then talking about it occasionally is a <em>far</em> dumber idea than directly contacting the FSF, which I now intend to do Real Soon Now™.</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/11/pump.io-2.0.0-beta-is-here">
-              <h2 class="p-name">Pump.io 2.0.0 beta is here</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/11/">November</a> 2, <a href="/blog/2016/">2016</a> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
-            </p>
-            <div class="e-content"><p>Greetings!</p>
-<p>As pump.io is gearing up for our 2.0.0 release, I just published a beta to npm. We'd love it if any interested admins could upgrade their nodes and report any bugs you may run in to. (All bug reports are helpful, but just so we're clear, we're likely to only fix regressions from 1.0.0.)</p>
-<h3>Changes</h3>
-<p>Pump.io 2.0.0 beta is a drop-in replacement for 1.0.0 <strong>unless</strong> you have any plugins configured or you modify the templates.</p>
-<p>Plugins are likely to be affected by the upgrade to Express 3.x. The easiest way to migrate is probably to just run pump.io, test out the relevant parts of the app, and see where your plugin crashes. You might also want to look at the <a href="https://github.com/expressjs/express/blob/master/History.md#300--2012-10-23">Express 3 change log</a>.</p>
-<p>If you modified the templates, you'll be affected by the templates' rewrite from utml into Jade. Migration should be relatively painless but has to be done manually. Your best bet will be to save a copy of the diff you created, undo your changes, upgrade, then use the diff you saved to reintroduce your changes. You'll have to run <code>npm run build</code> after making changes to Jade files.</p>
-<p>For the list of non-breaking changes, see <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#200-beta-1---2016-11-02">the change log</a>.</p>
-<h3>Upgrading</h3>
-<p>Upgrading is very easy. If you used our recommended install method, and installed from npm, you can upgrade to the beta with:</p>
-<pre><code>sudo npm install -g pump.io@beta
-</code></pre>
-<p>If you installed from source, you can upgrade with:</p>
-<pre><code>git fetch
-# If you modified templates, save the diff at this step
-git checkout .
-git checkout v2.0.0-beta.1
-npm install
-# Restore your template changes
-npm run lint:jade # Optional but recommended if you changed templates
-npm run build
-</code></pre>
-<p>Make sure to restart pump.io after performing the upgrade.</p>
-<h3>Getting help</h3>
-<p>If you have any issues upgrading to or running the beta, please don't hesitate to get in touch with <a href="https://github.com/e14n/pump.io/wiki/Community">the community</a>. You can also email me at <a href="mailto:alex@strugee.net">alex@strugee.net</a>.</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/11/webmention-test">
-              <h2 class="p-name">Webmention test receiver</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/11/">November</a> 1, <a href="/blog/2016/">2016</a> in <a href="/blog/category/development/" class="p-category">development</a>
-            </p>
-            <div class="e-content"><p>This post exists only to have a dedicated test URL to send example webmentions to until <a href="https://github.com/aaronpk/webmention.io/issues/77">webmention.io issue 77</a> is fixed (or in other words, I need a URL with a wide variety of webmention data associated with it so I can test the webmention styling you see at the bottom of all individual post pages).</p>
-<p>It will be removed eventually, probably.</p>
 </div>
           </article>
         </div>
