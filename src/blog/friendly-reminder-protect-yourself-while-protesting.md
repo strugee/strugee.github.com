@@ -19,7 +19,7 @@ So, here are some tips on how to protect yourself while engaging in a political 
   * If this isn't possible, leave your phone in Airplane Mode or even better, turn it off. **It is not enough to not post anything; you cannot connect to the cell network _at all_.** See [IMSI catchers][3].
   * Use a passcode on your phone - this gives you a better position under the 5th Amendment for resisting a search of your phone
   * If police try to force you to give up the passcode of your phone, they are probably breaking the law
-  * Disable fingerprint unlock, as [police are legally allowed to force you to unlock the phone via your fingerprint][5] (note: this link is insecure; consider visiting it in [Tor Browser][6])
+  * **Disable fingerprint unlock**, as [police are legally allowed to force you to unlock the phone via your fingerprint][5] (note: this link is insecure; consider visiting it in [Tor Browser][6])
   * Make sure full-disk encryption is enabled on your phone
     * iPhone users: this is already on if you're using iOS 8 or later
     * Android users: this is often enabled by default, but you should check by going to Settings > Security and looking under "Encryption"
@@ -27,22 +27,26 @@ So, here are some tips on how to protect yourself while engaging in a political 
 * Do not bring laptops or tablets - the 5th Amendment protections above [do _not_ necessarily apply][7] to these devices, so they can be seized and searched even without a warrant
 * [**Seriously do _not_ talk to the police**][4]
 * Use strong encryption for everything you do online
-* Don't post anything on social media about protest, including photos, checkins, and text, either during or after. (Remember: the protest lasts one night, but [metadata][19] lasts forever.)
+* **Don't post anything on social media about the protest**, including photos, checkins, and text, either during or after. (Remember: the protest lasts one night, but [metadata][19] lasts forever.)
 * Under the First Amendment you have the right to film police officers but be _extremely_ careful because some police departments are extremely hostile towards this behavior anyway, to the point of physical violence. See [the ACLU's guide][9] for more information.
 
 ## What do do if you're stopped by the police
 
 If you're stopped by the police and they start questioning you, be polite but invoke the Fifth Amendment (i.e. refuse to talk to them). Ask if you're under arrest. If not, great! The police officer cannot legally detain you and you're free to go - do so calmly and silently.
 
-If you _are_ under arrest:
+If you _are_ under arrest, here are the things you should do right away:
+
+* **Say: "under what grounds am I under arrest?"** The officer is only allowed to arrest you if they believe you are about to commit or are in the act of committing a crime. (Remember, photographing officers is not a crime; if they say something about this, remind them that it's protected under the First Amendment.)
+* **Immediately ask for a laywer.** If you don't have one, the government [is required][17] to provide you with one.
+
+Then, keep these tips in mind:
 
 * Stay calm
 * Be polite
 * Don't run
+* Don't lie
 * Do not resist, argue, or be rude, _even if you are innocent_
-* Say: "under what grounds am I under arrest?" The officer is only allowed to arrest you if they believe you are about to commit or are in the act of committing a crime. (Remember, photographing officers is not a crime; if they say something about this, remind them that it's protected under the First Amendment.)
-* Immediately ask for a laywer. If you don't have one, the government [is required][17] to provide you with one.
-* No matter what the officer asks you or tells you, always say: "I invoke my right to remain silent." Do not answer any questions, no matter how innocuous.
+* No matter what the officer asks you or tells you, **always say: "I invoke my right to remain silent."** Do _not_ answer any questions, no matter how innocuous.
 * If you _do_ answer questions, you're allowed to stop at any time. But still don't do it in the first place.
 * Under some states, you can be compelled to give your name (but nothing else). **Before you leave your house, look up whether your state has this policy.**
 * If possible, write down the details of what's happened.
@@ -57,7 +61,7 @@ The ACLU also provides additional information for [non-citizens][8], [people tak
 
 A lot of the above is based on the ACLU's excellent ["Know Your Rights" booklet][12]. The ACLU also has a page specifically devoted to [rights violations at demonstrations and protests][15].
 
-[PRISM Break][16] is a good resource for technology that will help you resist mass surveillance. [Signal][18] is not on that list, but is also very, very good and extremely easy to use.
+[PRISM Break][16] is a good resource for technology that will help you resist mass surveillance. [Signal][18] is not on that list, but is also very, very good and extremely easy to use. Keep in mind, however, that following recommendations from PRISM Break is not a substitute for leaving your phone at home.
 
 If you have more resources or tips that should be listed here, [contact me][13] (or [edit this on GitHub][14]) and I'll be sure to add them.
 
