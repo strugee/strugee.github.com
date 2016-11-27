@@ -31,6 +31,7 @@
     "remark-rewrite-headers": "^1.0.0",
     "remark-slug": "^4.2.2",
     "stratic-date-in-path": "^2.0.0",
+    "stratic-paginate-indexes": "github:strugee/stratic-paginate-indexes",
     "stratic-parse-header": "^1.0.2",
     "stratic-posts-to-index": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
