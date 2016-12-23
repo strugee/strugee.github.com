@@ -98,7 +98,7 @@ gulp.task('post-index', function() {
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
 	           .pipe(postsToIndex('index.jade'))
-	           .pipe(paginateIndexes())
+	           //.pipe(paginateIndexes())
 	           .pipe(jade({pretty: true, basedir: __dirname}))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist/blog'));
