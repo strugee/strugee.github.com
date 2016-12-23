@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--
+© Copyright 2012-2016 Alex Jordan
+This file is part of strugee.net.
+strugee.net is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+strugee.net is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!-- Made and coded by Alex Jordan-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
+    <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <!-- IndieWeb components, with <3-->
+    <link rel="me" href="mailto:alex@strugee.net">
+    <link rel="me" href="sms:17607054581">
+    <link rel="me" href="https://github.com/strugee">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://pump.strugee.net/alex">
+    <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
+    <title>Posts from 2016 - strugee.net</title>
+  </head>
+  <body>
+    <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+      <header>
+        <h1 id="topheader">strugee.net</h1>
+        <nav id="navbar">
+          <ul>
+            <li id="navlabel" class="navlink">Nav ::</li>
+            <li class="navlink"><a href="/">Home</a></li>
+            <li class="navlink"><a href="/services">Services</a></li>
+            <li class="navlink"><a href="/projects">Projects</a></li>
+            <li class="navlink"><a href="/gpg">GPG Key</a></li>
+            <li class="navlink"><a href="/contact">Contact</a></li>
+            <li class="navlink"><a href="/blog/">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="content">
+        <div class="h-feed">
+          <h2 class="p-name">Posts from 2016</h2>
+          <p id="postsFrom">Show only posts from <a href="/blog/2016/11/">November</a> <a href="/blog/2016/05/">May</a> <a href="/blog/2016/06/">June</a> <a href="/blog/2016/08/">August</a> <a href="/blog/2016/10/">October</a> 
+          </p>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/06/work-on-strugee-net">
+              <h2 class="p-name">Work on strugee.net</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/06/">June</a> 13, <a href="/blog/2016/">2016</a> in <a href="/blog/category/development/" class="p-category">development</a>
+            </p>
+            <div class="e-content"><p>I realized I forgot to blog about all the work I've done on the <code>strugee.net</code> build code recently! I want to get back to working on Stratic part two (aka pretty indexes), but I thought I'd really quickly take the time to point out what's been done.</p>
+<p>First of all, even though I rewrote the code in <a href="http://jade-lang.com">Jade</a> about <a href="https://strugee.net/blog/2014/12/new-blog-new-site">a year and a half ago</a>, there was still a huge amount of boilerplate code in each Jade file. Why? Because essentially the way I did that was by running each HTML file through an <a href="http://html2jade.aaron-powell.com/">HTML to Jade</a> converter, then manually fixing up the result to be, you know, less ugly. That meant that common stuff, like the navbar, footer, includes, etc. were all duplicated across all Jade files. And that sucks, because <a href="https://en.wikipedia.org/wiki/Don&#x27;t_repeat_yourself">Don't Repeat Yourself</a> is a thing.</p>
+<p>Luckily, refactoring is a thing too! So a few weeks ago, I went and split out the common site layout into <a href="https://github.com/strugee/strugee.github.com/blob/c5ec1634a6b038eec25adb5abcd2b578a60ec4fd/src/includes/layout.jade">its own Jade file</a>, then made all the individual pages inherit from that common layout. The most difficult part of this was undoubtedly the navigation bar - I was pretty sure I'd have to just deal with the fact that the navbar was duplicated across pages (because each page has to have a different link deactivated), but then inspiration struck, and I ended up witht the solution I have now. Instead of treating the entire navigation as one block, I treat each <em>link</em> as a block that is overridable via Jade's <code>block</code> directive. And, since Jade <code>block</code>s can have defaults, each page only overrides exactly what it needs to, and the rest of the links are automatically there and properly clickable.</p>
+<p>This has a couple nice side effects. The first is that the codebase that generates <code>strugee.net</code> is now <em>extremely</em> easy for me to change, regardless of what part of the site I touch (whereas before, individual pages were pretty easy but changing e.g. the navbar require editing each and every individual page). The second (and clearly the most important) is that Night Mode, which I implemented in a 45-minute class <em>over two years ago</em> now (back when I was still in high school - what a crazy thing to think about not being in high school anymore!) now works on every page across all of <code>strugee.net</code>. Whooo! Silly hacks are at the core of the web, right? Might as well make them work well.</p>
+<p>Finally, I'd be remiss if I didn't mention that I now have a proper <a href="https://github.com/strugee/strugee.github.com/blob/c5ec1634a6b038eec25adb5abcd2b578a60ec4fd/gulpfile.js#L128"><code>deploy</code> task</a>, so I can abandon the sketchy and genuinely terrible deploy process that I used before. (For those curious: <code>gulp build &#x26;&#x26; git checkout master &#x26;&#x26; mv dist/*.html . &#x26;&#x26; git commit -m "Some bad commit message" &#x26;&#x26; git push &#x26;&#x26; git checkout src</code> - not shown here are the several attempts where I made some typo or possibly didn't think of some files in <code>dist/</code> that changed and so should have been <code>mv</code>'d, but weren't.) And, I now use root-relative includes now, e.g. <code>/js/main.js</code> instead of <code>js/main.js</code>, which is another win for DRY because now I don't have to maintain different header contents for subpages (which used to be the exact same, just with <code>../</code> prepended to all paths).</p>
+<p>In conclusion: yay for progress! And yay for the fact that my codebase actually looks like someone competent wrote it! \o/</p>
+<p>(Final note: I haven't forgotten my promise to blog about stuff happening in pump.io-land. But, not now.)</p>
+</div>
+          </article>
+          <hr>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/05/stratic-part-one">
+              <h2 class="p-name">Stratic part one is done!</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/05/">May</a> 28, <a href="/blog/2016/">2016</a> in <a href="/blog/category/development/" class="p-category">development</a>
+            </p>
+            <div class="e-content"><p>Whooooooooooo!</p>
+<p>I am so, so, <em>so</em> thrilled to announce that the first part of <a href="https://github.com/strugee/generator-stratic">Stratic</a> is complete! And you can see the result right here on strugee.net, since this blog post was generated with Stratic!</p>
+<p><strong>tl;dr</strong>:</p>
+<pre><code>var rename = require('gulp-rename');
+var markdown = require('gulp-markdown');
+var parse = require('stratic-parse-header');
+var straticToJson = require('stratic-post-to-json-data');
+var jadeTemplate = require('gulp-jade-template');
+var dateInPath = require('stratic-date-in-path');
+
+gulp.task('posts', function() {
+    return gulp.src('src/blog/*.md')
+               .pipe(parse())
+               .pipe(markdown())
+               .pipe(dateInPath())
+               .pipe(straticToJson())
+               .pipe(jadeTemplate('src/blog/post.jade'))
+               .pipe(rename({ extname: '.html' }))
+               .pipe(gulp.dest('dist/blog'));
+});
+</code></pre>
+<p>How <em>gorgeous</em> is that?? Let me explain how it works. (I'll assume the reader is familiar with <a href="https://github.com/gulpjs/gulp">Gulp</a> and <a href="https://nodejs.org/en/">Node.js</a>.)</p>
+<p>So the <code>gulp.src()</code> call is pretty obvious. We just read all the blog posts into the stream. Note, however, that <code>gulp.src()</code> doesn't stream text, per se - it streams <a href="https://github.com/gulpjs/vinyl">Vinyl</a> file objects. This will become important later.</p>
+<p>Now, the first piece of custom Stratic code that we use is the <code>stratic-parse-header</code> module. This module takes a Markdown file with a standard Stratic header (see <a href="https://strugee.net/blog/2014/11/new-blog-new-site">my original announcement</a> for details), parses the header, strips it out, then returns the new, headerless Markdown. However, the new Vinyl file object has a couple of new properties from the parsing phase - specifically, <code>file.title</code>, <code>file.author</code>, <code>file.time</code>, and <code>file.categories</code> now exist. This is why the fact that Vinyl is used is important - now <em>any</em> Gulp plugin downstream from where <code>parse()</code> is run can use all of these values in whatever way it wants. (See <a href="https://github.com/strugee/stratic-parse-header/blob/master/README.md">the README</a> for more details.)</p>
+<p>Now our Vinyl file object is <em>only</em> the content of the post, and it has additional Stratic metadata attached to it. Awesome! The next thing that we do is render the Markdown, just using a standard Gulp plugin for this. Easy breezy. After that, we pipe to the <code>stratic-date-in-path</code> module, which adds the year and month to paths. For example, without <code>stratic-date-in-path</code>, this blog post would be at <code>https://strugee.net/blog/stratic-part-one</code>. However, since I <em>do</em> use <code>stratic-date-in-path</code>, the post lives at <code>https://strugee.net/blog/2016/05/stratic-part-one</code> instead. Nice, right? Eventually I'll write code to generate pretty indexes for each year and month - that's what Stratic part 2 is for.</p>
+<p>The next thing we do is pipe to the <code>stratic-post-to-json-data</code> module. This module is specifically designed to work with the <code>gulp-jade-template</code> module, which expects the file contents to be some JSON that will be given as data to a <a href="http://jade-lang.com/">Jade</a> template, whose rendered HTML becomes the new file contents. What sets up that JSON? You guessed it - <code>stratic-post-to-json-data</code>. That's all it does. It just creates an object that contains the metadata and the actual post text, runs it through <code>JSON.stringify()</code>, and sets the file contents equal to the result. Just how <code>gulp-jade-template</code> likes it.</p>
+<p>And with that, we've successfully rendered a blog post. Whooooooooooo! I'm so pumped about this software. The call to <code>rename()</code> is just a little housekeeping, and then we write the whole thing back to disk with <code>gulp.dest()</code>. Awesome.</p>
+<p>It's worth noting that the real beauty in this code isn't what the code actually does, but the extreme modularity of the whole thing. Unlike projects like <a href="https://jekyllrb.com/">Jekyll</a> or even <a href="http://wintersmith.io/">Wintersmith</a>, this isn't a giant, monolithic framework. It's all standard Node and Gulp. Note how (for example) we didn't need a custom plugin for Markdown - we just used the standard <code>gulp-markdown</code>. Don't like Markdown? No problem. Write something to extract post metadata from your preferred format, replace <code>parse()</code> with that and <code>markdown()</code> with a different renderer, and you're golden. All the rest will continue to work the <em>exact</em> same - adding dates to paths, rendering the template, etc. - because everything's decoupled from everything else. Each component can be trivially swapped out and replaced with something new and better, and the rest of the system continues to work. Gorgeous.</p>
+<p>I've got to go now, but I'm not done blogging. I'll be back soon to talk about the work going on in <a href="http://pump.io/">pump.io</a>, and I'll be back (much?) later to talk about Stratic part two (aka, pretty indexes).</p>
+<p>Whooooooooooooooooooooo!</p>
+</div>
+          </article>
+          <hr>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/05/re-bitcoin">
+              <h2 class="p-name">Re: Bitcoin, Magical Thinking, and Political Ideology</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/05/">May</a> 11, <a href="/blog/2016/">2016</a> in <a href="/blog/category/musings/" class="p-category">musings</a>
+            </p>
+            <div class="e-content"><p><em>Editorial note: I published this almost three years ago on my Tumblr, which I keep semi-private and so don't want to link to. This is a verbatim repost from there, despite the fact that I disagree with some portions of this text nowadays.</em></p>
+<h3><a href="https://al3x.net/2013/12/18/bitcoin.html">Bitcoin, Magical Thinking, and Political Ideology</a></h3>
+<p><a href="http://edwardspoonhands.com/post/71550289177/bitcoin-magical-thinking-and-political-ideology">edwardspoonhands</a>:</p>
+<blockquote>
+<p>I get asked all the time what I think of BitCon…this guy says it better than I could.</p>
+</blockquote>
+<p>+1 for linking to something by Alex Payne. I love him.</p>
+<p>About the actual content, at one point Alex says this:</p>
+<blockquote>
+<p>We’re told that Bitcoin “fixes serious problems with existing payment systems that depend on centralized services to verify the validity of transactions.” If by “fixes” you mean “ignores”, then yes: a Bitcoin transaction, like cash, comes with the certainty that a definite quantity of a store of value has changed hands, and little else. How this verifies any “validity” or cuts down on fraud I’m not sure; stolen Bitcoins are spent as easily as stolen cash, which is why <a href="http://www.cnbc.com/2013/11/20/more-bitcoins-more-problems-how-hackers-are-targeting-bitcoins.html">theft of Bitcoins has been rampant</a>.</p>
+</blockquote>
+<p>I think the concern isn’t with fraud or validity. The problem that Bitcoin solves is with the centralized banking model. The fundamental idea behind Bitcoin is that it cannot be centrally controlled or taken down, like the internet. It is impossible to flip a switch and “turn off” the Bitcoin network. It <em>is</em> possible to do that with a centralized bank: in that case, “flipping the switch” ends up being “shut down the bank”. Or, “drive the bank out of business”.</p>
+<pre><code>If Bitcoin’s strength comes from decentralization, why pour millions into a single company? Ah, because Coinbase provides an “accessible interface to the Bitcoin protocol”, we’re told. We must centralize to decentralize, you see; such is the perverse logic of capital co-opting power. In order for Bitcoin to grow a thriving ecosystem, it apparently needs a US-based, VC-backed company that has “worked closely with banks and regulators to ensure that the service is safe and compliant”.
+</code></pre>
+<p>Maybe the problem isn’t with Bitcoin itself, but with what Coinbase is doing with the Bitcoin protocol. Now, to be clear, I think the Bitcoin to USD bridge aspect of Coinbase is OK. But I think that this paragraph is very, very true: it is <em>perverse</em> that we have centralized a decentralized protocol. Decentralized protocols tend to be very dangerous, IMHO, because of the tendency of users to just go with the most popular provider because it’s the easiest solution, and then effectively centralizing the network in the process.</p>
+<p>Anyone remember XMPP? XMPP was supposed to be great. It was supposed to be the future of communications on the internet. But in practice, XMPP servers are unreliable. It’s hard to find one that works well. I don’t actually use XMPP a lot myself, but there are a lot of problems with connections, chat requests being undone (so you have to add a contact for a second time), etc. So what happened because of these problems (and the fact that everyone uses Gmail)? The most-used XMPP server is talk.google.com. At least it was, until Google replaced Google Talk with Google Hangouts, which uses a proprietary protocol with no XMPP bridge - and so the network got screwed over, because suddenly, a lot of people upgraded to Hangouts and cut themselves off from the XMPP network. The sad truth, though, is that it almost doesn’t matter. Take a survey of any random Google Talk user. I will bet you $100 that less than 1 out of 50 people who you talk to won’t know that Google Talk is based on XMPP, much less what XMPP is. And there’s almost zero chance that they understand why XMPP matters, or why federated protocols and networks matter.</p>
+<p>I’m getting off track, though. So back to Bitcoin and Coinbase. I think what Coinbase is doing by hosting people’s Bitcoin wallets and transactions is fundamentally <em>wrong</em>, because I truly believe that it damages the Bitcoin ecosystem. The centralization in Coinbase is, IMHO, a major problem.</p>
+<p>I wonder if this will be solved with a project like <a href="https://arkos.io/">arkOS</a>. I mean, maybe the solutionv that will ultimately happen is for people to spin up their own instances of a Coinbase-like Bitcoin wallet. I think it’s pretty clear that people, in general, like cloud apps better than desktop apps. Access from any computer is a really nice feature to have. Maybe projects like arkOS will help decentralized protocols like Bitcoin remain decentralized in practice.</p>
+<p>Or maybe Bitcoin will effectively die, just like XMPP did. I mean, sure, XMPP is still a network. But no one really uses it consciously. Almost everyone who uses XMPP nowadays does so accidentally, through a service that just happens to have an XMPP bridge. Google Talk was a prime example of this, but it’s dead. Now, I’ll bet money that the most-used XMPP provider is Facebook. Never knew that Facebook Chat had an XMPP bridge? That’s because Facebook doesn’t advertise it; the only time it’s mentioned is in the developer docs. The mainstream does not care about the XMPP protocol, because we centralized it. What the mainstream <em>does</em> care about is the services that we centralized it on: Google and Facebook. And that’s a real problem.</p>
+</div>
+          </article>
+          <p>not first page lol</p>
+        </div>
+      </div>
+      <footer>
+        <p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a href="https://github.com/strugee/strugee.github.com">on GitHub</a>.</p>
+        <p>&copy; Copyright 2012-2016 Alex Jordan.</p>
+      </footer>
+      <!-- Piwik-->
+      <!-- Note that this Piwik instance is self-hosted and so doesn't leak metadata. Also, critically, it respects Do Not Track.-->
+      <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="//piwik.strugee.net/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
+      <noscript>
+        <p><img src="//piwik.strugee.net/piwik.php?idsite=1" style="border:0;" alt=""></p>
+      </noscript>
+      <!-- End Piwik Code-->
+      <div id="toys"><a id="lightbulb-icon" href="#">
+          <div class="icon-lightbulb"></div></a></div>
+      <script type="text/javascript" src="/js/main.js"></script>
+      <script type="text/javascript" src="/js/idl.js"></script>
+    </div>
+  </body>
+</html>
