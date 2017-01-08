@@ -160,11 +160,14 @@ footer {
   font-size: 0.75em;
 }
 hr {
-  border-color: #cecece;
+  border-color: #fff;
 }
 .webmention-avatar {
   width: 25px;
   height: 25px;
+}
+.talk-title {
+  font-size: 24.5px;
 }
 /* Night mode transitions */
 #container,
