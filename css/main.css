@@ -160,7 +160,9 @@ footer {
   font-size: 0.75em;
 }
 hr {
-  border-color: #fff;
+  height: 2px;
+  background-color: #c2c2c2;
+  border-color: rgba(255,255,255,0);
 }
 .webmention-avatar {
   width: 25px;
