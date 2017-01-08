@@ -1,0 +1,23 @@
+extends ./includes/layout.jade
+
+block head
+	title Talks - strugee.net
+	meta(name='description', content='Talks by ')
+
+block nav-talks
+	li.navlink Talks
+
+block content
+	h1 Talks
+	section
+		h2 Introduction to Arch Linux
+		blockquote.talk-description
+			p An introduction to Arch Linux - why it's awesome, how to use the tools that it provides, and how to interact with the community.
+			p The presentation will roughly cover:
+			ul
+				li The Arch Way (basic philosophy of the distro, etc.)
+				li A basic outline of the system installation procedure
+				li How to use pacman, the PACkage MANager, and the AUR, the Arch User Repository (where you get software not in the official repos)
+				li How to engage with the community/get help (and not get flamed)
+		p Presented at 
+			a(href='http://2014.linuxfestnorthwest.org/2014/sessions/introduction-arch-linux') LinuxFest Northwest 2014
