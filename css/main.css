@@ -170,6 +170,10 @@ hr {
 .talk-title {
   font-size: 24.5px;
 }
+.small-robotics-presentation {
+  display: inline-block;
+  width: 24.75em;
+}
 /* Night mode transitions */
 #container,
 body {
