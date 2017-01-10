@@ -1,4 +1,6 @@
 mixin renderPost(post, isIndex)
+	- var silentCategories = ['blaggregator'];
+
 	article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
 		//- Title
 		if isIndex
@@ -11,6 +13,7 @@ mixin renderPost(post, isIndex)
 		- var author = post.author;
 		- var time = post.time;
 		- var categories = post.categories;
+		- categories = categories.filter(function(el) { return !silentCategories.includes(el); });
 		- var date = new Date(time.epoch * 1000);
 		- var monthName = date.toLocaleString('en-us', {month: 'long'});
 		- var monthStr = date.getMonth() + 1;
