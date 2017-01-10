@@ -17,6 +17,7 @@ var attachToTemplate = require('gulp-attach-to-template');
 var dateInPath = require('stratic-date-in-path');
 var postsToIndex = require('stratic-posts-to-index');
 var paginateIndexes = require('stratic-paginate-indexes');
+var indexesToRss = require('stratic-indexes-to-rss');
 var ghpages = require('gh-pages');
 var merge = require('merge-stream');
 var gutil = require('gulp-util');
@@ -118,8 +119,18 @@ gulp.task('posts', function() {
 
 gulp.task('rss', function() {
 	return gulp.src('src/posts/*.md')
-	          .pipe(frontMatter())
-	          .pipe(gulp.dest('dist/posts/rss.xml'));
+	           .pipe(parse())
+	           .pipe(remark().use(remarkHtml))
+	           .pipe(dateInPath())
+	           .pipe(addsrc('src/blog/index.jade'))
+	           .pipe(postsToIndex('index.jade'))
+	           .pipe(indexesToRss({
+		           title: 'strugee.net blog',
+		           copyright: '© Copyright 2012-2017 Alex Jordan. Available under the GNU Affero GPL.',
+		           webMaster: 'Alex Jordan <alex@strugee.net>'
+	           }, 'https://strugee.net'))
+	           .pipe(rename({ extname: '.rss' }))
+	           .pipe(gulp.dest('dist/blog'));
 });
 
 gulp.task('misc', function() {
