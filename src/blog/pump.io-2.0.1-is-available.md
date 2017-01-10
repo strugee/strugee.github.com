@@ -59,7 +59,6 @@ Both of these methods will work whether you're running 0.3.0, 1.0.0, or 2.0.0 be
 
 If you have any issues with the upgrade, get in touch with [the community][2]. You can also email me at <alex@strugee.net>.
 
- [0]: 
  [1]: https://github.com/expressjs/express/blob/master/History.md#300--2012-10-23
  [2]: https://github.com/pump-io/pump.io/wiki/Community
  [3]: https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#201---2016-11-10
