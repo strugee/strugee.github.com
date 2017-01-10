@@ -1,6 +1,6 @@
 # Post information
 
-This post was published as "RSS and pagination on stugee.net" at "1484074081 UTC-5" by "Alex Jordan", and was categorized as "development".
+This post was published as "RSS and pagination on stugee.net" at "1484074081 UTC-5" by "Alex Jordan", and was categorized as "development,blaggregator".
 
 # Post text
 
