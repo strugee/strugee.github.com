@@ -167,6 +167,9 @@ hr {
   width: 25px;
   height: 25px;
 }
+#pages-footer {
+  text-align: center;
+}
 .talk-title {
   font-size: 24.5px;
 }
