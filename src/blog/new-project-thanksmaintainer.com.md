@@ -1,6 +1,6 @@
 # Post information
 
-This post was published as "New project! thanksmaintainer.com" at "1484009754 UTC-7" by "Alex Jordan", and was categorized as "development".
+This post was published as "New project! thanksmaintainer.com" at "1484009754 UTC-5" by "Alex Jordan", and was categorized as "development".
 
 # Post text
 
