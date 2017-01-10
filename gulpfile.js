@@ -118,7 +118,7 @@ gulp.task('posts', function() {
 });
 
 gulp.task('rss', function() {
-	return gulp.src('src/posts/*.md')
+	return gulp.src('src/blog/*.md')
 	           .pipe(parse())
 	           .pipe(remark().use(remarkHtml))
 	           .pipe(dateInPath())
