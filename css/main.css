@@ -129,6 +129,7 @@ body {
 .navlink {
   list-style-type: none;
   display: inline;
+  margin-right: 2px;
 }
 footer {
   text-align: center;
