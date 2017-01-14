@@ -1,21 +1,81 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[strugee.net blog - 'blaggregator' category]]></title><description><![CDATA[strugee.net blog - 'blaggregator' category]]></description><link>https://strugee.net/blog/category/blaggregator</link><generator>stratic-indexes-to-rss</generator><lastBuildDate>Sat, 14 Jan 2017 21:50:40 GMT</lastBuildDate><atom:link href="https://strugee.net/blog/category/blaggregator/index.rss" rel="self" type="application/rss+xml"/><copyright><![CDATA[© Copyright 2012-2017 Alex Jordan. Available under the GNU Affero GPL.]]></copyright><webMaster><![CDATA[Alex Jordan <alex@strugee.net>]]></webMaster><item><title><![CDATA[RC week 2]]></title><description><![CDATA[<p>This is week 2 of being at the <a href="https://recurse.com">Recurse Center</a>. </p>
-<h2>Day 4</h2>
+<!DOCTYPE html>
+<!--
+© Copyright 2012-2016 Alex Jordan
+This file is part of strugee.net.
+strugee.net is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+strugee.net is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!-- Made and coded by Alex Jordan-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
+    <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <!-- IndieWeb components, with <3-->
+    <link rel="me" href="mailto:alex@strugee.net">
+    <link rel="me" href="sms:17607054581">
+    <link rel="me" href="https://github.com/strugee">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://pump.strugee.net/alex">
+    <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
+    <title>RC week 2 - strugee.net</title>
+    <link rel="pingback" href="https://webmention.io/strugee.net/xmlrpc">
+    <link rel="webmention" href="https://webmention.io/strugee.net/webmention">
+    <script src="/js/webmentions.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+      <header>
+        <h1 id="topheader">strugee.net</h1>
+        <nav id="navbar">
+          <ul>
+            <li id="navlabel" class="navlink">Nav &nbsp;::</li>
+            <li class="navlink"><a href="/">Home</a></li>
+            <li class="navlink"><a href="/services">Services</a></li>
+            <li class="navlink"><a href="/projects">Projects</a></li>
+            <li class="navlink"><a href="/talks">Talks</a></li>
+            <li class="navlink"><a href="/gpg">GPG Key</a></li>
+            <li class="navlink"><a href="/contact">Contact</a></li>
+            <li class="navlink"><a href="/blog/">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="content">
+        <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry">
+          <h1 class="p-name">RC week 2</h1>
+          <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2017/01/">January</a> 14, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
+          </p>
+          <div class="e-content"><p>This is week 2 of being at the <a href="https://recurse.com">Recurse Center</a>. </p>
+<h3 id="day-4">Day 4</h3>
 <p>Arrived ~12:30; departed ~23:45; total time at RC 11h15m.</p>
 <p>Today is day four because last week only had three days - Monday was off because of New Years.</p>
 <p>Spent most of today working on Stratic. Paired with <a href="https://github.com/atungare">Ajay</a> to fix a really nasty bug in stratic-paginate-indexes caused by some <a href="https://github.com/gulpjs/vinyl/issues/125">incorrect Vinyl documentation</a>, during which he showed me how <code>Array.prototype.map</code> is a nice taste of functional programming available in JS, as well as <a href="https://github.com/s-a/iron-node">Iron Node</a> - I had only previously used the built-in <code>node debug</code>. (Spent <em>hours</em> on this bug at home but solved it in ~30 minutes while pairing.) Spent most of the rest of the day getting pagination to function properly on strugee.net, which was surprisingly hard due to there just being a lot of edge cases to handle. (That, plus the fact that it took a while for me to settle on a design I liked.) Spent some more time polishing or updating other parts of strugee.net.</p>
 <p>In the evening, spent some time pairing with <a href="https://github.com/Jmeggesto">Jacqueline</a>, teaching them to set up a cronjob using a DigitalOcean VPS.</p>
-<h2>Day 5</h2>
+<h3 id="day-5">Day 5</h3>
 <p>Arrived ~10:30; departed ~23:00; total time at RC 12h30m.</p>
 <p>Worked on Stratic almost non-stop for literally the entirety of today (again). Started and (almost) finished <a href="https://github.com/strugee/stratic-indexes-to-rss">stratic-indexes-to-rss</a> and used the new feeds available on strugee.net to add myself to <a href="https://blaggregator.recurse.com">Blaggregator</a>. Took a quick poll on Zulip asking what the threshold was for there being so many repositories in a project that it warranted its own GitHub repo; instead of getting any replies, talked to <a href="https://stanzheng.com/">Stanley</a> in person who convinced me when he said, "what are the cons?" and I said, "good question! I dunno." Hence, founded the <a href="https://github.com/straticjs">straticjs</a> GitHub org. From there, did a huge push towards a <a href="https://github.com/straticjs/generator-stratic">generator-stratic</a> 1.0.0 release. It's very close - the core is done, but there are a lot of additional options that need to be added. I also can't release it before I fix up some TODOs currently in stratic-indexes-to-rss.</p>
 <p>Additionally, took about a half hour break midday to give some ideas to <a href="https://github.com/heatherbooker">Heather</a>, who is teaching a workshop on Git tomorrow, and took another half-hour or so to watch non-technical lighning talks around 17:30(?).</p>
-<h2>Day 6</h2>
+<h3 id="day-6">Day 6</h3>
 <p>Arrived ~11:00; departed ~21:50; total time at RC 10h50m.</p>
 <p>Spent a significant portion of the morning thinking about Zulip[1] design before and while filing <a href="https://github.com/zulip/zulip/issues/3235">this long bug</a> proposing some improvements to the way unread counts and notifications work. Also reviewed a couple <a href="https://prism-break.org/">PRISM Break</a> Pull Requests - I realize now I should've written about this on here (since it was <em>extrmemely</em> exciting to me!) but I'm now a comaintainer of PRISM Break. Thanks, <a href="https://github.com/nylira">@nylira</a>!</p>
 <p>Spent a little time polishing my <a href="https://strugee.net/presentation-security-design">security presentation</a> for tomorrow. At first I spent a lot of time trying to find a style I liked on my own, but eventually I just threw in the towel and used <a href="https://github.com/bespokejs/bespoke-theme-cube">bespoke-theme-cube</a> which is what I had always previously used (since it's what <a href="https://github.com/bespokejs/generator-bespoke">generator-bespoke</a> generates).</p>
 <p>Finally, spent some time working on pump.io. Filed a couple bugs on future improvements, notably one proposing that we add code to <a href="https://github.com/pump-io/pump.io/issues/1259">automagically manage Let's Encrypt certificates</a>, which I'm very excited about for several reasons. I also implemented <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security">HTTP Strict Transport Security</a> which is a huge win for the network's security. The absence of HSTS was also the last remaining issue preventing me from gaining an A+ on SSL Labs for <code>pump.strugee.net</code> since I stopped using a reverse proxy setup, so that feels good.</p>
 <p>Overall, I would say that this day was of average or slightly below average productivity. Also, while I got some useful stuff done, none of it was really related to RC (with the exception of the security presentation, thought that didn't take that much time).</p>
 <p> [1]: for non-Recursers, <a href="https://zulip.org/">Zulip</a> is a really excellent realtime chat tool that RC uses for communication.</p>
-<h2>Day 7</h2>
+<h3 id="day-7">Day 7</h3>
 <p>Arrived ~12:20, departed ~22:30, total time at RC 10h10m.</p>
 <p>Fixed a couple minor issues with my <a href="https://strugee.net/presentation-security-design">security presentation</a> before deploying it to strugee.net in preparation for my presentation. The talk itself went really well; my audience seemed to follow most of what I was presenting and I got some really good questions. As I stated at the beginning of the presentation, security is a <strong>huge</strong> topic, so really I looked at the list of subtopics and basically just picked one that I thought was interesting. There's a huge amount that I didn't cover so (partly) prompted by <a href="https://github.com/heatherbooker">Heather</a>, I'm now planning on doing weekly security presentations. Next week's will be on web application security and is already on the RC calendar.</p>
 <p>Presented <a href="https://github.com/straticjs/generator-stratic">Stratic</a> during the weekly Thursday 5-minute presentations. I got up and said, "I'm super nervous about this talk because it's literally <em>all live demos</em>" and the audience laughed. And sure enough, I'd forgotten to add a dependency, so my <code>gulp serve</code> demonstration failed. That was okay though, because I still got to show the really interesting bits, which is the Unixy design in the gulpfile.</p>
@@ -23,32 +83,48 @@
 <!-- TODO: fix this to use the real URL when it's up somewhere -->
 <p><img src="https://people.strugee.net/~alex/made_at_RC.svg" alt="&#x22;made at Recurse Center&#x22; GitHub-style badge"></p>
 <p>Whoohoo! \o/</p>
-<h2>Friday</h2>
+<h3 id="friday">Friday</h3>
 <p>Arrived ~13:15, departed ~10:20, total time at RC 7h5m. As always, Friday doesn't count as a day because RC is technically not in session.</p>
 <p>Had a very nice time walking to RC this morning which took about an hour because I kept stopping to take pictures - that felt really really good; it's been <em>way</em> too long since I've taken any and I missed it far more than I realized. Spent some time having a very nice discussion (both on Zulip and in real life) about different approaches to managing dotfiles in version control. Also spent some time discussing the design of git (particularly history rewriting, which I've <a href="/blog/2016/10/github-squash-and-merge-default-considered-harmful">previously written about</a>) and resolved that something I should work on at RC is getting experience with <a href="https://www.mercurial-scm.org/">Mercurial</a>. In between both of those I spent some time looking into where to put the badge that <a href="https://github.com/heatherbooker">Heather</a> and I made. Seems like the answer is <a href="https://swag.recurse.com/">swag.recurse.com</a> so I started looking at the project setup and plan to send some more PRs in the future.</p>
 <p>Throughout the day I also reported a couple minor <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1331117">Zulip</a> <a href="https://github.com/zulip/zulip/issues/3300">issues</a> as well as two Firefox bugs, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1331117">one of which</a> got marked as a duplicate and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1331121">one of which</a> is still UNCONFIRMED.</p>
-<h2>Executive summary</h2>
+<h3 id="executive-summary">Executive summary</h3>
 <p>Pretty productive week but could've been better. In particular I didn't do a good job of working on "RC projects" and instead spent too much time on existing personal projects, primarily Stratic and pump.io.</p>
 <p>Total time at RC 51 hours 50 minutes; cumulative time 93 hours 50 minutes (first week estimated).</p>
-]]></description><link>https://strugee.net/blog/2017/01/rc-week-2</link><guid isPermaLink="true">https://strugee.net/blog/2017/01/rc-week-2</guid><category><![CDATA[personal]]></category><category><![CDATA[blaggregator]]></category><pubDate>Sat, 14 Jan 2017 21:39:16 GMT</pubDate></item><item><title><![CDATA[RSS and pagination on stugee.net]]></title><description><![CDATA[<p>RSS and pagination are now enabled on strugee.net's blog, thanks to <a href="https://github.com/strugee/stratic-indexes-to-rss">stratic-indexes-to-rss</a> and <a href="https://github.com/strugee/stratic-paginate-indexes">stratic-paginate-indexes</a> respectively.</p>
-<p>The pagination code is already pretty solid although there's always room for <a href="https://github.com/strugee/stratic-paginate-indexes/issues">improvement</a> - thanks to <a href="https://github.com/atungare">Ajay Tungare</a> for pairing with me at the <a href="https://recurse.com">Recurse Center</a> and helping me catch the bug! However, I'm not particularly confident in the RSS code, since RSS is actually somewhat tricky to properly handle. Because of that, I would seriously appreciate it if people tried adding the RSS feeds to their readers and seeing if anything breaks. If so, <a href="https://github.com/strugee/stratic-indexes-to-rss/issues/new">let me know</a>!</p>
-<p>Cheers!</p>
-]]></description><link>https://strugee.net/blog/2017/01/rss-and-pagination-on-strugee.net</link><guid isPermaLink="true">https://strugee.net/blog/2017/01/rss-and-pagination-on-strugee.net</guid><category><![CDATA[development]]></category><category><![CDATA[blaggregator]]></category><pubDate>Tue, 10 Jan 2017 18:48:01 GMT</pubDate></item><item><title><![CDATA[New project! thanksmaintainer.com]]></title><description><![CDATA[<p>So I've been thinking about a new project recently. It's called thanksmaintainer.com, and it helps you say, "thanks, maintainer!"</p>
-<p>Basically this idea came about from <a href="https://github.com/gulpjs/gulp/issues/1806">this GitHub thread</a> where some user comes and disparages the Gulp project for being "not actively developed" and complains that it's taking a long time to release despite the fact that a) Gulp 4 <em>is</em> being actively developed and b) the Gulp maintainers owe this ungrateful, presumptive person <em>nothing</em>. As @contra <a href="https://github.com/gulpjs/gulp/issues/1806#issuecomment-247416856">says</a>:</p>
-<blockquote>
-<p>@rbatllet 4.0 is being worked - if you took more than five seconds to look you'd see it in other repos (for example: #1604). This repo has almost no code in it, it's a wrapper around the other modules so the contribution graph should be completely flat except for doc updates and major releases. We've responded to these tickets so many times - we have lives too.</p>
-<p>I've had to move across the country 3 times since the tweet you linked - had my business unexpectedly fail (startups!), had relationships fail, deaths, travel, poverty, etc. - where the fuck am I supposed to find time to work on this while I'm trying to pay rent and put food in my stomach? The attitude people have towards open source authors is disgusting - I don't owe you anything, nobody does. Unless you've done something for the open source community (hint: you haven't!) then you aren't entitled to shit. If you want something to happen then help make it happen, otherwise log off.</p>
-</blockquote>
-<p>I read this comment and thought, <em>that freaking <strong>sucks</strong></em>. I feel like there's a problem in the open source and freedom-respecting software community where consumers demand stuff from project maintainers like the maintainers <em>owe</em> them something or they <em>deserve</em> some feature/bugfix/etc. This is obviously complete and utter bullshit - most maintainers work on their projects in their spare time - and it can start to feel like maintaining a project is a waste of time because all you get from it is a drove of angry entitled haters.</p>
-<p>thanksmaintainer.com is designed to solve this problem. Here's how you use it; it's very simple:</p>
-<ol>
-<li>You visit thanksmaintainer.com</li>
-<li>You sign in with GitHub</li>
-<li>You find projects that you use and are grateful for</li>
-<li>You click the "thanks, maintainer!" button</li>
-</ol>
-<p>thanksmaintainer.com will keep track of all the good vibes people are sending towards projects. When it reaches a certain threshold, the website will (probably) find a way to contact the maintainers and let them know how many people's lives they've made better. Not sure how this last bit will work yet, or if it'll even work like that at all. But the core idea is there - hopefully it'll be an easy way to give some love back to maintainers who may really need it.</p>
-<p>Some design notes: it'll only work with GitHub to begin with, but eventually I hope to expand support to e.g. GitLab. Also, the fact that it's focused on projects and not maintainers is intentional - being thankful for a person instead of a project isn't as meaningful because you're not specifying why you're thankful. In contrast, the project-centric design lets you say, "these <em>particular</em> lines of code impacted my life in a meaningful way." Plus, a lot of projects have more than one maintainer, and it seems foolish to only thank <em>some</em> of the project maintainers, and not others.</p>
-<p>I would love to hear feedback on this idea. So, if you have any thoughts, <a href="/contact">get in touch</a> with me and let me know.</p>
-<p>Stay happy &#x3C;3</p>
-]]></description><link>https://strugee.net/blog/2017/01/new-project-thanksmaintainer.com</link><guid isPermaLink="true">https://strugee.net/blog/2017/01/new-project-thanksmaintainer.com</guid><category><![CDATA[development]]></category><category><![CDATA[blaggregator]]></category><pubDate>Tue, 10 Jan 2017 00:55:54 GMT</pubDate></item></channel></rss>
+</div>
+        </article>
+        <hr>
+        <p id="webmention-replies-header">WebMention replies</p>
+        <div id="webmentions"></div>
+        <noscript>
+          <p>Couldn't load WebMentions because you turned your JavaScript off. Sorry about that!</p>
+        </noscript>
+      </div>
+      <footer>
+        <p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a href="https://github.com/strugee/strugee.github.com">on GitHub</a>.</p>
+        <p>&copy; Copyright 2012-2017 Alex Jordan.</p>
+      </footer>
+      <!-- Piwik-->
+      <!-- Note that this Piwik instance is self-hosted and so doesn't leak metadata. Also, critically, it respects Do Not Track.-->
+      <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="//piwik.strugee.net/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
+      <noscript>
+        <p><img src="//piwik.strugee.net/piwik.php?idsite=1" style="border:0;" alt=""></p>
+      </noscript>
+      <!-- End Piwik Code-->
+      <div id="toys"><a id="lightbulb-icon" href="#">
+          <div class="icon-lightbulb"></div></a></div>
+      <script type="text/javascript" src="/js/main.js"></script>
+      <script type="text/javascript" src="/js/idl.js"></script>
+    </div>
+  </body>
+</html>
