@@ -53,7 +53,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Blog</h2>
-          <p id="postsFrom">Show only posts from <a href="/blog/1969/">1969</a> <a href="/blog/2014/">2014</a> <a href="/blog/2015/">2015</a> <a href="/blog/2016/">2016</a> <a href="/blog/2017/">2017</a> 
+          <p id="postsFrom">Show only posts from <a href="/blog/2014/">2014</a> <a href="/blog/2015/">2015</a> <a href="/blog/2016/">2016</a> <a href="/blog/2017/">2017</a> 
           </p>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2014/12/new-blog-new-site">
               <h2 class="p-name">New blog, new site!</h2></a>
@@ -81,34 +81,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>There hasn't been much activity in the repo because I'm using the <a href="https://github.com/strugee/strugee.github.com">strugee.github.com repository</a>, which still runs strugee.net even though I'm not on GitHub Pages anymore, as a testbed for Stratic. Once I've ironed out all the kinks, then I'll land all my work in the <a href="https://github.com/strugee/generator-stratic">generator-stratic repository</a>.</p>
 <p>I'm very tired, and I want to go to bed, but before I do I figure I should explain the format of this post. Yes, this is Stratic format. It's pure Markdown, but with some additional semantics that Stratic will use to build out the blog. I figure that not many people will use &#x3C;h1>s in their posts, so the Markdown equivalent (#) is used to distinguish the actual post text from what is essentially a header. I did something unusual, though, because even though the header is essentially for Stratic - who authored the post and when, what it's called, etc. - I wanted the Markdown to be at least somewhat readable in source form. Therefore, you're actually allowed to put anything you want in the header section. The values are distinguished by double quotation marks. Stratic will figure out what they mean based on their position. The first set of quotation marks contain the title, the second set contains the date, the third set contains the author, and the fourth set contains a comma-separated list of categories that the blog post should go in. The date looks a little weird - it's seconds since the epoch plus an optional UTC offset. It could be made more human-readable, but then you've got to parse stuff and it just turns into a nightmare. So I opted to sacrifice readability for elegance.</p>
 <p>So! This is a blog post without a blog. Soon, I'll finish up Stratic and this will no longer remain solely in source form. I'm excited! I've already rewritten strugee.net in Jade, and used the opportunity to refresh <a href="https://strugee.net/services">the services page</a>. Time to get crackin'.</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/1969/12/rethinking-web-identity">
-              <h2 class="p-name">Rethinking web identity</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/1969/12/">December</a> 31, <a href="/blog/1969/">1969</a> in <a href="/blog/category/musings/" class="p-category">musings</a>
-            </p>
-            <div class="e-content"><p>I've got some thoughts on how we can improve identity and security on the web. Because it kinda sucks in a lot of ways right now.</p>
-<h3>Current state of the web: passwords and cookies</h3>
-<p>First, we need to cover the way that authentication systems generally currently work on the web. If I'm designing a web application, typically each account is associated with a username and password stored in a database operated by the website owner. When users visit the site, they're assigned a session cookie - essentially a long random string that the server keeps track of and can associate information with however it pleases. When the user logs in, the server will associate the user's username with that session ID, and since the session ID is a cookie and is sent with every request to the server, the server can find out authentication information for any particular by looking up the username associated with the request's session ID.</p>
-<p>This is nice for a number of reasons:</p>
-<ol>
-<li>If the server wants to attach additional metadata to a particular user's session, it can simply associate that metadata with the user's session ID instead of e.g. setting an additional cookie on the client that then has to be sent with eevry request and can be manipulated by the user</li>
-<li>If a malicious actor gains access to a user's account, the user is able to deauthorize the attacker's session</li>
-</ol>
-<p>This is all pretty standard and well-known.</p>
-<h3>Why the current state sucks</h3>
-<p>Now, I said when I started that the current state of affairs kinda sucks in a lot of ways right now. The biggest reason by far is that it relies on passwords, which are (pardon my French) absolutely fucking terrible for SO many reasons:</p>
-<ol>
-<li>How easy they are to guess is often directly proportional to how easy they are to remember</li>
-<li>People often get password storage wrong - it's actually not terribly hard if you use somthing like <a href="">bcrypt</a>, but plenty of people don't know this, so they try to do it themselves (and <em>that</em> is actually quite hard, because you have to know about hashing, which hash function to use, iteration count, salting... the list goes on)</li>
-<li>Even if the user sets a strong password, passwords in general are more guessable than alternatives like cryptographic keys</li>
-<li>Password UX is inevitably terrible: websites all have different requirements which are sometimes even incompatible with good random password generators (mostly because they disallow special characters or set a length limit even though if the site's properly using bcrypt - which of course it may or may not be - length and special characters are non-issues)</li>
-<li>It's extremely common for users to reuse passwords across site which is a problem <a href="">much worse than weak passwords</a> and is only exacerbated by point #2 above</li>
-</ol>
-<p><a href="http://passwordless.org">passwordless.org</a> offers an alternative. Essentially, the user has to provide a time-based code from their phone. This code is only valid for a couple seconds and as such is very hard to guess, among other reasons. </p>
-<p> [bcrypt]:
-[reuse]:</p>
 </div>
           </article>
           <hr>
