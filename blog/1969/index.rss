@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[strugee.net blog - 1969]]></title><description><![CDATA[strugee.net blog - 1969]]></description><link>https://strugee.net/blog/1969</link><generator>stratic-indexes-to-rss</generator><lastBuildDate>Thu, 19 Jan 2017 04:46:54 GMT</lastBuildDate><atom:link href="https://strugee.net/blog/1969/index.rss" rel="self" type="application/rss+xml"/><copyright><![CDATA[© Copyright 2012-2017 Alex Jordan. Available under the GNU Affero GPL.]]></copyright><webMaster><![CDATA[Alex Jordan <alex@strugee.net>]]></webMaster><item><title><![CDATA[Rethinking web identity]]></title><description><![CDATA[<p>I've got some thoughts on how we can improve identity and security on the web. Because it kinda sucks in a lot of ways right now.</p>
+<h2>Current state of the web: passwords and cookies</h2>
+<p>First, we need to cover the way that authentication systems generally currently work on the web. If I'm designing a web application, typically each account is associated with a username and password stored in a database operated by the website owner. When users visit the site, they're assigned a session cookie - essentially a long random string that the server keeps track of and can associate information with however it pleases. When the user logs in, the server will associate the user's username with that session ID, and since the session ID is a cookie and is sent with every request to the server, the server can find out authentication information for any particular by looking up the username associated with the request's session ID.</p>
+<p>This is nice for a number of reasons:</p>
+<ol>
+<li>If the server wants to attach additional metadata to a particular user's session, it can simply associate that metadata with the user's session ID instead of e.g. setting an additional cookie on the client that then has to be sent with eevry request and can be manipulated by the user</li>
+<li>If a malicious actor gains access to a user's account, the user is able to deauthorize the attacker's session</li>
+</ol>
+<p>This is all pretty standard and well-known.</p>
+<h2>Why the current state sucks</h2>
+<p>Now, I said when I started that the current state of affairs kinda sucks in a lot of ways right now. The biggest reason by far is that it relies on passwords, which are (pardon my French) absolutely fucking terrible for SO many reasons:</p>
+<ol>
+<li>How easy they are to guess is often directly proportional to how easy they are to remember</li>
+<li>People often get password storage wrong - it's actually not terribly hard if you use somthing like <a href="">bcrypt</a>, but plenty of people don't know this, so they try to do it themselves (and <em>that</em> is actually quite hard, because you have to know about hashing, which hash function to use, iteration count, salting... the list goes on)</li>
+<li>Even if the user sets a strong password, passwords in general are more guessable than alternatives like cryptographic keys</li>
+<li>Password UX is inevitably terrible: websites all have different requirements which are sometimes even incompatible with good random password generators (mostly because they disallow special characters or set a length limit even though if the site's properly using bcrypt - which of course it may or may not be - length and special characters are non-issues)</li>
+<li>It's extremely common for users to reuse passwords across site which is a problem <a href="">much worse than weak passwords</a> and is only exacerbated by point #2 above</li>
+</ol>
+<p><a href="http://passwordless.org">passwordless.org</a> offers an alternative. Essentially, the user has to provide a time-based code from their phone. This code is only valid for a couple seconds and as such is very hard to guess, among other reasons. </p>
+<p> [bcrypt]:
+[reuse]:</p>
+]]></description><link>https://strugee.net/blog/1969/12/rethinking-web-identity</link><guid isPermaLink="true">https://strugee.net/blog/1969/12/rethinking-web-identity</guid><category><![CDATA[musings]]></category><category><![CDATA[blaggregator]]></category><pubDate>Thu, 01 Jan 1970 00:00:00 GMT</pubDate></item></channel></rss>

@@ -65,6 +65,34 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 </div>
           </article>
           <hr>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/1969/12/rethinking-web-identity">
+              <h2 class="p-name">Rethinking web identity</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/1969/12/">December</a> 31, <a href="/blog/1969/">1969</a> in <a href="/blog/category/musings/" class="p-category">musings</a>
+            </p>
+            <div class="e-content"><p>I've got some thoughts on how we can improve identity and security on the web. Because it kinda sucks in a lot of ways right now.</p>
+<h3>Current state of the web: passwords and cookies</h3>
+<p>First, we need to cover the way that authentication systems generally currently work on the web. If I'm designing a web application, typically each account is associated with a username and password stored in a database operated by the website owner. When users visit the site, they're assigned a session cookie - essentially a long random string that the server keeps track of and can associate information with however it pleases. When the user logs in, the server will associate the user's username with that session ID, and since the session ID is a cookie and is sent with every request to the server, the server can find out authentication information for any particular by looking up the username associated with the request's session ID.</p>
+<p>This is nice for a number of reasons:</p>
+<ol>
+<li>If the server wants to attach additional metadata to a particular user's session, it can simply associate that metadata with the user's session ID instead of e.g. setting an additional cookie on the client that then has to be sent with eevry request and can be manipulated by the user</li>
+<li>If a malicious actor gains access to a user's account, the user is able to deauthorize the attacker's session</li>
+</ol>
+<p>This is all pretty standard and well-known.</p>
+<h3>Why the current state sucks</h3>
+<p>Now, I said when I started that the current state of affairs kinda sucks in a lot of ways right now. The biggest reason by far is that it relies on passwords, which are (pardon my French) absolutely fucking terrible for SO many reasons:</p>
+<ol>
+<li>How easy they are to guess is often directly proportional to how easy they are to remember</li>
+<li>People often get password storage wrong - it's actually not terribly hard if you use somthing like <a href="">bcrypt</a>, but plenty of people don't know this, so they try to do it themselves (and <em>that</em> is actually quite hard, because you have to know about hashing, which hash function to use, iteration count, salting... the list goes on)</li>
+<li>Even if the user sets a strong password, passwords in general are more guessable than alternatives like cryptographic keys</li>
+<li>Password UX is inevitably terrible: websites all have different requirements which are sometimes even incompatible with good random password generators (mostly because they disallow special characters or set a length limit even though if the site's properly using bcrypt - which of course it may or may not be - length and special characters are non-issues)</li>
+<li>It's extremely common for users to reuse passwords across site which is a problem <a href="">much worse than weak passwords</a> and is only exacerbated by point #2 above</li>
+</ol>
+<p><a href="http://passwordless.org">passwordless.org</a> offers an alternative. Essentially, the user has to provide a time-based code from their phone. This code is only valid for a couple seconds and as such is very hard to guess, among other reasons. </p>
+<p> [bcrypt]:
+[reuse]:</p>
+</div>
+          </article>
+          <hr>
           <div id="pages-footer">
             <p><a href="../..">←</a> ⋅ Page 2 out of 2 ⋅ <span class="disabled-arrow">→</span></p>
           </div>
