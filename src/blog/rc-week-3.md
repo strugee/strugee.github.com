@@ -88,3 +88,6 @@ Total time at RC 45 hours 25 minutes; cumulative time 141 hours 15 minutes.
  [asf]: https://github.com/asinghamgoodwin/AbstractSaladFactory
  [thefuck]: https://github.com/nvbn/thefuck
  [underhanded]: https://github.com/ayust/underhanded
+ [mixedcontent]: https://w3c.github.io/webappsec-mixed-content/#strict-opt-in
+ [patch release]: https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#211---2017-01-18
+ [datadir]: https://github.com/pump-io/pump.io/pull/1272
