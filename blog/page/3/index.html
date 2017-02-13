@@ -55,6 +55,65 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h2 class="p-name">Blog</h2>
           <p id="postsFrom">Show only posts from <a href="/blog/2014/">2014</a> <a href="/blog/2015/">2015</a> <a href="/blog/2016/">2016</a> <a href="/blog/2017/">2017</a> 
           </p>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/11/pump.io-2.0.1-is-available">
+              <h2 class="p-name">Pump.io 2.0.4 is available</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/11/">November</a> 12, <a href="/blog/2016/">2016</a> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
+            </p>
+            <div class="e-content"><p>Greetings!</p>
+<p>After a beta period of just over a week, pump.io 2.0.4 is now available on npm and GitHub. Whoohoo!</p>
+<p>(This was originally going to be 2.0.0, but we had to do a couple patch releases due to some outdated documentation and several critical bugs. 2.0.4 is mostly the same thing as 2.0.0.)</p>
+<h3>Changes</h3>
+<p>Note that this release includes security improvements - namely, a newer Express version and a better TLS configuration - and therefore <strong>admins are encouraged to upgrade ASAP</strong>.</p>
+<p>For the full list of changes, see <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#201---2016-11-10">the change log</a>.</p>
+<h4>Breaking changes</h4>
+<p>(As I said in <a href="">the beta announcement</a>:)</p>
+<p>Pump.io 2.0.4 is a drop-in replacement for 1.0.0 <strong>unless</strong> you have any plugins configured or you modify the templates.</p>
+<p>Plugins are likely to be affected by the upgrade to Express 3.x. The easiest way to migrate is probably to just run pump.io, test out the relevant parts of the app, and see where your plugin crashes. You might also want to look at the <a href="https://github.com/expressjs/express/blob/master/History.md#300--2012-10-23">Express 3 change log</a>.</p>
+<p>If you modified the templates, you'll be affected by the templates' rewrite from utml into Jade. Migration should be relatively painless but has to be done manually. Your best bet will be to save a copy of the diff you created, undo your changes, upgrade, then use the diff you saved to reintroduce your changes. You'll have to run <code>npm run build</code> after making changes to Jade files.</p>
+<h4>Non-breaking changes</h4>
+<p>This release is actually relatively minor in terms of non-breaking changes; however, we <em>do</em> have some nice new improvements:</p>
+<ul>
+<li>A pump(1) manpage is now included</li>
+<li>Any internal web UI link with a <code>data-bypass</code> attribute is now ignored by the routing logic (useful for e.g. custom pages added by the admin)</li>
+<li>YouTube links in posts are now shown as  embeds by the web UI (<a href="https://github.com/expressjs/express/blob/master/History.md#300--2012-10-23">#1158</a>)</li>
+<li>TLS connections now use Mozilla's "intermediate" cipher suite and forces server cipher suite preferences (<a href="https://github.com/pump-io/pump.io/issues/1061">#1061</a>)</li>
+<li>Various minor fixes and improvements</li>
+</ul>
+<h3>Upgrading</h3>
+<p>Upgrading is dead-simple. If you used our recommended install method, and installed from npm, you can upgrade with:</p>
+<pre><code>sudo npm install -g pump.io@2
+</code></pre>
+<p>If you installed from source, you can upgrade with:</p>
+<pre><code>git fetch
+# If you modified templates, save the diff at this step
+git checkout .
+git checkout v2.0.4
+npm install
+# Restore your template changes
+npm run lint:jade # Optional but recommended if you changed templates
+npm run build
+</code></pre>
+<p>Both of these methods will work whether you're running 0.3.0, 1.0.0, or 2.0.0 beta. Make sure to restart pump.io after performing the upgrade.</p>
+<h3>Getting help</h3>
+<p>If you have any issues with the upgrade, get in touch with <a href="https://github.com/pump-io/pump.io/wiki/Community">the community</a>. You can also email me at <a href="mailto:alex@strugee.net">alex@strugee.net</a>.</p>
+</div>
+          </article>
+          <hr>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/11/free-software-phrasing-considered-harmful">
+              <h2 class="p-name">'Free software' phrasing considered harmful</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/11/">November</a> 9, <a href="/blog/2016/">2016</a> in <a href="/blog/category/musings/" class="p-category">musings</a>
+            </p>
+            <div class="e-content"><p>For a while now I've been avoiding using the term "free software."</p>
+<p>Why? It's just plain confusing to people. I know Richard Stallman will tell you that it means freedom, not gratis. <em>It doesn't matter</em>. It's still ambiguous and needlessly conflates two different concepts.</p>
+<p>Instead of "free software," I propose "freedom-respecting software" as a replacement. This phrasing is not only unambigous, it also does a much more effective job of communicating the general meaning of the term without further explanation. (Of course you'll probably still need to explain it, but you'll have to spend a lot less time doing so.) The one problem with this phrasing is that it's longer, but even that doesn't hold water - because of the aformentioned problems with "free software," people actually don't say "free software" all that much; instead, they say "free (as in freedom) software" which is unambiguous, but awkward on multiple levels. Not only is it a less eloquent way of describing the concept, but gramatically speaking it's really terrible as it puts a parenthetical qualifier in-between an adjective and a noun, which just sounds <em>terrible</em> and unnatural. Seriously, say both of them out loud. "Freedom-respecting software" and "free (as in freedom) software" - which one sounds like less of a mouthful?</p>
+<p>Hence, I think "free software" as a term should be considered harmful, and replaced with "freedom-respecting software" instead.</p>
+<p><em>Edit 0:58 10/10/16:</em></p>
+<p>Another advantage of "freedom-respecting software" is that it's still closely related to the old term, allowing for a much easier pivot. Consider "libre software" which AFAICT had the same goals as this proposal but never really took off - in part, I think, because it sounds very different from an already-established term. (Another way of putting this is that it's conceptually an improvement to an existing term instead of being something <em>brand-new</em>, and therefore all existing associations will carry over with far more ease.)</p>
+<p>I'd also point out that the problem of ambiguity is more serious than I've said above. First of all, generally speaking I'm suspicious of any proposal or argument that begins or ends with "we just need to educate people more." Education is an important part of the freedom-respecting software movement - remember, that movement is by and for the people - but I think that argument is too frequently simply an excuse for a poor initial design. (Security, I'm looking at you.) Second, such an ambiguity also muddles our search results. When people search for "free software" they <em>do</em> get our stuff (a fact that I was pleasantly surprised by!) but they also get loads and loads of pages for gratis Windows crapware. That's unideal and it is unlikely to change, ever. Even if people <em>were</em> able to readily grasp the distinction between freedom and gratis that we're pitching, we will never, ever have enough influence on the language people use to get them to <em>stop</em> using "free" to mean gratis - which means that Google will continue showing gratis crapware as "free software."</p>
+<p>Finally, as <a href="https://github.com/nylira/prism-break/issues/1601">pointed out</a> by some excellent PRISM Break contributors, me writing this blog post and then talking about it occasionally is a <em>far</em> dumber idea than directly contacting the FSF, which I now intend to do Real Soon Now™.</p>
+</div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/11/pump.io-2.0.0-beta-is-here">
               <h2 class="p-name">Pump.io 2.0.0 beta is here</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/11/">November</a> 2, <a href="/blog/2016/">2016</a> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
@@ -122,64 +181,8 @@ npm run build
 </div>
           </article>
           <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/10/android-freedom">
-              <h2 class="p-name">Android freedom</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/10/">October</a> 17, <a href="/blog/2016/">2016</a> in <a href="/blog/category/musings/" class="p-category">musings</a>
-            </p>
-            <div class="e-content"><p>Recently I backed up and restored both my Android phone and my Android tablet. There were a couple reasons for both of these. The tablet had been borked for quite a long time (any time I tried to upgrade it from the Android 5.0 build it was running, it failed - also the thing just froze randomly). The phone was on the CyanogenMod nightly channel and I wanted to switch to the snapshot channel, plus within the past couple days both WiFi and the cell network data connection straight up stopped working so it was pretty unusable. At first I wanted to switch to <a href="https://copperhead.co/android/">CopperheadOS</a> on both devices. CopperheadOS doesn't support GApps and will probably never support GApps (for very good reasons), and I said, maybe I can make it work. Sadly, I couldn't - I still regrettably need stuff from the Google Play Store. (The tablet ended up back on stock because I want fast upgrades, and the phone ended up on CyanogenMod because they have the fastest upgrades while still offering root.)</p>
-<p>The whole experience made me think, though - what would it take to create something that functioned like GApps, but respected your freedom? I'm sure some people reading are already scrambling to link me to their favorite Google Play Services reimplementation, but this isn't the only thing that's in GApps. You gotta think about the user experience, too. Such a system should be able to:</p>
-<ul>
-<li>Provide the nice APIs that Google Play Services does</li>
-<li>Store your photos in the cloud, like Google Photos</li>
-<li>Related to the above, automatically backup and restore apps and their data</li>
-<li>Transfer from other devices, similar to the above item</li>
-<li>Support functionality like Google Now</li>
-<li>Ditto for Google Assistant</li>
-<li>Integrate into the initial device setup to configure all this stuff</li>
-</ul>
-<p>I'm sure there are more that I've missed.</p>
-<p>Honestly, we're actually quite close to this. The first bullet can be mostly accomplished with something like <a href="https://microg.org/">microG</a>. Automatic backup and photo storage needs a UI, but fundamentally can be accomplished with any generic WebDAV implementation. F-Droid can be used as the app store. Imagine this: you take a bunch of photos and install a bunch of freedom-respecting apps on your phone. Then, you get a new one. When you set it up, the phone prompts you to sign in to your WebDAV account (which could be e.g. ownCloud, or a WebDAV implementation on <a href="https://sandstorm.io/">Sandstorm</a>) and then automatically reinstalls all your apps from F-Droid, as well as retrieving their data from ownCloud. When you open the built-in gallery app, all your photos are already there because they're seamlessly backed up to the cloud. <em>Your</em> cloud. Transfer can be accomplished in a lot of ways, but I can easily see it building on the above.</p>
-<p>Supporting something like Google Now is non-trivial, but I've even already proposed <a href="https://github.com/cantino/huginn/issues/1583">a feature for Huginn</a> that would make this possible. Google Assistant would be very, very difficult, but even without that, we'd have come a long way.</p>
-<p>This reality is not that far off. What's missing is some UI pieces and a nice ZIP that can be flashed on top of ROMs, similar to how GApps are flashed today. So who's going to put it all together?</p>
-<p>(I suppose I've just volunteered myself - oh well... I'll just add it to my endless list of projects.)</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/08/pump.io-1.0.0-is-now-available">
-              <h2 class="p-name">Pump.io 1.0.0 is now available</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2016/08/">August</a> 27, <a href="/blog/2016/">2016</a> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
-            </p>
-            <div class="e-content"><p><a href="https://github.com/e14n/pump.io/releases/tag/v1.0.0">Pump.io 1.0.0</a> is officially available! Whoooo!</p>
-<p>I just wanted to write up an announcement real quick to celebrate. Here's a sample what's gone into this release:</p>
-<ul>
-<li>Node 4.x support</li>
-<li>Lots of security improvements including a better cross-site scripting scrubber and security-related headers that help protect the web UI (most notably, the web UI now declares a Content Security Policy)</li>
-<li>Minor improvements to the API to make it (slightly) smarter</li>
-<li><a href="https://www.gnu.org/software/librejs/">LibreJS</a> support</li>
-<li>Numerous dependency upgrades, most notably Connect</li>
-<li>And of course, tons of minor bugfixes and improvements</li>
-</ul>
-<p>For more details, see the brand-new <a href="https://github.com/e14n/pump.io/blob/master/CHANGELOG.md#100---2016-08-26">change log</a>.</p>
-<p>And of course since we're now past 0.x.x releases, we're now officially making a commitment to the community to make only API-compatible changes going forward (or at least, until 2.0.0!).</p>
-<p>As this release <em>does</em> improve security and fixes a lot of bugs, node administrators are encouraged to upgrade as soon as possible. If you have a global, npm-based install, you can upgrade with:</p>
-<pre><code>sudo npm install -g pump.io
-</code></pre>
-<p>And with a source-based install:</p>
-<pre><code>git pull
-git checkout v1.0.0
-npm install --production
-</code></pre>
-<p>If you're upgrading from 0.3.0, everything should Just Work(tm). Don't forget to restart your daemon!</p>
-<p>One final note - the rumors are true. While we're not doing so <em>yet</em>, we are, in fact, planning to deprecate running under Node.js 0.10 and 0.12 very soon. Also, if you upgrade to Node.js 4.x early, the new, better XSS scrubber will be enabled - <em>however</em>, be aware that pump.io is far less tested under Node.js 4.x and you are likely to run into more bugs than you would under 0.10 or 0.12. This is an unfortunate situation, but sadly there's really nothing to be done about it. :(</p>
-<p>Special thanks to Menno Vossen, Laura Arjona, Evan Prodromou, Jan Kusanagi and all the other volunteers who did so many different things to make this release happen. It truly wouldn't have happened without you.</p>
-<p>Enjoy the release!</p>
-<p>With &#x3C;3,</p>
-<p>AJ</p>
-</div>
-          </article>
-          <hr>
           <div id="pages-footer">
-            <p><a href="../2">←</a> ⋅ Page 3 out of 5 ⋅ <a href="../4">→</a></p>
+            <p><a href="../2">←</a> ⋅ Page 3 out of 6 ⋅ <a href="../4">→</a></p>
           </div>
         </div>
       </div>
