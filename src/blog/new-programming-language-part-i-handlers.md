@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "New programming language part I: Handlers" on "1485446360 UTC-5" by "Alex Jordan", and was categorized as "personal,blaggregator".
-
-# Post text
+---
+title: "New programming language part I: Handlers"
+time:
+  epoch: 1485446360
+  utcoffset: "UTC-5"
+author: "Alex Jordan"
+categories:
+  - personal
+  - blaggregator
+---
 
 So my latest project at the [Recurse Center][] is a new programming language, as yet unnamed. Basically this was inspired by my [security design][] presentation in which I laid out a couple ways you can improve programs' security designs, like process separation. And it occurred to me: why is this so difficult? Something should be doing this for me. Enter... whatever the hell I end up calling my language.
 

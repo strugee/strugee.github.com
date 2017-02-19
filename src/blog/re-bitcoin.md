@@ -1,8 +1,12 @@
-# Post information
-
-This post was published as "Re: Bitcoin, Magical Thinking, and Political Ideology" at "1462990680 UTC-8" by "Alex Jordan", and was categorized as "musings".
-
-# Post text
+---
+title: "Re: Bitcoin, Magical Thinking, and Political Ideology"
+time:
+  epoch: 1462990680
+  utcoffset: "UTC-8"
+author: "Alex Jordan"
+categories:
+  - musings
+---
 
 _Editorial note: I published this almost three years ago on my Tumblr, which I keep semi-private and so don't want to link to. This is a verbatim repost from there, despite the fact that I disagree with some portions of this text nowadays._
 

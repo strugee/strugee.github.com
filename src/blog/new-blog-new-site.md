@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "New blog, new site!" at "1419680682 UTC-8" by "Alex Jordan", and was categorized as "development, personal".
-
-# Post text
+---
+title: "New blog, new site!"
+time:
+  epoch: 1419680682
+  utcoffset: "UTC-8"
+author: "Alex Jordan"
+categories:
+  - development
+  - personal
+---
 
 I'm back! Sort of. Very sort of.
 

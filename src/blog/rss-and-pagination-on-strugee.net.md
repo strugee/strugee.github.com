@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "RSS and pagination on strugee.net" at "1484074081 UTC-5" by "Alex Jordan", and was categorized as "development,blaggregator".
-
-# Post text
+---
+title: "RSS and pagination on strugee.net"
+time:
+  epoch: 1484074081
+  utcoffset: "UTC-5"
+author: "Alex Jordan"
+categories:
+  - development
+  - blaggregator
+---
 
 RSS and pagination are now enabled on strugee.net's blog, thanks to [stratic-indexes-to-rss][] and [stratic-paginate-indexes][] respectively.
 

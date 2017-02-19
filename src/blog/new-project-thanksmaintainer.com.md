@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "New project! thanksmaintainer.com" at "1484009754 UTC-5" by "Alex Jordan", and was categorized as "development,blaggregator".
-
-# Post text
+---
+title: "New project! thanksmaintainer.com"
+time:
+  epoch: 1484009754
+  utcoffset: "UTC-5"
+author: "Alex Jordan"
+categories:
+  - development
+  - blaggregator
+---
 
 So I've been thinking about a new project recently. It's called thanksmaintainer.com, and it helps you say, "thanks, maintainer!"
 

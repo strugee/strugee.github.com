@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "Pump.io 1.0.0 is now available" at "1472279874 UTC-7" by "Alex Jordan", and was categorized as "development,pump.io".
-
-# Post text
+---
+title: "Pump.io 1.0.0 is now available!"
+time:
+  epoch: 1472279874
+  utcoffset: "UTC-7"
+author: "Alex Jordan"
+categories:
+  - development
+  - pump.io
+---
 
 [Pump.io 1.0.0][1] is officially available! Whoooo!
 

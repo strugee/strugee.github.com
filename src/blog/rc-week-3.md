@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "RC week 3" on "1485200304 UTC-5" by "Alex Jordan", and was categorized as "personal,blaggregator".
-
-# Post text
+---
+title: "RC week 3"
+time:
+  epoch: 1485200304
+  utcoffset: "UTC-5"
+author: "Alex Jordan"
+categories:
+  - personal
+  - blaggregator
+---
 
 This is week 3 of being at the [Recurse Center][]. 
 

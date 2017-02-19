@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "Gender representation at RC" on "1487109679 UTC-5" by "Alex Jordan", and was categorized as "personal,blaggregator".
-
-# Post text
+---
+title: "Gender representation at RC"
+time:
+  epoch: 1487109679
+  utcoffset: "UTC-5"
+author: "Alex Jordan"
+categories:
+  - personal
+  - blaggregator
+---
 
 So I want to talk (real quick) about gender representation in tech. Specifically, the fact that it's abysmal. Women\[1] usually account for, at most, [30% of the employees in a company][stats] and that number is often much lower. Even at the companies where it's 30%, that number is misleading because it doesn't adress management positions which are often much lower. (For reference, women accounted for about 59% of the overall workforce as of 2015, when the article I pulled those numbers from was published.) [Here's an article][leave] that says that on average, women leave the industry within 7 years of being in it. Let me repeat that, because I didn't say they leave their jobs, or take a break. They completely leave the _entire technology industry_. And unfortunately it makes sense, since incidents of sexism in tech are [rampant][indicents].
 

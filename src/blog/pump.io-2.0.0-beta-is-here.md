@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "Pump.io 2.0.0 beta is here" at "1478142359 UTC-7" by "Alex Jordan", and was categorized as "development,pump.io".
-
-# Post text
+---
+title: "Pump.io 2.0.0 beta is here"
+time:
+  epoch: 1478142359
+  utcoffset: "UTC-7"
+author: "Alex Jordan"
+categories:
+  - development
+  - pump.io
+---
 
 Greetings!
 

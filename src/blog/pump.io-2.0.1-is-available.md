@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "Pump.io 2.0.4 is available" at "1478936954 UTC-8" by "Alex Jordan", and was categorized as "development,pump.io".
-
-# Post text
+---
+title: "Pump.io 2.0.4 is available"
+time:
+  epoch: 1478936954
+  utcoffset: "UTC-8"
+author: "Alex Jordan"
+categories:
+  - development
+  - pump.io
+---
 
 Greetings!
 

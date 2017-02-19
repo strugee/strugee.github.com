@@ -1,8 +1,12 @@
-# Post information
-
-This post was published as "Android freedom" at "1476758443 UTC-7" by "Alex Jordan", and was categorized as "musings".
-
-# Post text
+---
+title: "Android freedom"
+time:
+  epoch: 1476758443
+  utcoffset: "UTC-7"
+author: "Alex Jordan"
+categories:
+  - musings
+---
 
 Recently I backed up and restored both my Android phone and my Android tablet. There were a couple reasons for both of these. The tablet had been borked for quite a long time (any time I tried to upgrade it from the Android 5.0 build it was running, it failed - also the thing just froze randomly). The phone was on the CyanogenMod nightly channel and I wanted to switch to the snapshot channel, plus within the past couple days both WiFi and the cell network data connection straight up stopped working so it was pretty unusable. At first I wanted to switch to [CopperheadOS][1] on both devices. CopperheadOS doesn't support GApps and will probably never support GApps (for very good reasons), and I said, maybe I can make it work. Sadly, I couldn't - I still regrettably need stuff from the Google Play Store. (The tablet ended up back on stock because I want fast upgrades, and the phone ended up on CyanogenMod because they have the fastest upgrades while still offering root.)
 

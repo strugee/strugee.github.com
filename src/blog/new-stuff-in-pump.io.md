@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "New stuff in pump.io" at "1470633992 UTC-4" by "Alex Jordan", and was categorized as "development,pump.io".
-
-# Post text
+---
+title: "New stuff in pump.io"
+time:
+  epoch: 1470633992
+  utcoffset: "UTC-4"
+author: "Alex Jordan"
+categories:
+  - development
+  - pump.io
+---
 
 So I promised [a (long) while ago][1] that I'd blog about all the stuff going on in [pump.io][2]. And there is a _lot_ going on. Where to even begin?
 

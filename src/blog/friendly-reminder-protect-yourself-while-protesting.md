@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "Friendly reminder: protect yourself while protesting" at "1479431831 UTC-8" by "Alex Jordan", and was categorized as "politics,privacy".
-
-# Post text
+---
+title: "Friendly reminder: protect yourself while protesting"
+time:
+  epoch: 1479431831
+  utcoffset: "UTC-8"
+author: "Alex Jordan"
+categories:
+  - politics
+  - privacy
+---
 
 In light of the recent protests against Donald Trump's nomination, I wanted to write up some tips for people going out and protesting on how to protect themselves from retribution, both physical and legal. These guidelines are especially critical given the almost unfettered power the federal government and (through the federal government) local governments have to surveil citizens exercising their constitutional right to free assembly.
 

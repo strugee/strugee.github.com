@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "Where we're headed (a.k.a. I'm worried)" at "1482482615 UTC-7" by "Alex Jordan", and was categorized as "musings,politics".
-
-# Post text
+---
+title: "Where we're headed (a.k.a. I'm worried)"
+time:
+  epoch: 1482482615
+  utcoffset: "UTC-7"
+author: "Alex Jordan"
+categories:
+  - musings
+  - politics
+---
 
 (These are some thoughts I've had after reading [To Combat Trump, Democrats Ready a G.O.P. Tactic: Lawsuits][1] in the New York Times.)
 

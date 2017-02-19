@@ -1,8 +1,12 @@
-# Post information
-
-This post was published as "Revisiting my Tor relay" at "1441413269 UTC-8" by "Alex Jordan", and was categorized as "sysadmin".
-
-# Post text
+---
+title: "Revisiting my Tor relay"
+time:
+  epoch: 1441413269
+  utcoffset: "UTC-8"
+author: "Alex Jordan"
+categories:
+  - sysadmin
+---
 
 (Okay, so I _miserably_ failed my blog-every-day thing. Shut up. Maybe next time I'll try every week or something... anyway.)
 

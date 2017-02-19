@@ -1,8 +1,14 @@
-# Post information
-
-This post was published as "Surveillance priorities" at "1485208527 UTC-5" by "Alex Jordan", and was categorized as "politics,privacy,musings".
-
-# Post text
+---
+title: "Surveillance priorities"
+time:
+  epoch: 1485208527
+  utcoffset: "UTC-5"
+author: "Alex Jordan"
+categories:
+  - politics
+  - privacy
+  - musings
+---
 
 For several years now I've been really interested in technology policy - things like security, privacy and censorship, and especially how those things relate to both mass surveillance and freedom-respecting software. That's why I follow organizations like Fight for the Future and the EFF, and why I e.g. participated in the movement to stop SOPA and PIPA, the internet censorship bills.
 

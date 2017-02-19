@@ -1,8 +1,12 @@
-# Post information
-
-This post was published as "Work on strugee.net" at "1465878614 UTC-8" by "Alex Jordan", and was categorized as "development".
-
-# Post text
+---
+title: "Work on strugee.net"
+time:
+  epoch: 1465878614
+  utcoffset: "UTC-8"
+author: "Alex Jordan"
+categories:
+  - development
+---
 
 I realized I forgot to blog about all the work I've done on the `strugee.net` build code recently! I want to get back to working on Stratic part two (aka pretty indexes), but I thought I'd really quickly take the time to point out what's been done.
 

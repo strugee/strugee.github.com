@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "Programming as an art form" at "1447042658 UTC-8" by "Alex Jordan", and was categorized as "development, musings".
-
-# Post text
+---
+title: "Programming as an art form"
+time:
+  epoch: 1447042658
+  utcoffset: "UTC-8"
+author: "Alex Jordan"
+categories:
+  - development
+  - musings
+---
 
 The other day I described programming to someone. I pointed out that it's actually pretty easy to teach yourself programming languages, especially since after a while you start to carry over concepts from other languages. But what surprised me most about _my own explanation_(!) was when I compared programming to art: it's the kind of thing where you can just try stuff out and see what works and what doesn't, with no real consequences.
 

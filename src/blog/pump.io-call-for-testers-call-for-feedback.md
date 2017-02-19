@@ -1,8 +1,13 @@
-# Post information
-
-This post was published as "Pump.io: call for testers, call for feedback" at "1470850536 UTC-4" by "Alex Jordan", and was categorized as "development,pump.io".
-
-# Post text
+---
+title: "Pump.io: call for testers, call for feedback"
+time:
+  epoch: 1470850536
+  utcoffset: "UTC-4"
+author: "Alex Jordan"
+categories:
+  - development
+  - pump.io
+---
 
 So in my [last post][1], I mentioned that I'd left a couple things for a second blog post. This is that post, and instead of being about all the cool stuff going on in the pumpiverse, it's about stuff that you - yes, _you_! - can do! It's super easy too.
 

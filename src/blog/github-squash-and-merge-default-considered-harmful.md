@@ -1,8 +1,12 @@
-# Post information
-
-This post was published as "GitHub's 'squash and merge' default considered harmful" at "1476924018 UTC-7" by "Alex Jordan", and was categorized as "musings".
-
-# Post text
+---
+title: "GitHub's 'squash and merge' default considered harmful"
+time:
+  epoch: 1476924018
+  utcoffset: "UTC-7"
+author: "Alex Jordan"
+categories:
+  - musings
+---
 
 Recently GitHub launched two new ways to merge Pull Requests: "rebase and merge" and "squash and merge". That means that projects now have three ways to merge PRs:
 

@@ -1,8 +1,12 @@
-# Post information
-
-This post was published as "Stratic part one is done!" at "1464473378 UTC-8" by "Alex Jordan", and was categorized as "development".
-
-# Post text
+---
+title: "Stratic part one is done!"
+time:
+  epoch: 1464473378
+  utcoffset: "UTC-8"
+author: "Alex Jordan"
+categories:
+  - development
+---
 
 Whooooooooooo!
 

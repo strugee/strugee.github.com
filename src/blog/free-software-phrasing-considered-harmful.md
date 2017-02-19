@@ -1,8 +1,12 @@
-# Post information
-
-This post was published as "'Free software' phrasing considered harmful" at "1478729892 UTC-8" by "Alex Jordan", and was categorized as "musings".
-
-# Post text
+---
+title: "'Free software' phrasing considered harmful"
+time:
+  epoch: 1478729892
+  utcoffset: "UTC-8"
+author: "Alex Jordan"
+categories:
+  - musings
+---
 
 For a while now I've been avoiding using the term "free software."
 

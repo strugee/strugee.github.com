@@ -1,8 +1,12 @@
-# Post information
-
-This post was published as "2 lbs of stickers" at "1434272547 UTC-8" by "Alex Jordan", and was categorized as "personal".
-
-# Post text
+---
+title: "2 lbs of stickers"
+time:
+  epoch: 1434272547
+  utcoffset: "UTC-8"
+author: "Alex Jordan"
+categories:
+  - personal
+---
 
 ## First things first
 
