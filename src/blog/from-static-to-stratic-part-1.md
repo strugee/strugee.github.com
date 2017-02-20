@@ -18,7 +18,7 @@ Let's get started!
 
 ## Initial setup
 
-The site we'll be converting is currently pretty simple. It has an `index.html` and a `projects.html`. Each of these includes `/css/main.css` and `/js/main.js`. Also, they both have a navigation section and a footer that are duplicated across each page. Each time Alyssa P. Hacker - the website's owner - makes a change to these, she has to change both HTML files. The best way for her to add a new page will be to copy an existing HTML file and then change it. This is a little unideal.
+The site we'll be converting is currently pretty simple. It has an `index.html` and a `projects.html`. Each of these includes `/css/main.css` and `/js/main.js`. Also, they both have a navigation section and a footer that are duplicated across each page. Each time Alyssa P. Hacker - the website's owner - makes a change to these (for example to fix the copyright year in the footer), she has to change both HTML files. The best way for her to add a new page will be to copy an existing HTML file and then change it. This is a little unideal.
 
 Here's a visual of the project layout:
 
@@ -246,7 +246,7 @@ Here's what this looks like when we do this to Alyssa's site:
         block body
     
         footer
-          p &copy; Copyright 2017 Alyssa P. Hacker.
+          p &copy; Copyright 2016 Alyssa P. Hacker.
         script(src='/js/main.js', type='text/javascript')
 
 Note how I've replaced the `h1` element (the contents of which vary per-page) with `block heading`, I've added a `block head` directive so we can specify the title per-page, I've made a `block` for each navigation link so we can override them if we want to individually (otherwise they'll have the default of being a link), and I've added `block body` for the main content. I've also cleaned out a bunch of the cruft the automatic converter put in there.
@@ -271,7 +271,7 @@ You'll note that I've cleaned out some cruft here, too. We have one last thing t
 
     gulp.watch(['src/*.pug', 'src/includes/*.pug'], ['build:html']);
 
-Sweet! `index.pug` is way shorter than what we had before and includes _just_ the content now. We can do the same thing to `projects.pug`.
+Sweet! `index.pug` is way shorter than what we had before and includes _just_ the content now. We can do the same thing to `projects.pug`. Then Alyssa can, for example, correct the copyright year in `layout.pug` - i.e., once - and that change will go into both `index.html` _and_ `projects.html`. I've gone ahead and made the change for her.
 
 To give a high-level overview, here's what Alyssa's site looks like now:
 
