@@ -21,7 +21,7 @@ Let's get started!
 
 The site we'll be converting is currently pretty simple. It has an `index.html` and a `projects.html`. Each of these includes `/css/main.css` and `/js/main.js`. Also, they both have a navigation section and a footer that are duplicated across each page. Each time Alyssa P. Hacker - the website's owner - makes a change to these (for example to fix the copyright year in the footer), she has to change both HTML files. The best way for her to add a new page will be to copy an existing HTML file and then change it. This is a little unideal.
 
-Alyssa tracks her website on GitHub (in the example repository mentioned above). Here are links for the [`index.html`][index.html] and the `[`projects.html`][projects.html] we'll be working with.
+Alyssa tracks her website on GitHub (in the example repository mentioned above). Here are links for the [`index.html`][index.html] and the [`projects.html`][projects.html] we'll be working with.
 
 Here's a visual of the project layout:
 
