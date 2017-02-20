@@ -159,9 +159,9 @@ In order to rectify this, we'll create a new git branch, `src`. `src` will conta
     % git checkout -b src
     % git push --set-upstream origin src
 
-Great. Now, we need to add something to put the built files (i.e. the contents of `dist`) in `master`. We'll use the `gh-pages` module for this. First install it:
+Great. Now, we need to add something to put the built files (i.e. the contents of `dist`) in `master`. We'll use the `gh-pages` module for this. First install it and a dependency we'll need:
 
-    % npm install --save-dev gh-pages
+    % npm install --save-dev gh-pages gulp-util
 
 Next, make it available in the gulpfile by adding a line at the end of `require()` statements:
 
