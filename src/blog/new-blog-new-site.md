@@ -7,6 +7,7 @@ author: "Alex Jordan"
 categories:
   - development
   - personal
+  - stratic
 ---
 
 I'm back! Sort of. Very sort of.

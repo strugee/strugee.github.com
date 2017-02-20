@@ -6,6 +6,7 @@ time:
 author: "Alex Jordan"
 categories:
   - development
+  - stratic
 ---
 
 Whooooooooooo!
