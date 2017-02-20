@@ -184,8 +184,8 @@ gulp.task('default', ['serve']);
 <pre><code>% git checkout -b src
 % git push --set-upstream origin src
 </code></pre>
-<p>Great. Now, we need to add something to put the built files (i.e. the contents of <code>dist</code>) in <code>master</code>. We'll use the <code>gh-pages</code> module for this. First install it:</p>
-<pre><code>% npm install --save-dev gh-pages
+<p>Great. Now, we need to add something to put the built files (i.e. the contents of <code>dist</code>) in <code>master</code>. We'll use the <code>gh-pages</code> module for this. First install it and a dependency we'll need:</p>
+<pre><code>% npm install --save-dev gh-pages gulp-util
 </code></pre>
 <p>Next, make it available in the gulpfile by adding a line at the end of <code>require()</code> statements:</p>
 <pre><code>var gulp = require('gulp'),
