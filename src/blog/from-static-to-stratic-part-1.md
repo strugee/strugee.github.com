@@ -20,6 +20,8 @@ Let's get started!
 
 The site we'll be converting is currently pretty simple. It has an `index.html` and a `projects.html`. Each of these includes `/css/main.css` and `/js/main.js`. Also, they both have a navigation section and a footer that are duplicated across each page. Each time Alyssa P. Hacker - the website's owner - makes a change to these (for example to fix the copyright year in the footer), she has to change both HTML files. The best way for her to add a new page will be to copy an existing HTML file and then change it. This is a little unideal.
 
+Alyssa tracks her website on GitHub (in the example repository mentioned above). Here are links for the [`index.html`][index.html] and the `[`projects.html`][projects.html] we'll be working with.
+
 Here's a visual of the project layout:
 
     % tree .
@@ -35,7 +37,7 @@ Here's a visual of the project layout:
 
 When Alyssa needs to preview her website, she manually runs `http-server .`.
 
-Also, Alyssa publishes her website on GitHub Pages, so her website is in the `master` branch of her git repository. (Here we're assuming that the repository is called `aphacker.github.io` or something, instead of `static-to-stratic`.)
+Since Alyssa uses GitHub she publishes her website on GitHub Pages, so her website is in the `master` branch of her git repository. (Here we're assuming that the repository is called `aphacker.github.io` or something, instead of `static-to-stratic`.)
 
 In addition to adding blog support, we'll improve Alyssa's website by reducing duplication while still allowing her to publish to GitHub Pages.
 
@@ -305,6 +307,8 @@ This post is long enough already, so I'll stop here. We've converted Alyssa's si
 Now go apply this to your own site!
 
  [example]: https://github.com/straticjs/static-to-stratic
+ [index.html]: https://github.com/straticjs/static-to-stratic/blob/18a7a7da03a2f84f525f0b699a43005067428199/index.html
+ [projects.html]: https://github.com/straticjs/static-to-stratic/blob/18a7a7da03a2f84f525f0b699a43005067428199/projects.html
  [agpl]: https://www.gnu.org/licenses/agpl-3.0.en.html
  [choosealicense]: https://choosealicense.com/
  [Pug]: https://pugjs.org
