@@ -55,6 +55,64 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h2 class="p-name">Posts from 2017</h2>
           <p id="postsFrom">Show only posts from <a href="/blog/2017/01/">January</a> <a href="/blog/2017/02/">February</a> 
           </p>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/01/new-programming-language-part-i-handlers">
+              <h2 class="p-name">New programming language part I: Handlers</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2017/01/">January</a> 26, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
+            </p>
+            <div class="e-content"><p>So my latest project at the <a href="https://recurse.com">Recurse Center</a> is a new programming language, as yet unnamed. Basically this was inspired by my <a href="https://strugee.net/presentation-security-design">security design</a> presentation in which I laid out a couple ways you can improve programs' security designs, like process separation. And it occurred to me: why is this so difficult? Something should be doing this for me. Enter... whatever the hell I end up calling my language.</p>
+<p>One of the most important building blocks of the language is something that I'm currently calling a "Handler". A Handler is basically a segregated piece of application code that handles some task or problem domain. For example, a Handler for outgoing DNS requests (syntax subject to change, obviously):</p>
+<pre><code>Handler DNS {
+    function getAddressFromHostname(hostname) {
+        // Very much pseudocode - all function calls here are example OS calls
+
+        sendDnsQuery(hostname);
+        while (!haveDnsResult()) {
+            sleep(1);
+        }
+        
+        return getDnsResult();
+    }
+}
+</code></pre>
+<p>This Handler has one simple method, <code>getAddressFromHostname()</code>. It sends a DNS query, blocks until it has a result, and then returns the result.</p>
+<p>What's cool about this Handler is that it will be run in its own process - in other words, each Handler is automatically transformed into a privilege-separated process. However, <code>getAddressFromHostname()</code> can still be called from other, high-level Handlers! The language will do all the data marshalling for you, so from a language perspective it looks like a regular function call even though in practice it's going cross-process.</p>
+<p>Now, let's improve our Handler a little bit. It's pretty unfortunate that we can only make one DNS request at a time (since it's blocking), so let's use an event loop.</p>
+<pre><code>Handler DNS is eventLoop {
+    function getAddressFromHostname(hostname) {
+        // Still pseudocode
+
+        return sendDnsQuery(hostname, function(address) {
+            return address;
+        });
+    }
+}
+</code></pre>
+<p>We specified that the <code>DNS</code> Handler is an event loop, so the language automatically set up a Node-style event loop - we never actually called anything to enter an event loop, it just sort of happened as a construct of the language. Note also the nice async-aware return syntax - the result of <code>sendDnsQuery()</code> is returned to <code>getAddressFromHostname()</code>'s caller, and the result of <code>sendDnsQuery()</code> is specified by the return value of the anonymous function callback.</p>
+<p>We can improve correctness even more by specifying that the Handler is not allowed to make syncronous I/O calls at all:</p>
+<pre><code>Handler DNS is eventLoop, async {
+    // ...
+}
+</code></pre>
+<p>Handlers let you pick and choose different elements and design choices for different parts of your application. For example, if you had a Handler responsible for processing data, it might make sense to restrict it to being entirely functional:</p>
+<pre><code>Handler incomingData is functional {
+    // ...
+}
+</code></pre>
+<p>In such a Handler, any functions with side effects wouldn't be callable, enforced at compile-time (possibly parse-time, depending on whether I can make it compiled or not given the type system). Perhaps you want to spawn a new sandbox process for each piece of incoming data (OpenSSH does this, for example, when first receiving authentication data from untrusted users):</p>
+<pre><code>// The `ephemeral` keyword will probably be something better, but for now...
+Handler incomingData is functional, ephemeral {
+    // ...
+}
+</code></pre>
+<p>If your application requires root - for example, if you were writing an NTP daemon that needed to call <code>setTimeOfDay()</code> - that's also specified at the Handler level:</p>
+<pre><code>Handler incomingData is root {
+    // ...
+}
+</code></pre>
+<p>This should give you some idea of why Handlers are really interesting, even beyond the process separation concept that underlies them. (It's also worth noting that while I've focused mostly on daemons, this can also be used to securely implement e.g. <code>file</code>.) I'm really excited to get these ideas out there so I'll stop for now, but pretty soon I'll write another blog post talking about the type system.</p>
+</div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/01/surveillance-priorities">
               <h2 class="p-name">Surveillance priorities</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2017/01/">January</a> 23, <a href="/blog/2017/">2017</a> in <a href="/blog/category/politics/" class="p-category">politics</a>, <a href="/blog/category/privacy/" class="p-category">privacy</a> and <a href="/blog/category/musings/" class="p-category">musings</a>
@@ -164,33 +222,8 @@ $ hg clone git+ssh://github.com:strugee/icalc.git
 </div>
           </article>
           <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/01/new-project-thanksmaintainer.com">
-              <h2 class="p-name">New project! thanksmaintainer.com</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2017/01/">January</a> 9, <a href="/blog/2017/">2017</a> in <a href="/blog/category/development/" class="p-category">development</a>
-            </p>
-            <div class="e-content"><p>So I've been thinking about a new project recently. It's called thanksmaintainer.com, and it helps you say, "thanks, maintainer!"</p>
-<p>Basically this idea came about from <a href="https://github.com/gulpjs/gulp/issues/1806">this GitHub thread</a> where some user comes and disparages the Gulp project for being "not actively developed" and complains that it's taking a long time to release despite the fact that a) Gulp 4 <em>is</em> being actively developed and b) the Gulp maintainers owe this ungrateful, presumptive person <em>nothing</em>. As @contra <a href="https://github.com/gulpjs/gulp/issues/1806#issuecomment-247416856">says</a>:</p>
-<blockquote>
-<p>@rbatllet 4.0 is being worked - if you took more than five seconds to look you'd see it in other repos (for example: #1604). This repo has almost no code in it, it's a wrapper around the other modules so the contribution graph should be completely flat except for doc updates and major releases. We've responded to these tickets so many times - we have lives too.</p>
-<p>I've had to move across the country 3 times since the tweet you linked - had my business unexpectedly fail (startups!), had relationships fail, deaths, travel, poverty, etc. - where the fuck am I supposed to find time to work on this while I'm trying to pay rent and put food in my stomach? The attitude people have towards open source authors is disgusting - I don't owe you anything, nobody does. Unless you've done something for the open source community (hint: you haven't!) then you aren't entitled to shit. If you want something to happen then help make it happen, otherwise log off.</p>
-</blockquote>
-<p>I read this comment and thought, <em>that freaking <strong>sucks</strong></em>. I feel like there's a problem in the open source and freedom-respecting software community where consumers demand stuff from project maintainers like the maintainers <em>owe</em> them something or they <em>deserve</em> some feature/bugfix/etc. This is obviously complete and utter bullshit - most maintainers work on their projects in their spare time - and it can start to feel like maintaining a project is a waste of time because all you get from it is a drove of angry entitled haters.</p>
-<p>thanksmaintainer.com is designed to solve this problem. Here's how you use it; it's very simple:</p>
-<ol>
-<li>You visit thanksmaintainer.com</li>
-<li>You sign in with GitHub</li>
-<li>You find projects that you use and are grateful for</li>
-<li>You click the "thanks, maintainer!" button</li>
-</ol>
-<p>thanksmaintainer.com will keep track of all the good vibes people are sending towards projects. When it reaches a certain threshold, the website will (probably) find a way to contact the maintainers and let them know how many people's lives they've made better. Not sure how this last bit will work yet, or if it'll even work like that at all. But the core idea is there - hopefully it'll be an easy way to give some love back to maintainers who may really need it.</p>
-<p>Some design notes: it'll only work with GitHub to begin with, but eventually I hope to expand support to e.g. GitLab. Also, the fact that it's focused on projects and not maintainers is intentional - being thankful for a person instead of a project isn't as meaningful because you're not specifying why you're thankful. In contrast, the project-centric design lets you say, "these <em>particular</em> lines of code impacted my life in a meaningful way." Plus, a lot of projects have more than one maintainer, and it seems foolish to only thank <em>some</em> of the project maintainers, and not others.</p>
-<p>I would love to hear feedback on this idea. So, if you have any thoughts, <a href="/contact">get in touch</a> with me and let me know.</p>
-<p>Stay happy &#x3C;3</p>
-</div>
-          </article>
-          <hr>
           <div id="pages-footer">
-            <p><a href="../..">←</a> ⋅ Page 2 out of 2 ⋅ <span class="disabled-arrow">→</span></p>
+            <p><a href="../..">←</a> ⋅ Page 2 out of 3 ⋅ <a href="../3">→</a></p>
           </div>
         </div>
       </div>
