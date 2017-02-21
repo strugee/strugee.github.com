@@ -7,6 +7,7 @@ author: "Alex Jordan"
 categories:
   - development
   - stratic
+  - blaggregator
 ---
 
 So a couple days ago I published `generator-stratic@1.0.0-beta.1` to npm. Since Stratic is now officially in beta, I thought I'd write up a guide to converting a regular, static site to a Stratic-powered blog.
