@@ -13,6 +13,8 @@ This is week 6 of being at the [Recurse Center][].
 
 (I feel obligated to point out that this is being published a week later than it's supposed to be because I got behind. I am, however, very confident that the following is accurate. I used GitHub history and location data to help me remember the parts that were fuzzy.)
 
+<script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
+
 ## Day 19
 
 Not at RC. Total time at RC 0h0m.

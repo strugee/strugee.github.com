@@ -11,9 +11,7 @@ categories:
 
 This is week 5 of being at the [Recurse Center][].
 
-<!-- TODO: this is a bug
 <script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
--->
 
 ## Day 15
 

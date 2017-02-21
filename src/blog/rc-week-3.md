@@ -11,6 +11,8 @@ categories:
 
 This is week 3 of being at the [Recurse Center][]. 
 
+<script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
+
 ## Monday
 
 Arrived ~12:50, departed ~00:10, total time at RC 11h20m. Not Day 8 because Martin Luther King Day was today, so RC was not technically in session.

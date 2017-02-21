@@ -11,6 +11,8 @@ categories:
 
 This is week 2 of being at the [Recurse Center][]. 
 
+<script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
+
 ## Day 4
 
 Arrived ~12:30; departed ~23:45; total time at RC 11h15m.
