@@ -95,7 +95,7 @@ gulp.task('js', function() {
 gulp.task('post-index', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(frontMatter({property: ''}))
-	           .pipe(remark().use(remarkHtml).use(adjustHeaders))
+	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
 	           .pipe(postsToIndex('index.jade'))
@@ -108,7 +108,7 @@ gulp.task('post-index', function() {
 gulp.task('posts', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(frontMatter({property: ''}))
-	           .pipe(remark().use(remarkHtml).use(adjustHeaders).use(slug))
+	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders).use(slug))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/post.jade'))
 	           .pipe(attachToTemplate('post.jade'))
@@ -120,7 +120,7 @@ gulp.task('posts', function() {
 gulp.task('rss', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(frontMatter({property: ''}))
-	           .pipe(remark().use(remarkHtml))
+	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
 	           .pipe(postsToIndex('index.jade'))
