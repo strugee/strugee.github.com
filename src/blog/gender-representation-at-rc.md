@@ -3,6 +3,9 @@ title: "Gender representation at RC"
 time:
   epoch: 1487109679
   utcoffset: "UTC-5"
+edited:
+  epoch: 1487783122
+  utcoffset "UTC-5"
 author: "Alex Jordan"
 categories:
   - personal
@@ -19,6 +22,10 @@ If folks have any comments or different perspectives, I'd love to hear them [pri
 
  \[1]: I'm focusing on women here because I'm not aware of any statistics about non-binary people in tech. But it's worth noting that it's a huge problem for them, too.
 
+**Update February 22nd:** the lovely [Rachel Vincent][] from RC faculty says this about RC's gender-balancing:
+
+> Of the folks who are currently in-batch (Winter 2's and Spring 1's), ~36% identify as women. It's roughly the same for the community as a whole (~33%), though we don't have super accurate numbers because we don't update information on folks' gender. The most gender balanced batches were a little over 40% women. We're always pushing for 50/50, though. 😊 Our overall strategy is to try to get an applicant pool that is as gender balanced as possible, and we don't do any kind of balancing during the admissions process itself.
+
  [stats]: https://www.cnet.com/news/women-in-tech-the-numbers-dont-add-up/
  [leave]: http://fortune.com/2014/10/02/women-leave-tech-culture/
  [incidents]: http://geekfeminism.wikia.com/wiki/Category:Incidents
@@ -26,3 +33,4 @@ If folks have any comments or different perspectives, I'd love to hear them [pri
  [implicit bias]: https://www.opensocietyfoundations.org/voices/implicit-bias-and-social-justice
  [privately]: /contact
  [WebMention]: https://webmention.net/
+ [Rachel Vincent]: https://twitter.com/rhonorv
