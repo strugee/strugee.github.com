@@ -123,6 +123,9 @@ body {
   padding: 1.5em;
   background-color: #f0f0f0;
 }
+img {
+  width: 100%;
+}
 #topheader {
   font-family: monospace, "Courier New", Courier, mono;
 }
