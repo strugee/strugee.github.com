@@ -5,7 +5,7 @@ time:
   utcoffset: "UTC-5"
 edited:
   epoch: 1487783122
-  utcoffset "UTC-5"
+  utcoffset: "UTC-5"
 author: "Alex Jordan"
 categories:
   - personal
