@@ -2,6 +2,14 @@ extends /src/includes/layout.jade
 
 include /src/includes/post.jade
 
+block nav-blog
+	if indexType === 'main'
+		li.navlink Blog
+	else
+		li.navlink
+			a(href='/blog/') Blog
+
+
 block head
 	if indexType === 'main'
 		title Blog - strugee.net
