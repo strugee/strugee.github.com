@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--
+© Copyright 2012-2016 Alex Jordan
+This file is part of strugee.net.
+strugee.net is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+strugee.net is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!-- Made and coded by Alex Jordan-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
+    <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <!-- IndieWeb components, with <3-->
+    <link rel="me" href="mailto:alex@strugee.net">
+    <link rel="me" href="sms:17607054581">
+    <link rel="me" href="https://github.com/strugee">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://pump.strugee.net/alex">
+    <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
+    <title>RC week 7 - strugee.net</title>
+    <link rel="pingback" href="https://webmention.io/strugee.net/xmlrpc">
+    <link rel="webmention" href="https://webmention.io/strugee.net/webmention">
+    <script src="/js/webmentions.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+      <header>
+        <h1 id="topheader">strugee.net</h1>
+        <nav id="navbar">
+          <ul>
+            <li id="navlabel" class="navlink">Nav &nbsp;::</li>
+            <li class="navlink"><a href="/">Home</a></li>
+            <li class="navlink"><a href="/services">Services</a></li>
+            <li class="navlink"><a href="/projects">Projects</a></li>
+            <li class="navlink"><a href="/talks">Talks</a></li>
+            <li class="navlink"><a href="/gpg">GPG Key</a></li>
+            <li class="navlink"><a href="/contact">Contact</a></li>
+            <li class="navlink"><a href="/blog/">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="content">
+        <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry">
+          <h1 class="p-name">RC week 7</h1>
+          <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2017/02/">February</a> 27, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
+          </p>
+          <div class="e-content"><p>This is week 7 of being at the <a href="https://recurse.com">Recurse Center</a>.</p>
+<script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
+<h3 id="day-23">Day 23</h3>
+<p>Arrived ~10:00, departed ~21:45, total time at RC 11h45m.</p>
+<p>Didn't get a whole lot done today, mostly because we were all welcoming the Spring 1s - I went out to lunch with some of them and participated in Code Dojo in the afternoon (<a href="https://github.com/adityavkk">Aditya</a> and I solved the challenge in <code>bash</code>, which was pretty interesting an also hilarious[1]). However, I did do some maintenance on <a href="https://gplenforced.org">gplenforced.org</a>. I did, however, start a project to display activity in 455 Broadway in realtime which I'm pretty exited about.</p>
+<p> [1]: Aditya asked me "so can you just cast a string to an integer in <code>bash</code> or...?" and when I said no he looked at me and asked how in the world we could complete this task - not realizing that the correct question is, of course, "does <code>bash</code> have a type system?" The answer to which is no, no it does not.</p>
+<h3 id="day-24">Day 24</h3>
+<p>Arrived ~14:30, departed ~1:10, total time at RC 10h40m.</p>
+<p>Spent most of today working on realtime.recurse.com - I got the basic API working, so you can POST to the server and it'll handle expiry properly. Also spent a lot of time blogging for the Iron Blogger meeting (in which I got sentenced to use <code>vim</code> for the week instead of Emacs for not writing a post a couple weeks ago).</p>
+<h3 id="day-25">Day 25</h3>
+<p>Arrived ~10:30, departed ~19:10, total time at RC 8h40m.</p>
+<p>Spent the day catching up on various things, notably putting out a new pump.io beta that backported some regression fixes. In the evening I spent most of my time finishing up a mid-year college application form before videocalling with a friend in college.</p>
+<h3 id="day-26">Day 26</h3>
+<p>Arrived ~10:35, departed ~1:05, total time at RC 14h30m.</p>
+<p>Spent some time working on server stuff today. Other than that though I didn't do much of anything.</p>
+<h3 id="friday">Friday</h3>
+<p>Arrived ~16:20, departed ~1:45, total time at RC 9h25m. As always, Friday doesn't count as a day because RC is technically not in session.</p>
+<p>Worked on <a href="https://github.com/straticjs/generator-stratic">generator-stratic</a> today. I fixed some bugs and disabled some functionality that wasn't complete (and was non-trivial to complete). Published a beta 0 in the evening.</p>
+<h3 id="executive-summary">Executive summary</h3>
+<p>Total time at RC 55 hours 0 minutes; cumulative time 294 hours 25 minutes.</p>
+</div>
+        </article>
+        <hr>
+        <p id="webmention-replies-header">WebMention replies</p>
+        <div id="webmentions"></div>
+        <noscript>
+          <p>Couldn't load WebMentions because you turned your JavaScript off. Sorry about that!</p>
+        </noscript>
+      </div>
+      <footer>
+        <p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a href="https://github.com/strugee/strugee.github.com">on GitHub</a>.</p>
+        <p>&copy; Copyright 2012-2017 Alex Jordan.</p>
+      </footer>
+      <!-- Piwik-->
+      <!-- Note that this Piwik instance is self-hosted and so doesn't leak metadata. Also, critically, it respects Do Not Track.-->
+      <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="//piwik.strugee.net/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
+      <noscript>
+        <p><img src="//piwik.strugee.net/piwik.php?idsite=1" style="border:0;" alt=""></p>
+      </noscript>
+      <!-- End Piwik Code-->
+      <div id="toys"><a id="lightbulb-icon" href="#">
+          <div class="icon-lightbulb"></div></a></div>
+      <script type="text/javascript" src="/js/main.js"></script>
+      <script type="text/javascript" src="/js/idl.js"></script>
+    </div>
+  </body>
+</html>
