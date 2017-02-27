@@ -47,6 +47,7 @@ Worked on [generator-stratic][] today. I fixed some bugs and disabled some funct
 
 ## Executive summary
 
+This week was... _okay_ in terms of productivity. It started off relatively good, slipped a fair amount in the middle, and then somewhat came back at the end of the week. I did, however, check off some semi-longstanding issues on my todo list. So that's nice.
 
 Total time at RC 55 hours 0 minutes; cumulative time 294 hours 25 minutes.
 
