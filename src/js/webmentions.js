@@ -51,8 +51,18 @@ require('whatwg-fetch');
 			if (data.links.length === 0) {
 				// No replies, so we bail
 				var noReplies = document.createElement('p');
-				noReplies.appendChild(document.createTextNode('No replies (yet!)'));
+				noReplies.appendChild(document.createTextNode('No replies - yet! Maybe you\'d like to be the first?'));
 				mentionsElement.appendChild(noReplies);
+
+				var webmentionDocs = document.createElement('p');
+				var webmentionLink = document.createElement('a');
+				webmentionDocs.appendChild(document.createTextNode('See '));
+				webmentionLink.appendChild(document.createTextNode('webmention.net'));
+				webmentionLink.href = 'https://webmention.net';
+				webmentionDocs.appendChild(webmentionLink);
+				webmentionDocs.appendChild(document.createTextNode(' for the docs.'));
+				mentionsElement.appendChild(webmentionDocs);
+
 				return;
 			}
 
