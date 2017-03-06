@@ -43,7 +43,7 @@ Finished and published [How I passed 2k GitHub contributions][2k]. Presented [cr
 
 Arrived ~15:50, departed ~1:00, total time at RC 9h10m. As always, Friday doesn't count as a day because RC is technically not in session.
 
-Came in super late (though I woke up earlier). Almost immediately after that I attended an initial meeting about starting an RFC reading group (an idea I floated on Zulip a couple days ago). Spent most of the day poking at IETF things as well as responding to [hubot-seen] PR comments. I just got write access! \o/
+Came in super late (though I woke up earlier). Almost immediately after that I attended an initial meeting about starting an RFC reading group (an idea I floated on Zulip a couple days ago). Spent most of the day poking at IETF things as well as responding to [hubot-seen][] PR comments. I just got write access! \o/
 
 Closed out the evening by attending Bottle Share Friday, where I had a long discussion with [Alex][] about running my own email server (which spun off into a discussion of how completely terrible and busted email is), followed by a long discussion about whether Apple's release schedule for Safari and attitude towards new web features and third-party iOS rendering engines is justifiable.
 
@@ -72,5 +72,6 @@ Total time at RC 68 hours 45 minutes; cumulative time 363 hours 10 minutes.
  [2k]: https://strugee.net/blog/2017/02/how-i-passed-2k-github-contributions
  [cryptography basics]: https://strugee.net/presentation-cryptography-basics
  [usrlocal]: https://github.com/strugee/steevie-usr-local
+ [hubot-seen]: https://github.com/hubot-scripts/hubot-seen
  [Alex]: http://www.aberke.com/
  [Hussein]: https://github.com/Husseinfarah93
