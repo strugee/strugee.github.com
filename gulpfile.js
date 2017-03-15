@@ -94,7 +94,7 @@ gulp.task('js', function() {
 
 gulp.task('post-index', function() {
 	return gulp.src('src/blog/*.md')
-	           .pipe(frontMatter({property: ''}))
+	           .pipe(frontMatter())
 	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
@@ -107,7 +107,7 @@ gulp.task('post-index', function() {
 
 gulp.task('posts', function() {
 	return gulp.src('src/blog/*.md')
-	           .pipe(frontMatter({property: ''}))
+	           .pipe(frontMatter())
 	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders).use(slug))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/post.jade'))
@@ -119,7 +119,7 @@ gulp.task('posts', function() {
 
 gulp.task('rss', function() {
 	return gulp.src('src/blog/*.md')
-	           .pipe(frontMatter({property: ''}))
+	           .pipe(frontMatter())
 	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
