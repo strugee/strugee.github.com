@@ -61,7 +61,10 @@ Total time at RC 52 hours 50 minutes; cumulative time 464 hours 50 minutes.
 
  [Recurse Center]: https://recurse.com
  [driftless]: https://strugee.net/blog/2017/03/driftless-at-1000-mph
+ [realtime.recurse.com]: https://github.com/strugee/realtime.recurse.com
  [FreeBSD]: https://www.freebsd.org/
  [EFF]: https://www.eff.org/
  [TA3M Seattle]: https://ta3mseattle.org/index.php/Main_Page
  [EFA]: https://www.eff.org/electronic-frontier-alliance
+ [Jason]: https://jxself.org/
+ [Datamost]: https://datamost.com/
