@@ -31,7 +31,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://plus.google.com/+AlexJordan">
     <link rel="me" href="https://pump.strugee.net/alex">
     <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
-    <title>Blog - strugee.net</title>
+    <title>Posts categorized as "personal" - strugee.net</title>
   </head>
   <body>
     <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
@@ -46,95 +46,13 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
             <li class="navlink"><a href="/talks">Talks</a></li>
             <li class="navlink"><a href="/gpg">GPG Key</a></li>
             <li class="navlink"><a href="/contact">Contact</a></li>
-            <li class="navlink">Blog</li>
+            <li class="navlink"><a href="/blog/">Blog</a></li>
           </ul>
         </nav>
       </header>
       <div id="content">
         <div class="h-feed">
-          <h2 class="p-name">Blog</h2>
-          <p id="postsFrom">Show only posts from <a href="/blog/2014/">2014</a> <a href="/blog/2015/">2015</a> <a href="/blog/2016/">2016</a> <a href="/blog/2017/">2017</a> 
-          </p>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2015/09/revisiting-my-tor-relay">
-              <h2 class="p-name">Revisiting my Tor relay</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2015/09/">September</a> 4, <a href="/blog/2015/">2015</a> in <a href="/blog/category/sysadmin/" class="p-category">sysadmin</a>
-            </p>
-            <div class="e-content"><p>(Okay, so I <em>miserably</em> failed my blog-every-day thing. Shut up. Maybe next time I'll try every week or something... anyway.)</p>
-<p>A couple of days ago I logged into the <a href="https://atlas.torproject.org/#details/710E9E3A0A443E3FD33D2801298042783CAD2EAE">Tor relay I run</a> to show someone the ARM graphs. I had a fair amount of traffic, so the graphs were fairly impressive, but I'm also in the habit of running <code>apt-get update; apt-get upgrade</code> every time I log into a server, so I did that too. To my surprise, I got a message telling me that there was a dependency problem with my kernel! So like the great sysadmin I am, I looked at such a fundamental system problem, shrugged my shoulders, and said, "oh, I should probably fix that". And then logged out.</p>
-<p>Well, I did end up fixing it today. And boy, was it an adventure. My first step was to ignore the APT problems and edit my <code>torrc</code>, to reflect a) the fact that I'm not eligible for the AWS Free Tier anymore (so I needed to throttle bandwidth), b) my new email, and c) my new GPG key. With that being done, I knew that I could easily have the system fix dependency problems by doing a simple <code>apt-get install -f</code>. Easy!</p>
-<p>Well, no. That tried to install some Linux kernel headers, which seemed all well and good, until I got this:</p>
-<pre><code>Unpacking linux-headers-3.2.0-90 (from .../linux-headers-3.2.0-90_3.2.0-90.128_all.deb) ...
-dpkg: error processing /var/cache/apt/archives/linux-headers-3.2.0-90_3.2.0-90.128_all.deb (--unpack):
-unable to create `/usr/src/linux-headers-3.2.0-90/arch/arm/plat-pxa/include/plat/dma.h.dpkg-new' (while processing `./usr/src/linux-headers-3.2.0-90/arch/arm/plat-pxa/include/plat/dma.h'): No space left on device
-No apport report written because the error message indicates a disk full error
-dpkg-deb: error: subprocess paste was killed by signal (Broken pipe)
-</code></pre>
-<p>Um, what? How am I out of free space? Okay, whatever. I knew that there were probably a lot of packages cached in <code>/var/cache/apt/</code>, including old, vulnerable packages that had been replaced by the unattended upgrades system. I did an <code>ls</code>, and found only about five <code>.deb</code> files - something must have been automatically cleaning that directory. I was getting a little worried now, but I nuked the files anyway and reran <code>apt-get install -f</code>. <em>Same thing</em>. Well, okay, maybe I didn't get rid of enough stuff? How much did I need?</p>
-<pre><code>$ df -h /
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/xvda1      4.0G  2.2G  1.6G  59% /
-</code></pre>
-<p>At this point I'm in full-on "something-is-seriously-wrong-and-I-<em>need</em>-to-recover" mode. How was it possible that I had only used 59% of the filesystem, but <code>dpkg</code> was saying my disk was full? A little searching the internet later, I found the culprit:</p>
-<pre><code>$ df -i
-Filesystem     Inodes  IUsed IFree IUse% Mounted on
-/dev/xvda1     262144 257479  4665   99% /
-udev            74758    377 74381    1% /dev
-tmpfs           76179    259 75920    1% /run
-none            76179      3 76176    1% /run/lock
-none            76179      1 76178    1% /run/shm
-</code></pre>
-<p>I hadn't run out of disk space. But I <em>had</em> run out of inodes. (Isn't this supposed to happen to <em>other</em> people?)</p>
-<p>I tried removing some stuff via APT, but that refused to do anything due to the dependency problems. My next thought was that there were probably a bunch of old processes running that were essentially holding a bunch of inodes hostage. I couldn't install <code>debian-goodies</code>, so I couldn't use <code>checkrestart</code>, but I improvised by looping over all running services in a for loop, and restarting them.</p>
-<p>Still nothing.</p>
-<p>I'm not proud of what I did next. But I was backed into a corner, so I did something only <code>dpkg</code> is supposed to do. I ran <code>rm -r</code> on a couple directories in <code>/usr/src</code>. And boy, it was like magic. Suddenly <code>apt-get install -f</code> worked like a charm. It started to upgrade a couple packages, rebuilding some GRUB configuration files... and then came to a screeching halt.</p>
-<pre><code>Setting up linux-headers-3.2.0-90-virtual (3.2.0-90.128) ...
-dpkg: dependency problems prevent configuration of linux-headers-virtual:
-linux-headers-virtual depends on linux-headers-3.2.0-68-virtual; however:
-Package linux-headers-3.2.0-68-virtual is not installed.
-dpkg: error processing linux-headers-virtual (--configure):
-dependency problems - leaving unconfigured
-No apport report written because the error message indicates its a followup error from a previous failure.
-dpkg: dependency problems prevent configuration of linux-virtual:
-linux-virtual depends on linux-headers-virtual (= 3.2.0.68.81); however:
-Package linux-headers-virtual is not configured yet.
-dpkg: error processing linux-virtual (--configure):
-dependency problems - leaving unconfigured
-No apport report written because the error message indicates its a followup error from a previous failure.
-Errors were encountered while processing:
-linux-headers-virtual
-linux-virtual
-E: Sub-process /usr/bin/dpkg returned an error code (1)
-</code></pre>
-<p>Are you kidding?? <em>More</em> errors?</p>
-<p>Turns out that APT is essentially the only thing on this system that makes large changes to the filesystem. So the probability that APT would be the program to trigger the inode limit was pretty high. It started an upgrade run, then got interrupted in the middle by the "no space left on device" error, leaving the dependency tree in a state that we in the tech community call "100% totally screwed". (This is the technical term.)</p>
-<p>I'll spare you the gory details, but I ended up trying to chase down packages in the Ubuntu archive, running <code>ubuntu-support-status</code> beacuse I was wondering if the packages I was looking for actually <em>weren't in</em> the archive, because they were unsupported, using <code>aptitude</code> instead of <code>apt-get</code> (because <code>aptitude</code>'s dependency resolver tends to be better), etc. Finally the solution turned out to be doing <code>dpkg --install</code> on the exact right <code>.deb</code>s in the exact right order, which finally satisfied APT's dependency woes, allowed <code>apt-get install -f</code> to fix the configuration problems, and allowed the hundreds of packages which had been waiting for an upgrade to <em>finally</em> install. Whew!</p>
-<p>Anyway, I need to upgrade the version of Ubuntu the system is on (currently it's 12.04.5 LTS), because Tor is out of date (among other reasons). However, since that will involve taking the system down for a reboot, I wanted to memorialize the following:</p>
-<pre><code>$ uptime
-00:01:47 up 392 days, 17:15,  1 user,  load average: 0.05, 0.04, 0.05
-</code></pre>
-<p>Holy moly. This system is bordering on 400 days of uptime. That's over a year of continuous run time! Astonishing.</p>
-<p>Wish me luck with this upgrade...</p>
-<p><strong>tl;dr</strong>: inode limits are <em>killer</em>.</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2015/06/2-lbs-of-stickers">
-              <h2 class="p-name">2 lbs of stickers</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2015/06/">June</a> 14, <a href="/blog/2015/">2015</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
-            </p>
-            <div class="e-content"><h3>First things first</h3>
-<p>This year I am again attempting to blog every day of summer. I've done this sporadically in the past (and never very well), but I'm trying again this year. Maybe this time will be different. (This is actually my fourth day of summer, but I wanted some time off. Whatever.)</p>
-<h3>2 lbs of stickers??</h3>
-<p>So recently (i.e. within the past year) I've become more active within the local Seattle community. I'm now on the organizing committee for the <a href="https://wiki.openitp.org/events:techno-activism_3rd_mondays:seattle">Seattle chapter of TA3M</a> (Techno Activism, 3rd Mondays), and am actually running another <a href="https://cryptoparty.in/">CryptoParty</a> this coming Monday. Now, within the wider Seattle activism/tech scene, there's this bag of stickers. It used to be owned by a friend of mine named Elcaset, who apparently just took home some leftovers one day and then kept receiving more and more, because people associated him with stickers. Sadly, Elcaset had to move away from the Seattle area. And since we wanted to keep the stickers, someone needed to keep the bag. And so I ended up with a giant, giant bag of stickers.</p>
-<p>Me being me, I decided to sort them and separate them, so that they were easier to lay out on a table. Then I separated them by category. And then, just for fun (and since there were so many of them), I decided to weigh them.</p>
-<p>The heavyweight champ by far is the <a href="https://fsf.org/">Free Software Foundation</a> bag, with a whopping 8.25 oz of stickers. Yeah, when I said "heavy" "weight", I meant it. Next we have local usergroups (FreeGeek Seattle, TA3M Seattle, Seattle Privacy and one other whose logo I know is local, but I don't recognize) tied with distributions, both at 5.225 oz. Next up is advocacy groups, namely the <a href="https://eff.org/">EFF</a> and the <a href="https://aclu-wa.org/">ACLU of Washington</a>. I'll admit to cheating on this one, since the EFF has some assorted trinkets that aren't actually stickers, but whatever. This bag was 4.5 oz. After advocacy groups is the miscellaneous bag, which has software projects not associated with anything else, activism films, conferences (aka <a href="https://linuxfestnorthwest.org/">LinuxFest Northwest</a>) and political parties (aka the <a href="https://uspirates.org/">Pirate Party</a>). Finally, as we approach the bottom,  the security/anonymity bag had 2.75 oz, followed closely by the <a href="https://duckduckgo.com/">DuckDuckGo</a> bag, which had 2.725. Finally, the LibreOffice/document freedom bag had 2 oz of stickers.</p>
-<p>What all this is to say is that I now own a <em>lot</em> of stickers. Specifically, I own an astonishing 2 <em>lbs</em>, 1.625 oz of stickers. Seriously. 2 pounds of what is essentially paper. That's almost unbelievable. (I should point out at this point that I got that number from weighing all of them, not by adding up the above figures, so there may be a slight difference.)</p>
-<p>Anyway. I guess I'll have plenty of material to hand out at my CryptoParty.</p>
-<h3>Other things</h3>
-<p>Other things that have happened recently-ish: I'm going to be in Advanced Photography next year, which I'm super excited about! Also, I joined the SAAS dance program, which should be really fun. At first it was a bit inconvenient, because even though I really wanted to be in dance, with Advanced Photography <em>and</em> Intermediate Dance, I didn't have room in the fall for a Study Hall (which I'm going to need because of college apps). So I ended up deciding to only do robotics on the weekends. Not only that, but the dance show is inevitably the same weekend as LFNW, so I was going to miss Game Night and the Saturday sessions and the afterparty. But things worked out, because apparently they had so many people auditioning this year that they split Intermediate Dance into two sections, and I'm in the one that has class in the winter and spring. That means that not only can I take a study hall in the fall, but our dance show will be at a different time of year, so I can go to LinuxFest Northwest, too. Whoo!</p>
-</div>
-          </article>
-          <hr>
+          <h2 class="p-name">Posts categorized as "personal"</h2>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2014/12/new-blog-new-site">
               <h2 class="p-name">New blog, new site!</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2014/12/">December</a> 27, <a href="/blog/2014/">2014</a> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/stratic/" class="p-category">stratic</a>
@@ -165,7 +83,7 @@ E: Sub-process /usr/bin/dpkg returned an error code (1)
           </article>
           <hr>
           <div id="pages-footer">
-            <p><a href="../7">←</a> ⋅ Page 8 out of 8 ⋅ <span class="disabled-arrow">→</span></p>
+            <p><a href="../3">←</a> ⋅ Page 4 out of 4 ⋅ <span class="disabled-arrow">→</span></p>
           </div>
         </div>
       </div>

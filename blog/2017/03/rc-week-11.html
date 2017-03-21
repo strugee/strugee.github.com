@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+© Copyright 2012-2016 Alex Jordan
+This file is part of strugee.net.
+strugee.net is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+strugee.net is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!-- Made and coded by Alex Jordan-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
+    <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <!-- IndieWeb components, with <3-->
+    <link rel="me" href="mailto:alex@strugee.net">
+    <link rel="me" href="sms:17607054581">
+    <link rel="me" href="https://github.com/strugee">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://pump.strugee.net/alex">
+    <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
+    <title>RC week 11 - strugee.net</title>
+    <link rel="pingback" href="https://webmention.io/strugee.net/xmlrpc">
+    <link rel="webmention" href="https://webmention.io/strugee.net/webmention">
+    <script src="/js/webmentions.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+      <header>
+        <h1 id="topheader">strugee.net</h1>
+        <nav id="navbar">
+          <ul>
+            <li id="navlabel" class="navlink">Nav &nbsp;::</li>
+            <li class="navlink"><a href="/">Home</a></li>
+            <li class="navlink"><a href="/services">Services</a></li>
+            <li class="navlink"><a href="/projects">Projects</a></li>
+            <li class="navlink"><a href="/talks">Talks</a></li>
+            <li class="navlink"><a href="/gpg">GPG Key</a></li>
+            <li class="navlink"><a href="/contact">Contact</a></li>
+            <li class="navlink"><a href="/blog/">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="content">
+        <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry">
+          <h1 class="p-name">RC week 11</h1>
+          <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2017/03/">March</a> 20, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
+          </p>
+          <div class="e-content"><p>This is week 11 of being at the <a href="https://recurse.com">Recurse Center</a>. </p>
+<script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
+<h3 id="day-7">Day 7</h3>
+<p>Arrived ~13:30, departed ~22:45, total time at RC 9h15m.</p>
+<p>Brought in cookies and spent a lot of time discussing things on Zulip, honestly. Also figured out when I'm teaching things for Web Dev 101. Spent most of the day, however, writing about <a href="https://strugee.net/blog/2017/03/default-secure-systems">default-secure systems</a>.</p>
+<h3 id="day-8">Day 8</h3>
+<p>Arrived ~16:15, departed ~21:00, total time at RC 4h45m.</p>
+<p>Arrived super late today because I woke up in the morning, saw the blizzard outside my window, and said "hell no." When I <em>did</em> go in, the blizzard was still going, so I put on snow pants, snow boots, a thick sweater and my winter jacket, and my hat and gloves. Which took a while.</p>
+<p>Spent some time discussing 10 different reasons not to put arsenic in the milk with <a href="https://jmeggesto.github.io/">Jackie</a> and <a href="https://github.com/andrewrk">Andrew</a>, which she later wrote a blog post about <a href="https://jmeggesto.github.io/blog/2017/03/poisonmilk">here</a>. Spent the rest of the day doing <a href="https://github.com/straticjs/RFCs/issues/2">maintenance</a> on some Stratic modules. Also spent a little time on the phone with my dad diagnosing my server's disk problems. I had him reseat the SATA cables, with no effect, unfortunately.</p>
+<h3 id="day-9">Day 9</h3>
+<p>Arrived ~12:15, departed ~23:25, total time at RC 11h10m.</p>
+<p>Didn't do a lot of new stuff, but took care of some miscellaneous business. In particular I did some work on polishing <a href="https://github.com/hubot-scripts/hubot-seen">hubot-seen</a>, including putting out a 1.0.0 release (and then a 1.0.1 release when that turned out to have broken the world). In the evening, <em>finally</em> found the bug preventing us from upgrading pump.io to Express 4.x, which was unbelievably satisfying. Turned out that the bug was in some test code, not the application itself, and so I had been misreading the stack trace for <em>months</em>. (The top item was a test file, but I incorrectly assumed that that was just some test code invoking a bunch of internal stuff. Nope.) Also has a meeting with some of the other Winter 1s about feelings and the end of the batch and stuff.</p>
+<p>Last but not least, caught up on weekly blogging. (I've been really bad for a while now...)</p>
+<h3 id="day-10">Day 10</h3>
+<p>Arrived ~11:45, departed ~00:00, total time at RC 12h15m.</p>
+<p>Did a ton of pump.io work. I merged the Express 4.x branch, then went in and did a bunch of other more minor dependency upgrades. Also went to a soldering workshop run by <a href="https://github.com/eeclaire">Claire</a> immediately before presenting HTTPS Part 2 in the afternoon.</p>
+<p>In the evening, went to presentations and then game night, where I spent the entire time playing poker. I put in $3 and got back $7.95 (read: $8). Sick.</p>
+<h3 id="friday">Friday</h3>
+<p>Arrived ~13:30, departed ~21:45, total time at RC 8h15m. As always, Friday doesn't count as a day because RC is technically not in session.</p>
+<p>Did some work on improving pump.io's dependency situation. The result is a system that is very, very close to being 100% up-to-date, which I'm <em>super</em> proud of to be honest. That also let me turn on dependency security monitoring through <a href="https://nodesecurity.io/orgs/pumpio/projects/32213bb8-f9a6-4dd0-8fc6-5caa8ea5f8fc">Node Security Platform</a>, with plans to enable <a href="https://greenkeeper.io">Greenkeeper</a> as well. Had the monthly meeting in the middle of all that which went really well and was very productive.</p>
+<p>In the evening, went to Bottle Share, then put pump.io on the Linux Foundation's <a href="https://bestpractices.coreinfrastructure.org">best practices badge app</a>, the result of which you can find <a href="https://bestpractices.coreinfrastructure.org/projects/804">here</a>.</p>
+<h3 id="executive-summary">Executive summary</h3>
+<p>Well, I got a lot done on pump.io (and Stratic) this week. So it was relatively productive. But I did basically nothing that was personally productive (i.e. that pushed me forward as a programmer). Hopefully next week will go better.</p>
+<p>Total time at RC 45 hours 40 minutes; cumulative time 510 hours 30 minutes.</p>
+</div>
+        </article>
+        <hr>
+        <p id="webmention-replies-header">WebMention replies</p>
+        <div id="webmentions"></div>
+        <noscript>
+          <p>Couldn't load WebMentions because you turned your JavaScript off. Sorry about that!</p>
+        </noscript>
+      </div>
+      <footer>
+        <p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a href="https://github.com/strugee/strugee.github.com">on GitHub</a>.</p>
+        <p>&copy; Copyright 2012-2017 Alex Jordan.</p>
+      </footer>
+      <!-- Piwik-->
+      <!-- Note that this Piwik instance is self-hosted and so doesn't leak metadata. Also, critically, it respects Do Not Track.-->
+      <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="//piwik.strugee.net/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
+      <noscript>
+        <p><img src="//piwik.strugee.net/piwik.php?idsite=1" style="border:0;" alt=""></p>
+      </noscript>
+      <!-- End Piwik Code-->
+      <div id="toys"><a id="lightbulb-icon" href="#">
+          <div class="icon-lightbulb"></div></a></div>
+      <script type="text/javascript" src="/js/main.js"></script>
+      <script type="text/javascript" src="/js/idl.js"></script>
+    </div>
+  </body>
+</html>
