@@ -53,6 +53,19 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "sysadmin"</h2>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/getting-on-board-with-configuration-management">
+              <h2 class="p-name">Getting on board with configuration management</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2017/03/">March</a> 28, <a href="/blog/2017/">2017</a> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/sysadmin/" class="p-category">sysadmin</a>
+            </p>
+            <div class="e-content"><p>For a long while I've really disliked configuration management. This mostly stemmed from my experience <a href="https://github.com/strugee/steevie/blob/3069f53ee82c6b1709f22285b71ccdc0e5e0bced/apache-config/apache-config.pp">managing Apache via Puppet</a>, which I found indirect and unnecessary - the only reason I did this was basically to get version control. In fact, I even started a project called <a href="https://github.com/strugee/bindslash">bindslash</a> which I literally described as "not configuration management".</p>
+<p>However, last Thursday, steevie (my primary server) crashed <em>again</em>. So I went into a fallback DigitalOcean VM I'd set up the last time this had happened and updated stuff. I presented my <a href="https://strugee.net/presentation-pumpio/libreplanet/">LibrePlanet slides</a> from that. And eventually I bit the bullet and set up a secondary email server which, to my great surprise, has not received a flood of spam yet (though I'm sure it will at some point).</p>
+<p>The whole ordeal really made me understand the benefit of configuration management. I would've spent less time and been less stressed if I could just plug in a config management system to get a useful failover system. So as of today, I'm on board with configuration management, and bindslash is dead.</p>
+<p>I still kinda hate Puppet, so I think I'll try out Ansible and <em>maybe</em> Chef. Ansible's agentless model in particular probably makes a lot of sense for my needs. It also makes me sad to kill bindslash, since I still think it would be a useful project and there's definitely a place for it in the world. But I no longer have any reason to work on it, so I'm just going to stop pretending I'll ever finish it. If anyone is interested in that approach, talk to me and I'll happily give you the name, the repo, my thoughts on its design, etc.</p>
+<p>Anyway. Now to set up outbound mail on the failover VM.</p>
+<p>*big sigh*</p>
+</div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2015/09/revisiting-my-tor-relay">
               <h2 class="p-name">Revisiting my Tor relay</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2015/09/">September</a> 4, <a href="/blog/2015/">2015</a> in <a href="/blog/category/sysadmin/" class="p-category">sysadmin</a>
