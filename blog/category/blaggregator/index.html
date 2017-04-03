@@ -53,6 +53,28 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "blaggregator"</h2>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/04/pump.io-4.0-in-beta">
+              <h2 class="p-name">pump.io 4.0 in beta</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/04/pump.io-4.0-in-beta">here</a> on <a href="/blog/2017/04/">April</a> 3, <a href="/blog/2017/">2017</a> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a> and <a href="/blog/category/development/" class="p-category">development</a>
+            </p>
+            <div class="e-content"><p>pump.io 4.0.0 is officially in beta! Whooo!</p>
+<h2>Highlights</h2>
+<p>This is a positively <em>huge</em> release, and I'm so excited to share it with the community. Some highlights:</p>
+<ul>
+<li>Express 4.x - I wrote about the significance of this change <a href="http://pump.io/blog/2017/03/express-4.x-in-pump.io-core">here</a>, but suffice to say that this significantly improves security, performance, and future maintainability</li>
+<li>Performance and correctness improvements to the web UI's JavaScript</li>
+<li>Better administrative experience, including the ability to specify configuration via environment variables</li>
+<li>Better interoperability with the <a href="https://indieweb.org">IndieWeb</a></li>
+</ul>
+<h2>Upgrading</h2>
+<p>The upgrade to Express 4.x and the improvements to configuration loading have the potential to break <em>some</em> existing pump.io installations, although 95% of installs should be completely unaffected. If you want to help test this beta, please set aside extra time as necessary to perform this upgrade - full documentation can be found on <a href="https://pumpio.readthedocs.io/en/latest/upgrades/3.x-to-4.x.html">ReadTheDocs</a>.</p>
+<p>As always, this release will follow our normal <a href="https://github.com/pump-io/pump.io/wiki/Release-cycle">release cycle</a>, which means that the stable 4.0.0 release will go out in about a month.</p>
+<h2>Test days</h2>
+<p>Due to the complexity of this upgrade, we've decided to have some test days during the beta where we upgrade prominent nodes for a day, then downgrade them again. This will help expose problems earlier and make the upgrade smoother for everyone. So far Jason Self, who runs <a href="https://datamost.com/">Datamost</a>, has volunteered for this - if you're interested in joining him, please <a href="https://github.com/pump-io/pump.io/wiki/Community">get in touch</a>!</p>
+<p>Happy hacking!</p>
+</div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/getting-on-board-with-configuration-management">
               <h2 class="p-name">Getting on board with configuration management</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2017/03/">March</a> 28, <a href="/blog/2017/">2017</a> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/sysadmin/" class="p-category">sysadmin</a>
@@ -151,40 +173,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 </div>
           </article>
           <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/default-secure-systems">
-              <h2 class="p-name">Default-secure systems</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">Alex Jordan</a> on <a href="/blog/2017/03/">March</a> 13, <a href="/blog/2017/">2017</a> in <a href="/blog/category/development/" class="p-category">development</a>
-            </p>
-            <div class="e-content"><p>So recently I presented on <a href="https://strugee.net/presentation-operational-security/">operational security</a> and then started in on the nightmare that is <a href="https://strugee.net/presentation-https-deployment/">HTTPS deployment</a>. And like I did with <a href="https://strugee.net/blog/2017/01/new-programming-language-part-i-handlers">language-level security</a> (I <em>still</em> need to write part 2 of that post), I thought to myself, this is so difficult. Why isn't there something that will do this for me? That's what my latest project is.</p>
-<p>Here's the tl;dr:</p>
-<pre><code>type(app)
-=> Django/Express.js/etc. app
-secure_system(app)
-=> Docker image
-</code></pre>
-<p>Or in other words, you'll be able to take an existing web app that you've written, run it through this system, and it will spit out a complete, reasonably-secure system image.</p>
-<p>Let's step back.</p>
-<h2>The status quo</h2>
-<p>Currently, when a developer wants to run a web app, they can either use something like Heroku, which is fully manged, or a VM from DigitalOcean or Amazon EC2 or something. There are a variety of reasons you might not want to use Heroku, but the only other option is a VM - and with a VM, you get a bare system where you have to set up everything from scratch. Lots of developers just don't have the operational experience to do this properly or securely, but it's not like they can go and get an operations team to do it for them. So they end up with systems that may have active security problems as well as little to no defense-in-depth mitigations for when security inevitably fails. Security is just another operational concern the developer has no time and no expertise to deal with, so it just doesn't happen. The developer spins up a VM, gets it to where it "works" and then moves on. <strong>This is not good enough.</strong></p>
-<p>I don't want to create a false dichotomy, though: this is not the developer's fault. Everyone has conflicting priorities and it's unreasonable to expect the developer to spend lots of time learning to administrate systems so that they can then spend even more time, you know, administering systems. The problem is that there just isn't enough options available - we have to provide something better.</p>
-<h2>A middle ground</h2>
-<p>This is what my project is about: creating a middle ground between fully-managed deployment platforms and barebones, setup-from-scratch VMs.</p>
-<p>This project rests on the idea that operational security (at least, in a single-server, single-admin context) flows from consistency, least privilege, and proactive, defense-in-depth security measures. Here are a couple core design goals:</p>
-<ol>
-<li>Meet developers where they are. Configuration management like Puppet is a great way to enforce consistency, but it adds a level of indirection and is just another thing that people running hobbyist projects don't have time to learn.</li>
-<li>Tight integration with apps - this excludes more obscure types of web applications, but gives us a better footing to set up a solid deployment environment. It also may let us integrate more tightly with things like Content Security Policy in the future.</li>
-<li>Support virtual hosting. The ability to run multiple apps while paying for a single VM is a compelling reason people go with VMs over e.g. Heroku - we won't be helping anyone if we leave this out.</li>
-<li>Upgrades are optional. Any system image created by this project will present a system that is organized and can be maintained and modified by hand without breaking everything.</li>
-<li>Upgrades are possible. Tight app framework integration will aid with putting data into well-known places that can be backed up and migrated to a new image generated by a newer version of this system.</li>
-<li>Not designed for "real" production environments. Any project that has a dedicated operations person should not be using this; they should be rolling their own custom environments with something like Puppet. Accordingly, there won't be compromises in security in favor of flexibility - it's designed to cover 75% of cases "pretty well", which is still better than the status quo for smaller projects (almost 100% of cases don't have any security at all).</li>
-</ol>
-<p>I'd also like to highlight one really important decision: the output is complete system images. Probably at first this will mean Docker containers but this could easily be turned into VM images. This is a critical part of the design because it allows us to make broad, sweeping changes - for example, preferring system components written in memory-safe languages, replacing OpenSSL with LibreSSL, or creating systemd unit files that lock down service runtime environments to reduce the impact of a compromise. These improvements aren't possible unless we control the whole system. And because upgrades are optional but possible, the developer can get security improvements by "just" upgrading a component that they use, in the same way that they'd upgrade a library or something, as opposed to security being a continuous process they have to worry about. Again, obviously not perfect - but much better than the status quo.</p>
-<p>I hope to have a MVP out Real Soon Now™. But in the meantime, if you have thoughts, feel free to reach out.</p>
-</div>
-          </article>
-          <hr>
           <div id="pages-footer">
-            <p><span class="disabled-arrow">←</span> ⋅ Page 1 out of 4 ⋅ <a href="page/2">→</a></p>
+            <p><span class="disabled-arrow">←</span> ⋅ Page 1 out of 5 ⋅ <a href="page/2">→</a></p>
           </div>
         </div>
       </div>
