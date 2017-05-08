@@ -186,7 +186,7 @@ The very last thing we need to do is add a `.gitignore` file since we're install
 
 Now we've got a functionally equivalent development setup based on gulp. Success!
 
-## Step 2: converting HTML to Jade
+## Step 2: converting HTML to Pug
 
 The next step is to convert the HTML to [Pug][]. Pug (formerly known as Jade) is a language that compiles to HTML. It lets you do useful things like inherit from a common layout as well as looping over JavaScript variables. If you're not familiar with Pug, you should go take a look at its syntax now.
 
