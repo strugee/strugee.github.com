@@ -13,6 +13,7 @@ var adjustHeaders = require('remark-rewrite-headers');
 var slug = require('remark-slug');
 var frontMatter = require('gulp-gray-matter');
 var attachToTemplate = require('gulp-attach-to-template');
+var filterDrafts = require('stratic-filter-drafts');
 var dateInPath = require('stratic-date-in-path');
 var postsToIndex = require('stratic-posts-to-index');
 var paginateIndexes = require('stratic-paginate-indexes');
@@ -94,6 +95,7 @@ gulp.task('js', function() {
 gulp.task('post-index', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(frontMatter())
+	           .pipe(filterDrafts())
 	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
@@ -107,6 +109,7 @@ gulp.task('post-index', function() {
 gulp.task('posts', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(frontMatter())
+	           .pipe(filterDrafts())
 	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders).use(slug))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/post.jade'))
@@ -119,6 +122,7 @@ gulp.task('posts', function() {
 gulp.task('rss', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(frontMatter())
+	           .pipe(filterDrafts())
 	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
