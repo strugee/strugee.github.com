@@ -203,7 +203,7 @@ gulp.task('default', ['serve']);
 % echo "\ndist/\n" >> .gitignore
 </code></pre>
 <p>Now we've got a functionally equivalent development setup based on gulp. Success!</p>
-<h3>Step 2: converting HTML to Jade</h3>
+<h3>Step 2: converting HTML to Pug</h3>
 <p>The next step is to convert the HTML to <a href="https://pugjs.org">Pug</a>. Pug (formerly known as Jade) is a language that compiles to HTML. It lets you do useful things like inherit from a common layout as well as looping over JavaScript variables. If you're not familiar with Pug, you should go take a look at its syntax now.</p>
 <p>The easiest way to do this conversion is to get a program to do it for you. <a href="http://html2jade.aaron-powell.com/">Here's the one I used</a> way back when; you may be able to find a better one. The generated Pug will be valid but not the prettiest - you may want to wait to clean it up since we're going to do some work to reduce the duplication soon.</p>
 <p>Once you've got the converted Pug, you should rename the relevant HTML file to have a <code>.pug</code> extention, then replace the contents with the Pug. Do this for each HTML file.</p>

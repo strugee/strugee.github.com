@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[strugee.net blog - 'stratic' category]]></title><description><![CDATA[strugee.net blog - 'stratic' category]]></description><link>https://strugee.net/blog/category/stratic</link><generator>stratic-indexes-to-rss</generator><lastBuildDate>Tue, 18 Apr 2017 14:37:25 GMT</lastBuildDate><atom:link href="https://strugee.net/blog/category/stratic/index.rss" rel="self" type="application/rss+xml"/><copyright><![CDATA[© Copyright 2012-2017 Alex Jordan. Available under the GNU Affero GPL.]]></copyright><webMaster><![CDATA[Alex Jordan <alex@strugee.net>]]></webMaster><item><title><![CDATA[From static to Stratic - part 1]]></title><description><![CDATA[<p>So a couple days ago I published <code>generator-stratic@1.0.0-beta.1</code> to npm. Since Stratic is now officially in beta, I thought I'd write up a guide to converting a regular, static site to a Stratic-powered blog.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[strugee.net blog - 'stratic' category]]></title><description><![CDATA[strugee.net blog - 'stratic' category]]></description><link>https://strugee.net/blog/category/stratic</link><generator>stratic-indexes-to-rss</generator><lastBuildDate>Sat, 13 May 2017 04:52:23 GMT</lastBuildDate><atom:link href="https://strugee.net/blog/category/stratic/index.rss" rel="self" type="application/rss+xml"/><copyright><![CDATA[© Copyright 2012-2017 Alex Jordan. Available under the GNU Affero GPL.]]></copyright><webMaster><![CDATA[Alex Jordan <alex@strugee.net>]]></webMaster><item><title><![CDATA[From static to Stratic - part 1]]></title><description><![CDATA[<p>So a couple days ago I published <code>generator-stratic@1.0.0-beta.1</code> to npm. Since Stratic is now officially in beta, I thought I'd write up a guide to converting a regular, static site to a Stratic-powered blog.</p>
 <p>Each step in this blog post (part 1 of 2[?]) will take you closer to having a fully-functional blog, but because of Stratic's decoupled design, you can work through them at your own pace. Each step will leave you with a functional environment (i.e. nothing will be "broken" such that you can't work on your website anymore).</p>
 <p>You can see the steps in this post in action at <a href="https://github.com/straticjs/static-to-stratic">straticjs/static-to-stratic</a>. Each commit corresponds to a step in this post.</p>
 <p>Let's get started!</p>
@@ -9,10 +9,10 @@
 <pre><code>% tree .
 .
 ├── css
-│   └── main.css
+│&nbsp;&nbsp; └── main.css
 ├── index.html
 ├── js
-│   └── main.js
+│&nbsp;&nbsp; └── main.js
 └── projects.html
 
 2 directories, 4 files
@@ -21,7 +21,7 @@
 <p>Since Alyssa uses GitHub she publishes her website on GitHub Pages, so her website is in the <code>master</code> branch of her git repository. (Here we're assuming that the repository is called <code>aphacker.github.io</code> or something, instead of <code>static-to-stratic</code>.)</p>
 <p>In addition to adding blog support, we'll improve Alyssa's website by reducing duplication while still allowing her to publish to GitHub Pages.</p>
 <h2>Step 1 - adding gulp</h2>
-<p>Before we do anything else, we need to add a build system. Stratic is designed to work with <a href="">gulpjs</a>, so that's the one we'll be using.</p>
+<p>Before we do anything else, we need to add a build system. Stratic is designed to work with <a href="https://strugee.net/blog/">gulpjs</a>, so that's the one we'll be using.</p>
 <p>Adding gulp is super easy. First, we need to create a <code>package.json</code>, so we do <code>npm init</code>:</p>
 <pre><code>% npm init
 This utility will walk you through creating a package.json file.
@@ -30,7 +30,7 @@ It only covers the most common items, and tries to guess sensible defaults.
 See `npm help json` for definitive documentation on these fields
 and exactly what they do.
 
-Use `npm install &#x3C;pkg> --save` afterwards to install a package and
+Use `npm install &lt;pkg&gt; --save` afterwards to install a package and
 save it as a dependency in the package.json file.
 
 Press ^C at any time to quit.
@@ -41,7 +41,7 @@ entry point: (index.js)
 test command:
 git repository: (https://github.com/straticjs/static-to-stratic.git)
 keywords:
-author: Alyssa P. Hacker &#x3C;alyssaphacker@example.net>
+author: Alyssa P. Hacker &lt;alyssaphacker@example.net&gt;
 license: (ISC) AGPL-3.0+
 About to write to /Users/alex/Development/static-to-stratic/package.json:
 
@@ -51,13 +51,13 @@ About to write to /Users/alex/Development/static-to-stratic/package.json:
   "description": "Personal website of Alyssa P. Hacker",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" &#x26;&#x26; exit 1"
+    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/straticjs/static-to-stratic.git"
   },
-  "author": "Alyssa P. Hacker &#x3C;alyssaphacker@example.net>",
+  "author": "Alyssa P. Hacker &lt;alyssaphacker@example.net&gt;",
   "license": "AGPL-3.0+",
   "bugs": {
     "url": "https://github.com/straticjs/static-to-stratic/issues"
@@ -140,11 +140,11 @@ gulp.task('default', ['serve']);
 </code></pre>
 <p>Now whenever Alyssa wants to deploy a new version of her website, she just runs <code>gulp deploy</code> and it'll be taken care of for her. (ProTip™: change the default branch to <code>src</code> on GitHub. That way visitors and new clones see the source files, not the build files generated by a program.)</p>
 <p>The very last thing we need to do is add a <code>.gitignore</code> file since we're installing Node modules and have a build directory now. We'll just use GitHub's, adding a line for <code>dist/</code> at the end:</p>
-<pre><code>% curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore > .gitignore
-% echo "\ndist/\n" >> .gitignore
+<pre><code>% curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore &gt; .gitignore
+% echo "\ndist/\n" &gt;&gt; .gitignore
 </code></pre>
 <p>Now we've got a functionally equivalent development setup based on gulp. Success!</p>
-<h2>Step 2: converting HTML to Jade</h2>
+<h2>Step 2: converting HTML to Pug</h2>
 <p>The next step is to convert the HTML to <a href="https://pugjs.org">Pug</a>. Pug (formerly known as Jade) is a language that compiles to HTML. It lets you do useful things like inherit from a common layout as well as looping over JavaScript variables. If you're not familiar with Pug, you should go take a look at its syntax now.</p>
 <p>The easiest way to do this conversion is to get a program to do it for you. <a href="http://html2jade.aaron-powell.com/">Here's the one I used</a> way back when; you may be able to find a better one. The generated Pug will be valid but not the prettiest - you may want to wait to clean it up since we're going to do some work to reduce the duplication soon.</p>
 <p>Once you've got the converted Pug, you should rename the relevant HTML file to have a <code>.pug</code> extention, then replace the contents with the Pug. Do this for each HTML file.</p>
@@ -194,7 +194,7 @@ html
     block body
 
     footer
-      p &#x26;copy; Copyright 2016 Alyssa P. Hacker.
+      p &amp;copy; Copyright 2016 Alyssa P. Hacker.
     script(src='/js/main.js', type='text/javascript')
 </code></pre>
 <p>Note how I've replaced the <code>h1</code> element (the contents of which vary per-page) with <code>block heading</code>, I've added a <code>block head</code> directive so we can specify the title per-page, I've made a <code>block</code> for each navigation link so we can override them if we want to individually (otherwise they'll have the default of being a link), and I've added <code>block body</code> for the main content. I've also cleaned out a bunch of the cruft the automatic converter put in there.</p>
@@ -221,21 +221,21 @@ block body
 <pre><code>% tree -I node_modules .
 .
 ├── dist
-│   ├── css
-│   │   └── main.css
-│   ├── index.html
-│   ├── js
-│   │   └── main.js
-│   └── projects.html
+│&nbsp;&nbsp; ├── css
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── main.css
+│&nbsp;&nbsp; ├── index.html
+│&nbsp;&nbsp; ├── js
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── main.js
+│&nbsp;&nbsp; └── projects.html
 ├── gulpfile.js
 ├── package.json
 └── src
     ├── includes
-    │   └── layout.pug
+    │&nbsp;&nbsp; └── layout.pug
     ├── index.pug
     ├── projects.pug
     ├── scripts
-    │   └── main.js
+    │&nbsp;&nbsp; └── main.js
     └── styles
         └── main.css
 
@@ -244,7 +244,7 @@ block body
 <h2>Next time...</h2>
 <p>This post is long enough already, so I'll stop here. We've converted Alyssa's site to have a really solid base, so next time we'll build on top of this work to add superpowered blog features, powered by Stratic.</p>
 <p>Now go apply this to your own site!</p>
-]]></description><link>https://strugee.net/blog/2017/02/from-static-to-stratic-part-1</link><guid isPermaLink="true">https://strugee.net/blog/2017/02/from-static-to-stratic-part-1</guid><pubDate>Mon, 20 Feb 2017 19:58:53 GMT</pubDate></item><item><title><![CDATA[Stratic part one is done!]]></title><description><![CDATA[<p>Whooooooooooo!</p>
+]]></description><link>https://strugee.net/blog/2017/02/from-static-to-stratic-part-1</link><guid isPermaLink="true">https://strugee.net/blog/2017/02/from-static-to-stratic-part-1</guid><category><![CDATA[development]]></category><category><![CDATA[stratic]]></category><category><![CDATA[blaggregator]]></category><pubDate>Mon, 20 Feb 2017 19:58:53 GMT</pubDate></item><item><title><![CDATA[Stratic part one is done!]]></title><description><![CDATA[<p>Whooooooooooo!</p>
 <p>I am so, so, <em>so</em> thrilled to announce that the first part of <a href="https://github.com/strugee/generator-stratic">Stratic</a> is complete! And you can see the result right here on strugee.net, since this blog post was generated with Stratic!</p>
 <p><strong>tl;dr</strong>:</p>
 <pre><code>var rename = require('gulp-rename');
@@ -274,13 +274,13 @@ gulp.task('posts', function() {
 <p>It's worth noting that the real beauty in this code isn't what the code actually does, but the extreme modularity of the whole thing. Unlike projects like <a href="https://jekyllrb.com/">Jekyll</a> or even <a href="http://wintersmith.io/">Wintersmith</a>, this isn't a giant, monolithic framework. It's all standard Node and Gulp. Note how (for example) we didn't need a custom plugin for Markdown - we just used the standard <code>gulp-markdown</code>. Don't like Markdown? No problem. Write something to extract post metadata from your preferred format, replace <code>parse()</code> with that and <code>markdown()</code> with a different renderer, and you're golden. All the rest will continue to work the <em>exact</em> same - adding dates to paths, rendering the template, etc. - because everything's decoupled from everything else. Each component can be trivially swapped out and replaced with something new and better, and the rest of the system continues to work. Gorgeous.</p>
 <p>I've got to go now, but I'm not done blogging. I'll be back soon to talk about the work going on in <a href="http://pump.io/">pump.io</a>, and I'll be back (much?) later to talk about Stratic part two (aka, pretty indexes).</p>
 <p>Whooooooooooooooooooooo!</p>
-]]></description><link>https://strugee.net/blog/2016/05/stratic-part-one</link><guid isPermaLink="true">https://strugee.net/blog/2016/05/stratic-part-one</guid><pubDate>Sat, 28 May 2016 22:09:38 GMT</pubDate></item><item><title><![CDATA[New blog, new site!]]></title><description><![CDATA[<p>I'm back! Sort of. Very sort of.</p>
+]]></description><link>https://strugee.net/blog/2016/05/stratic-part-one</link><guid isPermaLink="true">https://strugee.net/blog/2016/05/stratic-part-one</guid><category><![CDATA[development]]></category><category><![CDATA[stratic]]></category><pubDate>Sat, 28 May 2016 22:09:38 GMT</pubDate></item><item><title><![CDATA[New blog, new site!]]></title><description><![CDATA[<p>I'm back! Sort of. Very sort of.</p>
 <p>I've known for a while that I'm going to ditch Blogger. That's a large part of why I delayed posting stuff to my blog for so long: I didn't have blog software that I really wanted to use, but I didn't want to just put more data into Blogger. Eventually, though, I realized that it would take me a while to write software that a) built an actual blog from Markdown and b) worked the way I wanted it to, so I decided that I would just start cranking out posts and write the software to build them later. And then of course there was the week or three that I spent procrastinating on writing... oh well. I'm here now.</p>
 <p>Anyway, it's <s>two</s> three AM as I write this, so I should go to sleep soon. I have a lot of stuff I want to write about, so I'll be brief.</p>
 <h2>Summer</h2>
 <p>I haven't written anything publicly since <a href="http://ramblingsfromalex.blogspot.com/2014/06/reset-net.html">Reset the Net</a>, way back in June. So I should probably cover some of the things I've been doing.</p>
 <p>First, I ran a <a href="https://www.cryptoparty.in/">CryptoParty</a>! It was hosted at <a href="http://blackcoffeecoop.com/">Black Coffee</a>'s old location on Pine, and it was absolutely fantastic. We had a small group of people but it was really fun, anyway. The slides are <a href="https://github.com/strugee/cryptoparty-seattle">on GitHub</a> - and speaking of which, I've switched to <a href="https://github.com/markdalgleish/bespoke.js">Bespoke.js</a> for all my presentations. Hell yeah HTML5!</p>
-<p>Right after the CryptoParty was over, I actually had the opportunity to drive down to Portland for <a href="http://debconf14.debconf.org/">DebConf '14</a>, which was one of the most fantastic experiences of my entire life. I met a lot of really cool people there, I got my new <a href="https://strugee.net/gpg">key</a> (also generated over the summer) signed by a lot of Debian folks, and I played a lot of evening games (not Werewolf - the other one). One of the coolest parts was the fact that I actually got to meet two of my heros - Linus Torvalds came and did a Q&#x26;A with us (video of it is available <a href="https://youtu.be/1Mg5_gxNXTo">here</a>) and John Sullivan, Executive Director of the FSF, did a BoF-style talk on how we can get to a point where Debian is on the FSF free distribution list. I got a chance to talk to both of them afterwards, which was undoubtedly one of the coolest things that has ever happened to me thus far.</p>
+<p>Right after the CryptoParty was over, I actually had the opportunity to drive down to Portland for <a href="http://debconf14.debconf.org/">DebConf '14</a>, which was one of the most fantastic experiences of my entire life. I met a lot of really cool people there, I got my new <a href="https://strugee.net/gpg">key</a> (also generated over the summer) signed by a lot of Debian folks, and I played a lot of evening games (not Werewolf - the other one). One of the coolest parts was the fact that I actually got to meet two of my heros - Linus Torvalds came and did a Q&amp;A with us (video of it is available <a href="https://youtu.be/1Mg5_gxNXTo">here</a>) and John Sullivan, Executive Director of the FSF, did a BoF-style talk on how we can get to a point where Debian is on the FSF free distribution list. I got a chance to talk to both of them afterwards, which was undoubtedly one of the coolest things that has ever happened to me thus far.</p>
 <h2>Robotics</h2>
 <p>Yes, the school year started and I'm a junior now. It's rough.</p>
 <p>I'm on 5619 this year at robotics (Gabe, our main mentor, actually called me at DebConf to talk about it). I was a little annoyed to not be on 2856 at first, but it's worked out for the best. We're actually doing really well this year, and I'm so proud of the work we've been doing on the robot. It's difficult - it's much more complicated this year than last year, and there's basically no room on the thing. We had to move <em>wires</em> out of the way to make room for our scissor lift to come down properly. Speaking of which, we have a working scissor lift, which has never been accomplished at SAAS before, at least not during a season! So that's awesome.</p>
@@ -290,10 +290,10 @@ gulp.task('posts', function() {
 <h2>Mail</h2>
 <p>I've spent hours of work, spread out over a number of months, working on steevie's mail subsystem. And I'm proud to say that as of a couple weeks ago, I'm finally done. I had to buy a block of static IPs for it, which I felt really cool for doing. There's still a lot of work to do - SPF, outbound DKIM signing, better TLS, Roundcube, ManageSieve, antispam, moving to LDAP from MySQL... the list goes on and on and on, but the system works. And I'm really proud of it. Anyway, I have a new email now: <a href="mailto:alex@strugee.net">alex@strugee.net</a>. I've even set up the customary names to forward to me: you can email <a href="mailto:postmaster@strugee.net">postmaster</a> for email trouble, <a href="mailto:webmaster@strugee.net">webmaster</a> for problems with the web server, and even <a href="mailto:hostmaster@strugee.net">hostmaster</a> for general stuff. Or root, if you're APT or cron or somesuch. It'll all reach me.</p>
 <h2>Christmas</h2>
-<p>It was Christmas yesterday! Merry Christmas, Internet! I got a bunch of books, including The C Programming Language, Second Edition (yes, this is <em>the</em> book that K&#x26;R C is sort of named after), which was <em>very</em> exciting for me. I also got a budget for steevie approved, so now I can buy a bunch of hardware that I need. Hello, RAID 10 array!</p>
+<p>It was Christmas yesterday! Merry Christmas, Internet! I got a bunch of books, including The C Programming Language, Second Edition (yes, this is <em>the</em> book that K&amp;R C is sort of named after), which was <em>very</em> exciting for me. I also got a budget for steevie approved, so now I can buy a bunch of hardware that I need. Hello, RAID 10 array!</p>
 <h2>Stratic</h2>
 <p>So, finally onto the juicy development part. <a href="https://github.com/strugee/generator-stratic">Stratic</a> is the name of my new pet project. Stratic is the STReaming stATIC site builder. It's like <a href="https://wintersmith.io/">Wintersmith</a>, except that it runs on <a href="http://gulpjs.com">Gulp</a>, which I've fallen in love with over the summer. Because of that, it's a little weird - there'll be some custom components used to support it, but the main body of code is actually... a Yeoman generator.</p>
 <p>There hasn't been much activity in the repo because I'm using the <a href="https://github.com/strugee/strugee.github.com">strugee.github.com repository</a>, which still runs strugee.net even though I'm not on GitHub Pages anymore, as a testbed for Stratic. Once I've ironed out all the kinks, then I'll land all my work in the <a href="https://github.com/strugee/generator-stratic">generator-stratic repository</a>.</p>
-<p>I'm very tired, and I want to go to bed, but before I do I figure I should explain the format of this post. Yes, this is Stratic format. It's pure Markdown, but with some additional semantics that Stratic will use to build out the blog. I figure that not many people will use &#x3C;h1>s in their posts, so the Markdown equivalent (#) is used to distinguish the actual post text from what is essentially a header. I did something unusual, though, because even though the header is essentially for Stratic - who authored the post and when, what it's called, etc. - I wanted the Markdown to be at least somewhat readable in source form. Therefore, you're actually allowed to put anything you want in the header section. The values are distinguished by double quotation marks. Stratic will figure out what they mean based on their position. The first set of quotation marks contain the title, the second set contains the date, the third set contains the author, and the fourth set contains a comma-separated list of categories that the blog post should go in. The date looks a little weird - it's seconds since the epoch plus an optional UTC offset. It could be made more human-readable, but then you've got to parse stuff and it just turns into a nightmare. So I opted to sacrifice readability for elegance.</p>
+<p>I'm very tired, and I want to go to bed, but before I do I figure I should explain the format of this post. Yes, this is Stratic format. It's pure Markdown, but with some additional semantics that Stratic will use to build out the blog. I figure that not many people will use &lt;h1&gt;s in their posts, so the Markdown equivalent (#) is used to distinguish the actual post text from what is essentially a header. I did something unusual, though, because even though the header is essentially for Stratic - who authored the post and when, what it's called, etc. - I wanted the Markdown to be at least somewhat readable in source form. Therefore, you're actually allowed to put anything you want in the header section. The values are distinguished by double quotation marks. Stratic will figure out what they mean based on their position. The first set of quotation marks contain the title, the second set contains the date, the third set contains the author, and the fourth set contains a comma-separated list of categories that the blog post should go in. The date looks a little weird - it's seconds since the epoch plus an optional UTC offset. It could be made more human-readable, but then you've got to parse stuff and it just turns into a nightmare. So I opted to sacrifice readability for elegance.</p>
 <p>So! This is a blog post without a blog. Soon, I'll finish up Stratic and this will no longer remain solely in source form. I'm excited! I've already rewritten strugee.net in Jade, and used the opportunity to refresh <a href="https://strugee.net/services">the services page</a>. Time to get crackin'.</p>
-]]></description><link>https://strugee.net/blog/2014/12/new-blog-new-site</link><guid isPermaLink="true">https://strugee.net/blog/2014/12/new-blog-new-site</guid><pubDate>Sat, 27 Dec 2014 11:44:42 GMT</pubDate></item></channel></rss>
+]]></description><link>https://strugee.net/blog/2014/12/new-blog-new-site</link><guid isPermaLink="true">https://strugee.net/blog/2014/12/new-blog-new-site</guid><category><![CDATA[development]]></category><category><![CDATA[personal]]></category><category><![CDATA[stratic]]></category><pubDate>Sat, 27 Dec 2014 11:44:42 GMT</pubDate></item></channel></rss>
