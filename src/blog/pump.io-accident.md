@@ -1,21 +1,22 @@
 ---
 title: "How I accidentally started maintaining a social network with thousands of users"
 time:
-  epoch:
-  utcoffset:
+  epoch: 1494647513
+  utcoffset: "UTC-8"
 author: "Alex Jordan"
 categories:
   - development
   - personal
+  - pump.io
 ---
 
 As some of my readers (particularly Recursers) know, a couple of weeks ago I became an Invited Expert at the [W3C][] (World Wide Web Consortium). The W3C is a standards body. That means it's responsible for defining things like how things work on sthe web, such as how web pages are styled using CSS and how web developers can protect their apps from security vulnerabilities using [Content Security Policy][].
 
 My first thought when I got the email that my application had been accepted was, "_**WHOOOOOOOOO!**_" It was probably one of the most thrilling moments of my whole life. My second thought was, "how in the _world_ did I get here!?" The truth is, it was almost an accident.
 
-I first got involved in the pump.io project in August 2015. I was experimenting with different social networking software and decided to [deploy][] pump.io on my server. When I did I realized that pump... well, it didn't work very well. The web UI was kinda basic, everything was pretty buggy, and there were a lot of problems with the overall user experience. In fact, I know the exact day I set up pump.io (August 12th) because all throughout the experience [I][] [was][] [filing][] [bugs][] on things needing improvement. It was a shame, I thought, because this software seemed really neat. I thought it had a lot of potential.
+It started when I got involved in the [pump.io][] project. pump.io, for those who haven't heard me talk about this endlessly (e.g. at RC), is a decentralized social network. That means that there can be multiple servers run by different people that are part of the social network, but the users on those servers can interact with each other in just the same way they could if it was just one big centralized server\[1]. I first got involved in the pump.io project in August 2015. I was experimenting with different social networking software and decided to [deploy][] pump.io on my server. When I did I realized that pump... well, it didn't work very well. The web UI was kinda basic\[2], everything was pretty buggy, and there were a lot of problems with the overall user experience. In fact, I know the exact day I set up pump.io (August 12th) because all throughout the experience [I][] [was][] [filing][] [bugs][] on things needing improvement. It was a shame, I thought, because this software seemed really neat. I thought it had a lot of potential.
 
-After about two weeks it became clear that there was no activity in the upstream pump.io project. So, after some deliberation, I ended up forking it (briefly). You can watch [this talk][] around 16:00 to hear me talk about this a bit, though it was a really short and somewhat uninteresting part of the project's history. In the end Evan Prodromou, pump.io's author, ended up handing off some commit rights to community members.
+After about two weeks it became clear that there was no activity in the upstream pump.io project. So after some deliberation, I ended up forking it (briefly). You can watch [this talk][] around 16:00 to hear me talk about this a bit, though to be honest it's kind of just a footnote in the project's history. In the end Evan Prodromou, pump.io's author, ended up handing off some commit rights to community members.
 
 Well, I thought, that was the end of that. Everything's smooth sailing from here on out! There were some big problems, though: the people who now had commit rights all were involved in other things and, more importantly, none of them knew JavaScript or Node.js! This makes me chuckle to this day, honestly.
 
@@ -33,7 +34,11 @@ I showed up, kind of by accident, and I now run a decentralized social network w
 
 What will happen if _you_ show up?
 
- [W3C]: https://www.w3.org/
+\[1]: I really hope this explanation makes sense and if it doesn't, I apologize - I use diagrams to explain this in real life.
+
+ \[2]: Still is, but that should improve now that the technical debt work I've been focusing on for the past year is now [basically done][]!
+
+  [W3C]: https://www.w3.org/
  [Content Security Policy]: https://www.w3.org/TR/CSP3/
  [deploy]: https://pump.strugee.net/
  [I]: https://github.com/pump-io/pump.io/issues/1093
@@ -44,3 +49,4 @@ What will happen if _you_ show up?
  [#1114]: https://github.com/pump-io/pump.io/pull/1114
  [testpr]: https://github.com/pump-io/pump.io/pull/1136
  [Sandro Hawke]: https://www.w3.org/People/Sandro/
+ [basically done]: https://strugee.net/blog/2017/03/express-4.x-in-pump.io-core
