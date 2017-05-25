@@ -11,7 +11,7 @@ categories:
   - pump.io
 ---
 
-As some of my readers (particularly Recursers) know, a couple of weeks ago I became an Invited Expert at the [Social Working Group][SocialWG] at the [W3C][] (World Wide Web Consortium). The W3C is a standards body. That means it's responsible for defining things like how things work on sthe web, such as how web pages are styled using CSS and how web developers can protect their apps from security vulnerabilities using [Content Security Policy][].
+As some of my readers (particularly Recursers) know, a couple of weeks ago I became an Invited Expert at the [Social Working Group][SocialWG] at the [W3C][] (World Wide Web Consortium). The W3C is a standards body. That means it's responsible for defining things like how things work on the web, such as how web pages are styled using CSS and how web developers can protect their apps from security vulnerabilities using [Content Security Policy][].
 
 My first thought when I got the email that my application had been accepted was, "_**WHOOOOOOOOO!**_" It was probably one of the most thrilling moments of my whole life. My second thought was, "how in the _world_ did I get here!?" The truth is, it was almost an accident.
 
