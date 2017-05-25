@@ -44,6 +44,7 @@ _Thanks so much to [Anja][] and [Julia][] for providing feedback on a draft vers
  [SocialWG]: https://www.w3.org/wiki/Socialwg
  [W3C]: https://www.w3.org/
  [Content Security Policy]: https://www.w3.org/TR/CSP3/
+ [pump.io]: http://pump.io
  [deploy]: https://pump.strugee.net/
  [I]: https://github.com/pump-io/pump.io/issues/1093
  [was]: https://github.com/pump-io/pump.io/issues/1094
