@@ -20,6 +20,8 @@ block head
 		title Posts from #{monthName + ' ' + year} - strugee.net
 	else if indexType === 'category'
 		title Posts categorized as "#{category}" - strugee.net
+	// TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...
+	link(rel='alternate', type='application/rss+xml', href='index.rss')
 
 block content
 	.h-feed
