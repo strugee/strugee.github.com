@@ -3,7 +3,7 @@ title: "New project! thanksmaintainer.com"
 time:
   epoch: 1484009754
   utcoffset: "UTC-5"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - development
   - blaggregator

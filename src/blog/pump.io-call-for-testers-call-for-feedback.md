@@ -3,7 +3,7 @@ title: "Pump.io: call for testers, call for feedback"
 time:
   epoch: 1470850536
   utcoffset: "UTC-4"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - development
   - pump.io

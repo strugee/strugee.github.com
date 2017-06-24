@@ -3,7 +3,7 @@ title: "Friendly reminder: protect yourself while protesting"
 time:
   epoch: 1479431831
   utcoffset: "UTC-8"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - politics
   - privacy

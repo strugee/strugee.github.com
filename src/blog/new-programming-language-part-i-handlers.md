@@ -3,7 +3,7 @@ title: "New programming language part I: Handlers"
 time:
   epoch: 1485446360
   utcoffset: "UTC-5"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - personal
   - blaggregator

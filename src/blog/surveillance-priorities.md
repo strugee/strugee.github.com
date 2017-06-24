@@ -3,7 +3,7 @@ title: "Surveillance priorities"
 time:
   epoch: 1485208527
   utcoffset: "UTC-5"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - politics
   - privacy

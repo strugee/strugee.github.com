@@ -3,7 +3,7 @@ title: "2 lbs of stickers"
 time:
   epoch: 1434272547
   utcoffset: "UTC-8"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - personal
 ---

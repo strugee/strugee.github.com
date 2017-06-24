@@ -3,7 +3,7 @@ title: "Getting on board with configuration management"
 time:
   epoch: 1490734796
   utcoffset: "UTC-4"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - development
   - sysadmin

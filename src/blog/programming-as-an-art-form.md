@@ -3,7 +3,7 @@ title: "Programming as an art form"
 time:
   epoch: 1447042658
   utcoffset: "UTC-8"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - development
   - musings

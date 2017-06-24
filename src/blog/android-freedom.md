@@ -3,7 +3,7 @@ title: "Android freedom"
 time:
   epoch: 1476758443
   utcoffset: "UTC-7"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - musings
 ---

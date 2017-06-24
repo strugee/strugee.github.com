@@ -3,7 +3,7 @@ title: "Where we're headed (a.k.a. I'm worried)"
 time:
   epoch: 1482482615
   utcoffset: "UTC-7"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - musings
   - politics

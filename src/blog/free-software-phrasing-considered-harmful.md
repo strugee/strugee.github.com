@@ -3,7 +3,7 @@ title: "'Free software' phrasing considered harmful"
 time:
   epoch: 1478729892
   utcoffset: "UTC-8"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - musings
 ---

@@ -3,7 +3,7 @@ title: "Work on strugee.net"
 time:
   epoch: 1465878614
   utcoffset: "UTC-8"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - development
 ---

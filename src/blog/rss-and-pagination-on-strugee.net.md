@@ -3,7 +3,7 @@ title: "RSS and pagination on strugee.net"
 time:
   epoch: 1484074081
   utcoffset: "UTC-5"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - development
   - blaggregator

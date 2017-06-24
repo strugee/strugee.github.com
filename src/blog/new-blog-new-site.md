@@ -3,7 +3,7 @@ title: "New blog, new site!"
 time:
   epoch: 1419680682
   utcoffset: "UTC-8"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - development
   - personal

@@ -3,7 +3,7 @@ title: "Default-secure systems"
 time:
   epoch: 1489438757
   utcoffset: "UTC-5"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - development
   - blaggregator

@@ -3,7 +3,7 @@ title: How I passed 2k GitHub contributions
 time:
   epoch: 1487871979
   utcoffset: "UTC-5"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - personal
   - development

@@ -3,7 +3,7 @@ title: "Graduation 2017: reflections on 365 days of gap yearing"
 time:
   epoch: 1496821589
   utcoffset: "UTC-7"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - personal
   - blaggregator

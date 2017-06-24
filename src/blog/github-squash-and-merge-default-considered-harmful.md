@@ -3,7 +3,7 @@ title: "GitHub's 'squash and merge' default considered harmful"
 time:
   epoch: 1476924018
   utcoffset: "UTC-7"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - musings
 ---

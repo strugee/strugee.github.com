@@ -3,7 +3,7 @@ title: "Webmention test receiver"
 time:
   epoch: 1478068480
   utcoffset: "UTC-7"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - development
 ---

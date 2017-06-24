@@ -3,7 +3,7 @@ title: "RC week 3"
 time:
   epoch: 1485200304
   utcoffset: "UTC-5"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - personal
   - blaggregator

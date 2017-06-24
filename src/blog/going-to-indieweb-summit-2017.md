@@ -3,7 +3,7 @@ title: "Going to IndieWeb Summit 2017"
 time:
   epoch: 1497344953
   utcoffset: "UTC-7"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - personal
 ---

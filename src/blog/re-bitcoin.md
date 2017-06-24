@@ -3,7 +3,7 @@ title: "Re: Bitcoin, Magical Thinking, and Political Ideology"
 time:
   epoch: 1462990680
   utcoffset: "UTC-8"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - musings
 ---

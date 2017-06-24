@@ -3,7 +3,7 @@ title: "Revisiting my Tor relay"
 time:
   epoch: 1441413269
   utcoffset: "UTC-8"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - sysadmin
 ---

@@ -3,7 +3,7 @@ title: RC week 11
 time:
   epoch: 1490064565
   utcoffset: "UTC-4"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - personal
   - blaggregator

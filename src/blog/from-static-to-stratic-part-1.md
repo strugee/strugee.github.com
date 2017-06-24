@@ -3,7 +3,7 @@ title: "From static to Stratic - part 1"
 time:
   epoch: 1487620733
   utcoffset: "UTC-5"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - development
   - stratic

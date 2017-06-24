@@ -3,7 +3,7 @@ title: Driftless at 1,000 mph
 time:
   epoch: 1488835640
   utcoffset: "UTC-5"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - personal
   - blaggregator

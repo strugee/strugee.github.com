@@ -3,7 +3,7 @@ title: RC week 9
 time:
   epoch: 1488843574
   utcoffset: "UTC-5"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - personal
   - blaggregator

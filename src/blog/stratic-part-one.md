@@ -3,7 +3,7 @@ title: "Stratic part one is done!"
 time:
   epoch: 1464473378
   utcoffset: "UTC-8"
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - development
   - stratic

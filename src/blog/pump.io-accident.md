@@ -4,7 +4,7 @@ time:
   epoch: 1494647513
   utcoffset: "UTC-8"
 edited: 1494654032
-author: "Alex Jordan"
+author: "AJ Jordan"
 categories:
   - development
   - personal
