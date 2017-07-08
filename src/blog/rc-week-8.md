@@ -64,7 +64,7 @@ This week was weirdly divided - some parts were hyper-productive and some parts 
 Total time at RC 68 hours 45 minutes; cumulative time 363 hours 10 minutes.
 
  [Recurse Center]: https://recurse.com
- [static to Stratic]: https://strugee.net/blog/2017/02/static-to-stratic
+ [static]: https://strugee.net/blog/2017/02/from-static-to-stratic-part-1
  [generator-stratic]: https://github.com/straticjs/generator-stratic
  [years ago]: https://strugee.net/blog/2014/12/new-blog-new-site
  [intend]: https://github.com/straticjs/generator-stratic/issues/11

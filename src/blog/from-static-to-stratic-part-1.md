@@ -218,7 +218,7 @@ That's it! Alyssa's site is now building with Pug instead of HTML.
 
 Pug's looping and flow control constructs will be very useful to us later on, but we can get some immediate productivity wins by splitting out the site layout so it's not duplicated across every Pug file.
 
-There's one tricky thing about this: the navigation is mostly the same between pages, but not quite - the page the user is currently on shouldn't be a link. We'll solve this by using a `block` directivefor each link. That way, we can override just what needs to be changed, while introducing no duplication.
+There's one tricky thing about this: the navigation is mostly the same between pages, but not quite - the page the user is currently on shouldn't be a link. We'll solve this by using a `block` directive for each link. That way, we can override just what needs to be changed, while introducing no duplication.
 
 You'll have to figure out exactly what parts of your personal layout make sense to be split out. In Alyssa's case, there are three main things that are mostly or fully duplicated across pages:
 
