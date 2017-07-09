@@ -1,7 +1,7 @@
 {
   "name": "strugee.github.com",
   "version": "1.0.0",
-  "description": "Personal website for Alex Jordan, powering strugee.net",
+  "description": "Personal website for AJ Jordan, powering strugee.net",
   "main": "js/main.js",
   "dependencies": {
     "es6-promise": "^3.2.1",
@@ -45,7 +45,7 @@
     "type": "git",
     "url": "https://github.com/strugee/strugee.github.com.git"
   },
-  "author": "Alex Jordan",
+  "author": "AJ Jordan",
   "license": "AGPL-3.0",
   "gitHead": "0ab14ee7a6fece9885a82038fb57e26e2784efd1",
   "bugs": {
