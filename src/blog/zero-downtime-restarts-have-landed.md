@@ -6,6 +6,7 @@ time:
 author: "AJ Jordan"
 categories:
   - pump.io
+  - blaggregator
 canonical: http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed
 ---
 
