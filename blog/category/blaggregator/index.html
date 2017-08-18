@@ -60,6 +60,68 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "blaggregator"</h2>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/08/zero-downtime-restarts-have-landed">
+              <h2 class="p-name">Zero-downtime restarts have landed</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">here</a> on <a href="/blog/2017/08/">August</a> 18, <a href="/blog/2017/">2017</a> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
+            </p>
+            <div class="e-content"><p>I'm thrilled to announce that zero-downtime restarts, which I've been hacking on for the past week or two, <a href="https://github.com/pump-io/pump.io/pull/1406">have just landed</a> in pump.io master!</p>
+<p>Zero-downtime restarts require at least two cluster workers and MongoDB as a Databank driver (we'll eventually relax the latter requirement as we continue to test the feature). Here's how it works:</p>
+<ol>
+<li>An administrator sends SIGUSR2 to the master pump.io process (note that SIGUSR1 is <a href="https://nodejs.org/api/process.html#process_signal_events">reserved by Node.js</a>)</li>
+<li>The master process builds a queue of worker processes that need to be restarted</li>
+<li>The master process picks a random worker from the queue and sends it a signal asking it to gracefully shut down</li>
+<li>The worker process shuts down its HTTP server, which causes it to stop accepting new connections - it will do the same for the bounce server, if applicable</li>
+<li>The worker shuts down its database connection once the HTTP server is completely shut down, meaning that it's done servicing in-flight requests</li>
+<li>The worker closes its connection with the master process and Node.js automatically terminates due to there being no listeners on the event loop</li>
+<li>The master recognizes the death of the worker process, replaces it, waits for the new worker to signal that it's listening for connections, and repeats from step 3 until the queue is empty</li>
+</ol>
+<p>This works because only one worker is shut down at a time, allowing the other workers to continue servicing requests while the one worker is restarted. We wait until the new worker actually signals it's ready to process requests before beginning the process for another worker.</p>
+<p>Such a feature requires careful error handling, so there are a lot of built-in checks to prevent administrators from shooting themselves in the foot:</p>
+<ul>
+<li>If there's a restart already in progress, SIGUSR2 is ignored</li>
+<li>If there's only 1 cluster worker, the restart request is refused (because there would be downtime and you should just restart the master)</li>
+<li>
+<p>The master process will load a magic number from the <em>new</em> code and compare it with the <em>old</em> magic number loaded when the master process started - if they don't match, SIGUSR2 will be refused. This number will be incremented for things that would make zero-downtime restarts cause problems, for example:</p>
+<ul>
+<li>The logic in the master process itself changing</li>
+<li>Cross-process logic changing, such that a new worker communicating with old workers would cause problems</li>
+<li>Database changes</li>
+</ul>
+</li>
+<li>If a worker process doesn't shut itself down within 30 seconds, it will be killed</li>
+<li>
+<p>If a zero-downtime restart fails for any reason, the master process will refuse SIGUSR2 and will not respawn any more cluster workers, even if they crash - this is because something must have gone <em>seriously</em> wrong, either with the master, the workers, or the new code, and it's better to just restart everything. Currently this condition occurs when:</p>
+<ul>
+<li>A new worker died directly after being spawned (e.g. from invalid JSON in <code>pump.io.json</code>)</li>
+<li>A new worker signaled that it couldn't bind to the appropriate ports</li>
+</ul>
+</li>
+</ul>
+<p>While these checks do a lot to catch problems, they're not a silver bullet, and we strongly recommend that administrators watch their logs as they trigger restarts. However, this is still a <em>huge</em> win for the admin experience - the most exciting part of this for me is that it's the first step we need to take towards having fully automatic updates, which has been a dream of mine for a long while now.</p>
+<p>Admins running from git master can start experimenting with this feature today, and it will be released during the <em>next</em> release cycle - i.e. with the 5.1 beta and stable, <em>not</em> the current 5.0 beta. Since this is highly experimental, we want this to have as much time for testing as possible. You can also check out the <a href="https://pumpio.readthedocs.io/en/latest/administration/zero-downtime-restarts.html">official documentation</a> on this feature.</p>
+<p>I hope people enjoy this! And as always, feel free to <a href="https://github.com/pump-io/pump.io/issues/new">report any bugs</a>.</p>
+</div>
+          </article>
+          <hr>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/08/pump.io-5.0-beta-released">
+              <h2 class="p-name">pump.io 5.0 beta released</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/08/pump.io-5.0-beta-released">here</a> on <a href="/blog/2017/08/">August</a> 7, <a href="/blog/2017/">2017</a> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
+            </p>
+            <div class="e-content"><p>I'm excited to announce that pump.io 5.0.0 is now officially in beta!</p>
+<p>This is another big release and makes a wide variety of improvements. Here are some highlights from <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#500-beta-0---2017-08-07">the changelog</a>:</p>
+<ul>
+<li>More complete documentation</li>
+<li>Small improvements to the administrator experience</li>
+<li>A better web UI, including some user experience polishing as well as an upgrade to more performant and better-licensed libraries</li>
+<li>A fix for crashes related to "login with remote account" (although this one was backported in 4.1.1)</li>
+<li>Significant security improvements in the <a href="https://pumpio.readthedocs.io/en/latest/administration/upstream-systemd-unit.html">systemd service</a> shipped with the package</li>
+<li>Lots of internal refactoring and simplification made possible by dropping Node 0.10/0.12 support</li>
+</ul>
+<p>Many of these changes - particularly the systemd changes and the fact that (<a href="http://pump.io/blog/2017/07/pump.io-4.1-is-out">as previously announced</a>) Node 0.10 and 0.12 are no longer supported - will require administrator intervention. Be sure to read our <a href="https://pumpio.readthedocs.io/en/latest/upgrades/4.x-to-5.x.html">upgrade guide</a> for details on how to deal with these changes.</p>
+<p>All of these features add up to make pump.io 5.0 beta the most stable and secure release yet. As always, it will go through our beta period for about a month before being released as a fully stable version. If you try it out, the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> would love to hear about it - and be sure to <a href="https://github.com/pump-io/pump.io/issues">report any bugs</a> you encounter!</p>
+</div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/06/graduation-2017-reflections-on-365-days-of-gap-yearing">
               <h2 class="p-name">Graduation 2017: reflections on 365 days of gap yearing</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/06/">June</a> 7, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
@@ -111,59 +173,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>I still kinda hate Puppet, so I think I'll try out Ansible and <em>maybe</em> Chef. Ansible's agentless model in particular probably makes a lot of sense for my needs. It also makes me sad to kill bindslash, since I still think it would be a useful project and there's definitely a place for it in the world. But I no longer have any reason to work on it, so I'm just going to stop pretending I'll ever finish it. If anyone is interested in that approach, talk to me and I'll happily give you the name, the repo, my thoughts on its design, etc.</p>
 <p>Anyway. Now to set up outbound mail on the failover VM.</p>
 <p>*big sigh*</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/rc-week-11">
-              <h2 class="p-name">RC week 11</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/03/">March</a> 20, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
-            </p>
-            <div class="e-content"><p>This is week 11 of being at the <a href="https://recurse.com">Recurse Center</a>. </p>
-<script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
-<h3>Day 7</h3>
-<p>Arrived ~13:30, departed ~22:45, total time at RC 9h15m.</p>
-<p>Brought in cookies and spent a lot of time discussing things on Zulip, honestly. Also figured out when I'm teaching things for Web Dev 101. Spent most of the day, however, writing about <a href="https://strugee.net/blog/2017/03/default-secure-systems">default-secure systems</a>.</p>
-<h3>Day 8</h3>
-<p>Arrived ~16:15, departed ~21:00, total time at RC 4h45m.</p>
-<p>Arrived super late today because I woke up in the morning, saw the blizzard outside my window, and said "hell no." When I <em>did</em> go in, the blizzard was still going, so I put on snow pants, snow boots, a thick sweater and my winter jacket, and my hat and gloves. Which took a while.</p>
-<p>Spent some time discussing 10 different reasons not to put arsenic in the milk with <a href="https://jmeggesto.github.io/">Jackie</a> and <a href="https://github.com/andrewrk">Andrew</a>, which she later wrote a blog post about <a href="https://jmeggesto.github.io/blog/2017/03/poisonmilk">here</a>. Spent the rest of the day doing <a href="https://github.com/straticjs/RFCs/issues/2">maintenance</a> on some Stratic modules. Also spent a little time on the phone with my dad diagnosing my server's disk problems. I had him reseat the SATA cables, with no effect, unfortunately.</p>
-<h3>Day 9</h3>
-<p>Arrived ~12:15, departed ~23:25, total time at RC 11h10m.</p>
-<p>Didn't do a lot of new stuff, but took care of some miscellaneous business. In particular I did some work on polishing <a href="https://github.com/hubot-scripts/hubot-seen">hubot-seen</a>, including putting out a 1.0.0 release (and then a 1.0.1 release when that turned out to have broken the world). In the evening, <em>finally</em> found the bug preventing us from upgrading pump.io to Express 4.x, which was unbelievably satisfying. Turned out that the bug was in some test code, not the application itself, and so I had been misreading the stack trace for <em>months</em>. (The top item was a test file, but I incorrectly assumed that that was just some test code invoking a bunch of internal stuff. Nope.) Also has a meeting with some of the other Winter 1s about feelings and the end of the batch and stuff.</p>
-<p>Last but not least, caught up on weekly blogging. (I've been really bad for a while now...)</p>
-<h3>Day 10</h3>
-<p>Arrived ~11:45, departed ~00:00, total time at RC 12h15m.</p>
-<p>Did a ton of pump.io work. I merged the Express 4.x branch, then went in and did a bunch of other more minor dependency upgrades. Also went to a soldering workshop run by <a href="https://github.com/eeclaire">Claire</a> immediately before presenting HTTPS Part 2 in the afternoon.</p>
-<p>In the evening, went to presentations and then game night, where I spent the entire time playing poker. I put in $3 and got back $7.95 (read: $8). Sick.</p>
-<h3>Friday</h3>
-<p>Arrived ~13:30, departed ~21:45, total time at RC 8h15m. As always, Friday doesn't count as a day because RC is technically not in session.</p>
-<p>Did some work on improving pump.io's dependency situation. The result is a system that is very, very close to being 100% up-to-date, which I'm <em>super</em> proud of to be honest. That also let me turn on dependency security monitoring through <a href="https://nodesecurity.io/orgs/pumpio/projects/32213bb8-f9a6-4dd0-8fc6-5caa8ea5f8fc">Node Security Platform</a>, with plans to enable <a href="https://greenkeeper.io">Greenkeeper</a> as well. Had the monthly meeting in the middle of all that which went really well and was very productive.</p>
-<p>In the evening, went to Bottle Share, then put pump.io on the Linux Foundation's <a href="https://bestpractices.coreinfrastructure.org">best practices badge app</a>, the result of which you can find <a href="https://bestpractices.coreinfrastructure.org/projects/804">here</a>.</p>
-<h3>Executive summary</h3>
-<p>Well, I got a lot done on pump.io (and Stratic) this week. So it was relatively productive. But I did basically nothing that was personally productive (i.e. that pushed me forward as a programmer). Hopefully next week will go better.</p>
-<p>Total time at RC 45 hours 40 minutes; cumulative time 510 hours 30 minutes.</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/express-4.x-in-pump.io-core">
-              <h2 class="p-name">Express 4.x in pump.io core</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/03/express-4.x-in-pump.io-core">here</a> on <a href="/blog/2017/03/">March</a> 20, <a href="/blog/2017/">2017</a> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a> and <a href="/blog/category/development/" class="p-category">development</a>
-            </p>
-            <div class="e-content"><p>So I thought I'd take a moment to announce that the upgrade from Express 2.x to Express 4.x is <a href="https://github.com/pump-io/pump.io/pull/1208">finally complete</a>! I fixed up the last couple test failures last Wednesday, and the branch got merged on Thursday.</p>
-<h2>A long time coming</h2>
-<p>Believe it or not, the work to do this upgrade started almost an entire <em>year</em> ago. Express 2.x has been outdated and unmaintained for a long time now, so upgrading has been a high priority. However, it wasn't as simple as adjusting a version number - there were a staggering number of changes that needed to be made due to Express deprecating, removing, and changing things around. One of the most significant problems was the fact that the old template system that we used, utml, was not compatible with Express 3.x and above. That meant that we had to rewrite every single template into a modern language - an effort that resulted in <a href="https://github.com/pump-io/pump.io/pull/1170">over a thousand lines changed</a>!</p>
-<p>However, the time for Express 4.x has finally arrived. With that and some other trivial version bumps, I'm proud to announce that pump.io is fully up-to-date in terms of dependencies with only three, non-critical exceptions. Whooooo!</p>
-<h2>Immediate benefits</h2>
-<p>There are a lot of reasons this is immediately awesome:</p>
-<ol>
-<li>Express 4.x fixes significant performance problems that existed in Express 3.x</li>
-<li>Relatedly, Express 4.x fixes some security problems present in 3.x</li>
-<li>The fact that our dependencies are <em>finally</em> up-to-date means that we can (and do!) now make use of <a href="https://greenkeeper.io/">Greenkeeper</a> and the <a href="https://nodesecurity.io/orgs/pumpio/projects/32213bb8-f9a6-4dd0-8fc6-5caa8ea5f8fc">Node Security Platform</a> to automatically track dependencies to make sure they're up-to-date and not introducing security vulnerabilities</li>
-</ol>
-<p>That last one is particularly significant. Greenkeeper and NSP will continuously monitor the project's dependencies and automate away a lot of the pain that's associated with keeping pump.io up-to-date. Everyone will get a more secure and stable codebase because of this setup.</p>
-<h2>Looking forward</h2>
-<p>The Express 4.x upgrade is a big change, and it's definitely possible that stuff has broken. We want to make sure that breakage doesn't make it into production. This change went into pump.io 4.0, which will go through our normal <a href="https://github.com/pump-io/pump.io/wiki/Release-cycle">release cycle</a>. That means it'll be in beta for a month before being released. As a part of that, <a href="https://jxself.org/">Jason Self</a> - who's kind enough to administer <a href="https://datamost.com/">Datamost</a> - has agreed to have a test day where Datamost upgrades to the beta for a day, then downgrade it again. This test day will give us much wider exposure than we would've gotten otherwise, which will be incredibly valuable feedback in the effort to identify and fix regressions. We haven't set a date yet, but if you'd like to join Jason in helping us find bugs, please get in touch with <a href="https://github.com/pump-io/pump.io/wiki/Community">the community</a>. We'd love your help.</p>
-<p>Beyond the immediate release, though, there's still things to look forward to. Express 4.x gives us a better way to structure routing code, and a refactor to use this structure <a href="https://github.com/pump-io/pump.io/issues/1232">is planned</a>. There's a lot of room for improvement. But really, the most important benefit is this: technical debt is a far less pressing issue than before. That means that we can shift focus and spend more time fixing user-facing bugs, adding useful features, and generally improving the experience for our users. I couldn't be more excited.</p>
 </div>
           </article>
           <hr>
