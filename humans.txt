@@ -3,7 +3,7 @@
 
 # LICENSE
 
-© Copyright 2012, 2013, 2014 Alex Jordan
+© Copyright 2012-2017 AJ Jordan
 
 This file is part of strugee.net.
 
@@ -22,7 +22,7 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 
 # TEAM
 
-    Alex Jordan
+    AJ Jordan
      -- https://strugee.net (website)
      -- @strugee (github)
      -- @strugee2 (twitter)

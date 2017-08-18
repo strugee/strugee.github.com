@@ -259,7 +259,7 @@ gulp.task('default', ['serve']);
 <p>That's it! Alyssa's site is now building with Pug instead of HTML.</p>
 <h3>Step 3: splitting out the layout</h3>
 <p>Pug's looping and flow control constructs will be very useful to us later on, but we can get some immediate productivity wins by splitting out the site layout so it's not duplicated across every Pug file.</p>
-<p>There's one tricky thing about this: the navigation is mostly the same between pages, but not quite - the page the user is currently on shouldn't be a link. We'll solve this by using a <code>block</code> directivefor each link. That way, we can override just what needs to be changed, while introducing no duplication.</p>
+<p>There's one tricky thing about this: the navigation is mostly the same between pages, but not quite - the page the user is currently on shouldn't be a link. We'll solve this by using a <code>block</code> directive for each link. That way, we can override just what needs to be changed, while introducing no duplication.</p>
 <p>You'll have to figure out exactly what parts of your personal layout make sense to be split out. In Alyssa's case, there are three main things that are mostly or fully duplicated across pages:</p>
 <ol>
 <li>The navigation bar</li>
