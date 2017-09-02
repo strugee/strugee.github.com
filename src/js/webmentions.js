@@ -29,7 +29,6 @@ require('whatwg-fetch');
 (function() {
 	'use strict';
 
-
 	function strip(html) {
 		// https://stackoverflow.com/a/822486/1198896
 		var div = document.createElement('div');
