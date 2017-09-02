@@ -36,16 +36,18 @@ require('whatwg-fetch');
 		return div.textContent || div.innerText || '';
 	}
 
-	// TODO this actually doesn't really handle the document load event
-	// ...but we get away with it because in practice the fetch will always take longer
+	// Kick off the fetch ASAP because it doesn't require the DOM and so don't want to wait for that
+	var req = fetch('https://webmention.io/api/mentions?target=' + window.location);
 
-	fetch('https://webmention.io/api/mentions?target=' + window.location)
-		.then(function(response) {
+	function init() {
+		var mentionsElement = document.getElementById('webmentions');
+
+		// Only when the DOM is ready do we register Promise stuff that interacts with it
+		req.then(function(response) {
 			return response.text();
 		})
 		.then(function(body) {
 			var data = JSON.parse(body);
-			var mentionsElement = document.getElementById('webmentions');
 
 			if (data.links.length === 0) {
 				// No replies, so we bail
@@ -122,8 +124,16 @@ require('whatwg-fetch');
 		})
 		.catch(function(err) {
 			console.log('Encountered Webmention error:', err);
-			document.getElementById('webmentions')
-				.appendChild(document.createTextNode('Couldn\'t fetch Webmentions. Try refreshing?'));
+			mentionsElement.appendChild(document.createTextNode('Couldn\'t fetch Webmentions. Try refreshing?'));
 		});
+	}
+
+	document.addEventListener('DOMContentLoaded', init, false);
+	document.onreadystatechange = function() {
+		if (document.readyState === 'interactive') {
+			init();
+		}
+	};
+
 	// TODO add in some "Loading..." text or something
 })();
