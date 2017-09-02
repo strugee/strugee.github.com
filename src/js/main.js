@@ -35,9 +35,11 @@ require('whatwg-fetch');
 
 	// Wait for the DOM to be ready
 	document.addEventListener('DOMContentLoaded', init, false);
+	var oldListener = document.onreadystatechange;
 	document.onreadystatechange = function() {
 		if (document.readyState === 'interactive') {
 			init();
+			if (typeof oldListener === 'function') oldListener();
 		}
 	};
 

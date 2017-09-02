@@ -129,9 +129,11 @@ require('whatwg-fetch');
 	}
 
 	document.addEventListener('DOMContentLoaded', init, false);
+	var oldListener = document.onreadystatechange;
 	document.onreadystatechange = function() {
 		if (document.readyState === 'interactive') {
 			init();
+			if (typeof oldListener === 'function') oldListener();
 		}
 	};
 
