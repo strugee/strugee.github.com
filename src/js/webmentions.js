@@ -95,7 +95,7 @@ require('whatwg-fetch');
 				author.appendChild(document.createTextNode(link.data.author.name));
 				p.appendChild(author);
 
-				p.appendChild(document.createTextNode(' posted '));
+				p.appendChild(document.createTextNode(' replied with '));
 
 				// Source
 				var source = document.createElement('a');
