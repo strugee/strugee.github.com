@@ -67,6 +67,9 @@ require('whatwg-fetch');
 			}
 
 			data.links.forEach(function(link) {
+				// TODO handle this, maybe?
+				if (link.private) return;
+
 				// TODO this probably doesn't handle all types? But I couldn't find sufficient documentation
 
 				// TODO look at what "verified" actually means
