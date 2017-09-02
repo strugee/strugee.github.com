@@ -120,7 +120,11 @@ require('whatwg-fetch');
 
 				mentionsElement.appendChild(p);
 			});
+		})
+		.catch(function(err) {
+			console.log('Encountered Webmention error:', err);
+			document.getElementById('webmentions')
+				.appendChild(document.createTextNode('Couldn\'t fetch Webmentions. Try refreshing?'));
 		});
-	// TODO handle errors
 	// TODO add in some "Loading..." text or something
 })();
