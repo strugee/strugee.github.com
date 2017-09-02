@@ -89,19 +89,34 @@ require('whatwg-fetch');
 
 				p.appendChild(document.createTextNode(' '));
 
-				// Author
+				// "Alyssa P. Hacker"...
 				var author = document.createElement('a');
 				author.setAttribute('href', link.data.author.url);
 				author.appendChild(document.createTextNode(link.data.author.name));
 				p.appendChild(author);
 
-				p.appendChild(document.createTextNode(' replied with '));
+				switch (link.activity.type) {
+				case 'link':
+					// ..."replied with"...
+					// TODO is 'link' always a reply?
 
-				// Source
-				var source = document.createElement('a');
-				source.setAttribute('href', link.data.url);
-				source.appendChild(document.createTextNode(strip(link.data.content)));
-				p.appendChild(source);
+					p.appendChild(document.createTextNode(' replied with '));
+
+					// ..."check out this article! http://example.com"
+					var source = document.createElement('a');
+					source.setAttribute('href', link.data.url);
+					source.appendChild(document.createTextNode(strip(link.data.content)));
+					p.appendChild(source);
+					break;
+				case 'like':
+					// ..."liked this"
+					p.appendChild(document.createTextNode(' '));
+					var likeSource = document.createElement('a');
+					likeSource.appendChild(document.createTextNode('liked this'));
+					likeSource.setAttribute('href', link.data.url);
+					p.appendChild(likeSource);
+					break;
+				}
 
 				mentionsElement.appendChild(p);
 			});
