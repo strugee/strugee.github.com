@@ -37,19 +37,10 @@ var ecstatic = require('ecstatic');
 /* TODO: validate HTML */
 
 gulp.task('html', function() {
-	return merge(gulp.src(['src/hacks/*.jade'])
-	                 .pipe(jade({ pretty: true }))
-	                 .pipe(rename({ extname: '.html' }))
-	                 .pipe(gulp.dest('dist/hacks')),
-	             gulp.src(['src/cryptoparty-seattle/*.jade'])
-	                 .pipe(jade({ pretty: true }))
-	                 .pipe(rename({ extname: '.html' }))
-	                 .pipe(gulp.dest('dist/cryptoparty-seattle')),
-	             gulp.src(['src/*.jade'])
-	                 .pipe(jade({ pretty: true }))
-	                 .pipe(rename({ extname: '.html' }))
-	                 .pipe(gulp.dest('dist'))
-	            );
+	return gulp.src(['src/**/*.jade', '!src/blog/*.jade', '!src/includes/*.jade'])
+	           .pipe(jade({ pretty: true }))
+	           .pipe(rename({ extname: '.html' }))
+	           .pipe(gulp.dest('dist'));
 });
 
 gulp.task('css', function() {
