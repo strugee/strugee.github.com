@@ -31,7 +31,7 @@
     "remark-rewrite-headers": "^1.0.0",
     "remark-slug": "^4.2.2",
     "stratic-date-in-path": "^4.0.0",
-    "stratic-decorate-files": "github:straticjs/stratic-decorate-files",
+    "stratic-decorate-files": "^1.0.0",
     "stratic-filter-drafts": "^1.0.0",
     "stratic-indexes-to-rss": "^1.0.0",
     "stratic-paginate-indexes": "^1.0.1",
