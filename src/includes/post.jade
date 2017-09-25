@@ -14,18 +14,16 @@ mixin renderPost(post, isIndex)
 		- var time = post.data.time;
 		- var categories = post.data.categories;
 		- categories = categories.filter(function(el) { return !silentCategories.includes(el); });
-		- var date = new Date(time.epoch * 1000);
-		- var monthName = date.toLocaleString('en-us', {month: 'long'});
-		- var monthStr = date.getMonth() + 1;
-		- monthStr = monthStr < 10 ? '0' + monthStr.toString() : monthStr.toString();
+		- var monthName = post.data.time.monthName;
+		- var monthStr = post.data.time.monthUrlStr;
 		p.post-metadata Published by #[a.p-author.h-card(href='https://strugee.net/', rel='author')= author]
 			if post.data.canonical
 				|  and cross-posted from 
 				a(href=post.data.canonical) here
 			|  on 
-			a(href='/blog/'+date.getFullYear()+'/'+monthStr+'/')= monthName
-			|  #{date.getDate()}, 
-			a(href='/blog/'+date.getFullYear()+'/')= date.getFullYear()
+			a(href='/blog/'+post.data.time.yearStr+'/'+monthStr+'/')= monthName
+			|  #{post.data.time.dayOfMonthStr}, 
+			a(href='/blog/'+post.data.time.yearStr+'/')= post.data.time.yearStr
 			|  in 
 			for category, index in categories
 				a.p-category(href='/blog/category/' + category + '/') #{category}
