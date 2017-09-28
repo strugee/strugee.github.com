@@ -6,6 +6,7 @@ time:
 author: "AJ Jordan"
 categories:
   - sysadmin
+  - tor
 ---
 
 (Okay, so I _miserably_ failed my blog-every-day thing. Shut up. Maybe next time I'll try every week or something... anyway.)
