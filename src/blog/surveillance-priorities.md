@@ -3,6 +3,9 @@ title: "Surveillance priorities"
 time:
   epoch: 1485208527
   utcoffset: "UTC-5"
+edited:
+  epoch: 1507734543
+  utcoffset: "UTC-5"
 author: "AJ Jordan"
 categories:
   - politics
@@ -32,4 +35,4 @@ A much better solution is this: implement secure-by-default, freedom-respecting,
  [moxie]: https://youtu.be/xIiklPyS8MU?t=33m54s
  [ruled]: https://nakedsecurity.sophos.com/2016/07/01/judge-decides-we-dont-have-any-right-to-privacy/
  [Signal]: https://whispersystems.org/
- [pump.io]: http://pump.ioe
+ [pump.io]: http://pump.io
