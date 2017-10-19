@@ -36,6 +36,7 @@
     "stratic-indexes-to-rss": "^1.0.0",
     "stratic-paginate-indexes": "^1.0.1",
     "stratic-posts-to-index": "^2.0.0",
+    "stratic-truncate-indexes": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {

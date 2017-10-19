@@ -17,6 +17,7 @@ var filterDrafts = require('stratic-filter-drafts');
 var dateInPath = require('stratic-date-in-path');
 var postsToIndex = require('stratic-posts-to-index');
 var paginateIndexes = require('stratic-paginate-indexes');
+var truncateIndexes = require('stratic-truncate-indexes');
 var indexesToRss = require('stratic-indexes-to-rss');
 var decorateFiles = require('stratic-decorate-files');
 var ghpages = require('gh-pages');
@@ -121,6 +122,7 @@ gulp.task('rss', function() {
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
 	           .pipe(postsToIndex('index.jade'))
+	           .pipe(truncateIndexes())
 	           .pipe(indexesToRss({
 		           title: 'strugee.net blog',
 		           copyright: '© Copyright 2012-2017 AJ Jordan. Available under the GNU Affero GPL.',
