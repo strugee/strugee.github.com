@@ -19,6 +19,7 @@ var postsToIndex = require('stratic-posts-to-index');
 var paginateIndexes = require('stratic-paginate-indexes');
 var truncateIndexes = require('stratic-truncate-indexes');
 var indexesToRss = require('stratic-indexes-to-rss');
+var defaultCategories = require('stratic-default-categories');
 var decorateFiles = require('stratic-decorate-files');
 var ghpages = require('gh-pages');
 var merge = require('merge-stream');
@@ -29,6 +30,8 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var addsrc = require('gulp-add-src');
 var ecstatic = require('ecstatic');
+
+var categoryDefaults = [];
 
 /* eslint-env node */
 
@@ -89,6 +92,7 @@ gulp.task('post-index', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(frontMatter())
 	           .pipe(filterDrafts())
+	           .pipe(defaultCategories(categoryDefaults))
 	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders))
 	           .pipe(dateInPath())
 	           .pipe(decorateFiles())
@@ -104,6 +108,7 @@ gulp.task('posts', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(frontMatter())
 	           .pipe(filterDrafts())
+	           .pipe(defaultCategories(categoryDefaults))
 	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders).use(slug))
 	           .pipe(dateInPath())
 	           .pipe(decorateFiles())
@@ -118,6 +123,7 @@ gulp.task('rss', function() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(frontMatter())
 	           .pipe(filterDrafts())
+	           .pipe(defaultCategories(categoryDefaults))
 	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
