@@ -1,5 +1,5 @@
 ---
-title: "Announcing filter-other-days"
+title: "filter-other-days: Artificial Ignorance-compatible logfile date filtering"
 time:
   epoch: 1508541591
   utcoffset: "UTC-4"
