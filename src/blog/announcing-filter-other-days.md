@@ -3,6 +3,9 @@ title: "filter-other-days: Artificial Ignorance-compatible logfile date filterin
 time:
   epoch: 1508541591
   utcoffset: "UTC-4"
+edited:
+  epoch: 1508648790
+  utcoffset: "UTC-4"
 author: "AJ Jordan"
 categories:
   - development
