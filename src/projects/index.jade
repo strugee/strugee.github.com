@@ -45,6 +45,11 @@ block content
 		p fulldom exposes a single endpoint at <code>/&lt;url&gt;</code> which, when sent an HTTP GET request, will give you back the serialized DOM of the page at <code>&lt;url&gt;</code> when the page's JS has "finished running". "Finished running" is in quotes because determining when a page's JS is "finished running" is basically impossible, so the point at which the DOM is serialized is based on a user-provided heuristic.
 		p This is useful for scraping webpages which fill in their content with JS (i.e. webpages that <a href="http://tantek.com/2015/069/t1/js-dr-javascript-required-dead">suck at being webpages</a>) with, say, <a href="https://github.com/cantino/huginn">Huginn</a>.
 
+		h3
+			a(href='https://github.com/strugee/filter-other-days') filter-other-days
+		p Filter for today's date in logfiles in an Artificial Ignorance-compatible way. Or in other words, make sure you never miss logs from today, even if you forget about stuff or if #[code filter-other-days] can't handle your logfile format.
+		p You can read more about the background of and impetus for this design #[a(href='/blog/2017/10/announcing-filter-other-days') on my blog].
+
 	section
 		h2 Ongoing projects
 
