@@ -6,6 +6,7 @@ time:
 author: "AJ Jordan"
 categories:
   - personal
+  - security
   - blaggregator
 ---
 

@@ -10,6 +10,7 @@ author: "AJ Jordan"
 categories:
   - politics
   - privacy
+  - security
   - musings
 ---
 
