@@ -9,6 +9,7 @@ edited:
 author: "AJ Jordan"
 categories:
   - personal
+  - musings
   - blaggregator
 ---
 
