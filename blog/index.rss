@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[strugee.net blog]]></title><description><![CDATA[strugee.net blog]]></description><link>https://strugee.net/blog/</link><generator>stratic-indexes-to-rss</generator><lastBuildDate>Tue, 31 Oct 2017 00:57:27 GMT</lastBuildDate><atom:link href="https://strugee.net/blog//index.rss" rel="self" type="application/rss+xml"/><copyright><![CDATA[© Copyright 2012-2017 AJ Jordan. Available under the GNU Affero GPL.]]></copyright><webMaster><![CDATA[AJ Jordan <alex@strugee.net>]]></webMaster><item><title><![CDATA[filter-other-days: Artificial Ignorance-compatible logfile date filtering]]></title><description><![CDATA[<p>I've just published version 1.0 of my latest project, <code>filter-other-days</code> - a shell script to filter logfiles for today's date in an Artificial Ignorance-compatible way.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[strugee.net blog]]></title><description><![CDATA[strugee.net blog]]></description><link>https://strugee.net/blog/</link><generator>stratic-indexes-to-rss</generator><lastBuildDate>Thu, 02 Nov 2017 00:47:38 GMT</lastBuildDate><atom:link href="https://strugee.net/blog//index.rss" rel="self" type="application/rss+xml"/><copyright><![CDATA[© Copyright 2012-2017 AJ Jordan. Available under the GNU Affero GPL.]]></copyright><webMaster><![CDATA[AJ Jordan <alex@strugee.net>]]></webMaster><item><title><![CDATA[filter-other-days is portable to FreeBSD]]></title><description><![CDATA[<p>I'm pleased to announce <code>filter-other-days</code> 1.0.1. This is a bugfix release primarily improving portability to other Unix-like operating systems; in particular, the test suite now fully passes under FreeBSD. Specifically:</p>
+<ul>
+<li>Various portability bugs in the test suite itself were fixed - the test suite no longer relies on a GNU <code>date</code> (with GNU <code>date -d</code> semantics) or a fully-functional <code>/dev/fd</code> (the fallback option is named pipes), and it doesn't hardcode bash's install path as <code>/bin/bash</code></li>
+<li>Some non-portable uses of <code>echo "\n"</code> which break under BSD systems were replaced with <code>printf</code> invocations</li>
+<li>Travis CI now checks <code>filter-other-days</code> with Debian's <code>checkbashisms</code> script, which is run in strict mode</li>
+<li>Non-portable uses of <code>test</code>'s <code>-o</code> option were caught by <code>checkbashisms</code> and replaced with <code>||</code></li>
+</ul>
+<p>With these changes I expect that <code>filter-other-days</code> will probably run on all major BSD distributions. I intend to confirm this hypothesis soon and have filed bugs for <a href="https://github.com/strugee/filter-other-days/issues/12">OpenBSD</a> and <a href="https://github.com/strugee/filter-other-days/issues/13">NetBSD</a>, plus <a href="https://github.com/strugee/filter-other-days/issues/14">illumos</a> just for kicks.</p>
+<p>As with 1.0.0, you can clone <code>filter-other-days</code> <a href="https://github.com/strugee/filter-other-days">from GitHub</a> or you can download a (signed) <a href="https://github.com/strugee/filter-other-days/releases/tag/v1.0.1">tarball</a>. Please do <a href="https://github.com/strugee/filter-other-days/issues/new">report any bugs</a> you find in the release.</p>
+<p>Enjoy!</p>
+]]></description><link>https://strugee.net/blog/2017/11/filter-other-days-is-portable-to-freebsd</link><guid isPermaLink="true">https://strugee.net/blog/2017/11/filter-other-days-is-portable-to-freebsd</guid><category><![CDATA[development]]></category><category><![CDATA[releases]]></category><category><![CDATA[sysadmin]]></category><category><![CDATA[blaggregator]]></category><pubDate>Thu, 02 Nov 2017 00:39:53 GMT</pubDate></item><item><title><![CDATA[filter-other-days: Artificial Ignorance-compatible logfile date filtering]]></title><description><![CDATA[<p>I've just published version 1.0 of my latest project, <code>filter-other-days</code> - a shell script to filter logfiles for today's date in an Artificial Ignorance-compatible way.</p>
 <p>If you haven't heard of <a href="http://www.ranum.com/security/computer_security/papers/ai/index.html">Artificial Ignorance</a>, it's something you should look into cause it's pretty awesome. Here's the tl;dr: it doesn't make sense to look for all the "interesting" things  in logfiles, because it's not actually possible to enumerate all the failure conditions of a system. So instead what we do is <em>throw away</em> entries that we're <em>sure</em> are just routine. Since we've gotten rid of all the uninteresting entries, whatever is left has to be interesting.</p>
 <p>I find this pretty compelling, and decided to start implementing it on my Tor relay. I quickly realized that my ideal workflow would be to configure cron to send me email with a daily report of interesting log entries. However, this presented a problem: how to get just today's log entries? I wanted to be able to handle all logfiles at once instead of receiving different reports for different logs, so I had to be able to parse all logfiles in the same way. My relay runs on FreeBSD, so the logs are unstructured text files, and even worse, several daemons (like Tor itself) write timestamps in a different format - this makes parsing all logfiles at once super difficult because I couldn't just trivially <code>grep</code> for today's date since that would end up dropping legitimate entries from logfiles that formatted their timestamps differently.</p>
 <p>I briefly considered trying to write a regex to match all sorts of different timestamp formats, but quickly rejected this idea as too fragile. There are a lot of moving parts in a modern operating system - what if e.g. a daemon changed its defaults about how to format timestamps? Or, more likely, what if I simply missed a particular format present in my logs? Then I'd be accidentally throwing away an entire logfile. To solve this problem, I decided to apply the same idea behind Artificial Ignorance - if I couldn't reliably, 100% match log entries from today's date, I could do the next best thing and attempt to discard all entries from <em>other</em> dates. In this case the worst that could happen is me recieving irrelevant information, and I'd be basically guaranteed to never miss an legitimate entry from today.</p>
@@ -244,63 +254,4 @@ secure_system(app)
 <h2>Executive summary</h2>
 <p>Most of the "interesting" stuff that happened this week had to do with the resident. Got a little done codewise, but not that much. I'd say this week was 50/50 in terms of productivity.</p>
 <p>Total time at RC 48 hours 50 minutes; cumulative time 412 hours 0 minutes.</p>
-]]></description><link>https://strugee.net/blog/2017/03/rc-week-9</link><guid isPermaLink="true">https://strugee.net/blog/2017/03/rc-week-9</guid><category><![CDATA[personal]]></category><category><![CDATA[blaggregator]]></category><pubDate>Mon, 06 Mar 2017 23:39:34 GMT</pubDate></item><item><title><![CDATA[Driftless at 1,000 mph]]></title><description><![CDATA[<p>Last week I published <a href="https://strugee.net/blog/2017/02/how-i-passed-2k-github-contributions">How I passed 2k GitHub contributions</a>. This post is, in some ways, the antithesis of that, and it will be very emotional and messy. Here be dragons.</p>
-<hr>
-<p>Throughout my time at RC I've noticed only one thing is consistently difficult for me: focusing on hard things. Intellectually I love the idea of challenging myself. And I find that when I start to work on things that are new and not easy, it feels good and I tend to keep working on those things, because they're interesting. But starting is something that I just don't do frequently enough, and so I find that I haven't progressed as a programmer nearly as much as I would like to have.</p>
-<p>What is productivity?</p>
-<p>Merriam-Webster defines it like this:</p>
-<blockquote>
-<ol>
-<li>
-<p>the quality or state of being productive</p>
-</li>
-<li>
-<p>the rate per unit area or per unit volume at which biomass consumable as food by other organisms is made by producers</p>
-</li>
-</ol>
-</blockquote>
-<p>And "productive" is defined like so:</p>
-<blockquote>
-<ol>
-<li>
-<p>having the quality or power of producing, especially in abundance</p>
-</li>
-<li>
-<p>effective in bringing about</p>
-</li>
-<li>
-<p>a) yielding results, benefits, or profits; b) yielding or devoted to the satisfaction of wants or the creation of utilities</p>
-</li>
-<li>
-<p>continuing to be used in the formation of new words or constructions</p>
-</li>
-<li>
-<p>raising mucus or sputum (as from the bronchi)</p>
-</li>
-</ol>
-</blockquote>
-<p>By definitions 1-3 I certainly seem to have been productive; I've written a lot of code, much of which is useful. But useful to <em>whom</em>, and for what purpose?</p>
-<p>I sometimes feel as if I'm just generating more and more code without any guiding process, as though I'm wasting my time even though concretely I'm getting a <em>lot</em> of things done - driftless even though I'm churning out work at an extremely high rate. Is this <a href="https://en.wikipedia.org/wiki/Impostor_syndrome">imposter syndrome</a>? Or are my worries legitimate?</p>
-<p>Maybe a better way to frame this question is to split it in two - am I being productive for myself, and am I being productive for the community - the two things that are currently important to me personally.</p>
-<p>I think I am failing at being productive for myself, in some really important ways. I'm also succeeding in some - for example, I used to wish I had an engine to run my blog, and now I have <a href="https://github.com/straticjs">such an engine</a>. But in others I am failing.</p>
-<p>What is the purpose of RC? Why am I here?</p>
-<hr>
-<p>recurse.com <a href="https://www.recurse.com/about#who-comes-to-the-recurse-center">says this</a> about people who come to RC:</p>
-<blockquote>
-<p>The Recurse Center is for people who want to become better programmers. We are not startup school nor are we a bootcamp: Our focus is helping people become better programmers, not building prototypes, and we're not a training program for web developers.</p>
-<p>Because there is no certification or grading, the only reason to come to the Recurse Center is to become a better programmer. As such, you will find kindred spirits and tremendous energy. We look for smart, friendly, self-directed, intellectually curious people who enjoy programming and want to get dramatically better.</p>
-</blockquote>
-<p>More directly, <a href="https://www.recurse.com/manual">the manual</a> has this to say:</p>
-<blockquote>
-<p>You should be here primarily because you want to become a better programmer and spend the majority of your time here programming and doing things directly related to programming.</p>
-<p>Well, we could ask you to be respectful of speakers and keep conversations on-topic in the Recurse Center space during the day (i.e. if you want to take a break and chat about your weekend, go grab a coffee).</p>
-</blockquote>
-<p>However, as <a href="https://haroldtreen.com">Harold</a> points out, that <a href="https://haroldtreen.com/tech/recurse/2017/01/27/recurse-center-return-statement/">isn't necessarily an accurate picture</a> of what RC is about. I think a lot of what it's really about is the people who are in the space with you. I've sure had a wonderful time with the people. Does that mean I'm "succeeding"?</p>
-<p>Then there's the teaching.</p>
-<hr>
-<p><img src="/images/anja-teaching.jpg" alt="Screenshot of a Zulip message where Anja says &quot;thank you AJ for teaching us so many things. :)&quot;"></p>
-<p>This is referring to the fact that I teach at Security Club every week, plus my volunteering to run a workshop or two for Beginner's Club and Web Dev 101.</p>
-<p>Practically speaking, I get very, very little out of teaching at RC. Sometimes it helps solidify (or just plain remind me of) the concepts I teach, but this is the exception, not the norm. So in that sense by spending time teaching, I'm "failing" at being productive for myself. But it seems clear to me that people get a lot out of the time I spend, so I seem to be very productive for the community.</p>
-<p>Equally importantly I <em>love</em> teaching. I qualified the previous paragraph with "practically speaking" because emotionally teaching is something that's very beneficial to me. Does that mean I'm "succeeding"? Does it mean I'm "failing" and "succeeding" at the same time?</p>
-<p>I honestly don't know.</p>
-]]></description><link>https://strugee.net/blog/2017/03/driftless-at-1000-mph</link><guid isPermaLink="true">https://strugee.net/blog/2017/03/driftless-at-1000-mph</guid><category><![CDATA[personal]]></category><category><![CDATA[blaggregator]]></category><pubDate>Mon, 06 Mar 2017 21:27:20 GMT</pubDate></item></channel></rss>
+]]></description><link>https://strugee.net/blog/2017/03/rc-week-9</link><guid isPermaLink="true">https://strugee.net/blog/2017/03/rc-week-9</guid><category><![CDATA[personal]]></category><category><![CDATA[blaggregator]]></category><pubDate>Mon, 06 Mar 2017 23:39:34 GMT</pubDate></item></channel></rss>
