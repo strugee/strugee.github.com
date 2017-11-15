@@ -60,6 +60,34 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "personal"</h2>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/02/how-i-passed-2k-github-contributions">
+              <h2 class="p-name">How I passed 2k GitHub contributions</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/02/">February</a> 23, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/development/" class="p-category">development</a>
+            </p>
+            <div class="e-content"><p>So the other day I logged into GitHub and saw something crazy:</p>
+<p><img src="/images/github-2k-contributions.jpg" alt="Screenshot of my GitHub contribution graph showing 2,054 contributions over the past year"></p>
+<p>How in the hell did I end up with that many contributions? Well, I think I know why - it happened because of a couple related, small habits I have. I thought I'd share them with everyone else as a sort of trivia - maybe you can adopt these habits too! (Although hopefully because you think they're good ideas, not because you just want to make yourself look cool on GitHub.)</p>
+<h3>Fix typos</h3>
+<p>If projects are freedom-respecting, that means that anyone is welcome to contribute if they're able to offer something valuable. How many times have you seen a typo in some docs? GitHub makes it super, super easy to fix these (just click the pencil icon in the upper-right of GitHub file views), and they're a fantastic way to contribute a little back to projects. Even if you aren't reading docs on GitHub, it often doesn't take that much time to find where they're hosted (which is frequently GitHub anyway). Really good docs will even have a link to their source right on the generated page.</p>
+<p>So whenever I see a typo, I send a Pull Request. It's become an automatic response to seeing something that needs fixing, and is pretty routine for me nowadays.</p>
+<p>Oftentimes there are changes that aren't as easy as a typo, but are still super easy to fix. Take <a href="https://github.com/Homebrew/brew/pull/1634">this Homebrew PR</a> - I authored it on a tablet and it took me under 3 minutes to make the suggested change[1]. That's not a lot of effort, and it'll help lots of people looking for the Homebrew change log. The next time you find yourself thinking "it kinda sucks that..." ask yourself - can I fix this myself? And if you can, go for it! Even if you screw up, I promise most projects will want to help you out instead of making fun of you[2] - as someone who runs several freedom-respecting projects, I know that getting new contributors is very, very valuable and because of that I'll do a lot to make contributing a good experience. I would encourage everyone to, as Mike McQuaid puts it in that Homebrew PR, "be the change you want to see in the world."</p>
+<p> [1]: of course, that's partly because I'm pretty good at git and grok things like <code>rebase -i</code>. But even if that's not you and it would take you longer, it sounds like a great opportunity to improve your git skills to me!</p>
+<p> [2]: I feel obligated to point out that not every project is like this - there are some projects that have a terrible culture (*coughcough*Linuxkernel*cough*). Screw them. They're not that common in my experience and it's their loss, anyway. Don't let them deter you from trying to improve things outside of their bubble of suck.</p>
+<h3>File issues</h3>
+<p>I just talked about making small changes whenever you see something you can improve with a couple minutes' time. But what if you're in a hurry, or it would take longer?</p>
+<p>Filing issues is a super easy way to solve this. Get into the habit of filing issues for everything that irks you[3] - you're not allowed to say "such-and-such a project sucks because it's buggy!" when you haven't told the developers about the bug you're experiencing!</p>
+<p>Filing issues also takes very little time and is super helpful to the developer. Probably a lot of the people who read this blog are software developers, so I'm betting you can understand how great it is to receive an issue that gives you lots of details that you can then use to fix a bug or a design problem. So why not give the gift of issues? Just make sure to search for duplicates! (This accounts for a significant amount of those 2,000 contributions on my GitHub profile. Over the course of my time on GitHub, I've filed 619 issues, 438 of which were on other people's projects. Of course, that's just on GitHub - I also do this frequently <em>outside</em> of GitHub.)</p>
+<p>Again, every time you find yourself saying, "why doesn't it..." or "I wish it..." or "it's so annoying when...", let the developer know! You'll help them make their project better.</p>
+<p>  [3]: this is not to suggest that you file ridiculous issues that don't really say anything or just complain. But a focused bug report describing something concrete that's problematic is awesome.</p>
+<h3>Publish by default</h3>
+<p>This is the last and biggest habit I have that I think led to those 2k contributions: I publish everything by default, no matter what. It doesn't matter how bad or hacky or ugly I think a software project is, I just publish it. Because honestly, why not?</p>
+<p>Keeping projects public doesn't get in anyone's way. It's not like someone will look at your GitHub and be <em>annoyed</em> that you give so much software to the world. And there's even a chance that your hacky script may actually be <em>useful</em> to someone. Even if I think a project is "bad" I'll still publish it because the reality is that no one is going to go around GitHub specifically trying to find people to make fun of.</p>
+<p>Publishing projects also gives me incentive to clean them up - write a README, write tests, and keep a change log (if relevant). My standards are higher because I know all my work is all in the open - not because I'm afraid of other people telling me I'm doing it wrong, but because I want to create high quality code that has a better chance of being useful to the wider community.</p>
+<h3>In summary</h3>
+<p>All of these habits are related. The tl;dr is this: engage by default. Get used to being involved instead of shrugging off a problem and moving on. Put your work out there for other people to see. The open source/freedom-respcting software community belongs to everyone - and that means we can all contribute to improving it. We just have to start.</p>
+</div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/02/rc-week-6">
               <h2 class="p-name">RC week 6</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/02/">February</a> 19, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
@@ -181,64 +209,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>In a shocking turn of events, this week was relatively productive, but could've been better. I challenged myself a little bit, but I think I can and should do more.</p>
 <p>Checkins really helped. Even when I missed the checkin it provided motivation to get up and get moving. 10:30 may be a little too early for me though, so I'm not sure if I'll continue doing it next week.</p>
 <p>Total time at RC 56 hours 50 minutes; cumulative time 198 hours 5 minutes.</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/01/new-programming-language-part-i-handlers">
-              <h2 class="p-name">New programming language part I: Handlers</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/01/">January</a> 26, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/security/" class="p-category">security</a>
-            </p>
-            <div class="e-content"><p>So my latest project at the <a href="https://recurse.com">Recurse Center</a> is a new programming language, as yet unnamed. Basically this was inspired by my <a href="https://strugee.net/presentation-security-design">security design</a> presentation in which I laid out a couple ways you can improve programs' security designs, like process separation. And it occurred to me: why is this so difficult? Something should be doing this for me. Enter... whatever the hell I end up calling my language.</p>
-<p>One of the most important building blocks of the language is something that I'm currently calling a "Handler". A Handler is basically a segregated piece of application code that handles some task or problem domain. For example, a Handler for outgoing DNS requests (syntax subject to change, obviously):</p>
-<pre><code>Handler DNS {
-    function getAddressFromHostname(hostname) {
-        // Very much pseudocode - all function calls here are example OS calls
-
-        sendDnsQuery(hostname);
-        while (!haveDnsResult()) {
-            sleep(1);
-        }
-        
-        return getDnsResult();
-    }
-}
-</code></pre>
-<p>This Handler has one simple method, <code>getAddressFromHostname()</code>. It sends a DNS query, blocks until it has a result, and then returns the result.</p>
-<p>What's cool about this Handler is that it will be run in its own process - in other words, each Handler is automatically transformed into a privilege-separated process. However, <code>getAddressFromHostname()</code> can still be called from other, high-level Handlers! The language will do all the data marshalling for you, so from a language perspective it looks like a regular function call even though in practice it's going cross-process.</p>
-<p>Now, let's improve our Handler a little bit. It's pretty unfortunate that we can only make one DNS request at a time (since it's blocking), so let's use an event loop.</p>
-<pre><code>Handler DNS is eventLoop {
-    function getAddressFromHostname(hostname) {
-        // Still pseudocode
-
-        return sendDnsQuery(hostname, function(address) {
-            return address;
-        });
-    }
-}
-</code></pre>
-<p>We specified that the <code>DNS</code> Handler is an event loop, so the language automatically set up a Node-style event loop - we never actually called anything to enter an event loop, it just sort of happened as a construct of the language. Note also the nice async-aware return syntax - the result of <code>sendDnsQuery()</code> is returned to <code>getAddressFromHostname()</code>'s caller, and the result of <code>sendDnsQuery()</code> is specified by the return value of the anonymous function callback.</p>
-<p>We can improve correctness even more by specifying that the Handler is not allowed to make syncronous I/O calls at all:</p>
-<pre><code>Handler DNS is eventLoop, async {
-    // ...
-}
-</code></pre>
-<p>Handlers let you pick and choose different elements and design choices for different parts of your application. For example, if you had a Handler responsible for processing data, it might make sense to restrict it to being entirely functional:</p>
-<pre><code>Handler incomingData is functional {
-    // ...
-}
-</code></pre>
-<p>In such a Handler, any functions with side effects wouldn't be callable, enforced at compile-time (possibly parse-time, depending on whether I can make it compiled or not given the type system). Perhaps you want to spawn a new sandbox process for each piece of incoming data (OpenSSH does this, for example, when first receiving authentication data from untrusted users):</p>
-<pre><code>// The `ephemeral` keyword will probably be something better, but for now...
-Handler incomingData is functional, ephemeral {
-    // ...
-}
-</code></pre>
-<p>If your application requires root - for example, if you were writing an NTP daemon that needed to call <code>setTimeOfDay()</code> - that's also specified at the Handler level:</p>
-<pre><code>Handler incomingData is root {
-    // ...
-}
-</code></pre>
-<p>This should give you some idea of why Handlers are really interesting, even beyond the process separation concept that underlies them. (It's also worth noting that while I've focused mostly on daemons, this can also be used to securely implement e.g. <code>file</code>.) I'm really excited to get these ideas out there so I'll stop for now, but pretty soon I'll write another blog post talking about the type system.</p>
 </div>
           </article>
           <hr>

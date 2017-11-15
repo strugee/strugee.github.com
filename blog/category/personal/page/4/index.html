@@ -60,6 +60,64 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "personal"</h2>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/01/new-programming-language-part-i-handlers">
+              <h2 class="p-name">New programming language part I: Handlers</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/01/">January</a> 26, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/security/" class="p-category">security</a>
+            </p>
+            <div class="e-content"><p>So my latest project at the <a href="https://recurse.com">Recurse Center</a> is a new programming language, as yet unnamed. Basically this was inspired by my <a href="https://strugee.net/presentation-security-design">security design</a> presentation in which I laid out a couple ways you can improve programs' security designs, like process separation. And it occurred to me: why is this so difficult? Something should be doing this for me. Enter... whatever the hell I end up calling my language.</p>
+<p>One of the most important building blocks of the language is something that I'm currently calling a "Handler". A Handler is basically a segregated piece of application code that handles some task or problem domain. For example, a Handler for outgoing DNS requests (syntax subject to change, obviously):</p>
+<pre><code>Handler DNS {
+    function getAddressFromHostname(hostname) {
+        // Very much pseudocode - all function calls here are example OS calls
+
+        sendDnsQuery(hostname);
+        while (!haveDnsResult()) {
+            sleep(1);
+        }
+        
+        return getDnsResult();
+    }
+}
+</code></pre>
+<p>This Handler has one simple method, <code>getAddressFromHostname()</code>. It sends a DNS query, blocks until it has a result, and then returns the result.</p>
+<p>What's cool about this Handler is that it will be run in its own process - in other words, each Handler is automatically transformed into a privilege-separated process. However, <code>getAddressFromHostname()</code> can still be called from other, high-level Handlers! The language will do all the data marshalling for you, so from a language perspective it looks like a regular function call even though in practice it's going cross-process.</p>
+<p>Now, let's improve our Handler a little bit. It's pretty unfortunate that we can only make one DNS request at a time (since it's blocking), so let's use an event loop.</p>
+<pre><code>Handler DNS is eventLoop {
+    function getAddressFromHostname(hostname) {
+        // Still pseudocode
+
+        return sendDnsQuery(hostname, function(address) {
+            return address;
+        });
+    }
+}
+</code></pre>
+<p>We specified that the <code>DNS</code> Handler is an event loop, so the language automatically set up a Node-style event loop - we never actually called anything to enter an event loop, it just sort of happened as a construct of the language. Note also the nice async-aware return syntax - the result of <code>sendDnsQuery()</code> is returned to <code>getAddressFromHostname()</code>'s caller, and the result of <code>sendDnsQuery()</code> is specified by the return value of the anonymous function callback.</p>
+<p>We can improve correctness even more by specifying that the Handler is not allowed to make syncronous I/O calls at all:</p>
+<pre><code>Handler DNS is eventLoop, async {
+    // ...
+}
+</code></pre>
+<p>Handlers let you pick and choose different elements and design choices for different parts of your application. For example, if you had a Handler responsible for processing data, it might make sense to restrict it to being entirely functional:</p>
+<pre><code>Handler incomingData is functional {
+    // ...
+}
+</code></pre>
+<p>In such a Handler, any functions with side effects wouldn't be callable, enforced at compile-time (possibly parse-time, depending on whether I can make it compiled or not given the type system). Perhaps you want to spawn a new sandbox process for each piece of incoming data (OpenSSH does this, for example, when first receiving authentication data from untrusted users):</p>
+<pre><code>// The `ephemeral` keyword will probably be something better, but for now...
+Handler incomingData is functional, ephemeral {
+    // ...
+}
+</code></pre>
+<p>If your application requires root - for example, if you were writing an NTP daemon that needed to call <code>setTimeOfDay()</code> - that's also specified at the Handler level:</p>
+<pre><code>Handler incomingData is root {
+    // ...
+}
+</code></pre>
+<p>This should give you some idea of why Handlers are really interesting, even beyond the process separation concept that underlies them. (It's also worth noting that while I've focused mostly on daemons, this can also be used to securely implement e.g. <code>file</code>.) I'm really excited to get these ideas out there so I'll stop for now, but pretty soon I'll write another blog post talking about the type system.</p>
+</div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/01/rc-week-3">
               <h2 class="p-name">RC week 3</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/01/">January</a> 23, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>

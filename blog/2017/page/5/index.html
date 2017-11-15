@@ -62,6 +62,259 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h2 class="p-name">Posts from 2017</h2>
           <p id="postsFrom">Show only posts from <a href="/blog/2017/01/">January</a> <a href="/blog/2017/02/">February</a> <a href="/blog/2017/11/">November</a> <a href="/blog/2017/03/">March</a> <a href="/blog/2017/04/">April</a> <a href="/blog/2017/05/">May</a> <a href="/blog/2017/06/">June</a> <a href="/blog/2017/08/">August</a> <a href="/blog/2017/10/">October</a> 
           </p>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/02/from-static-to-stratic-part-1">
+              <h2 class="p-name">From static to Stratic - part 1</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/02/">February</a> 20, <a href="/blog/2017/">2017</a> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/stratic/" class="p-category">stratic</a>
+            </p>
+            <div class="e-content"><p>So a couple days ago I published <code>generator-stratic@1.0.0-beta.1</code> to npm. Since Stratic is now officially in beta, I thought I'd write up a guide to converting a regular, static site to a Stratic-powered blog.</p>
+<p>Each step in this blog post (part 1 of 2[?]) will take you closer to having a fully-functional blog, but because of Stratic's decoupled design, you can work through them at your own pace. Each step will leave you with a functional environment (i.e. nothing will be "broken" such that you can't work on your website anymore).</p>
+<p>You can see the steps in this post in action at <a href="https://github.com/straticjs/static-to-stratic">straticjs/static-to-stratic</a>. Each commit corresponds to a step in this post.</p>
+<p>Let's get started!</p>
+<h3>Initial setup</h3>
+<p>The site we'll be converting is currently pretty simple. It has an <code>index.html</code> and a <code>projects.html</code>. Each of these includes <code>/css/main.css</code> and <code>/js/main.js</code>. Also, they both have a navigation section and a footer that are duplicated across each page. Each time Alyssa P. Hacker - the website's owner - makes a change to these (for example to fix the copyright year in the footer), she has to change both HTML files. The best way for her to add a new page will be to copy an existing HTML file and then change it. This is a little unideal.</p>
+<p>Alyssa tracks her website on GitHub (in the example repository mentioned above). Here are links for the <a href="https://github.com/straticjs/static-to-stratic/blob/18a7a7da03a2f84f525f0b699a43005067428199/index.html"><code>index.html</code></a> and the <a href="https://github.com/straticjs/static-to-stratic/blob/18a7a7da03a2f84f525f0b699a43005067428199/projects.html"><code>projects.html</code></a> we'll be working with.</p>
+<p>Here's a visual of the project layout:</p>
+<pre><code>% tree .
+.
+├── css
+│   └── main.css
+├── index.html
+├── js
+│   └── main.js
+└── projects.html
+
+2 directories, 4 files
+</code></pre>
+<p>When Alyssa needs to preview her website, she manually runs <code>http-server .</code>.</p>
+<p>Since Alyssa uses GitHub she publishes her website on GitHub Pages, so her website is in the <code>master</code> branch of her git repository. (Here we're assuming that the repository is called <code>aphacker.github.io</code> or something, instead of <code>static-to-stratic</code>.)</p>
+<p>In addition to adding blog support, we'll improve Alyssa's website by reducing duplication while still allowing her to publish to GitHub Pages.</p>
+<h3>Step 1 - adding gulp</h3>
+<p>Before we do anything else, we need to add a build system. Stratic is designed to work with <a href="">gulpjs</a>, so that's the one we'll be using.</p>
+<p>Adding gulp is super easy. First, we need to create a <code>package.json</code>, so we do <code>npm init</code>:</p>
+<pre><code>% npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install &#x3C;pkg> --save` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+name: (static-to-stratic)
+version: (1.0.0)
+description: Personal website of Alyssa P. Hacker
+entry point: (index.js)
+test command:
+git repository: (https://github.com/straticjs/static-to-stratic.git)
+keywords:
+author: Alyssa P. Hacker &#x3C;alyssaphacker@example.net>
+license: (ISC) AGPL-3.0+
+About to write to /Users/alex/Development/static-to-stratic/package.json:
+
+{
+  "name": "static-to-stratic",
+  "version": "1.0.0",
+  "description": "Personal website of Alyssa P. Hacker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" &#x26;&#x26; exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/straticjs/static-to-stratic.git"
+  },
+  "author": "Alyssa P. Hacker &#x3C;alyssaphacker@example.net>",
+  "license": "AGPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/straticjs/static-to-stratic/issues"
+  },
+  "homepage": "https://github.com/straticjs/static-to-stratic#readme"
+}
+
+
+Is this ok? (yes) yes
+</code></pre>
+<p>A couple things to note here: in general, the defaults are fine to accept. We've provided a description and an author, but these are optional since this isn't actually going to be published on the npm registry. They're just kind of nice to have.</p>
+<p>The same goes for the license, which in this case is the <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">Affero GPL 3.0 or above</a> - however, as the copyright holder you are of course free to <a href="https://choosealicense.com/">choose whatever license</a> you want. (Or no license, although I'd discourage you from doing that.)</p>
+<p>Once we have a <code>package.json</code>, we can go ahead and install gulp and another module we'll need, <code>ecstatic</code>:</p>
+<pre><code>% npm install --save-dev gulp ecstatic
+</code></pre>
+<p>If you haven't used gulp previously, you'll also need to install <code>gulp-cli</code>:</p>
+<pre><code>% npm install -g gulp-cli
+</code></pre>
+<p>At this point, we'll need to move some files around. Now that we have a build system, we can organize our repository however we want instead of putting stuff exactly where we want it in production.</p>
+<p>You can do this however you want. The organization that you'll find most projects using, though, is to put stuff in a <code>src</code> directory. Let's make that right now.</p>
+<pre><code>% mkdir src
+% git mv *.html src
+% git mv css src/styles
+% git mv js src/scripts
+</code></pre>
+<p>Finally, create a file named <code>gulpfile.js</code> and put the following in it:</p>
+<pre><code>var gulp = require('gulp'),
+    http = require('http'),
+    ecstatic = require('ecstatic');
+
+gulp.task('build:html', function() {
+    gulp.src('src/*.html')
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('build:css', function() {
+    gulp.src('src/styles/*')
+        .pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('build:js', function() {
+    gulp.src('src/scripts/*')
+        .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('watch', ['build'], function() {
+    gulp.watch('src/*.html', ['build:html']);
+    gulp.watch('src/styles/*', ['build:css']);
+    gulp.watch('src/scripts/*', ['build:js']);
+});
+
+gulp.task('serve', ['watch'], function() {
+        http.createServer(
+                ecstatic({ root: __dirname + '/dist' })
+        ).listen(8080);
+});
+
+gulp.task('build', ['build:html', 'build:css', 'build:js']);
+
+gulp.task('default', ['serve']);
+</code></pre>
+<p>This gives us a pretty good starting point. This gulpfile defines a couple tasks that simply copy source files into <code>dist</code>. The <code>watch</code> task watches for changes and rebuilds when they occur, and the <code>serve</code> task starts up a server, replacing Alyssa's usage of <code>http-server</code>. This provides exactly the same workflow as before: Alyssa runs one command and then she can look at her site on <code>localhost:8080</code>. You can use different task names if you want (for example, <code>html</code> instead of <code>build:html</code>, etc.), but these are what <code>generator-stratic</code> gives you.</p>
+<p>However, there's one problem: Alyssa can't deploy her site anymore. If she pushed like this, visitors would have to visit e.g. <code>https://aphacker.github.io/src/projects</code> instead of <code>https://aphacker.github.io/projects</code>! That's no good.</p>
+<p>In order to rectify this, we'll create a new git branch, <code>src</code>. <code>src</code> will contain the source files, and we'll put the final, built site in <code>master</code>, which is what's served by GitHub Pages. So:</p>
+<pre><code>% git checkout -b src
+% git push --set-upstream origin src
+</code></pre>
+<p>Great. Now, we need to add something to put the built files (i.e. the contents of <code>dist</code>) in <code>master</code>. We'll use the <code>gh-pages</code> module for this. First install it and a dependency we'll need:</p>
+<pre><code>% npm install --save-dev gh-pages gulp-util
+</code></pre>
+<p>Next, make it available in the gulpfile by adding a line at the end of <code>require()</code> statements:</p>
+<pre><code>var gulp = require('gulp'),
+    http = require('http'),
+    ecstatic = require('ecstatic');
+</code></pre>
+<p>And finally, add a <code>deploy</code> task somewhere in the gulpfile:</p>
+<pre><code>gulp.task('deploy', ['build'], function(done) {
+    ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log, branch: 'master' }, done);
+});
+</code></pre>
+<p>Now whenever Alyssa wants to deploy a new version of her website, she just runs <code>gulp deploy</code> and it'll be taken care of for her. (ProTip™: change the default branch to <code>src</code> on GitHub. That way visitors and new clones see the source files, not the build files generated by a program.)</p>
+<p>The very last thing we need to do is add a <code>.gitignore</code> file since we're installing Node modules and have a build directory now. We'll just use GitHub's, adding a line for <code>dist/</code> at the end:</p>
+<pre><code>% curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore > .gitignore
+% echo "\ndist/\n" >> .gitignore
+</code></pre>
+<p>Now we've got a functionally equivalent development setup based on gulp. Success!</p>
+<h3>Step 2: converting HTML to Pug</h3>
+<p>The next step is to convert the HTML to <a href="https://pugjs.org">Pug</a>. Pug (formerly known as Jade) is a language that compiles to HTML. It lets you do useful things like inherit from a common layout as well as looping over JavaScript variables. If you're not familiar with Pug, you should go take a look at its syntax now.</p>
+<p>The easiest way to do this conversion is to get a program to do it for you. <a href="http://html2jade.aaron-powell.com/">Here's the one I used</a> way back when; you may be able to find a better one. The generated Pug will be valid but not the prettiest - you may want to wait to clean it up since we're going to do some work to reduce the duplication soon.</p>
+<p>Once you've got the converted Pug, you should rename the relevant HTML file to have a <code>.pug</code> extention, then replace the contents with the Pug. Do this for each HTML file.</p>
+<p>The last step here is to make gulp build the Pug. Install <code>gulp-pug</code>:</p>
+<pre><code>% npm install --save-dev gulp-pug
+</code></pre>
+<p>Then add <code>pug = require('gulp-pug')</code> to the end of the <code>var</code> declaration at the top of your gulpfile. Finally, change your <code>html</code> task to look like this:</p>
+<pre><code>gulp.task('build:html', function() {
+    gulp.src('src/*.pug')
+        .pipe(pug({pretty: true}))
+        .pipe(gulp.dest('dist'));
+});
+</code></pre>
+<p>We'll also need to fix the <code>watch</code> task so it has:</p>
+<pre><code>gulp.watch('src/*.pug', ['build:html']);
+</code></pre>
+<p>which will watch Pug files instead of HTML files.</p>
+<p>That's it! Alyssa's site is now building with Pug instead of HTML.</p>
+<h3>Step 3: splitting out the layout</h3>
+<p>Pug's looping and flow control constructs will be very useful to us later on, but we can get some immediate productivity wins by splitting out the site layout so it's not duplicated across every Pug file.</p>
+<p>There's one tricky thing about this: the navigation is mostly the same between pages, but not quite - the page the user is currently on shouldn't be a link. We'll solve this by using a <code>block</code> directive for each link. That way, we can override just what needs to be changed, while introducing no duplication.</p>
+<p>You'll have to figure out exactly what parts of your personal layout make sense to be split out. In Alyssa's case, there are three main things that are mostly or fully duplicated across pages:</p>
+<ol>
+<li>The navigation bar</li>
+<li>The footer</li>
+<li>Invisible metadata and script/style includes</li>
+</ol>
+<p>These are what we'll split out. First, we'll make a copy of <code>index.pug</code> and put it in <code>src/includes/layout.pug</code>. (Again, you can organize your files however you want - but in projects generated by <code>generator-stratic</code>, utility Pug files go in <code>src/includes</code>.) Next, edit out the page-specific content and replace them with <code>block</code> directives. Finally, edit each navigation bar item so it has its own <code>block</code> directive, leaving the old code as the default for the <code>block</code> directive.</p>
+<p>Here's what this looks like when we do this to Alyssa's site:</p>
+<pre><code>doctype html
+html
+  head
+    meta(charset='UTF-8')
+    link(href='/css/main.css', rel='stylesheet', type='text/css')
+    block head
+  body
+    block heading
+    nav
+      ul
+        block nav-homepage
+          li
+            a(href='/') Homepage
+        block nav-projects
+          li
+            a(href='/projects') Projects
+
+    block body
+
+    footer
+      p &#x26;copy; Copyright 2016 Alyssa P. Hacker.
+    script(src='/js/main.js', type='text/javascript')
+</code></pre>
+<p>Note how I've replaced the <code>h1</code> element (the contents of which vary per-page) with <code>block heading</code>, I've added a <code>block head</code> directive so we can specify the title per-page, I've made a <code>block</code> for each navigation link so we can override them if we want to individually (otherwise they'll have the default of being a link), and I've added <code>block body</code> for the main content. I've also cleaned out a bunch of the cruft the automatic converter put in there.</p>
+<p>Now, we can edit <code>index.pug</code> so that it inherits from <code>layout.pug</code> - we'll use the <code>extends</code> keyword for this. Then we just fill in the content we want using block. Here's what this looks like after we're finished with Alyssa's site:</p>
+<pre><code>extends includes/layout.pug
+
+block head
+  title Alyssa P. Hacker's homepage
+
+block heading
+  h1 Alyssa P. Hacker's homepage
+
+block nav-homepage
+  li Homepage
+
+block body
+  p This is the homepage of Alyssa P. Hacker. You can check out the projects I've worked on #[a(href='/projects') here].
+</code></pre>
+<p>You'll note that I've cleaned out some cruft here, too. We have one last thing to fix: if we change the layout, nothing will get rebuilt. We can fix this by changing the <code>watch</code> task again so that the line for watching Pug files reads:</p>
+<pre><code>gulp.watch(['src/*.pug', 'src/includes/*.pug'], ['build:html']);
+</code></pre>
+<p>Sweet! <code>index.pug</code> is way shorter than what we had before and includes <em>just</em> the content now. We can do the same thing to <code>projects.pug</code>. Then Alyssa can, for example, correct the copyright year in <code>layout.pug</code> - i.e., once - and that change will go into both <code>index.html</code> <em>and</em> <code>projects.html</code>. I've gone ahead and made the change for her.</p>
+<p>To give a high-level overview, here's what Alyssa's site looks like now:</p>
+<pre><code>% tree -I node_modules .
+.
+├── dist
+│   ├── css
+│   │   └── main.css
+│   ├── index.html
+│   ├── js
+│   │   └── main.js
+│   └── projects.html
+├── gulpfile.js
+├── package.json
+└── src
+    ├── includes
+    │   └── layout.pug
+    ├── index.pug
+    ├── projects.pug
+    ├── scripts
+    │   └── main.js
+    └── styles
+        └── main.css
+
+7 directories, 11 files
+</code></pre>
+<h3>Next time...</h3>
+<p>This post is long enough already, so I'll stop here. We've converted Alyssa's site to have a really solid base, so next time we'll build on top of this work to add superpowered blog features, powered by Stratic.</p>
+<p>Now go apply this to your own site!</p>
+</div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/02/rc-week-6">
               <h2 class="p-name">RC week 6</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/02/">February</a> 19, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
@@ -186,66 +439,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 </div>
           </article>
           <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/01/new-programming-language-part-i-handlers">
-              <h2 class="p-name">New programming language part I: Handlers</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/01/">January</a> 26, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/security/" class="p-category">security</a>
-            </p>
-            <div class="e-content"><p>So my latest project at the <a href="https://recurse.com">Recurse Center</a> is a new programming language, as yet unnamed. Basically this was inspired by my <a href="https://strugee.net/presentation-security-design">security design</a> presentation in which I laid out a couple ways you can improve programs' security designs, like process separation. And it occurred to me: why is this so difficult? Something should be doing this for me. Enter... whatever the hell I end up calling my language.</p>
-<p>One of the most important building blocks of the language is something that I'm currently calling a "Handler". A Handler is basically a segregated piece of application code that handles some task or problem domain. For example, a Handler for outgoing DNS requests (syntax subject to change, obviously):</p>
-<pre><code>Handler DNS {
-    function getAddressFromHostname(hostname) {
-        // Very much pseudocode - all function calls here are example OS calls
-
-        sendDnsQuery(hostname);
-        while (!haveDnsResult()) {
-            sleep(1);
-        }
-        
-        return getDnsResult();
-    }
-}
-</code></pre>
-<p>This Handler has one simple method, <code>getAddressFromHostname()</code>. It sends a DNS query, blocks until it has a result, and then returns the result.</p>
-<p>What's cool about this Handler is that it will be run in its own process - in other words, each Handler is automatically transformed into a privilege-separated process. However, <code>getAddressFromHostname()</code> can still be called from other, high-level Handlers! The language will do all the data marshalling for you, so from a language perspective it looks like a regular function call even though in practice it's going cross-process.</p>
-<p>Now, let's improve our Handler a little bit. It's pretty unfortunate that we can only make one DNS request at a time (since it's blocking), so let's use an event loop.</p>
-<pre><code>Handler DNS is eventLoop {
-    function getAddressFromHostname(hostname) {
-        // Still pseudocode
-
-        return sendDnsQuery(hostname, function(address) {
-            return address;
-        });
-    }
-}
-</code></pre>
-<p>We specified that the <code>DNS</code> Handler is an event loop, so the language automatically set up a Node-style event loop - we never actually called anything to enter an event loop, it just sort of happened as a construct of the language. Note also the nice async-aware return syntax - the result of <code>sendDnsQuery()</code> is returned to <code>getAddressFromHostname()</code>'s caller, and the result of <code>sendDnsQuery()</code> is specified by the return value of the anonymous function callback.</p>
-<p>We can improve correctness even more by specifying that the Handler is not allowed to make syncronous I/O calls at all:</p>
-<pre><code>Handler DNS is eventLoop, async {
-    // ...
-}
-</code></pre>
-<p>Handlers let you pick and choose different elements and design choices for different parts of your application. For example, if you had a Handler responsible for processing data, it might make sense to restrict it to being entirely functional:</p>
-<pre><code>Handler incomingData is functional {
-    // ...
-}
-</code></pre>
-<p>In such a Handler, any functions with side effects wouldn't be callable, enforced at compile-time (possibly parse-time, depending on whether I can make it compiled or not given the type system). Perhaps you want to spawn a new sandbox process for each piece of incoming data (OpenSSH does this, for example, when first receiving authentication data from untrusted users):</p>
-<pre><code>// The `ephemeral` keyword will probably be something better, but for now...
-Handler incomingData is functional, ephemeral {
-    // ...
-}
-</code></pre>
-<p>If your application requires root - for example, if you were writing an NTP daemon that needed to call <code>setTimeOfDay()</code> - that's also specified at the Handler level:</p>
-<pre><code>Handler incomingData is root {
-    // ...
-}
-</code></pre>
-<p>This should give you some idea of why Handlers are really interesting, even beyond the process separation concept that underlies them. (It's also worth noting that while I've focused mostly on daemons, this can also be used to securely implement e.g. <code>file</code>.) I'm really excited to get these ideas out there so I'll stop for now, but pretty soon I'll write another blog post talking about the type system.</p>
-</div>
-          </article>
-          <hr>
           <div id="pages-footer">
-            <p><a href="../4">←</a> ⋅ Page 5 out of 6 ⋅ <a href="../6">→</a></p>
+            <p><a href="../4">←</a> ⋅ Page 5 out of 7 ⋅ <a href="../6">→</a></p>
           </div>
         </div>
       </div>
