@@ -30,8 +30,9 @@ require('whatwg-fetch');
 (function() {
 	'use strict';
 
-	var nightmodeStylesheet, icon; // eslint-disable-line init-declarations
+	var nightmodeStylesheet, monospaceStylesheet, icon, monospaceIcon; // eslint-disable-line init-declarations
 	var isNightMode = false;
+	var isMonospace = false;
 
 	// Wait for the DOM to be ready
 	document.addEventListener('DOMContentLoaded', init, false);
@@ -51,13 +52,21 @@ require('whatwg-fetch');
 		nightmodeStylesheet.type = 'text/css';
 		nightmodeStylesheet.href = '/css/nightmode.css';
 
+		monospaceStylesheet = document.createElement('link');
+		monospaceStylesheet.id = 'monospace-stylesheet';
+		monospaceStylesheet.rel = 'stylesheet';
+		monospaceStylesheet.type = 'text/css';
+		monospaceStylesheet.href = '/css/monospace.css';
+
 		icon = document.getElementById('lightbulb-icon');
+		monospaceIcon = document.getElementById('monospace-icon');
 
 		icon.addEventListener('click', handleIconClick, false);
+		monospaceIcon.addEventListener('click', handleMonospaceIconClick, false);
 
 		// Abort if the browser can't do what we're looking for
 		if (!Array.prototype.forEach || !document.querySelectorAll || !window.history.pushState || !window.DOMParser) {
-			console.warn('Either Array.prototype.forEach(), document.querySelectorAll(), DOMParser(), or history.pushState() support is missing from your browser! Night mode state will not persist. Please upgrade.'); // eslint-disable-line max-len
+			console.warn('Either Array.prototype.forEach(), document.querySelectorAll(), DOMParser(), or history.pushState() support is missing from your browser! Night mode/monospace state will not persist. Please upgrade.'); // eslint-disable-line max-len
 			return;
 		}
 
@@ -134,6 +143,14 @@ require('whatwg-fetch');
 		}
 	}
 
+	function handleMonospaceIconClick() {
+		if (isMonospace) {
+			proportional();
+		} else {
+			monospace();
+		}
+	}
+
 	function nightMode() {
 		document.head.appendChild(nightmodeStylesheet);
 		isNightMode = true;
@@ -144,5 +161,22 @@ require('whatwg-fetch');
 		document.head.removeChild(nightmodeStylesheet);
 		isNightMode = false;
 		console.log('let the sun shine upon all! welcome to day mode.');
+	}
+
+	function monospace() {
+		// Night mode takes precedence, otherwise styles get suuuper screwey
+		if (isNightMode) {
+			document.head.insertBefore(monospaceStylesheet, nightmodeStylesheet);
+		} else {
+			document.head.appendChild(monospaceStylesheet);
+		}
+		isMonospace = true;
+		console.log('oh, you retro, you.');
+	}
+
+	function proportional() {
+		document.head.removeChild(monospaceStylesheet);
+		isMonospace = false;
+		console.log('hmm. returning to a vague sense of modernity. how quaint!');
 	}
 })();
