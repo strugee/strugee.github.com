@@ -39,7 +39,12 @@ require('whatwg-fetch');
 	// Kick off the fetch ASAP because it doesn't require the DOM and so don't want to wait for that
 	var req = fetch('https://webmention.io/api/mentions?target=' + window.location);
 
+	var initialized = false;
+
 	function init() {
+		if (initialized) return;
+		initialized = true;
+
 		var mentionsElement = document.getElementById('webmentions');
 
 		// Only when the DOM is ready do we register Promise stuff that interacts with it
