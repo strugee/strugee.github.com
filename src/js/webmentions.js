@@ -44,11 +44,9 @@ require('whatwg-fetch');
 
 		// Only when the DOM is ready do we register Promise stuff that interacts with it
 		req.then(function(response) {
-			return response.text();
+			return response.json();
 		})
-		.then(function(body) {
-			var data = JSON.parse(body);
-
+		.then(function(data) {
 			if (data.links.length === 0) {
 				// No replies, so we bail
 				var noReplies = document.createElement('p');
