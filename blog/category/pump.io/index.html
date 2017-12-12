@@ -60,6 +60,24 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "pump.io"</h2>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/pump.io-5.1-is-in-beta">
+              <h2 class="p-name">pump.io 5.1 is in beta</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/12/pump.io-5.1-is-in-beta">here</a> on <a href="/blog/2017/12/">December</a> 8, <a href="/blog/2017/">2017</a> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
+            </p>
+            <div class="e-content"><p>I'm really excited to announce that pump.io 5.1 is officially in beta!</p>
+<p>This release makes a wide array of improvements. One of the features I'm most excited about is <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">zero-downtime restarts</a>, which will allow administrators to gracefully roll over to new configurations and codebases with absolutely no user-visible impact! Aside from that, here's a list of highlights:</p>
+<ul>
+<li>The daemon now generates startup log warnings on bad configurations, including insecure <code>secret</code> values and internal parameters</li>
+<li>An official <code>Dockerfile</code> is now included with the release</li>
+<li>The logged-out mobile homepage's menu icon is no longer incorrectly styled as black</li>
+<li>SockJS connections no longer fail due to authorization problems</li>
+</ul>
+<p>As usual, this release also includes some small updates to dependencies. Plus, we started tracking how much code our test suite covers! We've also significantly cleaned up the documentation and moved almost all of the in-repository documentation to ReadTheDocs, where it's a lot more organized and accessible. If you want more than just these highlights, you can check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510-beta-0---2017-12-08">the changelog</a>.</p>
+<p>Note that while the repository includes a <code>Dockerfile</code> now, we have not yet begun publishing on Docker Hub due to some security logistics that need to be figured out - when we do, it'll be announced in all the usual places (including this blog).</p>
+<p>I'm so excited for people to try out this release. 5.1 beta 0 is a drop-in replacement for 5.0, so if you're on 5.0 and want to live (more) on the bleeding edge, you can upgrade with <code>npm install -g pump.io@5.1</code> if you have an npm-based install. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0-beta.0</code> tag. And as always, if you encounter any problems you can reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
+</div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/10/denial-of-service-security-fixes-now-available">
               <h2 class="p-name">pump.io denial-of-service security fixes now available</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/10/denial-of-service-security-fixes-now-available">here</a> on <a href="/blog/2017/10/">October</a> 1, <a href="/blog/2017/">2017</a> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a>, <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/security/" class="p-category">security</a>
@@ -167,28 +185,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p><em>Thanks so much to <a href="https://github.com/anjakefala">Anja</a> and <a href="http://jvns.ca/">Julia</a> for providing feedback on a draft version of this post.</em></p>
 <p>[1]: I really hope this explanation makes sense and if it doesn't, I apologize - I use diagrams to explain this in real life.</p>
 <p> [2]: Still is, but that should improve now that the technical debt work I've been focusing on for the past year is now <a href="https://strugee.net/blog/2017/03/express-4.x-in-pump.io-core">basically done</a>!</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/04/pump.io-4.0-in-beta">
-              <h2 class="p-name">pump.io 4.0 in beta</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/04/pump.io-4.0-in-beta">here</a> on <a href="/blog/2017/04/">April</a> 3, <a href="/blog/2017/">2017</a> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a> and <a href="/blog/category/development/" class="p-category">development</a>
-            </p>
-            <div class="e-content"><p>pump.io 4.0.0 is officially in beta! Whooo!</p>
-<h2>Highlights</h2>
-<p>This is a positively <em>huge</em> release, and I'm so excited to share it with the community. Some highlights:</p>
-<ul>
-<li>Express 4.x - I wrote about the significance of this change <a href="http://pump.io/blog/2017/03/express-4.x-in-pump.io-core">here</a>, but suffice to say that this significantly improves security, performance, and future maintainability</li>
-<li>Performance and correctness improvements to the web UI's JavaScript</li>
-<li>Better administrative experience, including the ability to specify configuration via environment variables</li>
-<li>Better interoperability with the <a href="https://indieweb.org">IndieWeb</a></li>
-</ul>
-<h2>Upgrading</h2>
-<p>The upgrade to Express 4.x and the improvements to configuration loading have the potential to break <em>some</em> existing pump.io installations, although 95% of installs should be completely unaffected. If you want to help test this beta, please set aside extra time as necessary to perform this upgrade - full documentation can be found on <a href="https://pumpio.readthedocs.io/en/latest/upgrades/3.x-to-4.x.html">ReadTheDocs</a>.</p>
-<p>As always, this release will follow our normal <a href="https://github.com/pump-io/pump.io/wiki/Release-cycle">release cycle</a>, which means that the stable 4.0.0 release will go out in about a month.</p>
-<h2>Test days</h2>
-<p>Due to the complexity of this upgrade, we've decided to have some test days during the beta where we upgrade prominent nodes for a day, then downgrade them again. This will help expose problems earlier and make the upgrade smoother for everyone. So far Jason Self, who runs <a href="https://datamost.com/">Datamost</a>, has volunteered for this - if you're interested in joining him, please <a href="https://github.com/pump-io/pump.io/wiki/Community">get in touch</a>!</p>
-<p>Happy hacking!</p>
 </div>
           </article>
           <hr>

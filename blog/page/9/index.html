@@ -62,6 +62,29 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h2 class="p-name">Blog</h2>
           <p id="postsFrom">Show only posts from <a href="/blog/2014/">2014</a> <a href="/blog/2015/">2015</a> <a href="/blog/2016/">2016</a> <a href="/blog/2017/">2017</a> 
           </p>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/10/android-freedom">
+              <h2 class="p-name">Android freedom</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2016/10/">October</a> 17, <a href="/blog/2016/">2016</a> in <a href="/blog/category/musings/" class="p-category">musings</a>
+            </p>
+            <div class="e-content"><p>Recently I backed up and restored both my Android phone and my Android tablet. There were a couple reasons for both of these. The tablet had been borked for quite a long time (any time I tried to upgrade it from the Android 5.0 build it was running, it failed - also the thing just froze randomly). The phone was on the CyanogenMod nightly channel and I wanted to switch to the snapshot channel, plus within the past couple days both WiFi and the cell network data connection straight up stopped working so it was pretty unusable. At first I wanted to switch to <a href="https://copperhead.co/android/">CopperheadOS</a> on both devices. CopperheadOS doesn't support GApps and will probably never support GApps (for very good reasons), and I said, maybe I can make it work. Sadly, I couldn't - I still regrettably need stuff from the Google Play Store. (The tablet ended up back on stock because I want fast upgrades, and the phone ended up on CyanogenMod because they have the fastest upgrades while still offering root.)</p>
+<p>The whole experience made me think, though - what would it take to create something that functioned like GApps, but respected your freedom? I'm sure some people reading are already scrambling to link me to their favorite Google Play Services reimplementation, but this isn't the only thing that's in GApps. You gotta think about the user experience, too. Such a system should be able to:</p>
+<ul>
+<li>Provide the nice APIs that Google Play Services does</li>
+<li>Store your photos in the cloud, like Google Photos</li>
+<li>Related to the above, automatically backup and restore apps and their data</li>
+<li>Transfer from other devices, similar to the above item</li>
+<li>Support functionality like Google Now</li>
+<li>Ditto for Google Assistant</li>
+<li>Integrate into the initial device setup to configure all this stuff</li>
+</ul>
+<p>I'm sure there are more that I've missed.</p>
+<p>Honestly, we're actually quite close to this. The first bullet can be mostly accomplished with something like <a href="https://microg.org/">microG</a>. Automatic backup and photo storage needs a UI, but fundamentally can be accomplished with any generic WebDAV implementation. F-Droid can be used as the app store. Imagine this: you take a bunch of photos and install a bunch of freedom-respecting apps on your phone. Then, you get a new one. When you set it up, the phone prompts you to sign in to your WebDAV account (which could be e.g. ownCloud, or a WebDAV implementation on <a href="https://sandstorm.io/">Sandstorm</a>) and then automatically reinstalls all your apps from F-Droid, as well as retrieving their data from ownCloud. When you open the built-in gallery app, all your photos are already there because they're seamlessly backed up to the cloud. <em>Your</em> cloud. Transfer can be accomplished in a lot of ways, but I can easily see it building on the above.</p>
+<p>Supporting something like Google Now is non-trivial, but I've even already proposed <a href="https://github.com/cantino/huginn/issues/1583">a feature for Huginn</a> that would make this possible. Google Assistant would be very, very difficult, but even without that, we'd have come a long way.</p>
+<p>This reality is not that far off. What's missing is some UI pieces and a nice ZIP that can be flashed on top of ROMs, similar to how GApps are flashed today. So who's going to put it all together?</p>
+<p>(I suppose I've just volunteered myself - oh well... I'll just add it to my endless list of projects.)</p>
+</div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/08/pump.io-1.0.0-is-now-available">
               <h2 class="p-name">Pump.io 1.0.0 is now available!</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2016/08/">August</a> 26, <a href="/blog/2016/">2016</a> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/security/" class="p-category">security</a> and <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
@@ -177,45 +200,8 @@ npm install --production
 </div>
           </article>
           <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/05/stratic-part-one">
-              <h2 class="p-name">Stratic part one is done!</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2016/05/">May</a> 28, <a href="/blog/2016/">2016</a> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/stratic/" class="p-category">stratic</a>
-            </p>
-            <div class="e-content"><p>Whooooooooooo!</p>
-<p>I am so, so, <em>so</em> thrilled to announce that the first part of <a href="https://github.com/strugee/generator-stratic">Stratic</a> is complete! And you can see the result right here on strugee.net, since this blog post was generated with Stratic!</p>
-<p><strong>tl;dr</strong>:</p>
-<pre><code>var rename = require('gulp-rename');
-var markdown = require('gulp-markdown');
-var parse = require('stratic-parse-header');
-var straticToJson = require('stratic-post-to-json-data');
-var jadeTemplate = require('gulp-jade-template');
-var dateInPath = require('stratic-date-in-path');
-
-gulp.task('posts', function() {
-    return gulp.src('src/blog/*.md')
-               .pipe(parse())
-               .pipe(markdown())
-               .pipe(dateInPath())
-               .pipe(straticToJson())
-               .pipe(jadeTemplate('src/blog/post.jade'))
-               .pipe(rename({ extname: '.html' }))
-               .pipe(gulp.dest('dist/blog'));
-});
-</code></pre>
-<p>How <em>gorgeous</em> is that?? Let me explain how it works. (I'll assume the reader is familiar with <a href="https://github.com/gulpjs/gulp">Gulp</a> and <a href="https://nodejs.org/en/">Node.js</a>.)</p>
-<p>So the <code>gulp.src()</code> call is pretty obvious. We just read all the blog posts into the stream. Note, however, that <code>gulp.src()</code> doesn't stream text, per se - it streams <a href="https://github.com/gulpjs/vinyl">Vinyl</a> file objects. This will become important later.</p>
-<p>Now, the first piece of custom Stratic code that we use is the <code>stratic-parse-header</code> module. This module takes a Markdown file with a standard Stratic header (see <a href="https://strugee.net/blog/2014/11/new-blog-new-site">my original announcement</a> for details), parses the header, strips it out, then returns the new, headerless Markdown. However, the new Vinyl file object has a couple of new properties from the parsing phase - specifically, <code>file.title</code>, <code>file.author</code>, <code>file.time</code>, and <code>file.categories</code> now exist. This is why the fact that Vinyl is used is important - now <em>any</em> Gulp plugin downstream from where <code>parse()</code> is run can use all of these values in whatever way it wants. (See <a href="https://github.com/strugee/stratic-parse-header/blob/master/README.md">the README</a> for more details.)</p>
-<p>Now our Vinyl file object is <em>only</em> the content of the post, and it has additional Stratic metadata attached to it. Awesome! The next thing that we do is render the Markdown, just using a standard Gulp plugin for this. Easy breezy. After that, we pipe to the <code>stratic-date-in-path</code> module, which adds the year and month to paths. For example, without <code>stratic-date-in-path</code>, this blog post would be at <code>https://strugee.net/blog/stratic-part-one</code>. However, since I <em>do</em> use <code>stratic-date-in-path</code>, the post lives at <code>https://strugee.net/blog/2016/05/stratic-part-one</code> instead. Nice, right? Eventually I'll write code to generate pretty indexes for each year and month - that's what Stratic part 2 is for.</p>
-<p>The next thing we do is pipe to the <code>stratic-post-to-json-data</code> module. This module is specifically designed to work with the <code>gulp-jade-template</code> module, which expects the file contents to be some JSON that will be given as data to a <a href="http://jade-lang.com/">Jade</a> template, whose rendered HTML becomes the new file contents. What sets up that JSON? You guessed it - <code>stratic-post-to-json-data</code>. That's all it does. It just creates an object that contains the metadata and the actual post text, runs it through <code>JSON.stringify()</code>, and sets the file contents equal to the result. Just how <code>gulp-jade-template</code> likes it.</p>
-<p>And with that, we've successfully rendered a blog post. Whooooooooooo! I'm so pumped about this software. The call to <code>rename()</code> is just a little housekeeping, and then we write the whole thing back to disk with <code>gulp.dest()</code>. Awesome.</p>
-<p>It's worth noting that the real beauty in this code isn't what the code actually does, but the extreme modularity of the whole thing. Unlike projects like <a href="https://jekyllrb.com/">Jekyll</a> or even <a href="http://wintersmith.io/">Wintersmith</a>, this isn't a giant, monolithic framework. It's all standard Node and Gulp. Note how (for example) we didn't need a custom plugin for Markdown - we just used the standard <code>gulp-markdown</code>. Don't like Markdown? No problem. Write something to extract post metadata from your preferred format, replace <code>parse()</code> with that and <code>markdown()</code> with a different renderer, and you're golden. All the rest will continue to work the <em>exact</em> same - adding dates to paths, rendering the template, etc. - because everything's decoupled from everything else. Each component can be trivially swapped out and replaced with something new and better, and the rest of the system continues to work. Gorgeous.</p>
-<p>I've got to go now, but I'm not done blogging. I'll be back soon to talk about the work going on in <a href="http://pump.io/">pump.io</a>, and I'll be back (much?) later to talk about Stratic part two (aka, pretty indexes).</p>
-<p>Whooooooooooooooooooooo!</p>
-</div>
-          </article>
-          <hr>
           <div id="pages-footer">
-            <p><a href="../8">←</a> ⋅ Page 9 out of 10 ⋅ <a href="../10">→</a></p>
+            <p><a href="../8">←</a> ⋅ Page 9 out of 11 ⋅ <a href="../10">→</a></p>
           </div>
         </div>
       </div>
