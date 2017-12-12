@@ -6,6 +6,7 @@ time:
 author: "AJ Jordan"
 categories:
   - pump.io
+  - blaggregator
 canonical: "http://pump.io/blog/2017/12/pump.io-5.1-is-in-beta"
 ---
 
