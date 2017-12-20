@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[strugee.net blog - 'blaggregator' category]]></title><description><![CDATA[strugee.net blog - 'blaggregator' category]]></description><link>https://strugee.net/blog/category/blaggregator</link><generator>stratic-indexes-to-rss</generator><lastBuildDate>Tue, 12 Dec 2017 16:21:03 GMT</lastBuildDate><atom:link href="https://strugee.net/blog/category/blaggregator/index.rss" rel="self" type="application/rss+xml"/><copyright><![CDATA[© Copyright 2012-2017 AJ Jordan. Available under the GNU Affero GPL.]]></copyright><webMaster><![CDATA[AJ Jordan <alex@strugee.net>]]></webMaster><item><title><![CDATA[pump.io 5.1 is in beta]]></title><description><![CDATA[<p>I'm really excited to announce that pump.io 5.1 is officially in beta!</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[strugee.net blog - 'blaggregator' category]]></title><description><![CDATA[strugee.net blog - 'blaggregator' category]]></description><link>https://strugee.net/blog/category/blaggregator</link><generator>stratic-indexes-to-rss</generator><lastBuildDate>Wed, 20 Dec 2017 22:54:43 GMT</lastBuildDate><atom:link href="https://strugee.net/blog/category/blaggregator/index.rss" rel="self" type="application/rss+xml"/><copyright><![CDATA[© Copyright 2012-2017 AJ Jordan. Available under the GNU Affero GPL.]]></copyright><webMaster><![CDATA[AJ Jordan <alex@strugee.net>]]></webMaster><item><title><![CDATA[Winter break priorities, 2017-18]]></title><description><![CDATA[<p>So I just wanted to write something up real fast to document my development priorities over my upcoming winter break (which starts tomorrow, whoohoo!). This is just generally useful to have, because I'm forgetful, but will also help keep me accountable since the list is public.</p>
+<p>So, here are the projects I want to get done, in rough order of priority:</p>
+<ol>
+<li>Polish up an <a href="https://github.com/nodejs/node/pull/14164#issuecomment-325553163">outstanding Node.js Pull Request</a> that automatically generates manpages for every module shipped with Node core</li>
+<li>Deal with GPG key signing which I have been procrasinating on for, well, years now</li>
+<li>Push some Debian packaging work forward (I've done some work to get the <a href="https://tracker.debian.org/pkg/profanity">Profanity packaging</a> up-to-date, and I want to get <a href="https://github.com/strugee/filter-other-days">filter-other-days</a> into Debian as well)</li>
+<li>Finish up v1 of <a href="https://github.com/strugee/lazymention">lazymention</a> - high-priority since it's so close to being done!</li>
+<li>Finally push through and implement <a href="https://github.com/pump-io/pump.io/issues/1241">ActivityPub in pump.io core</a></li>
+<li>Clear <a href="https://strugee.net/blog/">the backlog of PRs</a> sent to pump.io</li>
+</ol>
+<p>I also am setting a goal of writing at least two blog posts per week.</p>
+<p>That seems like a lot, honestly, and yet I feel like I must have missed something - I will update this list if I think of anything else!</p>
+<p>Cheers, and happy holidays everyone! \o/</p>
+]]></description><link>https://strugee.net/blog/2017/12/winter-break-priorities-2017-18</link><guid isPermaLink="true">https://strugee.net/blog/2017/12/winter-break-priorities-2017-18</guid><category><![CDATA[personal]]></category><category><![CDATA[blaggregator]]></category><pubDate>Wed, 20 Dec 2017 22:44:18 GMT</pubDate></item><item><title><![CDATA[pump.io 5.1 is in beta]]></title><description><![CDATA[<p>I'm really excited to announce that pump.io 5.1 is officially in beta!</p>
 <p>This release makes a wide array of improvements. One of the features I'm most excited about is <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">zero-downtime restarts</a>, which will allow administrators to gracefully roll over to new configurations and codebases with absolutely no user-visible impact! Aside from that, here's a list of highlights:</p>
 <ul>
 <li>The daemon now generates startup log warnings on bad configurations, including insecure <code>secret</code> values and internal parameters</li>
@@ -249,63 +262,4 @@ secure_system(app)
 <h2>Executive summary</h2>
 <p>Most of the "interesting" stuff that happened this week had to do with the resident. Got a little done codewise, but not that much. I'd say this week was 50/50 in terms of productivity.</p>
 <p>Total time at RC 48 hours 50 minutes; cumulative time 412 hours 0 minutes.</p>
-]]></description><link>https://strugee.net/blog/2017/03/rc-week-9</link><guid isPermaLink="true">https://strugee.net/blog/2017/03/rc-week-9</guid><category><![CDATA[personal]]></category><category><![CDATA[blaggregator]]></category><pubDate>Mon, 06 Mar 2017 23:39:34 GMT</pubDate></item><item><title><![CDATA[Driftless at 1,000 mph]]></title><description><![CDATA[<p>Last week I published <a href="https://strugee.net/blog/2017/02/how-i-passed-2k-github-contributions">How I passed 2k GitHub contributions</a>. This post is, in some ways, the antithesis of that, and it will be very emotional and messy. Here be dragons.</p>
-<hr>
-<p>Throughout my time at RC I've noticed only one thing is consistently difficult for me: focusing on hard things. Intellectually I love the idea of challenging myself. And I find that when I start to work on things that are new and not easy, it feels good and I tend to keep working on those things, because they're interesting. But starting is something that I just don't do frequently enough, and so I find that I haven't progressed as a programmer nearly as much as I would like to have.</p>
-<p>What is productivity?</p>
-<p>Merriam-Webster defines it like this:</p>
-<blockquote>
-<ol>
-<li>
-<p>the quality or state of being productive</p>
-</li>
-<li>
-<p>the rate per unit area or per unit volume at which biomass consumable as food by other organisms is made by producers</p>
-</li>
-</ol>
-</blockquote>
-<p>And "productive" is defined like so:</p>
-<blockquote>
-<ol>
-<li>
-<p>having the quality or power of producing, especially in abundance</p>
-</li>
-<li>
-<p>effective in bringing about</p>
-</li>
-<li>
-<p>a) yielding results, benefits, or profits; b) yielding or devoted to the satisfaction of wants or the creation of utilities</p>
-</li>
-<li>
-<p>continuing to be used in the formation of new words or constructions</p>
-</li>
-<li>
-<p>raising mucus or sputum (as from the bronchi)</p>
-</li>
-</ol>
-</blockquote>
-<p>By definitions 1-3 I certainly seem to have been productive; I've written a lot of code, much of which is useful. But useful to <em>whom</em>, and for what purpose?</p>
-<p>I sometimes feel as if I'm just generating more and more code without any guiding process, as though I'm wasting my time even though concretely I'm getting a <em>lot</em> of things done - driftless even though I'm churning out work at an extremely high rate. Is this <a href="https://en.wikipedia.org/wiki/Impostor_syndrome">imposter syndrome</a>? Or are my worries legitimate?</p>
-<p>Maybe a better way to frame this question is to split it in two - am I being productive for myself, and am I being productive for the community - the two things that are currently important to me personally.</p>
-<p>I think I am failing at being productive for myself, in some really important ways. I'm also succeeding in some - for example, I used to wish I had an engine to run my blog, and now I have <a href="https://github.com/straticjs">such an engine</a>. But in others I am failing.</p>
-<p>What is the purpose of RC? Why am I here?</p>
-<hr>
-<p>recurse.com <a href="https://www.recurse.com/about#who-comes-to-the-recurse-center">says this</a> about people who come to RC:</p>
-<blockquote>
-<p>The Recurse Center is for people who want to become better programmers. We are not startup school nor are we a bootcamp: Our focus is helping people become better programmers, not building prototypes, and we're not a training program for web developers.</p>
-<p>Because there is no certification or grading, the only reason to come to the Recurse Center is to become a better programmer. As such, you will find kindred spirits and tremendous energy. We look for smart, friendly, self-directed, intellectually curious people who enjoy programming and want to get dramatically better.</p>
-</blockquote>
-<p>More directly, <a href="https://www.recurse.com/manual">the manual</a> has this to say:</p>
-<blockquote>
-<p>You should be here primarily because you want to become a better programmer and spend the majority of your time here programming and doing things directly related to programming.</p>
-<p>Well, we could ask you to be respectful of speakers and keep conversations on-topic in the Recurse Center space during the day (i.e. if you want to take a break and chat about your weekend, go grab a coffee).</p>
-</blockquote>
-<p>However, as <a href="https://haroldtreen.com">Harold</a> points out, that <a href="https://haroldtreen.com/tech/recurse/2017/01/27/recurse-center-return-statement/">isn't necessarily an accurate picture</a> of what RC is about. I think a lot of what it's really about is the people who are in the space with you. I've sure had a wonderful time with the people. Does that mean I'm "succeeding"?</p>
-<p>Then there's the teaching.</p>
-<hr>
-<p><img src="/images/anja-teaching.jpg" alt="Screenshot of a Zulip message where Anja says &quot;thank you AJ for teaching us so many things. :)&quot;"></p>
-<p>This is referring to the fact that I teach at Security Club every week, plus my volunteering to run a workshop or two for Beginner's Club and Web Dev 101.</p>
-<p>Practically speaking, I get very, very little out of teaching at RC. Sometimes it helps solidify (or just plain remind me of) the concepts I teach, but this is the exception, not the norm. So in that sense by spending time teaching, I'm "failing" at being productive for myself. But it seems clear to me that people get a lot out of the time I spend, so I seem to be very productive for the community.</p>
-<p>Equally importantly I <em>love</em> teaching. I qualified the previous paragraph with "practically speaking" because emotionally teaching is something that's very beneficial to me. Does that mean I'm "succeeding"? Does it mean I'm "failing" and "succeeding" at the same time?</p>
-<p>I honestly don't know.</p>
-]]></description><link>https://strugee.net/blog/2017/03/driftless-at-1000-mph</link><guid isPermaLink="true">https://strugee.net/blog/2017/03/driftless-at-1000-mph</guid><category><![CDATA[personal]]></category><category><![CDATA[blaggregator]]></category><pubDate>Mon, 06 Mar 2017 21:27:20 GMT</pubDate></item></channel></rss>
+]]></description><link>https://strugee.net/blog/2017/03/rc-week-9</link><guid isPermaLink="true">https://strugee.net/blog/2017/03/rc-week-9</guid><category><![CDATA[personal]]></category><category><![CDATA[blaggregator]]></category><pubDate>Mon, 06 Mar 2017 23:39:34 GMT</pubDate></item></channel></rss>

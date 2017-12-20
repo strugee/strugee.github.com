@@ -36,9 +36,10 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://twitter.com/strugee2">
     <link rel="me" href="https://plus.google.com/+AlexJordan">
     <link rel="me" href="https://www.instagram.com/strugee2/">
-    <title>Posts from December 2017 - strugee.net</title>
-    <!-- TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...-->
-    <link rel="alternate" type="application/rss+xml" href="index.rss">
+    <title>Winter break priorities, 2017-18 - strugee.net</title>
+    <link rel="pingback" href="https://webmention.io/strugee.net/xmlrpc">
+    <link rel="webmention" href="https://webmention.io/strugee.net/webmention">
+    <script src="/js/webmentions.js" type="text/javascript"></script>
   </head>
   <body>
     <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
@@ -58,13 +59,11 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
         </nav>
       </header>
       <div id="content">
-        <div class="h-feed">
-          <h2 class="p-name">Posts from December 2017</h2>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/winter-break-priorities-2017-18">
-              <h2 class="p-name">Winter break priorities, 2017-18</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/12/">December</a> 20, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
-            </p>
-            <div class="e-content"><p>So I just wanted to write something up real fast to document my development priorities over my upcoming winter break (which starts tomorrow, whoohoo!). This is just generally useful to have, because I'm forgetful, but will also help keep me accountable since the list is public.</p>
+        <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry">
+          <h1 class="p-name">Winter break priorities, 2017-18</h1>
+          <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/12/">December</a> 20, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
+          </p>
+          <div class="e-content"><p>So I just wanted to write something up real fast to document my development priorities over my upcoming winter break (which starts tomorrow, whoohoo!). This is just generally useful to have, because I'm forgetful, but will also help keep me accountable since the list is public.</p>
 <p>So, here are the projects I want to get done, in rough order of priority:</p>
 <ol>
 <li>Polish up an <a href="https://github.com/nodejs/node/pull/14164#issuecomment-325553163">outstanding Node.js Pull Request</a> that automatically generates manpages for every module shipped with Node core</li>
@@ -78,30 +77,13 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>That seems like a lot, honestly, and yet I feel like I must have missed something - I will update this list if I think of anything else!</p>
 <p>Cheers, and happy holidays everyone! \o/</p>
 </div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/pump.io-5.1-is-in-beta">
-              <h2 class="p-name">pump.io 5.1 is in beta</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/12/pump.io-5.1-is-in-beta">here</a> on <a href="/blog/2017/12/">December</a> 8, <a href="/blog/2017/">2017</a> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
-            </p>
-            <div class="e-content"><p>I'm really excited to announce that pump.io 5.1 is officially in beta!</p>
-<p>This release makes a wide array of improvements. One of the features I'm most excited about is <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">zero-downtime restarts</a>, which will allow administrators to gracefully roll over to new configurations and codebases with absolutely no user-visible impact! Aside from that, here's a list of highlights:</p>
-<ul>
-<li>The daemon now generates startup log warnings on bad configurations, including insecure <code>secret</code> values and internal parameters</li>
-<li>An official <code>Dockerfile</code> is now included with the release</li>
-<li>The logged-out mobile homepage's menu icon is no longer incorrectly styled as black</li>
-<li>SockJS connections no longer fail due to authorization problems</li>
-</ul>
-<p>As usual, this release also includes some small updates to dependencies. Plus, we started tracking how much code our test suite covers! We've also significantly cleaned up the documentation and moved almost all of the in-repository documentation to ReadTheDocs, where it's a lot more organized and accessible. If you want more than just these highlights, you can check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510-beta-0---2017-12-08">the changelog</a>.</p>
-<p>Note that while the repository includes a <code>Dockerfile</code> now, we have not yet begun publishing on Docker Hub due to some security logistics that need to be figured out - when we do, it'll be announced in all the usual places (including this blog).</p>
-<p>I'm so excited for people to try out this release. 5.1 beta 0 is a drop-in replacement for 5.0, so if you're on 5.0 and want to live (more) on the bleeding edge, you can upgrade with <code>npm install -g pump.io@5.1</code> if you have an npm-based install. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0-beta.0</code> tag. And as always, if you encounter any problems you can reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
-</div>
-          </article>
-          <hr>
-          <div id="pages-footer">
-            <p>Page 1 of 1</p>
-          </div>
-        </div>
+        </article>
+        <hr>
+        <p id="webmention-replies-header">WebMention replies</p>
+        <div id="webmentions"></div>
+        <noscript>
+          <p>Couldn't load WebMentions because you turned your JavaScript off. Sorry about that!</p>
+        </noscript>
       </div>
       <footer>
         <p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a href="https://github.com/strugee/strugee.github.com">on GitHub</a>.</p>
