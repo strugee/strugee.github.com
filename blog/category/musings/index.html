@@ -60,6 +60,41 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "musings"</h2>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/shell-script-is-one-of-the-purest-forms-of-human-expression">
+              <h2 class="p-name">Shell script is one of the purest forms of human expression</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/12/">December</a> 28, <a href="/blog/2017/">2017</a> in <a href="/blog/category/musings/" class="p-category">musings</a>
+            </p>
+            <div class="e-content"><p>While I was at the <a href="https://www.recurse.com/">Recurse Center</a>, I came up with an interesting theory, and today I thought I'd finally formally write about it on my blog. Here it is: shell script is one of the purest forms of human expression, at least as far as technology is concerned.</p>
+<p>Why? Well, shell script is this weird mix of actual programming language things and macro expansions, and even the programming things tend to be... odd, to put it politely. As a trivial example, did you know that this:</p>
+<pre><code>$ echo {1..10}
+</code></pre>
+<p>results in this output:</p>
+<pre><code>1 2 3 4 5 6 7 8 9 10
+</code></pre>
+<p>Shell scripts[1] know how to expand number sequences; it's just built-in to them. Variables work with substitution too, and you can even build commands with them:</p>
+<pre><code>PAGER=less
+$PAGER longfile.txt
+</code></pre>
+<p>The key thing to note here is that the second line is replacing <code>$PAGER</code> with the literal text <code>less</code>, and then running the resulting command line. The "variable access" is basically just an inline macro expansion, and the shell doesn't really handle it very intelligently. (This is also why you often need to quote variables when you access them - if they have whitespace in them, the shell will interpret the variable as more than one word.)</p>
+<p>Or take the type system of the shell: it has none[2]. For example, what does <code>0</code> mean? It could represent any one of these things:</p>
+<ol>
+<li>The number 0</li>
+<li>The string "0"</li>
+<li>A binary we're invoking (well, trying to invoke) called <code>0</code></li>
+<li>An argument to a binary</li>
+<li>File descriptor 0 (stdin)</li>
+<li>A file named <code>0</code></li>
+</ol>
+<p>All of these things combine to make the shell incredibly flexible and powerful - you can often express a <em>lot</em> in shell script with very little characters by writing "macros" in the right way.</p>
+<p>It's also what makes shell such a god-awful programming language.</p>
+<p>Think about it - as programmers, much of what we do seeks to impose order on our systems. We lint our code and run it through style checkers. I personally like to turn up my linter settings to maximum. And we use the concept of types to help organize our code - sure, there's disagreement on how <em>much</em> order types should impose, but we all pretty much agree that there should be <em>some</em> concept of types and type safety. Hell, for the languages whose type systems are basically "wtf are types", we make tools to impose additional safety on top of that - take <a href="http://www.typescriptlang.org/">TypeScript</a> and <a href="https://flow.org/">Flow</a>, for example. We also love to (hate to) write tests to ensure that our code fulfills some interface or behavior contract. (Even the idea of an interface seeks to organize and compartmentalize complexity in the system.)</p>
+<p>Humans are inherently messy. We're scatterbrained and easily distracted, and our thoughts (or at least, my thoughts) tend to jump all over the place. Shell script is an amazing way to express your ideas because it lets you get directly to the goal so quickly, in a way that matches that messiness that defines us as a species. But since so much of our work as programmers is about trying to counteract our messiness, shell script is a <em>terrible</em> way to write real programs, for the exact. Same. Reason.</p>
+<p>Footnotes:</p>
+<p> [1]: Those written in <code>bash</code>, at least.</p>
+<p> [2]: Note that this is different from having a type system of "wtf are types?? <a href="https://www.destroyallsoftware.com/talks/wat">wat</a>" - JavaScript is a good example of a language with such a type system, as is (to my understanding) PHP. The shell, on the other hand, has no type system <em>at all</em>.</p>
+</div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/06/graduation-2017-reflections-on-365-days-of-gap-yearing">
               <h2 class="p-name">Graduation 2017: reflections on 365 days of gap yearing</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/06/">June</a> 7, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/musings/" class="p-category">musings</a>
@@ -129,21 +164,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>All I really know is that we need to do something, and soon. Because if we don't, we will grind ourselves out of existence.</p>
 <p>Footnotes:</p>
 <p> [1]: we actually know for a fact - from staff present at an early meeting - that none of those orchestrating the shutdown believed it would accomplish anything. They just wanted to score points with their base. This is <em>fact</em>.</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/11/free-software-phrasing-considered-harmful">
-              <h2 class="p-name">'Free software' phrasing considered harmful</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2016/11/">November</a> 9, <a href="/blog/2016/">2016</a> in <a href="/blog/category/musings/" class="p-category">musings</a>
-            </p>
-            <div class="e-content"><p>For a while now I've been avoiding using the term "free software."</p>
-<p>Why? It's just plain confusing to people. I know Richard Stallman will tell you that it means freedom, not gratis. <em>It doesn't matter</em>. It's still ambiguous and needlessly conflates two different concepts.</p>
-<p>Instead of "free software," I propose "freedom-respecting software" as a replacement. This phrasing is not only unambigous, it also does a much more effective job of communicating the general meaning of the term without further explanation. (Of course you'll probably still need to explain it, but you'll have to spend a lot less time doing so.) The one problem with this phrasing is that it's longer, but even that doesn't hold water - because of the aformentioned problems with "free software," people actually don't say "free software" all that much; instead, they say "free (as in freedom) software" which is unambiguous, but awkward on multiple levels. Not only is it a less eloquent way of describing the concept, but gramatically speaking it's really terrible as it puts a parenthetical qualifier in-between an adjective and a noun, which just sounds <em>terrible</em> and unnatural. Seriously, say both of them out loud. "Freedom-respecting software" and "free (as in freedom) software" - which one sounds like less of a mouthful?</p>
-<p>Hence, I think "free software" as a term should be considered harmful, and replaced with "freedom-respecting software" instead.</p>
-<p><em>Edit 0:58 10/10/16:</em></p>
-<p>Another advantage of "freedom-respecting software" is that it's still closely related to the old term, allowing for a much easier pivot. Consider "libre software" which AFAICT had the same goals as this proposal but never really took off - in part, I think, because it sounds very different from an already-established term. (Another way of putting this is that it's conceptually an improvement to an existing term instead of being something <em>brand-new</em>, and therefore all existing associations will carry over with far more ease.)</p>
-<p>I'd also point out that the problem of ambiguity is more serious than I've said above. First of all, generally speaking I'm suspicious of any proposal or argument that begins or ends with "we just need to educate people more." Education is an important part of the freedom-respecting software movement - remember, that movement is by and for the people - but I think that argument is too frequently simply an excuse for a poor initial design. (Security, I'm looking at you.) Second, such an ambiguity also muddles our search results. When people search for "free software" they <em>do</em> get our stuff (a fact that I was pleasantly surprised by!) but they also get loads and loads of pages for gratis Windows crapware. That's unideal and it is unlikely to change, ever. Even if people <em>were</em> able to readily grasp the distinction between freedom and gratis that we're pitching, we will never, ever have enough influence on the language people use to get them to <em>stop</em> using "free" to mean gratis - which means that Google will continue showing gratis crapware as "free software."</p>
-<p>Finally, as <a href="https://github.com/nylira/prism-break/issues/1601">pointed out</a> by some excellent PRISM Break contributors, me writing this blog post and then talking about it occasionally is a <em>far</em> dumber idea than directly contacting the FSF, which I now intend to do Real Soon Now™.</p>
 </div>
           </article>
           <hr>
