@@ -3,6 +3,9 @@ title: Winter break priorities, 2017-18
 time:
   epoch: 1513809858
   utcoffset: "UTC-5"
+edited:
+  epoch: 1513811297
+  utcoffset: "UTC-5"
 author: "AJ Jordan"
 categories:
   - personal
@@ -20,7 +23,7 @@ So, here are the projects I want to get done, in rough order of priority:
 5. Finally push through and implement [ActivityPub in pump.io core][ap]
 6. Clear [the backlog of PRs][backlog] sent to pump.io
 
-I also am setting a goal of writing at least two blog posts per week.
+I also am setting a goal of writing at least two blog posts per week, and I want to try to get some editing done on a paper I'm planning to try to get published (though I'm not sure if I'll end up doing this, honestly).
 
 That seems like a lot, honestly, and yet I feel like I must have missed something - I will update this list if I think of anything else!
 
