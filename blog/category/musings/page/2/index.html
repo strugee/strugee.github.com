@@ -72,7 +72,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>Another advantage of "freedom-respecting software" is that it's still closely related to the old term, allowing for a much easier pivot. Consider "libre software" which AFAICT had the same goals as this proposal but never really took off - in part, I think, because it sounds very different from an already-established term. (Another way of putting this is that it's conceptually an improvement to an existing term instead of being something <em>brand-new</em>, and therefore all existing associations will carry over with far more ease.)</p>
 <p>I'd also point out that the problem of ambiguity is more serious than I've said above. First of all, generally speaking I'm suspicious of any proposal or argument that begins or ends with "we just need to educate people more." Education is an important part of the freedom-respecting software movement - remember, that movement is by and for the people - but I think that argument is too frequently simply an excuse for a poor initial design. (Security, I'm looking at you.) Second, such an ambiguity also muddles our search results. When people search for "free software" they <em>do</em> get our stuff (a fact that I was pleasantly surprised by!) but they also get loads and loads of pages for gratis Windows crapware. That's unideal and it is unlikely to change, ever. Even if people <em>were</em> able to readily grasp the distinction between freedom and gratis that we're pitching, we will never, ever have enough influence on the language people use to get them to <em>stop</em> using "free" to mean gratis - which means that Google will continue showing gratis crapware as "free software."</p>
 <p>Finally, as <a href="https://github.com/nylira/prism-break/issues/1601">pointed out</a> by some excellent PRISM Break contributors, me writing this blog post and then talking about it occasionally is a <em>far</em> dumber idea than directly contacting the FSF, which I now intend to do Real Soon Now™.</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/10/github-squash-and-merge-default-considered-harmful">
@@ -99,7 +100,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p> [1]: I'd like to point out that this is only a problem in Git. Mercurial has (or will have shortly) <a href="https://www.mercurial-scm.org/wiki/ChangesetEvolution">Changeset Evolution</a>, which keeps track of how changesets evolve over time. I.e. when you rewrite history, you're not losing any information.</p>
 <p> [2]: I'm sure some of you are about to excitedly tell me about a fantastic tool called the reflog, and I really should read Pro Git because it's a fantastic book and has an entire chapter on data recovery. <em>I know</em>. The reflog is <em>not</em> the right answer for this; not only is it local to (likely) a single developer's machine, but it only stretches back a couple months and only works if the old, dangling commits aren't garbage-collected. By the time someone might be interested in looking at the history that was lost, it's probably far, far too late.</p>
 <p> [3]: Another rarely-encountered but very serious problem with both "squash and merge" <em>and</em> "rebase and merge" is when people merge upstream changes in a PR. This is a perfectly legitimate workflow - PRs are great for discussing changes, etc. (although a lot of people think they're the <em>only</em> way to merge things, so they open PRs and then immediately merge them - this, IMHO, is very much <em>not</em> a legitimate workflow) - but if you do anything but merge (which includes both GitHub's "Merge" option and fast-forwarding locally on the CLI), you may have a Very Bad Time the next time you go to merge upstream changes to your fork. Why? Because in Git's view, the changes you merged the first time <em>haven't actually been merged</em>. After all, commit SHAs are nowhere to be found in the tree, since when you rewrote history you changed those IDs! Git has no way of knowing that your rewritten commits and the supposedly "unmerged" commits are basically equivalent. (Mercurial, on the other hand, would've kept track of this information and would have no problem at all.)</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/10/android-freedom">
@@ -122,7 +124,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>Supporting something like Google Now is non-trivial, but I've even already proposed <a href="https://github.com/cantino/huginn/issues/1583">a feature for Huginn</a> that would make this possible. Google Assistant would be very, very difficult, but even without that, we'd have come a long way.</p>
 <p>This reality is not that far off. What's missing is some UI pieces and a nice ZIP that can be flashed on top of ROMs, similar to how GApps are flashed today. So who's going to put it all together?</p>
 <p>(I suppose I've just volunteered myself - oh well... I'll just add it to my endless list of projects.)</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/05/re-bitcoin">
@@ -148,7 +151,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>I’m getting off track, though. So back to Bitcoin and Coinbase. I think what Coinbase is doing by hosting people’s Bitcoin wallets and transactions is fundamentally <em>wrong</em>, because I truly believe that it damages the Bitcoin ecosystem. The centralization in Coinbase is, IMHO, a major problem.</p>
 <p>I wonder if this will be solved with a project like <a href="https://arkos.io/">arkOS</a>. I mean, maybe the solutionv that will ultimately happen is for people to spin up their own instances of a Coinbase-like Bitcoin wallet. I think it’s pretty clear that people, in general, like cloud apps better than desktop apps. Access from any computer is a really nice feature to have. Maybe projects like arkOS will help decentralized protocols like Bitcoin remain decentralized in practice.</p>
 <p>Or maybe Bitcoin will effectively die, just like XMPP did. I mean, sure, XMPP is still a network. But no one really uses it consciously. Almost everyone who uses XMPP nowadays does so accidentally, through a service that just happens to have an XMPP bridge. Google Talk was a prime example of this, but it’s dead. Now, I’ll bet money that the most-used XMPP provider is Facebook. Never knew that Facebook Chat had an XMPP bridge? That’s because Facebook doesn’t advertise it; the only time it’s mentioned is in the developer docs. The mainstream does not care about the XMPP protocol, because we centralized it. What the mainstream <em>does</em> care about is the services that we centralized it on: Google and Facebook. And that’s a real problem.</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2015/11/programming-as-an-art-form">
@@ -160,7 +164,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>But coding isn't just about logic. At <a href="http://opensourcebridge.org/">OSBRIDGE</a> this year, I attended a session about the beauty of code - it's hard to describe to someone who doesn't live and breathe code, but we all know it when we see it. We as a community value elegance in code; clever algorithms; thinking outside the box, and as I said in my <a href="https://strugee.net/presentation-just-do-it/#19">Just Do It slides</a>, the mere existance of Ruby proves this. So when I described programming as being like art, part of where I was getting that is the analogy I actually said (being able to easily mess around), but part of it was coming from my appreciation of the beauty of code. Part of it was coming from my sense of the aesthetic properties of programming.</p>
 <p>I want us, as a community, in both our regular coding but also our educational outreach, to stop pretending that programming is so logical that it <em>is</em> math. Yes, there are elements of mathematics in coding. Lots of it, even. But to treat programming as a branch of mathematics is doing a disservice to the practice. So in addition to treating programming as a form of math, I want us to start treating programming as a form of art. There <em>is</em> such a thing as ugly code. The entire concept of refactoring would barely exist if that wasn't true. So let's start truly appreciating the aesthetic beauty of code, and let's start teaching that. To be honest, I'm not sure how you would teach that. But it couldn't hurt to try.</p>
 <p>But even if we can and should treat it as both of those things, that doesn't mean that we should make that the be-all-end-all of how we describe programming. I truly believe that programming is not a branch of mathematics. And it's not an art form, either. Programming is neither of those things and both of those things; it is something entirely new, and we should treat it as such. If this isn't true, why do people swear by certain software? Why do people (including myself) aggressively sticker their laptops to showcase what software they use? And if this isn't true, how is it possible that people <em>love</em> their code?</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <div id="pages-footer">

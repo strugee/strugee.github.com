@@ -62,6 +62,16 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h2 class="p-name">Posts from 2017</h2>
           <p id="postsFrom">Show only posts from <a href="/blog/2017/01/">January</a> <a href="/blog/2017/02/">February</a> <a href="/blog/2017/11/">November</a> <a href="/blog/2017/12/">December</a> <a href="/blog/2017/03/">March</a> <a href="/blog/2017/04/">April</a> <a href="/blog/2017/05/">May</a> <a href="/blog/2017/06/">June</a> <a href="/blog/2017/08/">August</a> <a href="/blog/2017/10/">October</a> 
           </p>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/11/not-going-to-todays-hwc-san-fransisco-2017">
+              <h2 class="p-name">Not going to today's HWC San Francisco</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/11/">November</a> 15, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
+            </p>
+            <div class="e-content"><p>Testing whether my new Webmention implementation, <a href="https://github.com/strugee/lazymention">lazymention</a> (which will ship Real Soon Now™), will send a Webmention to note that I will <data class="p-rsvp" value="no">NOT be attending</data> today's <a href="http://tantek.com/2017/319/e1/homebrew-website-club" class="u-in-reply-to">Homebrew Website Club San Francisco</a>! Though let's be honest, I really want to.</p>
+<p>(With &#x3C;3 for <a href="https://chat.indieweb.org/social/2017-11-15#t1510774596509000">Tantek</a>)</p>
+
+            </div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/11/filter-other-days-is-portable-to-freebsd">
               <h2 class="p-name">filter-other-days is portable to FreeBSD</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/11/">November</a> 1, <a href="/blog/2017/">2017</a> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/releases/" class="p-category">releases</a> and <a href="/blog/category/sysadmin/" class="p-category">sysadmin</a>
@@ -76,7 +86,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>With these changes I expect that <code>filter-other-days</code> will probably run on all major BSD distributions. I intend to confirm this hypothesis soon and have filed bugs for <a href="https://github.com/strugee/filter-other-days/issues/12">OpenBSD</a> and <a href="https://github.com/strugee/filter-other-days/issues/13">NetBSD</a>, plus <a href="https://github.com/strugee/filter-other-days/issues/14">illumos</a> just for kicks.</p>
 <p>As with 1.0.0, you can clone <code>filter-other-days</code> <a href="https://github.com/strugee/filter-other-days">from GitHub</a> or you can download a (signed) <a href="https://github.com/strugee/filter-other-days/releases/tag/v1.0.1">tarball</a>. Please do <a href="https://github.com/strugee/filter-other-days/issues/new">report any bugs</a> you find in the release.</p>
 <p>Enjoy!</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/10/announcing-filter-other-days">
@@ -96,7 +107,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <li>More log formats (please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> if you have formats <code>filter-other-days</code> doesn't recognize - which you probably do!)</li>
 </ol>
 <p>If you find this project useful, let me know! I'd love to hear about how people are using it. Or if it breaks (or doesn't fill your usecases), please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> or send patches - I love those, too! Either way, may the logs be with you!</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/10/denial-of-service-security-fixes-now-available">
@@ -122,7 +134,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>Note though that 4.1.3 is a drop-in replacement for 4.0.2, so you should consider just upgrading to that instead. Or even better, <a href="https://pumpio.readthedocs.io/en/latest/upgrades/4.x-to-5.x.html">upgrade to 5.x</a>!</p>
 <p>If you don't have an npm-based install, you'll have to upgrade however you normally do. How to do this will depend on your particular setup.</p>
 <p>As always, if you need help, you should get in touch with <a href="https://github.com/pump-io/pump.io/wiki/Community">the community</a>. I'd also like to specifically thank <a href="https://identi.ca/jxself">Jason Self</a>, who generously deployed a 24-hour private beta of these fixes on <a href="https://datamost.com/">Datamost</a>. One of the version bumps was ever-so-slightly risky, and being able to test things in production before rolling out patches for the entire network was invaluable. I wouldn't be as confident as I am in these releases without his help. So thanks, Jason - I really appreciate it!</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/08/zero-downtime-restarts-have-landed">
@@ -165,30 +178,12 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>While these checks do a lot to catch problems, they're not a silver bullet, and we strongly recommend that administrators watch their logs as they trigger restarts. However, this is still a <em>huge</em> win for the admin experience - the most exciting part of this for me is that it's the first step we need to take towards having fully automatic updates, which has been a dream of mine for a long while now.</p>
 <p>Admins running from git master can start experimenting with this feature today, and it will be released during the <em>next</em> release cycle - i.e. with the 5.1 beta and stable, <em>not</em> the current 5.0 beta. Since this is highly experimental, we want this to have as much time for testing as possible. You can also check out the <a href="https://pumpio.readthedocs.io/en/latest/administration/zero-downtime-restarts.html">official documentation</a> on this feature.</p>
 <p>I hope people enjoy this! And as always, feel free to <a href="https://github.com/pump-io/pump.io/issues/new">report any bugs</a>.</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/08/pump.io-5.0-beta-released">
-              <h2 class="p-name">pump.io 5.0 beta released</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/08/pump.io-5.0-beta-released">here</a> on <a href="/blog/2017/08/">August</a> 7, <a href="/blog/2017/">2017</a> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
-            </p>
-            <div class="e-content"><p>I'm excited to announce that pump.io 5.0.0 is now officially in beta!</p>
-<p>This is another big release and makes a wide variety of improvements. Here are some highlights from <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#500-beta-0---2017-08-07">the changelog</a>:</p>
-<ul>
-<li>More complete documentation</li>
-<li>Small improvements to the administrator experience</li>
-<li>A better web UI, including some user experience polishing as well as an upgrade to more performant and better-licensed libraries</li>
-<li>A fix for crashes related to "login with remote account" (although this one was backported in 4.1.1)</li>
-<li>Significant security improvements in the <a href="https://pumpio.readthedocs.io/en/latest/administration/upstream-systemd-unit.html">systemd service</a> shipped with the package</li>
-<li>Lots of internal refactoring and simplification made possible by dropping Node 0.10/0.12 support</li>
-</ul>
-<p>Many of these changes - particularly the systemd changes and the fact that (<a href="http://pump.io/blog/2017/07/pump.io-4.1-is-out">as previously announced</a>) Node 0.10 and 0.12 are no longer supported - will require administrator intervention. Be sure to read our <a href="https://pumpio.readthedocs.io/en/latest/upgrades/4.x-to-5.x.html">upgrade guide</a> for details on how to deal with these changes.</p>
-<p>All of these features add up to make pump.io 5.0 beta the most stable and secure release yet. As always, it will go through our beta period for about a month before being released as a fully stable version. If you try it out, the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> would love to hear about it - and be sure to <a href="https://github.com/pump-io/pump.io/issues">report any bugs</a> you encounter!</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <div id="pages-footer">
-            <p><a href="../..">←</a> ⋅ Page 2 out of 7 ⋅ <a href="../3">→</a></p>
+            <p><a href="../..">←</a> ⋅ Page 2 out of 8 ⋅ <a href="../3">→</a></p>
           </div>
         </div>
       </div>

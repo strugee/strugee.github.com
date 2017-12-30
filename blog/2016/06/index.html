@@ -71,7 +71,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>Finally, I'd be remiss if I didn't mention that I now have a proper <a href="https://github.com/strugee/strugee.github.com/blob/c5ec1634a6b038eec25adb5abcd2b578a60ec4fd/gulpfile.js#L128"><code>deploy</code> task</a>, so I can abandon the sketchy and genuinely terrible deploy process that I used before. (For those curious: <code>gulp build &#x26;&#x26; git checkout master &#x26;&#x26; mv dist/*.html . &#x26;&#x26; git commit -m "Some bad commit message" &#x26;&#x26; git push &#x26;&#x26; git checkout src</code> - not shown here are the several attempts where I made some typo or possibly didn't think of some files in <code>dist/</code> that changed and so should have been <code>mv</code>'d, but weren't.) And, I now use root-relative includes now, e.g. <code>/js/main.js</code> instead of <code>js/main.js</code>, which is another win for DRY because now I don't have to maintain different header contents for subpages (which used to be the exact same, just with <code>../</code> prepended to all paths).</p>
 <p>In conclusion: yay for progress! And yay for the fact that my codebase actually looks like someone competent wrote it! \o/</p>
 <p>(Final note: I haven't forgotten my promise to blog about stuff happening in pump.io-land. But, not now.)</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <div id="pages-footer">

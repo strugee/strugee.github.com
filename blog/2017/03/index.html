@@ -70,7 +70,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>I still kinda hate Puppet, so I think I'll try out Ansible and <em>maybe</em> Chef. Ansible's agentless model in particular probably makes a lot of sense for my needs. It also makes me sad to kill bindslash, since I still think it would be a useful project and there's definitely a place for it in the world. But I no longer have any reason to work on it, so I'm just going to stop pretending I'll ever finish it. If anyone is interested in that approach, talk to me and I'll happily give you the name, the repo, my thoughts on its design, etc.</p>
 <p>Anyway. Now to set up outbound mail on the failover VM.</p>
 <p>*big sigh*</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/rc-week-11">
@@ -101,7 +102,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <h3>Executive summary</h3>
 <p>Well, I got a lot done on pump.io (and Stratic) this week. So it was relatively productive. But I did basically nothing that was personally productive (i.e. that pushed me forward as a programmer). Hopefully next week will go better.</p>
 <p>Total time at RC 45 hours 40 minutes; cumulative time 510 hours 30 minutes.</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/express-4.x-in-pump.io-core">
@@ -123,7 +125,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <h2>Looking forward</h2>
 <p>The Express 4.x upgrade is a big change, and it's definitely possible that stuff has broken. We want to make sure that breakage doesn't make it into production. This change went into pump.io 4.0, which will go through our normal <a href="https://github.com/pump-io/pump.io/wiki/Release-cycle">release cycle</a>. That means it'll be in beta for a month before being released. As a part of that, <a href="https://jxself.org/">Jason Self</a> - who's kind enough to administer <a href="https://datamost.com/">Datamost</a> - has agreed to have a test day where Datamost upgrades to the beta for a day, then downgrade it again. This test day will give us much wider exposure than we would've gotten otherwise, which will be incredibly valuable feedback in the effort to identify and fix regressions. We haven't set a date yet, but if you'd like to join Jason in helping us find bugs, please get in touch with <a href="https://github.com/pump-io/pump.io/wiki/Community">the community</a>. We'd love your help.</p>
 <p>Beyond the immediate release, though, there's still things to look forward to. Express 4.x gives us a better way to structure routing code, and a refactor to use this structure <a href="https://github.com/pump-io/pump.io/issues/1232">is planned</a>. There's a lot of room for improvement. But really, the most important benefit is this: technical debt is a far less pressing issue than before. That means that we can shift focus and spend more time fixing user-facing bugs, adding useful features, and generally improving the experience for our users. I couldn't be more excited.</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/rc-week-10">
@@ -155,7 +158,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <h3>Executive summary</h3>
 <p>Like any week, this had moments where I wasn't very productive. But overall I think it was pretty good - I made a lot of progress on realtime.recurse.com (and improved my Python in the process), and I made a lot of progress on setting up my Tor relay again (and learned a bunch about FreeBSD in the process). Also, I fixed my ejabberd spam problem. I learned nothing from that, but thank <em>god</em> I did it because the spam problem was honestly <em>awful</em>. The one issue was that I just didn't do a very good job getting up and making it to checkins.</p>
 <p>Total time at RC 52 hours 50 minutes; cumulative time 464 hours 50 minutes.</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/default-secure-systems">
@@ -187,7 +191,8 @@ secure_system(app)
 </ol>
 <p>I'd also like to highlight one really important decision: the output is complete system images. Probably at first this will mean Docker containers but this could easily be turned into VM images. This is a critical part of the design because it allows us to make broad, sweeping changes - for example, preferring system components written in memory-safe languages, replacing OpenSSL with LibreSSL, or creating systemd unit files that lock down service runtime environments to reduce the impact of a compromise. These improvements aren't possible unless we control the whole system. And because upgrades are optional but possible, the developer can get security improvements by "just" upgrading a component that they use, in the same way that they'd upgrade a library or something, as opposed to security being a continuous process they have to worry about. Again, obviously not perfect - but much better than the status quo.</p>
 <p>I hope to have a MVP out Real Soon Now™. But in the meantime, if you have thoughts, feel free to reach out.</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <div id="pages-footer">

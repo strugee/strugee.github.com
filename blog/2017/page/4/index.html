@@ -62,6 +62,20 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h2 class="p-name">Posts from 2017</h2>
           <p id="postsFrom">Show only posts from <a href="/blog/2017/01/">January</a> <a href="/blog/2017/02/">February</a> <a href="/blog/2017/11/">November</a> <a href="/blog/2017/12/">December</a> <a href="/blog/2017/03/">March</a> <a href="/blog/2017/04/">April</a> <a href="/blog/2017/05/">May</a> <a href="/blog/2017/06/">June</a> <a href="/blog/2017/08/">August</a> <a href="/blog/2017/10/">October</a> 
           </p>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/getting-on-board-with-configuration-management">
+              <h2 class="p-name">Getting on board with configuration management</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/03/">March</a> 28, <a href="/blog/2017/">2017</a> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/sysadmin/" class="p-category">sysadmin</a>
+            </p>
+            <div class="e-content"><p>For a long while I've really disliked configuration management. This mostly stemmed from my experience <a href="https://github.com/strugee/steevie/blob/3069f53ee82c6b1709f22285b71ccdc0e5e0bced/apache-config/apache-config.pp">managing Apache via Puppet</a>, which I found indirect and unnecessary - the only reason I did this was basically to get version control. In fact, I even started a project called <a href="https://github.com/strugee/bindslash">bindslash</a> which I literally described as "not configuration management".</p>
+<p>However, last Thursday, steevie (my primary server) crashed <em>again</em>. So I went into a fallback DigitalOcean VM I'd set up the last time this had happened and updated stuff. I presented my <a href="https://strugee.net/presentation-pumpio/libreplanet/">LibrePlanet slides</a> from that. And eventually I bit the bullet and set up a secondary email server which, to my great surprise, has not received a flood of spam yet (though I'm sure it will at some point).</p>
+<p>The whole ordeal really made me understand the benefit of configuration management. I would've spent less time and been less stressed if I could just plug in a config management system to get a useful failover system. So as of today, I'm on board with configuration management, and bindslash is dead.</p>
+<p>I still kinda hate Puppet, so I think I'll try out Ansible and <em>maybe</em> Chef. Ansible's agentless model in particular probably makes a lot of sense for my needs. It also makes me sad to kill bindslash, since I still think it would be a useful project and there's definitely a place for it in the world. But I no longer have any reason to work on it, so I'm just going to stop pretending I'll ever finish it. If anyone is interested in that approach, talk to me and I'll happily give you the name, the repo, my thoughts on its design, etc.</p>
+<p>Anyway. Now to set up outbound mail on the failover VM.</p>
+<p>*big sigh*</p>
+
+            </div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/rc-week-11">
               <h2 class="p-name">RC week 11</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/03/">March</a> 20, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
@@ -90,7 +104,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <h3>Executive summary</h3>
 <p>Well, I got a lot done on pump.io (and Stratic) this week. So it was relatively productive. But I did basically nothing that was personally productive (i.e. that pushed me forward as a programmer). Hopefully next week will go better.</p>
 <p>Total time at RC 45 hours 40 minutes; cumulative time 510 hours 30 minutes.</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/express-4.x-in-pump.io-core">
@@ -112,7 +127,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <h2>Looking forward</h2>
 <p>The Express 4.x upgrade is a big change, and it's definitely possible that stuff has broken. We want to make sure that breakage doesn't make it into production. This change went into pump.io 4.0, which will go through our normal <a href="https://github.com/pump-io/pump.io/wiki/Release-cycle">release cycle</a>. That means it'll be in beta for a month before being released. As a part of that, <a href="https://jxself.org/">Jason Self</a> - who's kind enough to administer <a href="https://datamost.com/">Datamost</a> - has agreed to have a test day where Datamost upgrades to the beta for a day, then downgrade it again. This test day will give us much wider exposure than we would've gotten otherwise, which will be incredibly valuable feedback in the effort to identify and fix regressions. We haven't set a date yet, but if you'd like to join Jason in helping us find bugs, please get in touch with <a href="https://github.com/pump-io/pump.io/wiki/Community">the community</a>. We'd love your help.</p>
 <p>Beyond the immediate release, though, there's still things to look forward to. Express 4.x gives us a better way to structure routing code, and a refactor to use this structure <a href="https://github.com/pump-io/pump.io/issues/1232">is planned</a>. There's a lot of room for improvement. But really, the most important benefit is this: technical debt is a far less pressing issue than before. That means that we can shift focus and spend more time fixing user-facing bugs, adding useful features, and generally improving the experience for our users. I couldn't be more excited.</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/rc-week-10">
@@ -144,7 +160,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <h3>Executive summary</h3>
 <p>Like any week, this had moments where I wasn't very productive. But overall I think it was pretty good - I made a lot of progress on realtime.recurse.com (and improved my Python in the process), and I made a lot of progress on setting up my Tor relay again (and learned a bunch about FreeBSD in the process). Also, I fixed my ejabberd spam problem. I learned nothing from that, but thank <em>god</em> I did it because the spam problem was honestly <em>awful</em>. The one issue was that I just didn't do a very good job getting up and making it to checkins.</p>
 <p>Total time at RC 52 hours 50 minutes; cumulative time 464 hours 50 minutes.</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/default-secure-systems">
@@ -176,46 +193,12 @@ secure_system(app)
 </ol>
 <p>I'd also like to highlight one really important decision: the output is complete system images. Probably at first this will mean Docker containers but this could easily be turned into VM images. This is a critical part of the design because it allows us to make broad, sweeping changes - for example, preferring system components written in memory-safe languages, replacing OpenSSL with LibreSSL, or creating systemd unit files that lock down service runtime environments to reduce the impact of a compromise. These improvements aren't possible unless we control the whole system. And because upgrades are optional but possible, the developer can get security improvements by "just" upgrading a component that they use, in the same way that they'd upgrade a library or something, as opposed to security being a continuous process they have to worry about. Again, obviously not perfect - but much better than the status quo.</p>
 <p>I hope to have a MVP out Real Soon Now™. But in the meantime, if you have thoughts, feel free to reach out.</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/rc-week-9">
-              <h2 class="p-name">RC week 9</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/03/">March</a> 6, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a>
-            </p>
-            <div class="e-content"><p>This is week 9 of being at the <a href="https://recurse.com">Recurse Center</a>.</p>
-<script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
-<h3>Day 31</h3>
-<p>Arrived ~10:30, departed ~15:15, arrived ~17:30, departed ~1:30, total time at RC 8h45m.</p>
-<p>There were only two people in my checkin group this morning, and one of them was me. We thought about joining another checkin group, but it was confusing so we did it with just us.</p>
-<p>Didn't really do a whole lot for the rest of the day. I fixed up a couple minor problems on strugee.net. Also I finally(!) fully caught up on blogging and went out to lunch with a bunch of people, including <a href="https://www.recurse.com/residents#Nelson-Elhage">Nelson</a>, the new resident. He's awesome. We had some seriously interesting discussions about the recent CloudFlare incident, as well as the work he did while at Ksplice.</p>
-<p>Left early to do laundry, then came back for Nelson's talk.</p>
-<p>Spent a lot of time in the evening cleaning up the <a href="">pump.io homepage</a> - I removed a bunch of duplicated content, reordered the remaining text to put the important stuff first, and imported all the pump.io-related posts on my personal blog into <a href="http://pump.io/blog/">http://pump.io/blog/</a>.</p>
-<h3>Day 32</h3>
-<p>Arrived ~11:30, departed ~21:40, total time at RC 10h10m.</p>
-<p>Missed my checkin by a wide margin because a) after I realized I just couldn't make it by 10:30 I gave up and had a nice relaxed breakfast and b) I looked at checkins.recurse.com and realized that I was the only one in my checkins group.</p>
-<p>Went out to Taim for lunch relatively soon after that. Didn't do a whole lot for the rest of the day, honestly - although I did go for a walk to a park with some folks. Also, tested out the Signal videocalling beta with <a href="https://matthewkelsey.com/">Matt</a>, which worked pretty damn well, I gotta say.</p>
-<h3>Day 33</h3>
-<p>Arrived ~10:40, departed ~1:45, total time at RC 15h5m.</p>
-<p>I kinda tried to make it in for checkins this morning, but not really because I still hadn't fixed the "I'm the only one in my checkin group" problem. Didn't really do much today, honestly.</p>
-<p>Went out to lunch with <a href="https://github.com/ant6n">Ant6n</a> and <a href="https://github.com/andrewrk">Andrew</a> and had a lot of interesting discussions with them, ranging all the way from <a href="http://ziglang.org/">Zig</a> to x86 hardware - did you know that internally x86 is actually essentially a VM implementation?</p>
-<p>Spent a lot of time keeping Eliana company in Hopper late in the evening.</p>
-<h3>Day 34</h3>
-<p>Arrived ~11:05, departed ~17:55, total time at RC 6h50m.</p>
-<p>Went to Nelson's "my first kernel module" talk immediately upon arriving at RC, which was <em>awesome</em>. I had some interesting conversations with him afterward, too, where I confirmed a theory I had about some weird btrfs-related behavior I'd seen a long time ago (where I <code>kill -9</code>'d an obviously hung <code>btrfs</code> process, which refused to die anyway). We also spent some time trying to figure out why <a href="http://unix.stackexchange.com/q/345285/29146">benchmarking loopback network performance</a> gave some weird results, which was quite informative.</p>
-<p>Didn't do a whole lot after lunch. Left halfway through presentations to go to a play with Ant6n which unfortunately (due to a water incident with the subway system) I didn't quite make it to.</p>
-<h3>Friday</h3>
-<p>Arrived ~15:10, departed ~23:10, total time at RC 8h0m. As always, Friday doesn't count as a day because RC is technically not in session.</p>
-<p>Woke up at a decent time but didn't really bother to get up or do anything, so I arrived relatively late to RC. Spent some time reading TOTP in preparation for the RFC reading group meeting (which ended up not happening) and then went to the RC Game Jam kickoff. Spent most of the rest of the day discussing game design with my team before getting dinner and hanging out in Babbage for Bottle Share Friday, even though there weren't that many of us (particularly since James was doing stuff in Babbage) and we didn't have any bottles to share. Oh well - it was still fun.</p>
-<p>Talked with <a href="https://github.com/ebb-tide">Deniz</a> and <a href="http://www.aberke.com/">Alex</a> and some other folks (I've forgotten who, to be honest) before heading home.</p>
-<h3>Executive summary</h3>
-<p>Most of the "interesting" stuff that happened this week had to do with the resident. Got a little done codewise, but not that much. I'd say this week was 50/50 in terms of productivity.</p>
-<p>Total time at RC 48 hours 50 minutes; cumulative time 412 hours 0 minutes.</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <div id="pages-footer">
-            <p><a href="../3">←</a> ⋅ Page 4 out of 7 ⋅ <a href="../5">→</a></p>
+            <p><a href="../3">←</a> ⋅ Page 4 out of 8 ⋅ <a href="../5">→</a></p>
           </div>
         </div>
       </div>

@@ -88,7 +88,8 @@ secure_system(app)
 </ol>
 <p>I'd also like to highlight one really important decision: the output is complete system images. Probably at first this will mean Docker containers but this could easily be turned into VM images. This is a critical part of the design because it allows us to make broad, sweeping changes - for example, preferring system components written in memory-safe languages, replacing OpenSSL with LibreSSL, or creating systemd unit files that lock down service runtime environments to reduce the impact of a compromise. These improvements aren't possible unless we control the whole system. And because upgrades are optional but possible, the developer can get security improvements by "just" upgrading a component that they use, in the same way that they'd upgrade a library or something, as opposed to security being a continuous process they have to worry about. Again, obviously not perfect - but much better than the status quo.</p>
 <p>I hope to have a MVP out Real Soon Now™. But in the meantime, if you have thoughts, feel free to reach out.</p>
-</div>
+
+          </div>
         </article>
         <hr>
         <p id="webmention-replies-header">WebMention replies</p>

@@ -60,6 +60,22 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "blaggregator"</h2>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/announcing-lazymention-elegant-outbound-webmention-for-static-sites">
+              <h2 class="p-name">Announcing lazymention: elegant outbound Webmention for static sites</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/12/">December</a> 29, <a href="/blog/2017/">2017</a> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/indieweb/" class="p-category">indieweb</a>
+            </p>
+            <div class="e-content">
+              <p class="indienews-note"><em>This post also appeared on <a href="https://news.indieweb.org/en" class="u-syndication">IndieNews</a>.</em></p><p>Last night I hit publish on version 1.0.0 of a new project, <a href="https://github.com/strugee/lazymention">lazymention</a>! Whoohoo!</p>
+<p>tl;dr: lazymention exists to add Webmention support to static sites!</p>
+<p>To elaborate a little bit, I developed lazymention because I had a problem with this site: I wanted to send outbound <a href="https://indieweb.org/Webmention">Webmentions</a> when I link to things, but my website is completely static. (Webmention, in case you didn't know, is a way to notify another website that you linked to them, so the other website can display some UI about your reply or whatever.) The page builds happen on my local machine, not on the server. One option would be to just send Webmentions from my local machine too, but this isn't really a good solution for a couple reasons. First, I couldn't do it automatically at build-time because the built pages wouldn't have been deployed to the server yet, so receivers of my Webmentions would reject the mentions due to the source being nonexistant. That meant that I would have to have a separate step, which wouldn't really be <em>that</em> big of a deal (lazymention reqires pinging a server too) except for the second reason: I would need some way to keep track of where I'd already sent Webmentions to, and that would require synchronizing across computers. Probably the only decent way to do that would be to check it into Git, but having a program's data store checked in right next to the source code just feels kinda ugly. Plus, then it can't be shared with other people as a service.</p>
+<p>So instead of doing it locally, I elected to build a server instead. Here's how it works: you mark up your stuff with <a href="https://indieweb.org/h-feed"><code>h-feed</code></a> and <a href="https://indieweb.org/h-entry"><code>h-entry</code></a>, and whenever anything happens (e.g. you publish a new blog post or whatever), you ping lazymention with the URL (either the feed or the post itself). lazymention will use your microformats2 markup to find the canonical location for a given post, then it will find all the links in the post and send Webmentions for them. And presto! You've just sent Webmentions for your blog. lazymention also records when it's sent mentions, so if you ping it again, nothing will happen unless you've updated your content. I'm also planning to add <a href="https://indieweb.org/WebSub">WebSub</a> support to lazymention, too, and that'll work in the exact same way.</p>
+<p>lazymention is super easy to get started with, especially because I've provided thorough documentation in the <a href="https://github.com/strugee/lazymention/blob/master/README.md">README</a>. If you find anything that's confusing or missing, please let me know by <a href="https://github.com/strugee/lazymention/issues/new">filing an issue</a>! I'd love to get it fixed. In fact, I'd be thrilled to hear about both positive <em>and</em> negative installation experiences.</p>
+<p>Oh, and one more thing - lazymention is reusable in other applications. If you're writing a Node.js app and want to reuse its HTTP API, you can use its embedding API to get at the Express application and <code>Router</code> used internally. I'm not sure if people will actually find this useful, but I wrote it just for kicks anyway. See <a href="https://github.com/strugee/lazymention/blob/master/README.md#embedding">the embedding documentation</a> for more!</p>
+<p>Cheers, and happy mentioning! Elegant outbound Webmention for static sites is here.</p>
+
+            </div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/shell-script-is-one-of-the-purest-forms-of-human-expression">
               <h2 class="p-name">Shell script is one of the purest forms of human expression</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/12/">December</a> 28, <a href="/blog/2017/">2017</a> in <a href="/blog/category/musings/" class="p-category">musings</a>
@@ -92,7 +108,8 @@ $PAGER longfile.txt
 <p>Footnotes:</p>
 <p> [1]: Those written in <code>bash</code>, at least.</p>
 <p> [2]: Note that this is different from having a type system of "wtf are types?? <a href="https://www.destroyallsoftware.com/talks/wat">wat</a>" - JavaScript is a good example of a language with such a type system, as is (to my understanding) PHP. The shell, on the other hand, has no type system <em>at all</em>.</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/winter-break-priorities-2017-18">
@@ -112,7 +129,8 @@ $PAGER longfile.txt
 <p>I also am setting a goal of writing at least two blog posts per week, and I want to try to get some editing done on a paper I'm planning to try to get published (though I'm not sure if I'll end up doing this, honestly).</p>
 <p>That seems like a lot, honestly, and yet I feel like I must have missed something - I will update this list if I think of anything else!</p>
 <p>Cheers, and happy holidays everyone! \o/</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/pump.io-5.1-is-in-beta">
@@ -130,7 +148,8 @@ $PAGER longfile.txt
 <p>As usual, this release also includes some small updates to dependencies. Plus, we started tracking how much code our test suite covers! We've also significantly cleaned up the documentation and moved almost all of the in-repository documentation to ReadTheDocs, where it's a lot more organized and accessible. If you want more than just these highlights, you can check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510-beta-0---2017-12-08">the changelog</a>.</p>
 <p>Note that while the repository includes a <code>Dockerfile</code> now, we have not yet begun publishing on Docker Hub due to some security logistics that need to be figured out - when we do, it'll be announced in all the usual places (including this blog).</p>
 <p>I'm so excited for people to try out this release. 5.1 beta 0 is a drop-in replacement for 5.0, so if you're on 5.0 and want to live (more) on the bleeding edge, you can upgrade with <code>npm install -g pump.io@5.1</code> if you have an npm-based install. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0-beta.0</code> tag. And as always, if you encounter any problems you can reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/11/filter-other-days-is-portable-to-freebsd">
@@ -147,31 +166,12 @@ $PAGER longfile.txt
 <p>With these changes I expect that <code>filter-other-days</code> will probably run on all major BSD distributions. I intend to confirm this hypothesis soon and have filed bugs for <a href="https://github.com/strugee/filter-other-days/issues/12">OpenBSD</a> and <a href="https://github.com/strugee/filter-other-days/issues/13">NetBSD</a>, plus <a href="https://github.com/strugee/filter-other-days/issues/14">illumos</a> just for kicks.</p>
 <p>As with 1.0.0, you can clone <code>filter-other-days</code> <a href="https://github.com/strugee/filter-other-days">from GitHub</a> or you can download a (signed) <a href="https://github.com/strugee/filter-other-days/releases/tag/v1.0.1">tarball</a>. Please do <a href="https://github.com/strugee/filter-other-days/issues/new">report any bugs</a> you find in the release.</p>
 <p>Enjoy!</p>
-</div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/10/announcing-filter-other-days">
-              <h2 class="p-name">filter-other-days: Artificial Ignorance-compatible logfile date filtering</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/10/">October</a> 20, <a href="/blog/2017/">2017</a> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/security/" class="p-category">security</a> and <a href="/blog/category/sysadmin/" class="p-category">sysadmin</a>
-            </p>
-            <div class="e-content"><p>I've just published version 1.0 of my latest project, <code>filter-other-days</code> - a shell script to filter logfiles for today's date in an Artificial Ignorance-compatible way.</p>
-<p>If you haven't heard of <a href="http://www.ranum.com/security/computer_security/papers/ai/index.html">Artificial Ignorance</a>, it's something you should look into cause it's pretty awesome. Here's the tl;dr: it doesn't make sense to look for all the "interesting" things  in logfiles, because it's not actually possible to enumerate all the failure conditions of a system. So instead what we do is <em>throw away</em> entries that we're <em>sure</em> are just routine. Since we've gotten rid of all the uninteresting entries, whatever is left has to be interesting.</p>
-<p>I find this pretty compelling, and decided to start implementing it on my Tor relay. I quickly realized that my ideal workflow would be to configure cron to send me email with a daily report of interesting log entries. However, this presented a problem: how to get just today's log entries? I wanted to be able to handle all logfiles at once instead of receiving different reports for different logs, so I had to be able to parse all logfiles in the same way. My relay runs on FreeBSD, so the logs are unstructured text files, and even worse, several daemons (like Tor itself) write timestamps in a different format - this makes parsing all logfiles at once super difficult because I couldn't just trivially <code>grep</code> for today's date since that would end up dropping legitimate entries from logfiles that formatted their timestamps differently.</p>
-<p>I briefly considered trying to write a regex to match all sorts of different timestamp formats, but quickly rejected this idea as too fragile. There are a lot of moving parts in a modern operating system - what if e.g. a daemon changed its defaults about how to format timestamps? Or, more likely, what if I simply missed a particular format present in my logs? Then I'd be accidentally throwing away an entire logfile. To solve this problem, I decided to apply the same idea behind Artificial Ignorance - if I couldn't reliably, 100% match log entries from today's date, I could do the next best thing and attempt to discard all entries from <em>other</em> dates. In this case the worst that could happen is me recieving irrelevant information, and I'd be basically guaranteed to never miss an legitimate entry from today.</p>
-<p><code>filter-other-days</code> is a working implementation of this design. Originally I put it with the other random scripts I keep with my <a href="https://github.com/strugee/dots/tree/master/bin">dotfiles</a>, but it quickly became obvious that it was useful as a standalone project. So I <a href="https://github.com/strugee/dots/commit/7dd7e2755c55194cdff1c7b24b24bca72581e346">extracted</a> it into its own repository, which now lives <a href="https://github.com/strugee/filter-other-days">on GitHub</a>. From there I continued to improve the script while adding a test suite and writing extensive documentation (including a Unix manpage - I always feel like a wizardly hacker when writing those things). This took, by my estimation, somewhere between 10 and 15 hours because this is actually a shockingly non-trivial problem, but mostly because regexes are hard.</p>
-<p>But today I finally finished! So I'm super excited to announce that version 1.0 of <code>filter-other-days</code> is now available. You can either clone it from GitHub or download a <a href="https://github.com/strugee/filter-other-days/releases/tag/v1.0.0">tarball</a> (and the accompanying signature, if you want). It works pretty well already, but I have some ideas for future directions the project could go:</p>
-<ol>
-<li>Logic allowing you to actually specify the date you want to filter for, instead of assuming it's today (though you actually can already get this behavior using <code>faketime</code>; that's what the test suite does)</li>
-<li>Removal of the dependency on GNU <code>seq</code> - this is, to my knowledge, the only non-POSIX requirement of <code>filter-other-days</code></li>
-<li>Debian package, maybe?</li>
-<li>More log formats (please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> if you have formats <code>filter-other-days</code> doesn't recognize - which you probably do!)</li>
-</ol>
-<p>If you find this project useful, let me know! I'd love to hear about how people are using it. Or if it breaks (or doesn't fill your usecases), please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> or send patches - I love those, too! Either way, may the logs be with you!</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <div id="pages-footer">
-            <p><span class="disabled-arrow">←</span> ⋅ Page 1 out of 6 ⋅ <a href="page/2">→</a></p>
+            <p><span class="disabled-arrow">←</span> ⋅ Page 1 out of 7 ⋅ <a href="page/2">→</a></p>
           </div>
         </div>
       </div>

@@ -84,7 +84,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p> [1]: I'd like to point out that this is only a problem in Git. Mercurial has (or will have shortly) <a href="https://www.mercurial-scm.org/wiki/ChangesetEvolution">Changeset Evolution</a>, which keeps track of how changesets evolve over time. I.e. when you rewrite history, you're not losing any information.</p>
 <p> [2]: I'm sure some of you are about to excitedly tell me about a fantastic tool called the reflog, and I really should read Pro Git because it's a fantastic book and has an entire chapter on data recovery. <em>I know</em>. The reflog is <em>not</em> the right answer for this; not only is it local to (likely) a single developer's machine, but it only stretches back a couple months and only works if the old, dangling commits aren't garbage-collected. By the time someone might be interested in looking at the history that was lost, it's probably far, far too late.</p>
 <p> [3]: Another rarely-encountered but very serious problem with both "squash and merge" <em>and</em> "rebase and merge" is when people merge upstream changes in a PR. This is a perfectly legitimate workflow - PRs are great for discussing changes, etc. (although a lot of people think they're the <em>only</em> way to merge things, so they open PRs and then immediately merge them - this, IMHO, is very much <em>not</em> a legitimate workflow) - but if you do anything but merge (which includes both GitHub's "Merge" option and fast-forwarding locally on the CLI), you may have a Very Bad Time the next time you go to merge upstream changes to your fork. Why? Because in Git's view, the changes you merged the first time <em>haven't actually been merged</em>. After all, commit SHAs are nowhere to be found in the tree, since when you rewrote history you changed those IDs! Git has no way of knowing that your rewritten commits and the supposedly "unmerged" commits are basically equivalent. (Mercurial, on the other hand, would've kept track of this information and would have no problem at all.)</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/10/android-freedom">
@@ -107,7 +108,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>Supporting something like Google Now is non-trivial, but I've even already proposed <a href="https://github.com/cantino/huginn/issues/1583">a feature for Huginn</a> that would make this possible. Google Assistant would be very, very difficult, but even without that, we'd have come a long way.</p>
 <p>This reality is not that far off. What's missing is some UI pieces and a nice ZIP that can be flashed on top of ROMs, similar to how GApps are flashed today. So who's going to put it all together?</p>
 <p>(I suppose I've just volunteered myself - oh well... I'll just add it to my endless list of projects.)</p>
-</div>
+
+            </div>
           </article>
           <hr>
           <div id="pages-footer">
