@@ -106,11 +106,21 @@ require('whatwg-fetch');
 				}
 
 				switch (link.activity.type) {
-				case 'link':
+				case 'reply':
 					// ..."replied with"...
-					// TODO is 'link' always a reply?
 
 					p.appendChild(document.createTextNode(' replied with '));
+
+					// ..."check out this article! http://example.com"
+					var source = document.createElement('a');
+					source.setAttribute('href', link.data.url);
+					source.appendChild(document.createTextNode(shortContent));
+					p.appendChild(source);
+					break;
+				case 'link':
+					// ..."linked to this and added "...
+
+					p.appendChild(document.createTextNode(' linked to this and added '));
 
 					// ..."check out this article! http://example.com"
 					var source = document.createElement('a');
