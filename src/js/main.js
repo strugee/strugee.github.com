@@ -1,6 +1,6 @@
 /*
 
-© Copyright 2012-2016 AJ Jordan
+© Copyright 2012-2017 AJ Jordan
 
 This file is part of strugee.net.
 
