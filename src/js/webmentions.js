@@ -82,14 +82,17 @@ require('whatwg-fetch');
 				var p = document.createElement('p');
 
 				// Avatar
-				var avatarLink = document.createElement('a');
-				avatarLink.setAttribute('href', link.data.author.url);
-				var avatar = document.createElement('img');
-				avatar.classList.add('webmention-avatar');
-				avatar.setAttribute('src', link.data.author.photo);
-				avatar.setAttribute('alt', link.data.author.name + '\'s avatar');
-				avatarLink.appendChild(avatar);
-				p.appendChild(avatarLink);
+				// TODO do something better with missing avatars
+				if (link.data.author.photo) {
+					var avatarLink = document.createElement('a');
+					avatarLink.setAttribute('href', link.data.author.url);
+					var avatar = document.createElement('img');
+					avatar.classList.add('webmention-avatar');
+					avatar.setAttribute('src', link.data.author.photo);
+					avatar.setAttribute('alt', link.data.author.name + '\'s avatar');
+					avatarLink.appendChild(avatar);
+					p.appendChild(avatarLink);
+				}
 
 				p.appendChild(document.createTextNode(' '));
 
