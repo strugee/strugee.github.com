@@ -99,6 +99,12 @@ require('whatwg-fetch');
 				author.appendChild(document.createTextNode(link.data.author.name));
 				p.appendChild(author);
 
+				var shortContent = strip(link.data.content);
+				if (shortContent.length > 60) {
+					// TODO slice on word boundaries
+					shortContent = shortContent.slice(0, 60) + '…';
+				}
+
 				switch (link.activity.type) {
 				case 'link':
 					// ..."replied with"...
@@ -109,7 +115,7 @@ require('whatwg-fetch');
 					// ..."check out this article! http://example.com"
 					var source = document.createElement('a');
 					source.setAttribute('href', link.data.url);
-					source.appendChild(document.createTextNode(strip(link.data.content)));
+					source.appendChild(document.createTextNode(shortContent));
 					p.appendChild(source);
 					break;
 				case 'like':
