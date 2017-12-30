@@ -33,4 +33,10 @@ mixin renderPost(post, isIndex)
 					|  and 
 
 		//- Post content
-		.e-content!= post.contents.toString()
+		.e-content
+			if (post.data.syndicate || []).includes('indienews')
+				p.indienews-note
+					em This post also appeared on 
+						a.u-syndication(href='https://news.indieweb.org/en') IndieNews
+						| .
+			!=post.contents.toString()
