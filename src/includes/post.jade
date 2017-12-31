@@ -32,6 +32,10 @@ mixin renderPost(post, isIndex)
 					| , 
 				else if index === categories.length - 2
 					|  and 
+			if post.data.edited
+				| . Edited 
+				time(datetime=post.data.edited.moment.toISOString(true)) #{monthName} #{post.data.time.dayOfMonthStr}, #{post.data.time.yearStr}
+				| .
 
 		//- Post content
 		.e-content
