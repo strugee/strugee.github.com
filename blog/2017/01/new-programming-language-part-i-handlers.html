@@ -61,7 +61,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry">
           <h1 class="p-name">New programming language part I: Handlers</h1>
-          <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on <a href="/blog/2017/01/">January</a> 26, <a href="/blog/2017/">2017</a> in <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/security/" class="p-category">security</a>
+          <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
+            <time datetime="2017-01-26T10:59:20-05:00"><a href="/blog/2017/01/">January</a> 26, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/security/" class="p-category">security</a>
           </p>
           <div class="e-content"><p>So my latest project at the <a href="https://recurse.com">Recurse Center</a> is a new programming language, as yet unnamed. Basically this was inspired by my <a href="https://strugee.net/presentation-security-design">security design</a> presentation in which I laid out a couple ways you can improve programs' security designs, like process separation. And it occurred to me: why is this so difficult? Something should be doing this for me. Enter... whatever the hell I end up calling my language.</p>
 <p>One of the most important building blocks of the language is something that I'm currently calling a "Handler". A Handler is basically a segregated piece of application code that handles some task or problem domain. For example, a Handler for outgoing DNS requests (syntax subject to change, obviously):</p>
