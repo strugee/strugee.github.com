@@ -3,7 +3,9 @@ title: "How I accidentally started maintaining a social network with thousands o
 time:
   epoch: 1494647513
   utcoffset: "UTC-8"
-edited: 1494654032
+edited:
+  epoch: 1494654032
+  utcoffset: "UTC-8"
 author: "AJ Jordan"
 categories:
   - development
