@@ -23,7 +23,7 @@ var defaultCategories = require('stratic-default-categories');
 var decorateFiles = require('stratic-decorate-files');
 var ghpages = require('gh-pages');
 var merge = require('merge-stream');
-var gutil = require('gulp-util');
+var log = require('fancy-log');
 var sort = require('gulp-sort');
 var stylus = require('gulp-stylus');
 var browserify = require('browserify');
@@ -161,7 +161,7 @@ gulp.task('build', ['html', 'css', 'js', 'font', 'images', 'blog', 'misc']);
 gulp.task('lint', ['csslint', 'jshint']);
 
 gulp.task('deploy', ['build'], function(done) {
-	ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log, branch: 'master' }, done);
+	ghpages.publish(path.join(__dirname, 'dist'), { logger: log, branch: 'master' }, done);
 });
 
 gulp.task('watch', ['build'], function() {
