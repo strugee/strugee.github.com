@@ -21,9 +21,10 @@ mixin renderPost(post, isIndex)
 				|  and cross-posted from 
 				a(href=post.data.canonical) here
 			|  on 
-			a(href='/blog/'+post.data.time.yearStr+'/'+monthStr+'/')= monthName
-			|  #{post.data.time.dayOfMonthStr}, 
-			a(href='/blog/'+post.data.time.yearStr+'/')= post.data.time.yearStr
+			time(datetime=post.data.time.moment.format())
+				a(href='/blog/'+post.data.time.yearStr+'/'+monthStr+'/')= monthName
+				|  #{post.data.time.dayOfMonthStr}, 
+				a(href='/blog/'+post.data.time.yearStr+'/')= post.data.time.yearStr
 			|  in 
 			for category, index in categories
 				a.p-category(href='/blog/category/' + category + '/') #{category}
