@@ -25,6 +25,7 @@
     "gulp-sort": "^2.0.0",
     "gulp-stylus": "^2.4.0",
     "merge-stream": "^1.0.0",
+    "ping-lazymention": "^1.0.0",
     "remark-html": "^5.0.1",
     "remark-rewrite-headers": "^1.0.0",
     "remark-slug": "^4.2.2",
