@@ -4,6 +4,7 @@ var gulp = require('gulp');
 
 var http = require('http');
 var path = require('path');
+var url = require('url');
 var jade = require('gulp-jade');
 var jshint = require('gulp-jshint');
 var rename = require('gulp-rename');
@@ -136,6 +137,33 @@ gulp.task('rss', function() {
 	           }, 'https://strugee.net/blog/'))
 	           .pipe(rename({ extname: '.rss' }))
 	           .pipe(gulp.dest('dist/blog'));
+});
+
+gulp.task('ping', function(cb) {
+	var obj = url.parse('http://strugee.net:7517/jobs/submit');
+	obj.method = 'POST';
+
+	var req = http.request(obj);
+	req.setHeader('Content-Type', 'application/json');
+	req.write(JSON.stringify({ url: 'https://strugee.net/blog/' }));
+	req.end();
+
+	req.on('error', function(err) {
+		log.error('Encountered an error pinging lazymention:', err.toString());
+		cb(err);
+	});
+
+	req.on('response', function(res) {
+		if (res.statusCode >= 200 && res.statusCode <= 300) {
+			log('Received', res.statusCode, res.statusMessage, 'from lazymention.');
+			cb();
+		} else {
+			// XXX attach the body
+			var err = new Error('Got an unexpected status code from lazymention: ' + res.statusCode);
+			log.error(err.toString());
+			cb(err);
+		}
+	});
 });
 
 gulp.task('misc', function() {
