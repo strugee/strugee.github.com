@@ -8,6 +8,7 @@ categories:
   - pump.io
   - development
   - blaggregator
+canonical: http://pump.io/blog/2018/01/pump.io-5.1-stable-published-to-npm
 ---
 
 Last night I officially published pump.io 5.1 to npm as a stable release!
