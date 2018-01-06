@@ -60,8 +60,32 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Blog</h2>
-          <p id="postsFrom">Show only posts from <a href="/blog/2014/">2014</a> <a href="/blog/2015/">2015</a> <a href="/blog/2016/">2016</a> <a href="/blog/2017/">2017</a> 
+          <p id="postsFrom">Show only posts from <a href="/blog/2014/">2014</a> <a href="/blog/2015/">2015</a> <a href="/blog/2016/">2016</a> <a href="/blog/2017/">2017</a> <a href="/blog/2018/">2018</a> 
           </p>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2018/01/pump.io-5.1-stable-published-to-npm">
+              <h2 class="p-name">pump.io 5.1 stable published to npm</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
+              <time datetime="2018-01-06T04:09:43-07:00"><a href="/blog/2018/01/">January</a> 6, <a href="/blog/2018/">2018</a></time> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a> and <a href="/blog/category/development/" class="p-category">development</a>
+            </p>
+            <div class="e-content"><p>Last night I officially published pump.io 5.1 to npm as a stable release!</p>
+<p>As I wrote in the beta announcement, this release contains a variety of improvements:</p>
+<ul>
+<li><a href="/blog/2017/08/zero-downtime-restarts-have-landed">Zero-downtime restarts</a>, which allows administrators to seamlessly roll over to new configurations and codebases</li>
+<li>The daemon now generates startup log warnings on bad configurations, including insecure <code>secret</code> values and internal parameters</li>
+<li>An official <code>Dockerfile</code> is now included with the release</li>
+<li>The logged-out mobile homepage's menu icon is no longer incorrectly styled as black</li>
+<li>An authorization problem with SockJS connections has been fixed</li>
+</ul>
+<p>5.1 stable <em>does</em> include one change the beta didn't: a bump to the version of the <code>gm</code> npm package which we depend on. This bump was done as a precautionary measure, as previous versions of <code>gm</code> depended on a version of the <code>debug</code> module which was vulnerable to denial-of-service security bugs.</p>
+<p>As a project, we addressed these bugs <a href="/blog/2017/10/denial-of-service-security-fixes-now-available">back in October</a> when we issued security releases for all supported release branches, and at the time we confirmed that the vulnerable function wasn't used by <code>gm</code>. Today's <code>gm</code> bump does <em>not</em> constitute a security release; instead, we're just bumping the version as a precautionary measure in case we missed something in October's assessment of the situation.</p>
+<p>Aside from the <code>gm</code> bump, there are (as usual) miscellaneous version bumps included in this release. We've also started tracking test suite coverage information as well as overhauled our <a href="https://pumpio.readthedocs.io/">documentation on ReadTheDocs</a>, moving most of the in-repository documentation there.</p>
+<p>If you want even more details of this release, you can also check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510---2018-01-05">the changelog</a>.</p>
+<p>pump 5.1 is a drop-in replacement for 5.0. That means if you're using our recommended installation method and installing from npm, you can upgrade with <code>npm install -g pump.io@5.1</code>. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0</code> tag. And as always, if you encounter any problems, please feel free to reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
+<p>Finally, I would be remiss if I didn't point out that pump.io has a <strong>brand-new announcement mailing list</strong>! While the blog is great for announcing new releases, not everyone finds it convenient to check. Also, if we issue new betas in the middle of a release cycle, these aren't typically announced on the blog. Therefore in the future <em>all</em> new releases will be announced on the mailing list, not just initial betas. If you want to subscribe to the mailing list, you may do so <a href="https://lists.strugee.net/mailman/listinfo/pumpio-announce">here</a> - you'll get announcements of new features only, not e.g. feature announcements as seen on this blog. I hope people find this service useful!</p>
+
+            </div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/announcing-lazymention-elegant-outbound-webmention-for-static-sites">
               <h2 class="p-name">Announcing lazymention: elegant outbound Webmention for static sites</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
@@ -155,18 +179,6 @@ $PAGER longfile.txt
 <p>As usual, this release also includes some small updates to dependencies. Plus, we started tracking how much code our test suite covers! We've also significantly cleaned up the documentation and moved almost all of the in-repository documentation to ReadTheDocs, where it's a lot more organized and accessible. If you want more than just these highlights, you can check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510-beta-0---2017-12-08">the changelog</a>.</p>
 <p>Note that while the repository includes a <code>Dockerfile</code> now, we have not yet begun publishing on Docker Hub due to some security logistics that need to be figured out - when we do, it'll be announced in all the usual places (including this blog).</p>
 <p>I'm so excited for people to try out this release. 5.1 beta 0 is a drop-in replacement for 5.0, so if you're on 5.0 and want to live (more) on the bleeding edge, you can upgrade with <code>npm install -g pump.io@5.1</code> if you have an npm-based install. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0-beta.0</code> tag. And as always, if you encounter any problems you can reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
-
-            </div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/11/webmention-test-post">
-              <h2 class="p-name">Webmention test post</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-              <time datetime="2017-11-24T20:24:46-05:00"><a href="/blog/2017/11/">November</a> 24, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/development/" class="p-category">development</a>
-            </p>
-            <div class="e-content"><p>Once again I need to test whether <a href="https://github.com/strugee/lazymention">lazymention</a> - and more importantly, the underlying libraries (<a href="https://github.com/strugee/node-send-webmention">node-send-webmention</a> and <a href="https://github.com/strugee/node-get-webmention-url">node-get-webmention-url</a>) - complies with the <a href="https://www.w3.org/TR/webmention/">W3C spec</a>. I'll be using <a href="https://webmention.rocks/">webmention.rocks</a>, so, here's a large list of links:</p>
-<p><a href="https://webmention.rocks/test/1">Test 1</a>, <a href="https://webmention.rocks/test/2">Test 2</a>, <a href="https://webmention.rocks/test/3">Test 3</a>, <a href="https://webmention.rocks/test/4">Test 4</a>, <a href="https://webmention.rocks/test/5">Test 5</a>, <a href="https://webmention.rocks/test/6">Test 6</a>, <a href="https://webmention.rocks/test/7">Test 7</a>, <a href="https://webmention.rocks/test/8">Test 8</a>, <a href="https://webmention.rocks/test/9">Test 9</a>, <a href="https://webmention.rocks/test/10">Test 10</a>, <a href="https://webmention.rocks/test/11">Test 11</a>, <a href="https://webmention.rocks/test/12">Test 12</a>, <a href="https://webmention.rocks/test/13">Test 13</a>, <a href="https://webmention.rocks/test/14">Test 14</a>, <a href="https://webmention.rocks/test/15">Test 15</a>, <a href="https://webmention.rocks/test/16">Test 16</a>, <a href="https://webmention.rocks/test/17">Test 17</a>, <a href="https://webmention.rocks/test/18">Test 18</a>, <a href="https://webmention.rocks/test/19">Test 19</a>, <a href="https://webmention.rocks/test/20">Test 20</a>, <a href="https://webmention.rocks/test/21">Test 21</a>, <a href="https://webmention.rocks/test/22">Test 22</a>, <a href="https://webmention.rocks/test/23/page">Test 23</a></p>
-<p>Hopefully it works \o/</p>
 
             </div>
           </article>

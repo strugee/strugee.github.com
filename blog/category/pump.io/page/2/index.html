@@ -60,6 +60,31 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "pump.io"</h2>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/05/pump.io-accident">
+              <h2 class="p-name">How I accidentally started maintaining a social network with thousands of users</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
+              <time datetime="2017-05-12T19:51:53-08:00"><a href="/blog/2017/05/">May</a> 12, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/pump.io/" class="p-category">pump.io</a>. Edited 
+              <time datetime="2017-05-13T05:40:32.000Z">May 12, 2017</time>.
+            </p>
+            <div class="e-content"><p>As some of my readers (particularly Recursers) know, a couple of weeks ago I became an Invited Expert at the <a href="https://www.w3.org/wiki/Socialwg">Social Working Group</a> at the <a href="https://www.w3.org/">W3C</a> (World Wide Web Consortium). The W3C is a standards body. That means it's responsible for defining things like how things work on the web, such as how web pages are styled using CSS and how web developers can protect their apps from security vulnerabilities using <a href="https://www.w3.org/TR/CSP3/">Content Security Policy</a>.</p>
+<p>My first thought when I got the email that my application had been accepted was, "<em><strong>WHOOOOOOOOO!</strong></em>" It was probably one of the most thrilling moments of my whole life. My second thought was, "how in the <em>world</em> did I get here!?" The truth is, it was almost an accident.</p>
+<p>It started when I got involved in the <a href="http://pump.io">pump.io</a> project. pump.io, for those who haven't heard me talk about this endlessly (e.g. at RC), is a decentralized social network. That means that there can be multiple servers run by different people that are part of the social network, but the users on those servers can interact with each other in just the same way they could if it was just one big centralized server[1]. I first got involved in the pump.io project in August 2015. I was experimenting with different social networking software and decided to <a href="https://pump.strugee.net/">deploy</a> pump.io on my server. When I did I realized that pump... well, it didn't work very well. The web UI was kinda basic[2], everything was pretty buggy, and there were a lot of problems with the overall user experience. In fact, I know the exact day I set up pump.io (August 12th) because all throughout the experience <a href="https://github.com/pump-io/pump.io/issues/1093">I</a> <a href="https://github.com/pump-io/pump.io/issues/1094">was</a> <a href="https://github.com/pump-io/pump.io/issues/1095">filing</a> <a href="https://github.com/pump-io/pump.io/issues/1096">bugs</a> on things needing improvement. It was a shame, I thought, because this software seemed really neat. I thought it had a lot of potential.</p>
+<p>After about two weeks it became clear that there was no activity in the upstream pump.io project. So after some deliberation, I ended up forking it (briefly). You can watch <a href="https://media.libreplanet.org/u/libreplanet/m/pump-io-the-federated-extensible-social-network/">this talk</a> around 16:00 to hear me talk about this a bit, though to be honest it's kind of just a footnote in the project's history. In the end Evan Prodromou, pump.io's author, ended up handing off some commit rights to community members.</p>
+<p>Well, I thought, that was the end of that. Everything's smooth sailing from here on out! There were some big problems, though: the people who now had commit rights all were involved in other things and, more importantly, none of them knew JavaScript or Node.js! This makes me chuckle to this day, honestly.</p>
+<p>So I started triaging issues. When people sent Pull Requests, I'd review them since it seemed like no one else was going to do it. <a href="https://github.com/pump-io/pump.io/pull/1114">#1114</a> was, as far as I can tell (or remember), the very first of these "unofficial" PR reviews. I kept going; I even reviewed Menno Vossen's <a href="https://github.com/pump-io/pump.io/pull/1136">epic PR which fixed all the tests</a> (fixing the tests being a feat which, having tried to start that work myself, I am to this day in awe of and <em>incredibly</em> thankful for). For that last one in particular, you'll note that <em>I</em> merged it, not Chris Webber. At some point in January(?), he asked me in <code>#pump.io</code> on IRC if I'd like write access to the repository, to which I said (paraphrased) "heck yes!" So he made it happen.</p>
+<p>I never really intended for that to happen. However, I <em>was</em> the one doing almost all of the work. After a while it just made sense. This is what, among other things, I find so incredible about freedom-respecting software: you can just <em>do</em> things. I didn't ask anyone for permission to do those reviews. I just saw the need for a reviewer, and decided I'd help out.</p>
+<p>Fast-forward to today, and I'm now an owner of the pump.io organization on GitHub. I make technical decisions about what to prioritize and what should go into pump.io core. I do a lot of the day-to-day work running the project, too, and setting up technical and policy infrastructure (with a lot of help from the community, of course, plus input from Evan). That, too, just made sense, as did my becoming an Invited Expert - I was pretty deeply engaged with the SocialWG's <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> specification already since it's based on the pump.io protocol, and I was really excited about said protocol being standardized. So I was participating pretty heavily and I think it just made sense to people in the Working Group for me to join. In fact, that also kinda happened by accident. I couldn't get edit access to the W3C wiki so we were speculating in <code>#social</code> on the W3C IRC server that it might be because I wasn't a "W3C member" or something. So some people at W3C were pinging the sysops team, etc., trying to mark me as a "trusted" user when someone - <a href="https://www.w3.org/People/Sandro/">Sandro Hawke</a>, I believe - said, "the other option is for you to just join the Working Group." To which I said, "well, but I'd have to join as an Invited Expert, and I don't think I qualify as an expert." Chris Webber's response? "You're just as much of an expert as me when I joined!"</p>
+<p>tl;dr how in the world did I get here? I tried some software and got annoyed at it, so I just kind of <em>"did some stuff"</em> that led to me doing code reviews. That led to me getting involved in the decentralized social web which led to me <em>"doing some more stuff"</em> that got me involved in standards. Then because of that, I tried to edit a wiki and ended up being invited to apply as a W3C Invited Expert.</p>
+<p>I mean, what the hell? Honestly. I can't emphasize enough that I didn't plan ANY of this. It just sort of... happened. And that, I think, is what's so cool about the free software community. It isn't about who you are, where you come from, or what your goals are. It's only about, do you show up? Do you show up and do awesome stuff?</p>
+<p>I showed up, kind of by accident, and I now run a decentralized social network with thousands of users called pump.io.</p>
+<p>What will happen if <em>you</em> show up?</p>
+<p><em>Thanks so much to <a href="https://github.com/anjakefala">Anja</a> and <a href="http://jvns.ca/">Julia</a> for providing feedback on a draft version of this post.</em></p>
+<p>[1]: I really hope this explanation makes sense and if it doesn't, I apologize - I use diagrams to explain this in real life.</p>
+<p> [2]: Still is, but that should improve now that the technical debt work I've been focusing on for the past year is now <a href="https://strugee.net/blog/2017/03/express-4.x-in-pump.io-core">basically done</a>!</p>
+
+            </div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/04/pump.io-4.0-in-beta">
               <h2 class="p-name">pump.io 4.0 in beta</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/04/pump.io-4.0-in-beta">here</a> on 
@@ -183,41 +208,6 @@ npm run build
 <p>Make sure to restart pump.io after performing the upgrade.</p>
 <h3>Getting help</h3>
 <p>If you have any issues upgrading to or running the beta, please don't hesitate to get in touch with <a href="https://github.com/e14n/pump.io/wiki/Community">the community</a>. You can also email me at <a href="mailto:alex@strugee.net">alex@strugee.net</a>.</p>
-
-            </div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/08/pump.io-1.0.0-is-now-available">
-              <h2 class="p-name">Pump.io 1.0.0 is now available!</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-              <time datetime="2016-08-26T23:37:54-07:00"><a href="/blog/2016/08/">August</a> 26, <a href="/blog/2016/">2016</a></time> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/security/" class="p-category">security</a> and <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
-            </p>
-            <div class="e-content"><p><a href="https://github.com/e14n/pump.io/releases/tag/v1.0.0">Pump.io 1.0.0</a> is officially available! Whoooo!</p>
-<p>I just wanted to write up an announcement real quick to celebrate. Here's a sample what's gone into this release:</p>
-<ul>
-<li>Node 4.x support</li>
-<li>Lots of security improvements including a better cross-site scripting scrubber and security-related headers that help protect the web UI (most notably, the web UI now declares a Content Security Policy)</li>
-<li>Minor improvements to the API to make it (slightly) smarter</li>
-<li><a href="https://www.gnu.org/software/librejs/">LibreJS</a> support</li>
-<li>Numerous dependency upgrades, most notably Connect</li>
-<li>And of course, tons of minor bugfixes and improvements</li>
-</ul>
-<p>For more details, see the brand-new <a href="https://github.com/e14n/pump.io/blob/master/CHANGELOG.md#100---2016-08-26">change log</a>.</p>
-<p>And of course since we're now past 0.x.x releases, we're now officially making a commitment to the community to make only API-compatible changes going forward (or at least, until 2.0.0!).</p>
-<p>As this release <em>does</em> improve security and fixes a lot of bugs, node administrators are encouraged to upgrade as soon as possible. If you have a global, npm-based install, you can upgrade with:</p>
-<pre><code>sudo npm install -g pump.io
-</code></pre>
-<p>And with a source-based install:</p>
-<pre><code>git pull
-git checkout v1.0.0
-npm install --production
-</code></pre>
-<p>If you're upgrading from 0.3.0, everything should Just Work(tm). Don't forget to restart your daemon!</p>
-<p>One final note - the rumors are true. While we're not doing so <em>yet</em>, we are, in fact, planning to deprecate running under Node.js 0.10 and 0.12 very soon. Also, if you upgrade to Node.js 4.x early, the new, better XSS scrubber will be enabled - <em>however</em>, be aware that pump.io is far less tested under Node.js 4.x and you are likely to run into more bugs than you would under 0.10 or 0.12. This is an unfortunate situation, but sadly there's really nothing to be done about it. :(</p>
-<p>Special thanks to Menno Vossen, Laura Arjona, Evan Prodromou, Jan Kusanagi and all the other volunteers who did so many different things to make this release happen. It truly wouldn't have happened without you.</p>
-<p>Enjoy the release!</p>
-<p>With &#x3C;3,</p>
-<p>AJ</p>
 
             </div>
           </article>
