@@ -4,12 +4,13 @@ time:
   epoch: 1487109679
   utcoffset: "UTC-5"
 edited:
-  epoch: 1487783122
-  utcoffset: "UTC-5"
+  epoch: 1515406257
+  utcoffset: "UTC-7"
 author: "AJ Jordan"
 categories:
   - personal
   - musings
+  - culture
   - blaggregator
 ---
 
