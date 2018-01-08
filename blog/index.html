@@ -62,6 +62,21 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h2 class="p-name">Blog</h2>
           <p id="postsFrom">Show only posts from <a href="/blog/2014/">2014</a> <a href="/blog/2015/">2015</a> <a href="/blog/2016/">2016</a> <a href="/blog/2017/">2017</a> <a href="/blog/2018/">2018</a> 
           </p>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2018/01/tell-your-pr-reviewers-theyre-wrong">
+              <h2 class="p-name">Tell your PR reviewers they're wrong</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
+              <time datetime="2018-01-08T03:04:55-07:00"><a href="/blog/2018/01/">January</a> 8, <a href="/blog/2018/">2018</a></time> in <a href="/blog/category/tips/" class="p-category">tips</a> and <a href="/blog/category/culture/" class="p-category">culture</a>
+            </p>
+            <div class="e-content"><p>Have you ever submitted a Pull Request and had the maintainer give you feedback that says something is wrong? This is of course, perfectly natural, and is why we do Pull Request reviews in the first place. But have you ever thought it was actually the <em>maintainer</em> doing the review who was wrong?</p>
+<p>I'm the maintainer of a number of open source/free software projects and I have a message for you: <strong><em>tell this to the maintainer</em>, even if you're new, even if you feel like you have no idea what you're doing</strong>.</p>
+<p>I'm sure to some people more experienced this sounds like obvious advice, but when you're new to this stuff getting feedback can be really scary. Maintainers have often spent years in the free software community and are super comfortable with how things work, not to mention that they might be more experienced in the language or framework their project uses. So it's super easy to just take their word as gospel. But I think it's super important to remember that everyone's human just like everyone else, and <em>everyone</em> has something to learn.</p>
+<p>As a concrete example, take <a href="https://github.com/pump-io/pump.io/pull/1310#issuecomment-291554491">this comment</a> on a Pull Request I received. If you read it and the following comment, I seem like an expert on <code>eval()</code>, but what you don't see until you read all the way to the bottom is that I spent about 20 minutes composing that comment because I had to double-check MDN to make sure I was actually correct. And honestly, that was <em>great</em>. That Pull Request forced me to recheck what I thought about the way <code>eval()</code> worked, <em>and</em> the contributor learned from it too! So it ended up being a win-win. Even if I was wrong, that would have been great too, since I would've learned something new.</p>
+<p>I'm sure this won't work in every community. But honestly, if it doesn't, the maintainer you're running into is probably an ass and not worth bothering with anyway. This is what doing things in the open is all about - <a href="https://www.gnu.org/philosophy/free-sw.html">freedom 1</a>, after all, is "the freedom to study the source code and make changes", the operative word being "study". The fact that knowledge is shared out in the open with anyone who wants it is one of the most amazing parts of this community, and I want to encourage you to stay curious and ask lots of questions.</p>
+<p>So if you've ever walked away from a Pull Request review feeling like something wasn't quite right, consider this your permission slip to politely <em>tell your reviewer they're wrong</em> - just make sure to explain why! And remember, whatever they say, they're not criticizing you personally. I hope you embrace it as an opportunity to grow.</p>
+
+            </div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2018/01/pump.io-5.1-stable-published-to-npm">
               <h2 class="p-name">pump.io 5.1 stable published to npm</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2018/01/pump.io-5.1-stable-published-to-npm">here</a> on 
@@ -163,28 +178,8 @@ $PAGER longfile.txt
             </div>
           </article>
           <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/pump.io-5.1-is-in-beta">
-              <h2 class="p-name">pump.io 5.1 is in beta</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/12/pump.io-5.1-is-in-beta">here</a> on 
-              <time datetime="2017-12-08T20:24:57-05:00"><a href="/blog/2017/12/">December</a> 8, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
-            </p>
-            <div class="e-content"><p>I'm really excited to announce that pump.io 5.1 is officially in beta!</p>
-<p>This release makes a wide array of improvements. One of the features I'm most excited about is <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">zero-downtime restarts</a>, which will allow administrators to gracefully roll over to new configurations and codebases with absolutely no user-visible impact! Aside from that, here's a list of highlights:</p>
-<ul>
-<li>The daemon now generates startup log warnings on bad configurations, including insecure <code>secret</code> values and internal parameters</li>
-<li>An official <code>Dockerfile</code> is now included with the release</li>
-<li>The logged-out mobile homepage's menu icon is no longer incorrectly styled as black</li>
-<li>SockJS connections no longer fail due to authorization problems</li>
-</ul>
-<p>As usual, this release also includes some small updates to dependencies. Plus, we started tracking how much code our test suite covers! We've also significantly cleaned up the documentation and moved almost all of the in-repository documentation to ReadTheDocs, where it's a lot more organized and accessible. If you want more than just these highlights, you can check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510-beta-0---2017-12-08">the changelog</a>.</p>
-<p>Note that while the repository includes a <code>Dockerfile</code> now, we have not yet begun publishing on Docker Hub due to some security logistics that need to be figured out - when we do, it'll be announced in all the usual places (including this blog).</p>
-<p>I'm so excited for people to try out this release. 5.1 beta 0 is a drop-in replacement for 5.0, so if you're on 5.0 and want to live (more) on the bleeding edge, you can upgrade with <code>npm install -g pump.io@5.1</code> if you have an npm-based install. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0-beta.0</code> tag. And as always, if you encounter any problems you can reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
-
-            </div>
-          </article>
-          <hr>
           <div id="pages-footer">
-            <p><span class="disabled-arrow">←</span> ⋅ Page 1 out of 11 ⋅ <a href="page/2">→</a></p>
+            <p><span class="disabled-arrow">←</span> ⋅ Page 1 out of 12 ⋅ <a href="page/2">→</a></p>
           </div>
         </div>
       </div>

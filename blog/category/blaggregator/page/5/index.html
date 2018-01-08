@@ -60,6 +60,42 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "blaggregator"</h2>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/03/rc-week-8">
+              <h2 class="p-name">RC week 8</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
+              <time datetime="2017-03-01T14:11:19-05:00"><a href="/blog/2017/03/">March</a> 1, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/personal/" class="p-category">personal</a>
+            </p>
+            <div class="e-content"><p>This is week 8 of being at the <a href="https://recurse.com">Recurse Center</a>. </p>
+<script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
+<h3>Day 27</h3>
+<p>Arrived ~10:35, departed ~0:30, total time at RC 13h55m.</p>
+<p>Had a nice discussion about Stratic in my checkin group this morning. After that I went to the Capture The Flag introduction workshop, then spent essentially the entire rest of the day finishing up <a href="https://strugee.net/blog/2017/02/from-static-to-stratic-part-1">static to Stratic</a> (which included, in a truly horrifying fashion, me rewriting and force-pushing the demo repository's history a good four times or so) so I'd have a post up for the iron bloggers meeting. Also spent some time fixing some bugs in <a href="https://github.com/straticjs/generator-stratic">generator-stratic</a> and published the beta 2 release with those fixes. Closed out the evening by digging into a remark problem where <code>&#x3C;script></code> tags would be stripped from posts. Ended up just asking on Gitter.</p>
+<h3>Day 28</h3>
+<p>Arrived ~10:30, departed ~20:40, total time at RC 10h10m.</p>
+<p>Continued to investigate the remark problem based on replies received overnight - turns out it was a bug in remark fixed in a release that had gone out the door literally the same day I asked. After that I spent the day upgrading <a href="https://github.com/straticjs/generator-stratic">generator-stratic</a> (which, remember, was originally scaffolded <a href="https://strugee.net/blog/2014/12/new-blog-new-site">years ago</a>) to newer and newer releases of <code>yeoman-generator</code> until it used <code>yeoman-generator@latest</code>. Then I spent time adding some basic tests - they're kind of just smoketests for now (are the correct files generated, does <code>gulp serve</code> work) but I <a href="https://github.com/straticjs/generator-stratic/issues/11">intend</a> to expand them. Also moved over some issues to the new <a href="https://github.com/straticjs/RFCs">straticjs/RFCs</a> repository and attended Casual Presentations.</p>
+<h3>Day 29</h3>
+<p>Arrived ~10:50, departed ~20:35, total time at RC 9h45m.</p>
+<p>Didn't do a whole lot codewise today. However, I did teach Unix fundamentals for Beginner Club, which went pretty well - I just spent the entire time in the commandline, demonstrating different commands. We spent a little time talking about shell scripting, but not much. I forgot to cover conditionals, which was dumb since they're pretty weird in shell scripting. Spent some time in the afternoon starting a draft of <a href="https://strugee.net/blog/2017/02/how-i-passed-2k-github-contributions">How I passed 2k GitHub contributions</a></p>
+<p>Watched Kiki's Delivery Service in the evening.</p>
+<h3>Day 30</h3>
+<p>Arrived ~10:35, departed ~00:05, total time at RC 13h30m.</p>
+<p>Finished and published <a href="https://strugee.net/blog/2017/02/how-i-passed-2k-github-contributions">How I passed 2k GitHub contributions</a>. Presented <a href="https://strugee.net/presentation-cryptography-basics">cryptography basics</a> at Security Club, then spent a lot of time fixing miscellaneous items on steevie. In particular ejabberd was apparently configured to use a standalone certificate bundle (instead of symlinking to something in <code>/etc/letsencrypt/live</code>) - this was because ejabberd requires the private key and the full chain to be in the same file. TLS certificate renewal didn't properly update this bundle, so XMPP client connections weren't working. ZNC was broken in the same way, so I fixed both of those. I also spent some time setting up a system to publish everything custom in <code>/usr/local</code> <a href="https://github.com/strugee/steevie-usr-local">on GitHub</a> so that it's public and version-controlled. So that's nice.</p>
+<h3>Friday</h3>
+<p>Arrived ~15:50, departed ~1:00, total time at RC 9h10m. As always, Friday doesn't count as a day because RC is technically not in session.</p>
+<p>Came in super late (though I woke up earlier). Almost immediately after that I attended an initial meeting about starting an RFC reading group (an idea I floated on Zulip a couple days ago). Spent most of the day poking at IETF things as well as responding to <a href="https://github.com/hubot-scripts/hubot-seen">hubot-seen</a> PR comments. I just got write access! \o/</p>
+<p>Closed out the evening by attending Bottle Share Friday, where I had a long discussion with <a href="http://www.aberke.com/">Alex</a> about running my own email server (which spun off into a discussion of how completely terrible and busted email is), followed by a long discussion about whether Apple's release schedule for Safari and attitude towards new web features and third-party iOS rendering engines is justifiable.</p>
+<h3>Saturday</h3>
+<p>Arrived ~11:15, departed ~23:30, total time at RC 12h15m. Saturday doesn't count as a day because RC is not in session.</p>
+<p>Marathoned Lord of the Rings today. The showing was small and people drifted in and out but most of the time there were a couple people watching, which was fun. The original plan was to watch the director's cut versions, watching The Return of the King on Sunday, but we ended up watching the regular versions because you can't rent the director's cuts off Amazon, and I wasn't about to pay $30 for movies that I <em>already own</em> on DVD back home. We probably would've still watched on Sunday, except that I went out to get pizza for dinnr and found out that it was pouring rain (with thunder/lightning and everything). So I decided we'd watch The Return of the King and wait for the rain to let up, which worked beautifully.</p>
+<p><a href="https://github.com/Husseinfarah93">Hussein</a> came in just as I was about to leave and stated that he almost had a heart attack because he sprinted literally from his apartment to Duane Reade, which truthfully was absolutely <em>hilarious</em>. We had some fun wandering around Duane Reade trying to find soap (which I needed to buy) before we both headed home.</p>
+<p>(As a side note, my favorite brand of mac 'n' cheese by far is Annie's, which my local supermarket does not carry. But apparently Duane Reade does!? Wat???)</p>
+<h3>Executive summary</h3>
+<p>This week was weirdly divided - some parts were hyper-productive and some parts were pretty terrible. I certainly got a lot of work done on Stratic, and I taught a lot. But I didn't really do a good job of working on stuff that pushed my programming abilities forward.</p>
+<p>Total time at RC 68 hours 45 minutes; cumulative time 363 hours 10 minutes.</p>
+
+            </div>
+          </article>
+          <hr>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/02/rc-week-7">
               <h2 class="p-name">RC week 7</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
@@ -410,25 +446,6 @@ block body
 <p>This week was also very emotional, since it was the Winter 1s' last week. To all my Winter 1 friends: you made my time at RC amazing and welcoming and exciting and wonderful and I loved being around you all. And I will miss you for a very long time. &#x3C;3</p>
 <p>(*<em>starts crying a lil bit</em>*)</p>
 <p>Total time at RC 38 hours 40 minutes; cumulative time 239 hours 25 minutes.</p>
-
-            </div>
-          </article>
-          <hr>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/02/gender-representation-at-rc">
-              <h2 class="p-name">Gender representation at RC</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-              <time datetime="2017-02-14T17:01:19-05:00"><a href="/blog/2017/02/">February</a> 14, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/musings/" class="p-category">musings</a>. Edited 
-              <time datetime="2017-02-22T17:05:22.000Z">February 14, 2017</time>.
-            </p>
-            <div class="e-content"><p>So I want to talk (real quick) about gender representation in tech. Specifically, the fact that it's abysmal. Women[1] usually account for, at most, <a href="https://www.cnet.com/news/women-in-tech-the-numbers-dont-add-up/">30% of the employees in a company</a> and that number is often much lower. Even at the companies where it's 30%, that number is misleading because it doesn't adress management positions which are often much lower. (For reference, women accounted for about 59% of the overall workforce as of 2015, when the article I pulled those numbers from was published.) <a href="http://fortune.com/2014/10/02/women-leave-tech-culture/">Here's an article</a> that says that on average, women leave the industry within 7 years of being in it. Let me repeat that, because I didn't say they leave their jobs, or take a break. They completely leave the <em>entire technology industry</em>. And unfortunately it makes sense, since incidents of sexism in tech are <a href="http://geekfeminism.wikia.com/wiki/Category:Incidents">rampant</a>.</p>
-<p>Unlike (most of) the rest of the tech world, the <a href="https://recurse.com">Recurse Center</a> is mostly (completely?) gender-balanced. I want to point out that while for years I've believed in diversity, it didn't become clear to me how much <a href="https://www.opensocietyfoundations.org/voices/implicit-bias-and-social-justice">implicit bias</a> I held until I joined RC. I find that, having previously spent significant amounts of time in environments that were predominantly white, cis and male, <strong>I find myself needing to self-correct discriminatory and gender-based unconscious assumptions significantly less frequently at RC</strong>. In other words, my subconscious is making less incorrect, gender-based suggestions about what people are like that I then have to consciously reject. I would attribute this almost 100% to the fact that at RC I'm surrounded by lots of people who are a) super talented and know their shit and b) aren't male.</p>
-<p>If I have a point to this blog post (and I'm not sure that I do), it'd be to underscore what many have said before me: representation and role models are important. Advocating for gender equality is good and important, but in the end what really matters is what's actually in people's heads. That's mostly influenced by what they see in their immediate lives, and that's why representation is so important - believing in equality is great, but presenting actual evidence to your subconscious that its biases are incorrect is a much more powerful way to improve the way you perceive the world.</p>
-<p>If folks have any comments or different perspectives, I'd love to hear them <a href="/contact">privately</a> or via <a href="https://webmention.net/">WebMention</a>.</p>
-<p> [1]: I'm focusing on women here because I'm not aware of any statistics about non-binary people in tech. But it's worth noting that it's a huge problem for them, too.</p>
-<p><strong>Update February 22nd:</strong> the lovely <a href="https://twitter.com/rhonorv">Rachel Vincent</a> from RC faculty says this about RC's gender-balancing:</p>
-<blockquote>
-<p>Of the folks who are currently in-batch (Winter 2's and Spring 1's), ~36% identify as women. It's roughly the same for the community as a whole (~33%), though we don't have super accurate numbers because we don't update information on folks' gender. The most gender balanced batches were a little over 40% women. We're always pushing for 50/50, though. 😊 Our overall strategy is to try to get an applicant pool that is as gender balanced as possible, and we don't do any kind of balancing during the admissions process itself.</p>
-</blockquote>
 
             </div>
           </article>
