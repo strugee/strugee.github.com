@@ -108,6 +108,7 @@ require('whatwg-fetch');
 					shortContent = shortContent.slice(0, 60) + '…';
 				}
 
+				// TODO DRY this up
 				switch (link.activity.type) {
 				case 'reply':
 					// ..."replied with"...
@@ -138,6 +139,14 @@ require('whatwg-fetch');
 					likeSource.appendChild(document.createTextNode('liked this'));
 					likeSource.setAttribute('href', link.data.url);
 					p.appendChild(likeSource);
+					break;
+				case 'bookmark':
+					// ..."bookmarked this"
+					p.appendChild(document.createTextNode(' '));
+					var bookmarkSource = document.createElement('a');
+					bookmarkSource.appendChild(document.createTextNode('bookmarked this'));
+					bookmarkSource.setAttribute('href', link.data.url);
+					p.appendChild(bookmarkSource);
 					break;
 				default:
 					// ..."sent a "...
