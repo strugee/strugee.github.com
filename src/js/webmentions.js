@@ -139,6 +139,15 @@ require('whatwg-fetch');
 					likeSource.setAttribute('href', link.data.url);
 					p.appendChild(likeSource);
 					break;
+				default:
+					// ..."sent a "...
+					p.appendChild(document.createTextNode(' sent a '));
+					// ..."Webmention notification"
+					var mentionSource = document.createElement('a');
+					mentionSource.appendChild(document.createTextNode('Webmention notification'));
+					mentionSource.setAttribute('href', link.data.url);
+					p.appendChild(mentionSource);
+					break;
 				}
 
 				mentionsElement.appendChild(p);
