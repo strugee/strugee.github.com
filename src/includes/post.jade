@@ -40,6 +40,8 @@ mixin renderPost(post, isIndex)
 				| .
 
 		//- Post content
+		if post.data.like
+			p AJ liked #[a(href=post.data.like) a post]
 		.e-content
 			if (post.data.syndicate || []).includes('indienews')
 				p.indienews-note
