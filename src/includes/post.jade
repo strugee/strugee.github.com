@@ -13,7 +13,7 @@ mixin renderPost(post, isIndex)
 		//- Metadata
 		- var author = post.data.author;
 		- var time = post.data.time;
-		- var categories = post.data.categories;
+		- var categories = post.data.categories || [];
 		- categories = categories.filter(function(el) { return !silentCategories.includes(el); });
 		- var monthName = post.data.time.monthName;
 		- var monthStr = post.data.time.monthUrlStr;
@@ -26,13 +26,14 @@ mixin renderPost(post, isIndex)
 				a(href=baseURL+post.data.time.yearStr+'/'+monthStr+'/')= monthName
 				|  #{post.data.time.dayOfMonthStr}, 
 				a(href=baseURL+post.data.time.yearStr+'/')= post.data.time.yearStr
-			|  in 
-			for category, index in categories
-				a.p-category(href=baseURL+'category/' + category + '/') #{category}
-				if index < categories.length - 2
-					| , 
-				else if index === categories.length - 2
-					|  and 
+			if categories.length > 0
+				|  in 
+				for category, index in categories
+					a.p-category(href=baseURL+'category/' + category + '/') #{category}
+					if index < categories.length - 2
+						| , 
+					else if index === categories.length - 2
+						|  and 
 			//- TODO maybe show exact timestamps if the post is edited on the same day?
 			if post.data.edited
 				| . Last edited 
