@@ -132,7 +132,7 @@ gulp.task('rss', function() {
 	           .pipe(truncateIndexes())
 	           .pipe(indexesToRss({
 		           title: 'strugee.net blog',
-		           copyright: '© Copyright 2012-2017 AJ Jordan. Available under the GNU Affero GPL.',
+		           copyright: '© Copyright 2012-2018 AJ Jordan. Available under the GNU Affero GPL.',
 		           webMaster: 'AJ Jordan <alex@strugee.net>'
 	           }, 'https://strugee.net/blog/'))
 	           .pipe(rename({ extname: '.rss' }))
