@@ -1,0 +1,19 @@
+extends /src/includes/layout.jade
+
+include /src/includes/post.jade
+
+block head
+	title #{file.data.title} - strugee.net
+	link(rel='pingback', href='https://webmention.io/strugee.net/xmlrpc')
+	link(rel='webmention', href='https://webmention.io/strugee.net/webmention')
+	script(src='/js/webmentions.js', type='text/javascript')
+
+block content
+	+renderPost(file, false)
+
+	hr
+	p#webmention-replies-header WebMention replies
+
+	div#webmentions
+	noscript
+		p Couldn't load WebMentions because you turned your JavaScript off. Sorry about that!
