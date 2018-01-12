@@ -3,11 +3,12 @@ mixin renderPost(post, isIndex)
 
 	article.h-entry(itemscope, itemtype='http://schema.org/BlogPosting')
 		//- Title
-		if isIndex
-			a(href=baseURL + post.relative.replace('.md', ''))
-				h2.p-name= post.data.title
-		else
-			h1.p-name= post.data.title
+		if post.data.title
+			if isIndex
+				a(href=baseURL + post.relative.replace('.md', ''))
+					h2.p-name= post.data.title
+			else
+				h1.p-name= post.data.title
 
 		//- Metadata
 		- var author = post.data.author;
