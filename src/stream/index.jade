@@ -1,0 +1,26 @@
+extends /src/includes/layout.jade
+
+include /src/includes/post-index.jade
+
+block nav-social
+	if indexType === 'main'
+		li.navlink Social
+	else
+		li.navlink
+			a(href='/stream/') Social
+
+block head
+	if indexType === 'main'
+		title Social stream - strugee.net
+	else if indexType === 'year'
+		title Posts from #{year} - strugee.net
+	else if indexType === 'month'
+		- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
+		title Posts from #{monthName + ' ' + year} - strugee.net
+	else if indexType === 'category'
+		title Posts categorized as "#{category}" - strugee.net
+	// TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...
+	link(rel='alternate', type='application/rss+xml', href='index.rss')
+
+block content
+	+streamIndex('Social stream', '/stream/', true)

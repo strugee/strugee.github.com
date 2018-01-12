@@ -43,7 +43,7 @@ var categoryDefaults = [];
 /* TODO: validate HTML */
 
 gulp.task('html', function() {
-	return gulp.src(['src/**/*.jade', '!src/blog/*.jade', '!src/includes/*.jade'])
+	return gulp.src(['src/**/*.jade', '!src/blog/*.jade', '!src/stream/*.jade', '!src/includes/*.jade'])
 	           .pipe(jade({ pretty: true }))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist'));
@@ -139,6 +139,50 @@ gulp.task('rss', function() {
 	           .pipe(gulp.dest('dist/blog'));
 });
 
+gulp.task('social:post-index', function() {
+	return gulp.src('src/stream/*.md')
+	           .pipe(frontMatter())
+	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders))
+	           .pipe(dateInPath())
+	           .pipe(decorateFiles())
+	           .pipe(addsrc('src/stream/index.jade'))
+	           .pipe(postsToIndex('index.jade'))
+	           .pipe(paginateIndexes())
+	           .pipe(jade({pretty: true, basedir: __dirname}))
+	           .pipe(rename({ extname: '.html' }))
+	           .pipe(gulp.dest('dist/stream'));
+});
+
+gulp.task('social:posts', function() {
+	return gulp.src('src/stream/*.md')
+	           .pipe(frontMatter())
+	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders).use(slug))
+	           .pipe(dateInPath())
+	           .pipe(decorateFiles())
+	           .pipe(addsrc('src/stream/post.jade'))
+	           .pipe(attachToTemplate('post.jade'))
+	           .pipe(jade({pretty: true, basedir: __dirname}))
+	           .pipe(rename({ extname: '.html' }))
+	           .pipe(gulp.dest('dist/stream'));
+});
+
+gulp.task('social:rss', function() {
+	return gulp.src('src/stream/*.md')
+	           .pipe(frontMatter())
+	           .pipe(remark({quiet: true}).use(remarkHtml))
+	           .pipe(dateInPath())
+	           .pipe(addsrc('src/stream/index.jade'))
+	           .pipe(postsToIndex('index.jade'))
+	           .pipe(truncateIndexes())
+	           .pipe(indexesToRss({
+		           title: 'strugee.net social stream',
+		           copyright: '© Copyright 2012-2018 AJ Jordan. Available under the GNU Affero GPL.',
+		           webMaster: 'AJ Jordan <alex@strugee.net>'
+	           }, 'https://strugee.net/stream/'))
+	           .pipe(rename({ extname: '.rss' }))
+	           .pipe(gulp.dest('dist/stream'));
+});
+
 gulp.task('ping', pingLazymention('http://strugee.net:7517/jobs/submit', 'https://strugee.net/blog/'));
 
 gulp.task('misc', function() {
@@ -159,7 +203,9 @@ gulp.task('jshint', function() {
 
 gulp.task('blog', ['posts','post-index', 'rss']);
 
-gulp.task('build', ['html', 'css', 'js', 'font', 'images', 'blog', 'misc']);
+gulp.task('social', ['social:posts','social:post-index', 'social:rss']);
+
+gulp.task('build', ['html', 'css', 'js', 'font', 'images', 'blog', 'social', 'misc']);
 
 gulp.task('lint', ['csslint', 'jshint']);
 
@@ -170,7 +216,8 @@ gulp.task('deploy', ['build'], function(done) {
 gulp.task('watch', ['build'], function() {
 	gulp.watch('src/*.jade', ['html']);
 	gulp.watch(['src/blog/*.md', 'src/blog/*.jade'], ['blog']);
-	gulp.watch('src/includes/*.jade', ['html', 'blog']);
+	gulp.watch(['src/stream/*.md', 'src/stream/*.jade'], ['social']);
+	gulp.watch('src/includes/*.jade', ['html', 'blog', 'social']);
 	gulp.watch(['src/styles/*.styl', 'src/styles/lib/*.styl'], ['css']);
 	gulp.watch('src/js/*.js', ['js']);
 });
