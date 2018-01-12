@@ -34,7 +34,7 @@ mixin renderPost(post, isIndex)
 					|  and 
 			//- TODO maybe show exact timestamps if the post is edited on the same day?
 			if post.data.edited
-				| . Edited 
+				| . Last edited 
 				time(datetime=post.data.edited.moment.toISOString(true)) #{post.data.edited.monthName} #{post.data.edited.dayOfMonthStr}, #{post.data.edited.yearStr}
 				| .
 
