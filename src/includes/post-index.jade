@@ -1,35 +1,13 @@
-extends /src/includes/layout.jade
-
 include /src/includes/post.jade
 
-block nav-blog
-	if indexType === 'main'
-		li.navlink Blog
-	else
-		li.navlink
-			a(href='/blog/') Blog
-
-block head
-	if indexType === 'main'
-		title Blog - strugee.net
-	else if indexType === 'year'
-		title Posts from #{year} - strugee.net
-	else if indexType === 'month'
-		- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
-		title Posts from #{monthName + ' ' + year} - strugee.net
-	else if indexType === 'category'
-		title Posts categorized as "#{category}" - strugee.net
-	// TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...
-	link(rel='alternate', type='application/rss+xml', href='index.rss')
-
-block content
+mixin streamIndex(streamType, baseURL)
 	.h-feed
 		//- Index title
 		if indexType === 'main'
-			h2.p-name Blog
+			h2.p-name= streamType
 			p#postsFrom Show only posts from 
 				each year in includedYears
-					a(href='/blog/' + year + '/')= year
+					a(href=baseURL + year + '/')= year
 					| 
 		else if indexType === 'year'
 			h2.p-name Posts from #{year}
@@ -38,7 +16,7 @@ block content
 					- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
 					- var monthStr = month + 1;
 					- monthStr = monthStr < 10 ? '0' + monthStr.toString() : monthStr.toString();
-					a(href='/blog/' + year + '/' + monthStr + '/')= monthName
+					a(href=baseURL + year + '/' + monthStr + '/')= monthName
 					| 
 		else if indexType === 'month'
 			- var monthName = new Date(1970, month).toLocaleString('en-us', {month: 'long'});
@@ -48,7 +26,7 @@ block content
 
 		//- Posts
 		each post, index in posts
-			+renderPost(post, true)
+			+renderPost(post, baseURL, true)
 
 			if index < posts.length - 1
 				hr
