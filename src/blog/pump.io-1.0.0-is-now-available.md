@@ -3,9 +3,13 @@ title: "Pump.io 1.0.0 is now available!"
 time:
   epoch: 1472279874
   utcoffset: "UTC-7"
+edited:
+  epoch: 1515726606
+  utcoffset: "UTC-7"
 author: "AJ Jordan"
 categories:
   - development
+  - releases
   - security
   - pump.io
 ---

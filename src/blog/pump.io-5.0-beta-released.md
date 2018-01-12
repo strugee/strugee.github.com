@@ -3,9 +3,13 @@ title: "pump.io 5.0 beta released"
 time:
   epoch: 1502131872
   utcoffset: "UTC-4"
+edited:
+  epoch: 1515726606
+  utcoffset: "UTC-7"
 author: "AJ Jordan"
 categories:
   - pump.io
+  - releases
   - blaggregator
 canonical: http://pump.io/blog/2017/08/pump.io-5.0-beta-released
 ---

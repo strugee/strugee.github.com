@@ -3,9 +3,13 @@ title: "pump.io 5.1 is in beta"
 time:
   epoch: 1512782697
   utcoffset: "UTC-5"
+edited:
+  epoch: 1515726606
+  utcoffset: "UTC-7"
 author: "AJ Jordan"
 categories:
   - pump.io
+  - releases
   - blaggregator
 canonical: "http://pump.io/blog/2017/12/pump.io-5.1-is-in-beta"
 ---

@@ -3,10 +3,14 @@ title: "pump.io 5.1 stable published to npm"
 time:
   epoch: 1515236983
   utcoffset: "UTC-7"
+edited:
+  epoch: 1515726606
+  utcoffset: "UTC-7"
 author: "AJ Jordan"
 categories:
   - pump.io
   - development
+  - releases
   - blaggregator
 canonical: http://pump.io/blog/2018/01/pump.io-5.1-stable-published-to-npm
 ---

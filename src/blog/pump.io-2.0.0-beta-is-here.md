@@ -3,9 +3,13 @@ title: "Pump.io 2.0.0 beta is here"
 time:
   epoch: 1478142359
   utcoffset: "UTC-7"
+edited:
+  epoch: 1515726606
+  utcoffset: "UTC-7"
 author: "AJ Jordan"
 categories:
   - development
+  - releases
   - pump.io
 ---
 

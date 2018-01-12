@@ -3,10 +3,14 @@ title: "Announcing lazymention: elegant outbound Webmention for static sites"
 time:
   epoch: 1514598724
   utcoffset: "UTC-7"
+edited:
+  epoch: 1515726606
+  utcoffset: "UTC-7"
 author: "AJ Jordan"
 categories:
   - development
   - indieweb
+  - releases
   - blaggregator
 syndicate:
   - indienews

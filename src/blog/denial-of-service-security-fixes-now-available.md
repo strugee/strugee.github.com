@@ -3,11 +3,15 @@ title: "pump.io denial-of-service security fixes now available"
 time:
   epoch: 1506894059
   utcoffset: "UTC-4"
+edited:
+  epoch: 1515726606
+  utcoffset: "UTC-7"
 author: "AJ Jordan"
 categories:
   - pump.io
   - development
   - security
+  - releases
   - blaggregator
 canonical: http://pump.io/blog/2017/10/denial-of-service-security-fixes-now-available
 ---

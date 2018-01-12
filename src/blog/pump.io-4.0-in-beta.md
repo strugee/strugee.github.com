@@ -3,10 +3,14 @@ title: "pump.io 4.0 in beta"
 time:
   epoch: 1491253390
   utcoffset: "UTC-4"
+edited:
+  epoch: 1515726606
+  utcoffset: "UTC-7"
 author: "AJ Jordan"
 categories:
   - pump.io
   - development
+  - releases
   - blaggregator
 canonical: "http://pump.io/blog/2017/04/pump.io-4.0-in-beta"
 ---

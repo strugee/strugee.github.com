@@ -3,9 +3,13 @@ title: "Pump.io 2.0.4 is available"
 time:
   epoch: 1478936954
   utcoffset: "UTC-8"
+edited:
+  epoch: 1515726606
+  utcoffset: "UTC-7"
 author: "AJ Jordan"
 categories:
   - development
+  - releases
   - pump.io
 ---
 
