@@ -66,6 +66,6 @@ If you have any issues with the upgrade, get in touch with [the community][2]. Y
 
  [1]: https://github.com/expressjs/express/blob/master/History.md#300--2012-10-23
  [2]: https://github.com/pump-io/pump.io/wiki/Community
- [3]: https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#201---2016-11-10
+ [3]: https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#204---2016-11-13
  [#1158]: https://github.com/pump-io/pump.io/issues/1158
  [#1061]: https://github.com/pump-io/pump.io/issues/1061
