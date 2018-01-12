@@ -1,6 +1,6 @@
 include /src/includes/post.jade
 
-mixin streamIndex(streamType, baseURL, topHr)
+mixin streamIndex(streamType, baseURL)
 	.h-feed
 		//- Index title
 		if indexType === 'main'
@@ -24,11 +24,11 @@ mixin streamIndex(streamType, baseURL, topHr)
 		else if indexType === 'category'
 			h2.p-name Posts categorized as "#{category}"
 
-		if topHr
-			hr
 
 		//- Posts
 		each post, index in posts
+			if index === 0 && !post.data.title
+				hr
 			+renderPost(post, baseURL, true)
 
 			if index < posts.length - 1
