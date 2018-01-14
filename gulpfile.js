@@ -142,7 +142,7 @@ gulp.task('rss', function() {
 gulp.task('ping', pingLazymention('http://strugee.net:7517/jobs/submit', 'https://strugee.net/blog/'));
 
 gulp.task('misc', function() {
-	return gulp.src(['.gitmodules', 'COPYING', 'favicon.ico', 'humans.txt', 'robots.txt', 'sitemap.xml', 'CNAME'])
+	return gulp.src(['COPYING', 'src/misc/*', 'src/misc/.*'])
 	           .pipe(gulp.dest('dist'));
 });
 
