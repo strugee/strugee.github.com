@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/strugee
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://strugee.net
+  * I am strugee (https://keybase.io/strugee) on keybase.
+  * I have a public key ASC9gapv_grlcgAsbrftwWFxIlY7sBXSCWOJunNNrZ__kQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120bd81aa6ffe0ae572002c6eb7edc1617122563bb015d2096389ba734dad9fff910a",
+      "host": "keybase.io",
+      "kid": "0120bd81aa6ffe0ae572002c6eb7edc1617122563bb015d2096389ba734dad9fff910a",
+      "uid": "d3b74b18f28125e62d1ab48096121919",
+      "username": "strugee"
+    },
+    "merkle_root": {
+      "ctime": 1515974057,
+      "hash": "fe0e8a9729a9a30a87551ca445c0d63b04e88a07174173bd34168094bdb7ed4a94d82b98698e13a25190074fbb91246f464cb410ff73154adf32198c4b65cfd8",
+      "hash_meta": "74b3787a73bfa95433c3cb9fadcc81d5427756dd3cc4997832b739d4228fa28d",
+      "seqno": 1926717
+    },
+    "service": {
+      "hostname": "strugee.net",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.39"
+  },
+  "ctime": 1515974176,
+  "expire_in": 504576000,
+  "prev": "96c389ec0e722dc7097dca671ba137feb5d6de90e9fb604076e3c35ddb116b52",
+  "seqno": 7,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgvYGqb/4K5XIALG637cFhcSJWO7AV0gljibpzTa2f/5EKp3BheWxvYWTFA0J7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwYmQ4MWFhNmZmZTBhZTU3MjAwMmM2ZWI3ZWRjMTYxNzEyMjU2M2JiMDE1ZDIwOTYzODliYTczNGRhZDlmZmY5MTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwYmQ4MWFhNmZmZTBhZTU3MjAwMmM2ZWI3ZWRjMTYxNzEyMjU2M2JiMDE1ZDIwOTYzODliYTczNGRhZDlmZmY5MTBhIiwidWlkIjoiZDNiNzRiMThmMjgxMjVlNjJkMWFiNDgwOTYxMjE5MTkiLCJ1c2VybmFtZSI6InN0cnVnZWUifSwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE1MTU5NzQwNTcsImhhc2giOiJmZTBlOGE5NzI5YTlhMzBhODc1NTFjYTQ0NWMwZDYzYjA0ZTg4YTA3MTc0MTczYmQzNDE2ODA5NGJkYjdlZDRhOTRkODJiOTg2OThlMTNhMjUxOTAwNzRmYmI5MTI0NmY0NjRjYjQxMGZmNzMxNTRhZGYzMjE5OGM0YjY1Y2ZkOCIsImhhc2hfbWV0YSI6Ijc0YjM3ODdhNzNiZmE5NTQzM2MzY2I5ZmFkY2M4MWQ1NDI3NzU2ZGQzY2M0OTk3ODMyYjczOWQ0MjI4ZmEyOGQiLCJzZXFubyI6MTkyNjcxN30sInNlcnZpY2UiOnsiaG9zdG5hbWUiOiJzdHJ1Z2VlLm5ldCIsInByb3RvY29sIjoiaHR0cHM6In0sInR5cGUiOiJ3ZWJfc2VydmljZV9iaW5kaW5nIiwidmVyc2lvbiI6MX0sImNsaWVudCI6eyJuYW1lIjoia2V5YmFzZS5pbyBnbyBjbGllbnQiLCJ2ZXJzaW9uIjoiMS4wLjM5In0sImN0aW1lIjoxNTE1OTc0MTc2LCJleHBpcmVfaW4iOjUwNDU3NjAwMCwicHJldiI6Ijk2YzM4OWVjMGU3MjJkYzcwOTdkY2E2NzFiYTEzN2ZlYjVkNmRlOTBlOWZiNjA0MDc2ZTNjMzVkZGIxMTZiNTIiLCJzZXFubyI6NywidGFnIjoic2lnbmF0dXJlIn2jc2lnxEAUs0kixlAxhMqchpk+ugJ9lchdWygbV8cHz44d/CWFG0a/dv7jlhVjI15fkGTf+fpln5U8ACx4dzhvMo7uP54PqHNpZ190eXBlIKRoYXNogqR0eXBlCKV2YWx1ZcQgOF6aDSGoWcq7lG9Za4jzIE7wYBSuvY03V1Hnj4bTKLajdGFnzQICp3ZlcnNpb24B
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/strugee
+
+==================================================================
