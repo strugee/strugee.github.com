@@ -62,6 +62,29 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h2 class="p-name">Blog</h2>
           <p id="postsFrom">Show only posts from <a href="/blog/2014/">2014</a> <a href="/blog/2015/">2015</a> <a href="/blog/2016/">2016</a> <a href="/blog/2017/">2017</a> <a href="/blog/2018/">2018</a> 
           </p>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="undefined2017/12/winter-break-priorities-2017-18">
+              <h2 class="p-name">Winter break priorities, 2017-18</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
+              <time datetime="2017-12-20T17:44:18-05:00"><a href="undefined2017/12/">December</a> 20, <a href="undefined2017/">2017</a></time> in <a href="undefinedcategory/personal/" class="p-category">personal</a>. Last edited 
+              <time datetime="2017-12-29T02:57:23.000-07:00">December 29, 2017</time>.
+            </p>
+            <div class="e-content"><p>So I just wanted to write something up real fast to document my development priorities over my upcoming winter break (which starts tomorrow, whoohoo!). This is just generally useful to have, because I'm forgetful, but will also help keep me accountable since the list is public.</p>
+<p>So, here are the projects I want to get done, in rough order of priority:</p>
+<ol>
+<li>Polish up an <a href="https://github.com/nodejs/node/pull/14164#issuecomment-325553163">outstanding Node.js Pull Request</a> that automatically generates manpages for every module shipped with Node core</li>
+<li>Deal with GPG key signing which I have been procrasinating on for, well, years now</li>
+<li>Push some Debian packaging work forward (I've done some work to get the <a href="https://tracker.debian.org/pkg/profanity">Profanity packaging</a> up-to-date, and I want to get <a href="https://github.com/strugee/filter-other-days">filter-other-days</a> into Debian as well)</li>
+<li>Finish up v1 of <a href="https://github.com/strugee/lazymention">lazymention</a> - high-priority since it's so close to being done!</li>
+<li>Finally push through and implement <a href="https://github.com/pump-io/pump.io/issues/1241">ActivityPub in pump.io core</a></li>
+<li>Clear <a href="https://github.com/pump-io/pump.io/pulls">the backlog of PRs</a> sent to pump.io</li>
+</ol>
+<p>I also am setting a goal of writing at least two blog posts per week, and I want to try to get some editing done on a paper I'm planning to try to get published (though I'm not sure if I'll end up doing this, honestly).</p>
+<p>That seems like a lot, honestly, and yet I feel like I must have missed something - I will update this list if I think of anything else!</p>
+<p>Cheers, and happy holidays everyone! \o/</p>
+
+            </div>
+          </article>
+          <hr/>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="undefined2017/12/pump.io-5.1-is-in-beta">
               <h2 class="p-name">pump.io 5.1 is in beta</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/12/pump.io-5.1-is-in-beta">here</a> on 
@@ -121,29 +144,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>With these changes I expect that <code>filter-other-days</code> will probably run on all major BSD distributions. I intend to confirm this hypothesis soon and have filed bugs for <a href="https://github.com/strugee/filter-other-days/issues/12">OpenBSD</a> and <a href="https://github.com/strugee/filter-other-days/issues/13">NetBSD</a>, plus <a href="https://github.com/strugee/filter-other-days/issues/14">illumos</a> just for kicks.</p>
 <p>As with 1.0.0, you can clone <code>filter-other-days</code> <a href="https://github.com/strugee/filter-other-days">from GitHub</a> or you can download a (signed) <a href="https://github.com/strugee/filter-other-days/releases/tag/v1.0.1">tarball</a>. Please do <a href="https://github.com/strugee/filter-other-days/issues/new">report any bugs</a> you find in the release.</p>
 <p>Enjoy!</p>
-
-            </div>
-          </article>
-          <hr/>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="undefined2017/10/announcing-filter-other-days">
-              <h2 class="p-name">filter-other-days: Artificial Ignorance-compatible logfile date filtering</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-              <time datetime="2017-10-20T19:19:51-04:00"><a href="undefined2017/10/">October</a> 20, <a href="undefined2017/">2017</a></time> in <a href="undefinedcategory/development/" class="p-category">development</a>, <a href="undefinedcategory/security/" class="p-category">security</a>, <a href="undefinedcategory/sysadmin/" class="p-category">sysadmin</a> and <a href="undefinedcategory/releases/" class="p-category">releases</a>. Last edited 
-              <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
-            </p>
-            <div class="e-content"><p>I've just published version 1.0 of my latest project, <code>filter-other-days</code> - a shell script to filter logfiles for today's date in an Artificial Ignorance-compatible way.</p>
-<p>If you haven't heard of <a href="http://www.ranum.com/security/computer_security/papers/ai/index.html">Artificial Ignorance</a>, it's something you should look into cause it's pretty awesome. Here's the tl;dr: it doesn't make sense to look for all the "interesting" things  in logfiles, because it's not actually possible to enumerate all the failure conditions of a system. So instead what we do is <em>throw away</em> entries that we're <em>sure</em> are just routine. Since we've gotten rid of all the uninteresting entries, whatever is left has to be interesting.</p>
-<p>I find this pretty compelling, and decided to start implementing it on my Tor relay. I quickly realized that my ideal workflow would be to configure cron to send me email with a daily report of interesting log entries. However, this presented a problem: how to get just today's log entries? I wanted to be able to handle all logfiles at once instead of receiving different reports for different logs, so I had to be able to parse all logfiles in the same way. My relay runs on FreeBSD, so the logs are unstructured text files, and even worse, several daemons (like Tor itself) write timestamps in a different format - this makes parsing all logfiles at once super difficult because I couldn't just trivially <code>grep</code> for today's date since that would end up dropping legitimate entries from logfiles that formatted their timestamps differently.</p>
-<p>I briefly considered trying to write a regex to match all sorts of different timestamp formats, but quickly rejected this idea as too fragile. There are a lot of moving parts in a modern operating system - what if e.g. a daemon changed its defaults about how to format timestamps? Or, more likely, what if I simply missed a particular format present in my logs? Then I'd be accidentally throwing away an entire logfile. To solve this problem, I decided to apply the same idea behind Artificial Ignorance - if I couldn't reliably, 100% match log entries from today's date, I could do the next best thing and attempt to discard all entries from <em>other</em> dates. In this case the worst that could happen is me recieving irrelevant information, and I'd be basically guaranteed to never miss an legitimate entry from today.</p>
-<p><code>filter-other-days</code> is a working implementation of this design. Originally I put it with the other random scripts I keep with my <a href="https://github.com/strugee/dots/tree/master/bin">dotfiles</a>, but it quickly became obvious that it was useful as a standalone project. So I <a href="https://github.com/strugee/dots/commit/7dd7e2755c55194cdff1c7b24b24bca72581e346">extracted</a> it into its own repository, which now lives <a href="https://github.com/strugee/filter-other-days">on GitHub</a>. From there I continued to improve the script while adding a test suite and writing extensive documentation (including a Unix manpage - I always feel like a wizardly hacker when writing those things). This took, by my estimation, somewhere between 10 and 15 hours because this is actually a shockingly non-trivial problem, but mostly because regexes are hard.</p>
-<p>But today I finally finished! So I'm super excited to announce that version 1.0 of <code>filter-other-days</code> is now available. You can either clone it from GitHub or download a <a href="https://github.com/strugee/filter-other-days/releases/tag/v1.0.0">tarball</a> (and the accompanying signature, if you want). It works pretty well already, but I have some ideas for future directions the project could go:</p>
-<ol>
-<li>Logic allowing you to actually specify the date you want to filter for, instead of assuming it's today (though you actually can already get this behavior using <code>faketime</code>; that's what the test suite does)</li>
-<li>Removal of the dependency on GNU <code>seq</code> - this is, to my knowledge, the only non-POSIX requirement of <code>filter-other-days</code></li>
-<li>Debian package, maybe?</li>
-<li>More log formats (please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> if you have formats <code>filter-other-days</code> doesn't recognize - which you probably do!)</li>
-</ol>
-<p>If you find this project useful, let me know! I'd love to hear about how people are using it. Or if it breaks (or doesn't fill your usecases), please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> or send patches - I love those, too! Either way, may the logs be with you!</p>
 
             </div>
           </article>
