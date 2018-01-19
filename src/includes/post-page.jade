@@ -9,7 +9,7 @@ block head
 	script(src='/js/webmentions.js', type='text/javascript')
 
 block content
-	+renderPost(file, false)
+	+renderPost(file, '/blog/', false)
 
 	hr
 	p#webmention-replies-header WebMention replies
