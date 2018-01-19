@@ -32,7 +32,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://plus.google.com/+AlexJordan">
     <link rel="me" href="https://pump.strugee.net/alex">
     <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
-    <link rel="me" href="https://media.strugee.net/alex">
+    <link rel="me" href="https://media.strugee.net/u/alex">
     <link rel="me" href="https://twitter.com/strugee2">
     <link rel="me" href="https://plus.google.com/+AlexJordan">
     <link rel="me" href="https://www.instagram.com/strugee2/">
@@ -68,17 +68,17 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
               <time datetime="2017-12-20T17:44:18-05:00"><a href="/blog/2017/12/">December</a> 20, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/personal/" class="p-category">personal</a>. Last edited 
               <time datetime="2017-12-29T02:57:23.000-07:00">December 29, 2017</time>.
             </p>
-            <div class="e-content"><p>So I just wanted to write something up real fast to document my development priorities over my upcoming winter break (which starts tomorrow, whoohoo!). This is just generally useful to have, because I'm forgetful, but will also help keep me accountable since the list is public.</p>
+            <div class="e-content"><p>So I just wanted to write something up real fast to document my development priorities over my upcoming winter break (which starts tomorrow, whoohoo!). This is just generally useful to have, because I&#x27;m forgetful, but will also help keep me accountable since the list is public.</p>
 <p>So, here are the projects I want to get done, in rough order of priority:</p>
 <ol>
 <li>Polish up an <a href="https://github.com/nodejs/node/pull/14164#issuecomment-325553163">outstanding Node.js Pull Request</a> that automatically generates manpages for every module shipped with Node core</li>
 <li>Deal with GPG key signing which I have been procrasinating on for, well, years now</li>
-<li>Push some Debian packaging work forward (I've done some work to get the <a href="https://tracker.debian.org/pkg/profanity">Profanity packaging</a> up-to-date, and I want to get <a href="https://github.com/strugee/filter-other-days">filter-other-days</a> into Debian as well)</li>
-<li>Finish up v1 of <a href="https://github.com/strugee/lazymention">lazymention</a> - high-priority since it's so close to being done!</li>
+<li>Push some Debian packaging work forward (I&#x27;ve done some work to get the <a href="https://tracker.debian.org/pkg/profanity">Profanity packaging</a> up-to-date, and I want to get <a href="https://github.com/strugee/filter-other-days">filter-other-days</a> into Debian as well)</li>
+<li>Finish up v1 of <a href="https://github.com/strugee/lazymention">lazymention</a> - high-priority since it&#x27;s so close to being done!</li>
 <li>Finally push through and implement <a href="https://github.com/pump-io/pump.io/issues/1241">ActivityPub in pump.io core</a></li>
 <li>Clear <a href="https://github.com/pump-io/pump.io/pulls">the backlog of PRs</a> sent to pump.io</li>
 </ol>
-<p>I also am setting a goal of writing at least two blog posts per week, and I want to try to get some editing done on a paper I'm planning to try to get published (though I'm not sure if I'll end up doing this, honestly).</p>
+<p>I also am setting a goal of writing at least two blog posts per week, and I want to try to get some editing done on a paper I&#x27;m planning to try to get published (though I&#x27;m not sure if I&#x27;ll end up doing this, honestly).</p>
 <p>That seems like a lot, honestly, and yet I feel like I must have missed something - I will update this list if I think of anything else!</p>
 <p>Cheers, and happy holidays everyone! \o/</p>
 
@@ -91,17 +91,17 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
               <time datetime="2017-12-08T20:24:57-05:00"><a href="/blog/2017/12/">December</a> 8, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a> and <a href="/blog/category/releases/" class="p-category">releases</a>. Last edited 
               <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
             </p>
-            <div class="e-content"><p>I'm really excited to announce that pump.io 5.1 is officially in beta!</p>
-<p>This release makes a wide array of improvements. One of the features I'm most excited about is <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">zero-downtime restarts</a>, which will allow administrators to gracefully roll over to new configurations and codebases with absolutely no user-visible impact! Aside from that, here's a list of highlights:</p>
+            <div class="e-content"><p>I&#x27;m really excited to announce that pump.io 5.1 is officially in beta!</p>
+<p>This release makes a wide array of improvements. One of the features I&#x27;m most excited about is <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">zero-downtime restarts</a>, which will allow administrators to gracefully roll over to new configurations and codebases with absolutely no user-visible impact! Aside from that, here&#x27;s a list of highlights:</p>
 <ul>
 <li>The daemon now generates startup log warnings on bad configurations, including insecure <code>secret</code> values and internal parameters</li>
 <li>An official <code>Dockerfile</code> is now included with the release</li>
-<li>The logged-out mobile homepage's menu icon is no longer incorrectly styled as black</li>
+<li>The logged-out mobile homepage&#x27;s menu icon is no longer incorrectly styled as black</li>
 <li>SockJS connections no longer fail due to authorization problems</li>
 </ul>
-<p>As usual, this release also includes some small updates to dependencies. Plus, we started tracking how much code our test suite covers! We've also significantly cleaned up the documentation and moved almost all of the in-repository documentation to ReadTheDocs, where it's a lot more organized and accessible. If you want more than just these highlights, you can check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510-beta-0---2017-12-08">the changelog</a>.</p>
-<p>Note that while the repository includes a <code>Dockerfile</code> now, we have not yet begun publishing on Docker Hub due to some security logistics that need to be figured out - when we do, it'll be announced in all the usual places (including this blog).</p>
-<p>I'm so excited for people to try out this release. 5.1 beta 0 is a drop-in replacement for 5.0, so if you're on 5.0 and want to live (more) on the bleeding edge, you can upgrade with <code>npm install -g pump.io@5.1</code> if you have an npm-based install. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0-beta.0</code> tag. And as always, if you encounter any problems you can reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
+<p>As usual, this release also includes some small updates to dependencies. Plus, we started tracking how much code our test suite covers! We&#x27;ve also significantly cleaned up the documentation and moved almost all of the in-repository documentation to ReadTheDocs, where it&#x27;s a lot more organized and accessible. If you want more than just these highlights, you can check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510-beta-0---2017-12-08">the changelog</a>.</p>
+<p>Note that while the repository includes a <code>Dockerfile</code> now, we have not yet begun publishing on Docker Hub due to some security logistics that need to be figured out - when we do, it&#x27;ll be announced in all the usual places (including this blog).</p>
+<p>I&#x27;m so excited for people to try out this release. 5.1 beta 0 is a drop-in replacement for 5.0, so if you&#x27;re on 5.0 and want to live (more) on the bleeding edge, you can upgrade with <code>npm install -g pump.io@5.1</code> if you have an npm-based install. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0-beta.0</code> tag. And as always, if you encounter any problems you can reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
 
             </div>
           </article>
@@ -111,7 +111,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
               <time datetime="2017-11-24T20:24:46-05:00"><a href="/blog/2017/11/">November</a> 24, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/development/" class="p-category">development</a>
             </p>
-            <div class="e-content"><p>Once again I need to test whether <a href="https://github.com/strugee/lazymention">lazymention</a> - and more importantly, the underlying libraries (<a href="https://github.com/strugee/node-send-webmention">node-send-webmention</a> and <a href="https://github.com/strugee/node-get-webmention-url">node-get-webmention-url</a>) - complies with the <a href="https://www.w3.org/TR/webmention/">W3C spec</a>. I'll be using <a href="https://webmention.rocks/">webmention.rocks</a>, so, here's a large list of links:</p>
+            <div class="e-content"><p>Once again I need to test whether <a href="https://github.com/strugee/lazymention">lazymention</a> - and more importantly, the underlying libraries (<a href="https://github.com/strugee/node-send-webmention">node-send-webmention</a> and <a href="https://github.com/strugee/node-get-webmention-url">node-get-webmention-url</a>) - complies with the <a href="https://www.w3.org/TR/webmention/">W3C spec</a>. I&#x27;ll be using <a href="https://webmention.rocks/">webmention.rocks</a>, so, here&#x27;s a large list of links:</p>
 <p><a href="https://webmention.rocks/test/1">Test 1</a>, <a href="https://webmention.rocks/test/2">Test 2</a>, <a href="https://webmention.rocks/test/3">Test 3</a>, <a href="https://webmention.rocks/test/4">Test 4</a>, <a href="https://webmention.rocks/test/5">Test 5</a>, <a href="https://webmention.rocks/test/6">Test 6</a>, <a href="https://webmention.rocks/test/7">Test 7</a>, <a href="https://webmention.rocks/test/8">Test 8</a>, <a href="https://webmention.rocks/test/9">Test 9</a>, <a href="https://webmention.rocks/test/10">Test 10</a>, <a href="https://webmention.rocks/test/11">Test 11</a>, <a href="https://webmention.rocks/test/12">Test 12</a>, <a href="https://webmention.rocks/test/13">Test 13</a>, <a href="https://webmention.rocks/test/14">Test 14</a>, <a href="https://webmention.rocks/test/15">Test 15</a>, <a href="https://webmention.rocks/test/16">Test 16</a>, <a href="https://webmention.rocks/test/17">Test 17</a>, <a href="https://webmention.rocks/test/18">Test 18</a>, <a href="https://webmention.rocks/test/19">Test 19</a>, <a href="https://webmention.rocks/test/20">Test 20</a>, <a href="https://webmention.rocks/test/21">Test 21</a>, <a href="https://webmention.rocks/test/22">Test 22</a>, <a href="https://webmention.rocks/test/23/page">Test 23</a></p>
 <p>Hopefully it works \o/</p>
 
@@ -123,7 +123,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
               <time datetime="2017-11-15T14:43:16-05:00"><a href="/blog/2017/11/">November</a> 15, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/personal/" class="p-category">personal</a>
             </p>
-            <div class="e-content"><p>Testing whether my new Webmention implementation, <a href="https://github.com/strugee/lazymention">lazymention</a> (which will ship Real Soon Now™), will send a Webmention to note that I will <data class="p-rsvp" value="no">NOT be attending</data> today's <a href="http://tantek.com/2017/319/e1/homebrew-website-club" class="u-in-reply-to">Homebrew Website Club San Francisco</a>! Though let's be honest, I really want to.</p>
+            <div class="e-content"><p>Testing whether my new Webmention implementation, <a href="https://github.com/strugee/lazymention">lazymention</a> (which will ship Real Soon Now&#x2122;), will send a Webmention to note that I will <data class="p-rsvp" value="no">NOT be attending</data> today&#x27;s <a href="http://tantek.com/2017/319/e1/homebrew-website-club" class="u-in-reply-to">Homebrew Website Club San Francisco</a>! Though let&#x27;s be honest, I really want to.</p>
 <p>(With &#x3C;3 for <a href="https://chat.indieweb.org/social/2017-11-15#t1510774596509000">Tantek</a>)</p>
 
             </div>
@@ -134,12 +134,12 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
               <time datetime="2017-11-01T20:39:53-04:00"><a href="/blog/2017/11/">November</a> 1, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/releases/" class="p-category">releases</a> and <a href="/blog/category/sysadmin/" class="p-category">sysadmin</a>
             </p>
-            <div class="e-content"><p>I'm pleased to announce <code>filter-other-days</code> 1.0.1. This is a bugfix release primarily improving portability to other Unix-like operating systems; in particular, the test suite now fully passes under FreeBSD. Specifically:</p>
+            <div class="e-content"><p>I&#x27;m pleased to announce <code>filter-other-days</code> 1.0.1. This is a bugfix release primarily improving portability to other Unix-like operating systems; in particular, the test suite now fully passes under FreeBSD. Specifically:</p>
 <ul>
-<li>Various portability bugs in the test suite itself were fixed - the test suite no longer relies on a GNU <code>date</code> (with GNU <code>date -d</code> semantics) or a fully-functional <code>/dev/fd</code> (the fallback option is named pipes), and it doesn't hardcode bash's install path as <code>/bin/bash</code></li>
-<li>Some non-portable uses of <code>echo "\n"</code> which break under BSD systems were replaced with <code>printf</code> invocations</li>
-<li>Travis CI now checks <code>filter-other-days</code> with Debian's <code>checkbashisms</code> script, which is run in strict mode</li>
-<li>Non-portable uses of <code>test</code>'s <code>-o</code> option were caught by <code>checkbashisms</code> and replaced with <code>||</code></li>
+<li>Various portability bugs in the test suite itself were fixed - the test suite no longer relies on a GNU <code>date</code> (with GNU <code>date -d</code> semantics) or a fully-functional <code>/dev/fd</code> (the fallback option is named pipes), and it doesn&#x27;t hardcode bash&#x27;s install path as <code>/bin/bash</code></li>
+<li>Some non-portable uses of <code>echo &#x22;\n&#x22;</code> which break under BSD systems were replaced with <code>printf</code> invocations</li>
+<li>Travis CI now checks <code>filter-other-days</code> with Debian&#x27;s <code>checkbashisms</code> script, which is run in strict mode</li>
+<li>Non-portable uses of <code>test</code>&#x27;s <code>-o</code> option were caught by <code>checkbashisms</code> and replaced with <code>||</code></li>
 </ul>
 <p>With these changes I expect that <code>filter-other-days</code> will probably run on all major BSD distributions. I intend to confirm this hypothesis soon and have filed bugs for <a href="https://github.com/strugee/filter-other-days/issues/12">OpenBSD</a> and <a href="https://github.com/strugee/filter-other-days/issues/13">NetBSD</a>, plus <a href="https://github.com/strugee/filter-other-days/issues/14">illumos</a> just for kicks.</p>
 <p>As with 1.0.0, you can clone <code>filter-other-days</code> <a href="https://github.com/strugee/filter-other-days">from GitHub</a> or you can download a (signed) <a href="https://github.com/strugee/filter-other-days/releases/tag/v1.0.1">tarball</a>. Please do <a href="https://github.com/strugee/filter-other-days/issues/new">report any bugs</a> you find in the release.</p>

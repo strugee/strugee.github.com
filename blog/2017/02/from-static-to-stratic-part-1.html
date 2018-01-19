@@ -32,7 +32,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://plus.google.com/+AlexJordan">
     <link rel="me" href="https://pump.strugee.net/alex">
     <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
-    <link rel="me" href="https://media.strugee.net/alex">
+    <link rel="me" href="https://media.strugee.net/u/alex">
     <link rel="me" href="https://twitter.com/strugee2">
     <link rel="me" href="https://plus.google.com/+AlexJordan">
     <link rel="me" href="https://www.instagram.com/strugee2/">
@@ -62,41 +62,41 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
         <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry">
           <h1 class="p-name">From static to Stratic - part 1</h1>
           <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-            <time datetime="2017-02-20T14:58:53-05:00"><a href="false2017/02/">February</a> 20, <a href="false2017/">2017</a></time> in <a href="falsecategory/development/" class="p-category">development</a> and <a href="falsecategory/stratic/" class="p-category">stratic</a>
+            <time datetime="2017-02-20T14:58:53-05:00"><a href="/blog/2017/02/">February</a> 20, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/stratic/" class="p-category">stratic</a>
           </p>
-          <div class="e-content"><p>So a couple days ago I published <code>generator-stratic@1.0.0-beta.1</code> to npm. Since Stratic is now officially in beta, I thought I'd write up a guide to converting a regular, static site to a Stratic-powered blog.</p>
-<p>Each step in this blog post (part 1 of 2[?]) will take you closer to having a fully-functional blog, but because of Stratic's decoupled design, you can work through them at your own pace. Each step will leave you with a functional environment (i.e. nothing will be "broken" such that you can't work on your website anymore).</p>
+          <div class="e-content"><p>So a couple days ago I published <code>generator-stratic@1.0.0-beta.1</code> to npm. Since Stratic is now officially in beta, I thought I&#x27;d write up a guide to converting a regular, static site to a Stratic-powered blog.</p>
+<p>Each step in this blog post (part 1 of 2[?]) will take you closer to having a fully-functional blog, but because of Stratic&#x27;s decoupled design, you can work through them at your own pace. Each step will leave you with a functional environment (i.e. nothing will be &#x22;broken&#x22; such that you can&#x27;t work on your website anymore).</p>
 <p>You can see the steps in this post in action at <a href="https://github.com/straticjs/static-to-stratic">straticjs/static-to-stratic</a>. Each commit corresponds to a step in this post.</p>
-<p>Let's get started!</p>
+<p>Let&#x27;s get started!</p>
 <h3 id="initial-setup">Initial setup</h3>
-<p>The site we'll be converting is currently pretty simple. It has an <code>index.html</code> and a <code>projects.html</code>. Each of these includes <code>/css/main.css</code> and <code>/js/main.js</code>. Also, they both have a navigation section and a footer that are duplicated across each page. Each time Alyssa P. Hacker - the website's owner - makes a change to these (for example to fix the copyright year in the footer), she has to change both HTML files. The best way for her to add a new page will be to copy an existing HTML file and then change it. This is a little unideal.</p>
-<p>Alyssa tracks her website on GitHub (in the example repository mentioned above). Here are links for the <a href="https://github.com/straticjs/static-to-stratic/blob/18a7a7da03a2f84f525f0b699a43005067428199/index.html"><code>index.html</code></a> and the <a href="https://github.com/straticjs/static-to-stratic/blob/18a7a7da03a2f84f525f0b699a43005067428199/projects.html"><code>projects.html</code></a> we'll be working with.</p>
-<p>Here's a visual of the project layout:</p>
+<p>The site we&#x27;ll be converting is currently pretty simple. It has an <code>index.html</code> and a <code>projects.html</code>. Each of these includes <code>/css/main.css</code> and <code>/js/main.js</code>. Also, they both have a navigation section and a footer that are duplicated across each page. Each time Alyssa P. Hacker - the website&#x27;s owner - makes a change to these (for example to fix the copyright year in the footer), she has to change both HTML files. The best way for her to add a new page will be to copy an existing HTML file and then change it. This is a little unideal.</p>
+<p>Alyssa tracks her website on GitHub (in the example repository mentioned above). Here are links for the <a href="https://github.com/straticjs/static-to-stratic/blob/18a7a7da03a2f84f525f0b699a43005067428199/index.html"><code>index.html</code></a> and the <a href="https://github.com/straticjs/static-to-stratic/blob/18a7a7da03a2f84f525f0b699a43005067428199/projects.html"><code>projects.html</code></a> we&#x27;ll be working with.</p>
+<p>Here&#x27;s a visual of the project layout:</p>
 <pre><code>% tree .
 .
-├── css
-│   └── main.css
-├── index.html
-├── js
-│   └── main.js
-└── projects.html
+&#x251C;&#x2500;&#x2500; css
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; main.css
+&#x251C;&#x2500;&#x2500; index.html
+&#x251C;&#x2500;&#x2500; js
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; main.js
+&#x2514;&#x2500;&#x2500; projects.html
 
 2 directories, 4 files
 </code></pre>
 <p>When Alyssa needs to preview her website, she manually runs <code>http-server .</code>.</p>
-<p>Since Alyssa uses GitHub she publishes her website on GitHub Pages, so her website is in the <code>master</code> branch of her git repository. (Here we're assuming that the repository is called <code>aphacker.github.io</code> or something, instead of <code>static-to-stratic</code>.)</p>
-<p>In addition to adding blog support, we'll improve Alyssa's website by reducing duplication while still allowing her to publish to GitHub Pages.</p>
+<p>Since Alyssa uses GitHub she publishes her website on GitHub Pages, so her website is in the <code>master</code> branch of her git repository. (Here we&#x27;re assuming that the repository is called <code>aphacker.github.io</code> or something, instead of <code>static-to-stratic</code>.)</p>
+<p>In addition to adding blog support, we&#x27;ll improve Alyssa&#x27;s website by reducing duplication while still allowing her to publish to GitHub Pages.</p>
 <h3 id="step-1---adding-gulp">Step 1 - adding gulp</h3>
-<p>Before we do anything else, we need to add a build system. Stratic is designed to work with <a href="">gulpjs</a>, so that's the one we'll be using.</p>
+<p>Before we do anything else, we need to add a build system. Stratic is designed to work with <a href="">gulpjs</a>, so that&#x27;s the one we&#x27;ll be using.</p>
 <p>Adding gulp is super easy. First, we need to create a <code>package.json</code>, so we do <code>npm init</code>:</p>
 <pre><code>% npm init
 This utility will walk you through creating a package.json file.
 It only covers the most common items, and tries to guess sensible defaults.
 
-See `npm help json` for definitive documentation on these fields
+See &#x60;npm help json&#x60; for definitive documentation on these fields
 and exactly what they do.
 
-Use `npm install &#x3C;pkg> --save` afterwards to install a package and
+Use &#x60;npm install &#x3C;pkg&#x3E; --save&#x60; afterwards to install a package and
 save it as a dependency in the package.json file.
 
 Press ^C at any time to quit.
@@ -107,144 +107,144 @@ entry point: (index.js)
 test command:
 git repository: (https://github.com/straticjs/static-to-stratic.git)
 keywords:
-author: Alyssa P. Hacker &#x3C;alyssaphacker@example.net>
+author: Alyssa P. Hacker &#x3C;alyssaphacker@example.net&#x3E;
 license: (ISC) AGPL-3.0+
 About to write to /Users/alex/Development/static-to-stratic/package.json:
 
 {
-  "name": "static-to-stratic",
-  "version": "1.0.0",
-  "description": "Personal website of Alyssa P. Hacker",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" &#x26;&#x26; exit 1"
+  &#x22;name&#x22;: &#x22;static-to-stratic&#x22;,
+  &#x22;version&#x22;: &#x22;1.0.0&#x22;,
+  &#x22;description&#x22;: &#x22;Personal website of Alyssa P. Hacker&#x22;,
+  &#x22;main&#x22;: &#x22;index.js&#x22;,
+  &#x22;scripts&#x22;: {
+    &#x22;test&#x22;: &#x22;echo \&#x22;Error: no test specified\&#x22; &#x26;&#x26; exit 1&#x22;
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/straticjs/static-to-stratic.git"
+  &#x22;repository&#x22;: {
+    &#x22;type&#x22;: &#x22;git&#x22;,
+    &#x22;url&#x22;: &#x22;git+https://github.com/straticjs/static-to-stratic.git&#x22;
   },
-  "author": "Alyssa P. Hacker &#x3C;alyssaphacker@example.net>",
-  "license": "AGPL-3.0+",
-  "bugs": {
-    "url": "https://github.com/straticjs/static-to-stratic/issues"
+  &#x22;author&#x22;: &#x22;Alyssa P. Hacker &#x3C;alyssaphacker@example.net&#x3E;&#x22;,
+  &#x22;license&#x22;: &#x22;AGPL-3.0+&#x22;,
+  &#x22;bugs&#x22;: {
+    &#x22;url&#x22;: &#x22;https://github.com/straticjs/static-to-stratic/issues&#x22;
   },
-  "homepage": "https://github.com/straticjs/static-to-stratic#readme"
+  &#x22;homepage&#x22;: &#x22;https://github.com/straticjs/static-to-stratic#readme&#x22;
 }
 
 
 Is this ok? (yes) yes
 </code></pre>
-<p>A couple things to note here: in general, the defaults are fine to accept. We've provided a description and an author, but these are optional since this isn't actually going to be published on the npm registry. They're just kind of nice to have.</p>
-<p>The same goes for the license, which in this case is the <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">Affero GPL 3.0 or above</a> - however, as the copyright holder you are of course free to <a href="https://choosealicense.com/">choose whatever license</a> you want. (Or no license, although I'd discourage you from doing that.)</p>
-<p>Once we have a <code>package.json</code>, we can go ahead and install gulp and another module we'll need, <code>ecstatic</code>:</p>
+<p>A couple things to note here: in general, the defaults are fine to accept. We&#x27;ve provided a description and an author, but these are optional since this isn&#x27;t actually going to be published on the npm registry. They&#x27;re just kind of nice to have.</p>
+<p>The same goes for the license, which in this case is the <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">Affero GPL 3.0 or above</a> - however, as the copyright holder you are of course free to <a href="https://choosealicense.com/">choose whatever license</a> you want. (Or no license, although I&#x27;d discourage you from doing that.)</p>
+<p>Once we have a <code>package.json</code>, we can go ahead and install gulp and another module we&#x27;ll need, <code>ecstatic</code>:</p>
 <pre><code>% npm install --save-dev gulp ecstatic
 </code></pre>
-<p>If you haven't used gulp previously, you'll also need to install <code>gulp-cli</code>:</p>
+<p>If you haven&#x27;t used gulp previously, you&#x27;ll also need to install <code>gulp-cli</code>:</p>
 <pre><code>% npm install -g gulp-cli
 </code></pre>
-<p>At this point, we'll need to move some files around. Now that we have a build system, we can organize our repository however we want instead of putting stuff exactly where we want it in production.</p>
-<p>You can do this however you want. The organization that you'll find most projects using, though, is to put stuff in a <code>src</code> directory. Let's make that right now.</p>
+<p>At this point, we&#x27;ll need to move some files around. Now that we have a build system, we can organize our repository however we want instead of putting stuff exactly where we want it in production.</p>
+<p>You can do this however you want. The organization that you&#x27;ll find most projects using, though, is to put stuff in a <code>src</code> directory. Let&#x27;s make that right now.</p>
 <pre><code>% mkdir src
 % git mv *.html src
 % git mv css src/styles
 % git mv js src/scripts
 </code></pre>
 <p>Finally, create a file named <code>gulpfile.js</code> and put the following in it:</p>
-<pre><code>var gulp = require('gulp'),
-    http = require('http'),
-    ecstatic = require('ecstatic');
+<pre><code>var gulp = require(&#x27;gulp&#x27;),
+    http = require(&#x27;http&#x27;),
+    ecstatic = require(&#x27;ecstatic&#x27;);
 
-gulp.task('build:html', function() {
-    gulp.src('src/*.html')
-        .pipe(gulp.dest('dist'));
+gulp.task(&#x27;build:html&#x27;, function() {
+    gulp.src(&#x27;src/*.html&#x27;)
+        .pipe(gulp.dest(&#x27;dist&#x27;));
 });
 
-gulp.task('build:css', function() {
-    gulp.src('src/styles/*')
-        .pipe(gulp.dest('dist/css'));
+gulp.task(&#x27;build:css&#x27;, function() {
+    gulp.src(&#x27;src/styles/*&#x27;)
+        .pipe(gulp.dest(&#x27;dist/css&#x27;));
 });
 
-gulp.task('build:js', function() {
-    gulp.src('src/scripts/*')
-        .pipe(gulp.dest('dist/js'));
+gulp.task(&#x27;build:js&#x27;, function() {
+    gulp.src(&#x27;src/scripts/*&#x27;)
+        .pipe(gulp.dest(&#x27;dist/js&#x27;));
 });
 
-gulp.task('watch', ['build'], function() {
-    gulp.watch('src/*.html', ['build:html']);
-    gulp.watch('src/styles/*', ['build:css']);
-    gulp.watch('src/scripts/*', ['build:js']);
+gulp.task(&#x27;watch&#x27;, [&#x27;build&#x27;], function() {
+    gulp.watch(&#x27;src/*.html&#x27;, [&#x27;build:html&#x27;]);
+    gulp.watch(&#x27;src/styles/*&#x27;, [&#x27;build:css&#x27;]);
+    gulp.watch(&#x27;src/scripts/*&#x27;, [&#x27;build:js&#x27;]);
 });
 
-gulp.task('serve', ['watch'], function() {
+gulp.task(&#x27;serve&#x27;, [&#x27;watch&#x27;], function() {
         http.createServer(
-                ecstatic({ root: __dirname + '/dist' })
+                ecstatic({ root: __dirname + &#x27;/dist&#x27; })
         ).listen(8080);
 });
 
-gulp.task('build', ['build:html', 'build:css', 'build:js']);
+gulp.task(&#x27;build&#x27;, [&#x27;build:html&#x27;, &#x27;build:css&#x27;, &#x27;build:js&#x27;]);
 
-gulp.task('default', ['serve']);
+gulp.task(&#x27;default&#x27;, [&#x27;serve&#x27;]);
 </code></pre>
-<p>This gives us a pretty good starting point. This gulpfile defines a couple tasks that simply copy source files into <code>dist</code>. The <code>watch</code> task watches for changes and rebuilds when they occur, and the <code>serve</code> task starts up a server, replacing Alyssa's usage of <code>http-server</code>. This provides exactly the same workflow as before: Alyssa runs one command and then she can look at her site on <code>localhost:8080</code>. You can use different task names if you want (for example, <code>html</code> instead of <code>build:html</code>, etc.), but these are what <code>generator-stratic</code> gives you.</p>
-<p>However, there's one problem: Alyssa can't deploy her site anymore. If she pushed like this, visitors would have to visit e.g. <code>https://aphacker.github.io/src/projects</code> instead of <code>https://aphacker.github.io/projects</code>! That's no good.</p>
-<p>In order to rectify this, we'll create a new git branch, <code>src</code>. <code>src</code> will contain the source files, and we'll put the final, built site in <code>master</code>, which is what's served by GitHub Pages. So:</p>
+<p>This gives us a pretty good starting point. This gulpfile defines a couple tasks that simply copy source files into <code>dist</code>. The <code>watch</code> task watches for changes and rebuilds when they occur, and the <code>serve</code> task starts up a server, replacing Alyssa&#x27;s usage of <code>http-server</code>. This provides exactly the same workflow as before: Alyssa runs one command and then she can look at her site on <code>localhost:8080</code>. You can use different task names if you want (for example, <code>html</code> instead of <code>build:html</code>, etc.), but these are what <code>generator-stratic</code> gives you.</p>
+<p>However, there&#x27;s one problem: Alyssa can&#x27;t deploy her site anymore. If she pushed like this, visitors would have to visit e.g. <code>https://aphacker.github.io/src/projects</code> instead of <code>https://aphacker.github.io/projects</code>! That&#x27;s no good.</p>
+<p>In order to rectify this, we&#x27;ll create a new git branch, <code>src</code>. <code>src</code> will contain the source files, and we&#x27;ll put the final, built site in <code>master</code>, which is what&#x27;s served by GitHub Pages. So:</p>
 <pre><code>% git checkout -b src
 % git push --set-upstream origin src
 </code></pre>
-<p>Great. Now, we need to add something to put the built files (i.e. the contents of <code>dist</code>) in <code>master</code>. We'll use the <code>gh-pages</code> module for this. First install it and a dependency we'll need:</p>
+<p>Great. Now, we need to add something to put the built files (i.e. the contents of <code>dist</code>) in <code>master</code>. We&#x27;ll use the <code>gh-pages</code> module for this. First install it and a dependency we&#x27;ll need:</p>
 <pre><code>% npm install --save-dev gh-pages gulp-util
 </code></pre>
 <p>Next, make it available in the gulpfile by adding a line at the end of <code>require()</code> statements:</p>
-<pre><code>var gulp = require('gulp'),
-    http = require('http'),
-    ecstatic = require('ecstatic');
+<pre><code>var gulp = require(&#x27;gulp&#x27;),
+    http = require(&#x27;http&#x27;),
+    ecstatic = require(&#x27;ecstatic&#x27;);
 </code></pre>
 <p>And finally, add a <code>deploy</code> task somewhere in the gulpfile:</p>
-<pre><code>gulp.task('deploy', ['build'], function(done) {
-    ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log, branch: 'master' }, done);
+<pre><code>gulp.task(&#x27;deploy&#x27;, [&#x27;build&#x27;], function(done) {
+    ghpages.publish(path.join(__dirname, &#x27;dist&#x27;), { logger: gutil.log, branch: &#x27;master&#x27; }, done);
 });
 </code></pre>
-<p>Now whenever Alyssa wants to deploy a new version of her website, she just runs <code>gulp deploy</code> and it'll be taken care of for her. (ProTip™: change the default branch to <code>src</code> on GitHub. That way visitors and new clones see the source files, not the build files generated by a program.)</p>
-<p>The very last thing we need to do is add a <code>.gitignore</code> file since we're installing Node modules and have a build directory now. We'll just use GitHub's, adding a line for <code>dist/</code> at the end:</p>
-<pre><code>% curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore > .gitignore
-% echo "\ndist/\n" >> .gitignore
+<p>Now whenever Alyssa wants to deploy a new version of her website, she just runs <code>gulp deploy</code> and it&#x27;ll be taken care of for her. (ProTip&#x2122;: change the default branch to <code>src</code> on GitHub. That way visitors and new clones see the source files, not the build files generated by a program.)</p>
+<p>The very last thing we need to do is add a <code>.gitignore</code> file since we&#x27;re installing Node modules and have a build directory now. We&#x27;ll just use GitHub&#x27;s, adding a line for <code>dist/</code> at the end:</p>
+<pre><code>% curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore &#x3E; .gitignore
+% echo &#x22;\ndist/\n&#x22; &#x3E;&#x3E; .gitignore
 </code></pre>
-<p>Now we've got a functionally equivalent development setup based on gulp. Success!</p>
+<p>Now we&#x27;ve got a functionally equivalent development setup based on gulp. Success!</p>
 <h3 id="step-2-converting-html-to-pug">Step 2: converting HTML to Pug</h3>
-<p>The next step is to convert the HTML to <a href="https://pugjs.org">Pug</a>. Pug (formerly known as Jade) is a language that compiles to HTML. It lets you do useful things like inherit from a common layout as well as looping over JavaScript variables. If you're not familiar with Pug, you should go take a look at its syntax now.</p>
-<p>The easiest way to do this conversion is to get a program to do it for you. <a href="http://html2jade.aaron-powell.com/">Here's the one I used</a> way back when; you may be able to find a better one. The generated Pug will be valid but not the prettiest - you may want to wait to clean it up since we're going to do some work to reduce the duplication soon.</p>
-<p>Once you've got the converted Pug, you should rename the relevant HTML file to have a <code>.pug</code> extention, then replace the contents with the Pug. Do this for each HTML file.</p>
+<p>The next step is to convert the HTML to <a href="https://pugjs.org">Pug</a>. Pug (formerly known as Jade) is a language that compiles to HTML. It lets you do useful things like inherit from a common layout as well as looping over JavaScript variables. If you&#x27;re not familiar with Pug, you should go take a look at its syntax now.</p>
+<p>The easiest way to do this conversion is to get a program to do it for you. <a href="http://html2jade.aaron-powell.com/">Here&#x27;s the one I used</a> way back when; you may be able to find a better one. The generated Pug will be valid but not the prettiest - you may want to wait to clean it up since we&#x27;re going to do some work to reduce the duplication soon.</p>
+<p>Once you&#x27;ve got the converted Pug, you should rename the relevant HTML file to have a <code>.pug</code> extention, then replace the contents with the Pug. Do this for each HTML file.</p>
 <p>The last step here is to make gulp build the Pug. Install <code>gulp-pug</code>:</p>
 <pre><code>% npm install --save-dev gulp-pug
 </code></pre>
-<p>Then add <code>pug = require('gulp-pug')</code> to the end of the <code>var</code> declaration at the top of your gulpfile. Finally, change your <code>html</code> task to look like this:</p>
-<pre><code>gulp.task('build:html', function() {
-    gulp.src('src/*.pug')
+<p>Then add <code>pug = require(&#x27;gulp-pug&#x27;)</code> to the end of the <code>var</code> declaration at the top of your gulpfile. Finally, change your <code>html</code> task to look like this:</p>
+<pre><code>gulp.task(&#x27;build:html&#x27;, function() {
+    gulp.src(&#x27;src/*.pug&#x27;)
         .pipe(pug({pretty: true}))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest(&#x27;dist&#x27;));
 });
 </code></pre>
-<p>We'll also need to fix the <code>watch</code> task so it has:</p>
-<pre><code>gulp.watch('src/*.pug', ['build:html']);
+<p>We&#x27;ll also need to fix the <code>watch</code> task so it has:</p>
+<pre><code>gulp.watch(&#x27;src/*.pug&#x27;, [&#x27;build:html&#x27;]);
 </code></pre>
 <p>which will watch Pug files instead of HTML files.</p>
-<p>That's it! Alyssa's site is now building with Pug instead of HTML.</p>
+<p>That&#x27;s it! Alyssa&#x27;s site is now building with Pug instead of HTML.</p>
 <h3 id="step-3-splitting-out-the-layout">Step 3: splitting out the layout</h3>
-<p>Pug's looping and flow control constructs will be very useful to us later on, but we can get some immediate productivity wins by splitting out the site layout so it's not duplicated across every Pug file.</p>
-<p>There's one tricky thing about this: the navigation is mostly the same between pages, but not quite - the page the user is currently on shouldn't be a link. We'll solve this by using a <code>block</code> directive for each link. That way, we can override just what needs to be changed, while introducing no duplication.</p>
-<p>You'll have to figure out exactly what parts of your personal layout make sense to be split out. In Alyssa's case, there are three main things that are mostly or fully duplicated across pages:</p>
+<p>Pug&#x27;s looping and flow control constructs will be very useful to us later on, but we can get some immediate productivity wins by splitting out the site layout so it&#x27;s not duplicated across every Pug file.</p>
+<p>There&#x27;s one tricky thing about this: the navigation is mostly the same between pages, but not quite - the page the user is currently on shouldn&#x27;t be a link. We&#x27;ll solve this by using a <code>block</code> directive for each link. That way, we can override just what needs to be changed, while introducing no duplication.</p>
+<p>You&#x27;ll have to figure out exactly what parts of your personal layout make sense to be split out. In Alyssa&#x27;s case, there are three main things that are mostly or fully duplicated across pages:</p>
 <ol>
 <li>The navigation bar</li>
 <li>The footer</li>
 <li>Invisible metadata and script/style includes</li>
 </ol>
-<p>These are what we'll split out. First, we'll make a copy of <code>index.pug</code> and put it in <code>src/includes/layout.pug</code>. (Again, you can organize your files however you want - but in projects generated by <code>generator-stratic</code>, utility Pug files go in <code>src/includes</code>.) Next, edit out the page-specific content and replace them with <code>block</code> directives. Finally, edit each navigation bar item so it has its own <code>block</code> directive, leaving the old code as the default for the <code>block</code> directive.</p>
-<p>Here's what this looks like when we do this to Alyssa's site:</p>
+<p>These are what we&#x27;ll split out. First, we&#x27;ll make a copy of <code>index.pug</code> and put it in <code>src/includes/layout.pug</code>. (Again, you can organize your files however you want - but in projects generated by <code>generator-stratic</code>, utility Pug files go in <code>src/includes</code>.) Next, edit out the page-specific content and replace them with <code>block</code> directives. Finally, edit each navigation bar item so it has its own <code>block</code> directive, leaving the old code as the default for the <code>block</code> directive.</p>
+<p>Here&#x27;s what this looks like when we do this to Alyssa&#x27;s site:</p>
 <pre><code>doctype html
 html
   head
-    meta(charset='UTF-8')
-    link(href='/css/main.css', rel='stylesheet', type='text/css')
+    meta(charset=&#x27;UTF-8&#x27;)
+    link(href=&#x27;/css/main.css&#x27;, rel=&#x27;stylesheet&#x27;, type=&#x27;text/css&#x27;)
     block head
   body
     block heading
@@ -252,63 +252,63 @@ html
       ul
         block nav-homepage
           li
-            a(href='/') Homepage
+            a(href=&#x27;/&#x27;) Homepage
         block nav-projects
           li
-            a(href='/projects') Projects
+            a(href=&#x27;/projects&#x27;) Projects
 
     block body
 
     footer
       p &#x26;copy; Copyright 2016 Alyssa P. Hacker.
-    script(src='/js/main.js', type='text/javascript')
+    script(src=&#x27;/js/main.js&#x27;, type=&#x27;text/javascript&#x27;)
 </code></pre>
-<p>Note how I've replaced the <code>h1</code> element (the contents of which vary per-page) with <code>block heading</code>, I've added a <code>block head</code> directive so we can specify the title per-page, I've made a <code>block</code> for each navigation link so we can override them if we want to individually (otherwise they'll have the default of being a link), and I've added <code>block body</code> for the main content. I've also cleaned out a bunch of the cruft the automatic converter put in there.</p>
-<p>Now, we can edit <code>index.pug</code> so that it inherits from <code>layout.pug</code> - we'll use the <code>extends</code> keyword for this. Then we just fill in the content we want using block. Here's what this looks like after we're finished with Alyssa's site:</p>
+<p>Note how I&#x27;ve replaced the <code>h1</code> element (the contents of which vary per-page) with <code>block heading</code>, I&#x27;ve added a <code>block head</code> directive so we can specify the title per-page, I&#x27;ve made a <code>block</code> for each navigation link so we can override them if we want to individually (otherwise they&#x27;ll have the default of being a link), and I&#x27;ve added <code>block body</code> for the main content. I&#x27;ve also cleaned out a bunch of the cruft the automatic converter put in there.</p>
+<p>Now, we can edit <code>index.pug</code> so that it inherits from <code>layout.pug</code> - we&#x27;ll use the <code>extends</code> keyword for this. Then we just fill in the content we want using block. Here&#x27;s what this looks like after we&#x27;re finished with Alyssa&#x27;s site:</p>
 <pre><code>extends includes/layout.pug
 
 block head
-  title Alyssa P. Hacker's homepage
+  title Alyssa P. Hacker&#x27;s homepage
 
 block heading
-  h1 Alyssa P. Hacker's homepage
+  h1 Alyssa P. Hacker&#x27;s homepage
 
 block nav-homepage
   li Homepage
 
 block body
-  p This is the homepage of Alyssa P. Hacker. You can check out the projects I've worked on #[a(href='/projects') here].
+  p This is the homepage of Alyssa P. Hacker. You can check out the projects I&#x27;ve worked on #[a(href=&#x27;/projects&#x27;) here].
 </code></pre>
-<p>You'll note that I've cleaned out some cruft here, too. We have one last thing to fix: if we change the layout, nothing will get rebuilt. We can fix this by changing the <code>watch</code> task again so that the line for watching Pug files reads:</p>
-<pre><code>gulp.watch(['src/*.pug', 'src/includes/*.pug'], ['build:html']);
+<p>You&#x27;ll note that I&#x27;ve cleaned out some cruft here, too. We have one last thing to fix: if we change the layout, nothing will get rebuilt. We can fix this by changing the <code>watch</code> task again so that the line for watching Pug files reads:</p>
+<pre><code>gulp.watch([&#x27;src/*.pug&#x27;, &#x27;src/includes/*.pug&#x27;], [&#x27;build:html&#x27;]);
 </code></pre>
-<p>Sweet! <code>index.pug</code> is way shorter than what we had before and includes <em>just</em> the content now. We can do the same thing to <code>projects.pug</code>. Then Alyssa can, for example, correct the copyright year in <code>layout.pug</code> - i.e., once - and that change will go into both <code>index.html</code> <em>and</em> <code>projects.html</code>. I've gone ahead and made the change for her.</p>
-<p>To give a high-level overview, here's what Alyssa's site looks like now:</p>
+<p>Sweet! <code>index.pug</code> is way shorter than what we had before and includes <em>just</em> the content now. We can do the same thing to <code>projects.pug</code>. Then Alyssa can, for example, correct the copyright year in <code>layout.pug</code> - i.e., once - and that change will go into both <code>index.html</code> <em>and</em> <code>projects.html</code>. I&#x27;ve gone ahead and made the change for her.</p>
+<p>To give a high-level overview, here&#x27;s what Alyssa&#x27;s site looks like now:</p>
 <pre><code>% tree -I node_modules .
 .
-├── dist
-│   ├── css
-│   │   └── main.css
-│   ├── index.html
-│   ├── js
-│   │   └── main.js
-│   └── projects.html
-├── gulpfile.js
-├── package.json
-└── src
-    ├── includes
-    │   └── layout.pug
-    ├── index.pug
-    ├── projects.pug
-    ├── scripts
-    │   └── main.js
-    └── styles
-        └── main.css
+&#x251C;&#x2500;&#x2500; dist
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; css
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; main.css
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; index.html
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; js
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; main.js
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; projects.html
+&#x251C;&#x2500;&#x2500; gulpfile.js
+&#x251C;&#x2500;&#x2500; package.json
+&#x2514;&#x2500;&#x2500; src
+    &#x251C;&#x2500;&#x2500; includes
+    &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; layout.pug
+    &#x251C;&#x2500;&#x2500; index.pug
+    &#x251C;&#x2500;&#x2500; projects.pug
+    &#x251C;&#x2500;&#x2500; scripts
+    &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; main.js
+    &#x2514;&#x2500;&#x2500; styles
+        &#x2514;&#x2500;&#x2500; main.css
 
 7 directories, 11 files
 </code></pre>
 <h3 id="next-time">Next time...</h3>
-<p>This post is long enough already, so I'll stop here. We've converted Alyssa's site to have a really solid base, so next time we'll build on top of this work to add superpowered blog features, powered by Stratic.</p>
+<p>This post is long enough already, so I&#x27;ll stop here. We&#x27;ve converted Alyssa&#x27;s site to have a really solid base, so next time we&#x27;ll build on top of this work to add superpowered blog features, powered by Stratic.</p>
 <p>Now go apply this to your own site!</p>
 
           </div>

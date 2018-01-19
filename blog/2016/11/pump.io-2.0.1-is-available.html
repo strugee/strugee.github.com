@@ -32,7 +32,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://plus.google.com/+AlexJordan">
     <link rel="me" href="https://pump.strugee.net/alex">
     <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
-    <link rel="me" href="https://media.strugee.net/alex">
+    <link rel="me" href="https://media.strugee.net/u/alex">
     <link rel="me" href="https://twitter.com/strugee2">
     <link rel="me" href="https://plus.google.com/+AlexJordan">
     <link rel="me" href="https://www.instagram.com/strugee2/">
@@ -62,7 +62,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
         <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry">
           <h1 class="p-name">Pump.io 2.0.4 is available</h1>
           <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-            <time datetime="2016-11-11T23:49:14-08:00"><a href="false2016/11/">November</a> 11, <a href="false2016/">2016</a></time> in <a href="falsecategory/development/" class="p-category">development</a>, <a href="falsecategory/releases/" class="p-category">releases</a> and <a href="falsecategory/pump.io/" class="p-category">pump.io</a>. Last edited 
+            <time datetime="2016-11-11T23:49:14-08:00"><a href="/blog/2016/11/">November</a> 11, <a href="/blog/2016/">2016</a></time> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/releases/" class="p-category">releases</a> and <a href="/blog/category/pump.io/" class="p-category">pump.io</a>. Last edited 
             <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
           </p>
           <div class="e-content"><p>Greetings!</p>
@@ -75,14 +75,14 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>(As I said in <a href="">the beta announcement</a>:)</p>
 <p>Pump.io 2.0.4 is a drop-in replacement for 1.0.0 <strong>unless</strong> you have any plugins configured or you modify the templates.</p>
 <p>Plugins are likely to be affected by the upgrade to Express 3.x. The easiest way to migrate is probably to just run pump.io, test out the relevant parts of the app, and see where your plugin crashes. You might also want to look at the <a href="https://github.com/expressjs/express/blob/master/History.md#300--2012-10-23">Express 3 change log</a>.</p>
-<p>If you modified the templates, you'll be affected by the templates' rewrite from utml into Jade. Migration should be relatively painless but has to be done manually. Your best bet will be to save a copy of the diff you created, undo your changes, upgrade, then use the diff you saved to reintroduce your changes. You'll have to run <code>npm run build</code> after making changes to Jade files.</p>
+<p>If you modified the templates, you&#x27;ll be affected by the templates&#x27; rewrite from utml into Jade. Migration should be relatively painless but has to be done manually. Your best bet will be to save a copy of the diff you created, undo your changes, upgrade, then use the diff you saved to reintroduce your changes. You&#x27;ll have to run <code>npm run build</code> after making changes to Jade files.</p>
 <h4 id="non-breaking-changes">Non-breaking changes</h4>
 <p>This release is actually relatively minor in terms of non-breaking changes; however, we <em>do</em> have some nice new improvements:</p>
 <ul>
 <li>A pump(1) manpage is now included</li>
 <li>Any internal web UI link with a <code>data-bypass</code> attribute is now ignored by the routing logic (useful for e.g. custom pages added by the admin)</li>
 <li>YouTube links in posts are now shown as  embeds by the web UI (<a href="https://github.com/expressjs/express/blob/master/History.md#300--2012-10-23">#1158</a>)</li>
-<li>TLS connections now use Mozilla's "intermediate" cipher suite and forces server cipher suite preferences (<a href="https://github.com/pump-io/pump.io/issues/1061">#1061</a>)</li>
+<li>TLS connections now use Mozilla&#x27;s &#x22;intermediate&#x22; cipher suite and forces server cipher suite preferences (<a href="https://github.com/pump-io/pump.io/issues/1061">#1061</a>)</li>
 <li>Various minor fixes and improvements</li>
 </ul>
 <h3 id="upgrading">Upgrading</h3>
@@ -99,7 +99,7 @@ npm install
 npm run lint:jade # Optional but recommended if you changed templates
 npm run build
 </code></pre>
-<p>Both of these methods will work whether you're running 0.3.0, 1.0.0, or 2.0.0 beta. Make sure to restart pump.io after performing the upgrade.</p>
+<p>Both of these methods will work whether you&#x27;re running 0.3.0, 1.0.0, or 2.0.0 beta. Make sure to restart pump.io after performing the upgrade.</p>
 <h3 id="getting-help">Getting help</h3>
 <p>If you have any issues with the upgrade, get in touch with <a href="https://github.com/pump-io/pump.io/wiki/Community">the community</a>. You can also email me at <a href="mailto:alex@strugee.net">alex@strugee.net</a>.</p>
 
