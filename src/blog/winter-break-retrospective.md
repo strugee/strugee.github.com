@@ -7,10 +7,11 @@ author: "AJ Jordan"
 draft: true
 categories:
   - personal
+  - development
   - blaggregator
 ---
 
-Tomorrow night I'll have been back at college for a full week, and I wanted to write up a little retrospective of winter break to see what I accomplished (and in particular, which [goals](/blog/2017/12/winter-break-priorities-2017-18) I completed or missed).
+Tonight I'll have been back at college for a full week, and I wanted to write up a little retrospective of winter break to see what I accomplished (and in particular, which [goals](/blog/2017/12/winter-break-priorities-2017-18) I completed or missed).
 
 You may wish to skip directly to the [executive summary](#executive-summary).
 
@@ -82,13 +83,20 @@ Homebrew Website Club was super inspiring, so when I got back to where I was sta
 <span id="executive-summary"></span>
 # Executive summary
 
-I resolved or completed 2 goals, partially completed 2 goals, failed 3 goals, and failed 1 stretch goal. Additionally I did significant work in 5 other areas. Out of the goals I set for myself, I completed 51% (Debian packaging work is ~2/5 complete; blog posts were written 2/3 of the time); not counting the stretch goal, I completed 61.2%.
+I resolved or completed 2 goals, partially completed 2 goals, failed 3 goals, and failed 1 stretch goal. Additionally I did significant work in 5 other areas. Out of the goals I set for myself, I completed 51% (Debian packaging work is ~2/5 complete; blog posts were written 2/3 of the time); not counting the stretch goal, I completed 61.2%. I'm pretty happy with what I got done during this period; however, while I was productive, the numbers show that I did a mediocre job sticking to my goals. In the future I should focus on making more realistic goals and then sticking to them (though not too much - it is a break, after all!).
 
-TODO finish this section
+Speaking of which, partway through break I felt like I was on the edge of burnout, which to me was a _very_ clear sign that I was pushing myself way too hard during a time I should have been unwinding. Because of that I cut what I was doing a _lot_, which helped pretty dramatically. In fact, I think without that I wouldn't have been able to do some of the later stuff, like all the IndieWeb work. So that's another reason I have to find a way to balance sticking to goals and just relaxing (which doesn't necessarily mean not coding, just doing whatever coding I feel like in the moment) - I feel like I was pushing myself too hard to meet my goals (and then getting distracted and not meeting them) and that's what led to the feeling. Obviously there are different constraints for e.g. schoolwork; here I'm referring _only_ to free time like breaks.
 
 # Spring semester goals
 
-TODO write this section
+With that in mind, I want to set some very broad goals for spring semester. I may update this list as time goes on, but for now I have four overarching goals I want to accomplish (besides the usual day-to-day code maintenance stuff):
+
+* Finish editing the paper I wrote last semester on freedom-respecting software and intersectionality, and get it published
+* Make _some_ measurable progress on my [Push-based Two-factor Authentication IETF draft](https://github.com/strugee/draft-webpush-2fa)
+* Get access to the University of Rochester darkroom and start developing/printing photos again
+* Start pushing the University of Rochester library (and _maybe_ the journalism department?) to start adopting Tor technologies
+
+I'm excited to see how it goes!
 
  [gpg]: /blog/2018/01/improving-gpg-security
  [lazymention]: /blog/2017/12/announcing-lazymention-elegant-outbound-webmention-for-static-sites
