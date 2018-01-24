@@ -1,10 +1,9 @@
 ---
 title: "Winter break retrospective & spring semester goals"
 time:
-  epoch: 
+  epoch: 1516755063
   utcoffset: "UTC-4"
 author: "AJ Jordan"
-draft: true
 categories:
   - personal
   - development
@@ -49,9 +48,9 @@ After I finally found the cable I needed, I swapped out the cable that connects 
 
 # Additional activity: Tor relay migration from Amazon EC2 to DigitalOcean
 
-After getting some advice on [tor-relays](https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-relays), I _finally_ sat down and looked into moving my relay away from Amazon Web Services. This is because AWS bills by usage, which for a Tor relay ends up being incredibly inefficient. It turned out to actually be way easier than I thought, which only served to make me mad that I hadn't done it sooner. In any case, I now save approximately $240/year AND I can push 1000GB/month as opposed to the 10GB/month I pushed before. In the words of [the commit where I made this change](https://github.com/strugee/torrc/commit/8b9fe85378adc834b8b7a9953de45f508b76bc3e): "this change made possible by the fact that I'm no longer getting billed up the wazoo by Amazon Web Services." Here's a screenshot of [a Tor Metrics graph](https://atlas.torproject.org/#details/C3CFCC9B5993A6F0D1349858C598C4A78AFE51F9) that shows the jump:
+After getting some advice on [tor-relays](https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-relays), I _finally_ sat down and looked into moving my relay away from Amazon Web Services. This is because AWS bills by usage, which for a Tor relay ends up being incredibly inefficient. It turned out to actually be way easier than I thought, which only served to make me mad that I hadn't done it sooner. In any case, I now save approximately $240/year AND I can push 1000GB/month as opposed to the 10GB/month I pushed before. In the words of [the commit where I made this change](https://github.com/strugee/torrc/commit/8b9fe85378adc834b8b7a9953de45f508b76bc3e): "this change made possible by the fact that I'm no longer getting billed up the wazoo by Amazon Web Services." Here's a of [a Tor Metrics graph](https://atlas.torproject.org/#details/C3CFCC9B5993A6F0D1349858C598C4A78AFE51F9) (captured today) that shows the jump:
 
-XXX TODO
+![Tor Metrics graph](/images/tor-relay-graph.svg)
 
 Anyway, I'm super happy I can contribute more to the Tor network _and_ save lots of money in the process. That being said I am pretty damn salty I didn't realize this in the four _years_ I've been running a Tor relay.
 
@@ -65,11 +64,15 @@ First off, I released [beta 7](https://github.com/straticjs/generator-stratic/bl
 
 Here are two of my favorites so far:
 
-XXX TODO
+<div class="two-image-container">
+
+![Yellow background with a centered black file icon and a asteroid coming up from earth in the midddle and a pipe to the right](/images/stratic-logo-asteroid-with-pipe.svg) ![Yellow background with a centered black file icon and a rocket coming up from earth in the midddle and a pipe to the right](/images/stratic-logo-rocket-with-pipe.svg)
+
+</div>
 
 These are based off the JS logo, in case you hadn't seen it before:
 
-XXX TODO
+![Black JS text in the bottom-right corner of a yellow background](/images/js-logo.svg)
 
 Anyway, I have to post another iteration in the [GitHub issue][logo] based on some feedback from [Saul](http://saul.pw/) (who I had a lovely lunch with) - he thinks I should reverse it so the pipe is on the left, so it looks like the file is coming out of the pipe. But anyway you should comment there if you have feedback!
 
