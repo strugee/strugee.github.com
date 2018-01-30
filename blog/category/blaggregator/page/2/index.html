@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-© Copyright 2012-2016 AJ Jordan
+© Copyright 2012-2018 AJ Jordan
 This file is part of strugee.net.
 strugee.net is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,6 +23,9 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
     <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <title>Posts categorized as "blaggregator" - strugee.net</title>
+    <!-- TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...-->
+    <link rel="alternate" type="application/rss+xml" href="index.rss">
     <!-- IndieWeb components, with <3-->
     <link rel="me" href="mailto:alex@strugee.net">
     <link rel="me" href="sms:17607054581">
@@ -36,9 +39,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://twitter.com/strugee2">
     <link rel="me" href="https://plus.google.com/+AlexJordan">
     <link rel="me" href="https://www.instagram.com/strugee2/">
-    <title>Posts categorized as "blaggregator" - strugee.net</title>
-    <!-- TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...-->
-    <link rel="alternate" type="application/rss+xml" href="index.rss">
   </head>
   <body>
     <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
@@ -65,34 +65,34 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
               <time datetime="2017-12-28T00:08:20-07:00"><a href="/blog/2017/12/">December</a> 28, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/musings/" class="p-category">musings</a>
             </p>
-            <div class="e-content"><p>While I was at the <a href="https://www.recurse.com/">Recurse Center</a>, I came up with an interesting theory, and today I thought I'd finally formally write about it on my blog. Here it is: shell script is one of the purest forms of human expression, at least as far as technology is concerned.</p>
+            <div class="e-content"><p>While I was at the <a href="https://www.recurse.com/">Recurse Center</a>, I came up with an interesting theory, and today I thought I&#x27;d finally formally write about it on my blog. Here it is: shell script is one of the purest forms of human expression, at least as far as technology is concerned.</p>
 <p>Why? Well, shell script is this weird mix of actual programming language things and macro expansions, and even the programming things tend to be... odd, to put it politely. As a trivial example, did you know that this:</p>
 <pre><code>$ echo {1..10}
 </code></pre>
 <p>results in this output:</p>
 <pre><code>1 2 3 4 5 6 7 8 9 10
 </code></pre>
-<p>Shell scripts[1] know how to expand number sequences; it's just built-in to them. Variables work with substitution too, and you can even build commands with them:</p>
+<p>Shell scripts[1] know how to expand number sequences; it&#x27;s just built-in to them. Variables work with substitution too, and you can even build commands with them:</p>
 <pre><code>PAGER=less
 $PAGER longfile.txt
 </code></pre>
-<p>The key thing to note here is that the second line is replacing <code>$PAGER</code> with the literal text <code>less</code>, and then running the resulting command line. The "variable access" is basically just an inline macro expansion, and the shell doesn't really handle it very intelligently. (This is also why you often need to quote variables when you access them - if they have whitespace in them, the shell will interpret the variable as more than one word.)</p>
+<p>The key thing to note here is that the second line is replacing <code>$PAGER</code> with the literal text <code>less</code>, and then running the resulting command line. The &#x22;variable access&#x22; is basically just an inline macro expansion, and the shell doesn&#x27;t really handle it very intelligently. (This is also why you often need to quote variables when you access them - if they have whitespace in them, the shell will interpret the variable as more than one word.)</p>
 <p>Or take the type system of the shell: it has none[2]. For example, what does <code>0</code> mean? It could represent any one of these things:</p>
 <ol>
 <li>The number 0</li>
-<li>The string "0"</li>
-<li>A binary we're invoking (well, trying to invoke) called <code>0</code></li>
+<li>The string &#x22;0&#x22;</li>
+<li>A binary we&#x27;re invoking (well, trying to invoke) called <code>0</code></li>
 <li>An argument to a binary</li>
 <li>File descriptor 0 (stdin)</li>
 <li>A file named <code>0</code></li>
 </ol>
-<p>All of these things combine to make the shell incredibly flexible and powerful - you can often express a <em>lot</em> in shell script with very little characters by writing "macros" in the right way.</p>
-<p>It's also what makes shell such a god-awful programming language.</p>
-<p>Think about it - as programmers, much of what we do seeks to impose order on our systems. We lint our code and run it through style checkers. I personally like to turn up my linter settings to maximum. And we use the concept of types to help organize our code - sure, there's disagreement on how <em>much</em> order types should impose, but we all pretty much agree that there should be <em>some</em> concept of types and type safety. Hell, for the languages whose type systems are basically "wtf are types", we make tools to impose additional safety on top of that - take <a href="http://www.typescriptlang.org/">TypeScript</a> and <a href="https://flow.org/">Flow</a>, for example. We also love to (hate to) write tests to ensure that our code fulfills some interface or behavior contract. (Even the idea of an interface seeks to organize and compartmentalize complexity in the system.)</p>
-<p>Humans are inherently messy. We're scatterbrained and easily distracted, and our thoughts (or at least, my thoughts) tend to jump all over the place. Shell script is an amazing way to express your ideas because it lets you get directly to the goal so quickly, in a way that matches that messiness that defines us as a species. But since so much of our work as programmers is about trying to counteract our messiness, shell script is a <em>terrible</em> way to write real programs, for the exact. Same. Reason.</p>
+<p>All of these things combine to make the shell incredibly flexible and powerful - you can often express a <em>lot</em> in shell script with very little characters by writing &#x22;macros&#x22; in the right way.</p>
+<p>It&#x27;s also what makes shell such a god-awful programming language.</p>
+<p>Think about it - as programmers, much of what we do seeks to impose order on our systems. We lint our code and run it through style checkers. I personally like to turn up my linter settings to maximum. And we use the concept of types to help organize our code - sure, there&#x27;s disagreement on how <em>much</em> order types should impose, but we all pretty much agree that there should be <em>some</em> concept of types and type safety. Hell, for the languages whose type systems are basically &#x22;wtf are types&#x22;, we make tools to impose additional safety on top of that - take <a href="http://www.typescriptlang.org/">TypeScript</a> and <a href="https://flow.org/">Flow</a>, for example. We also love to (hate to) write tests to ensure that our code fulfills some interface or behavior contract. (Even the idea of an interface seeks to organize and compartmentalize complexity in the system.)</p>
+<p>Humans are inherently messy. We&#x27;re scatterbrained and easily distracted, and our thoughts (or at least, my thoughts) tend to jump all over the place. Shell script is an amazing way to express your ideas because it lets you get directly to the goal so quickly, in a way that matches that messiness that defines us as a species. But since so much of our work as programmers is about trying to counteract our messiness, shell script is a <em>terrible</em> way to write real programs, for the exact. Same. Reason.</p>
 <p>Footnotes:</p>
 <p> [1]: Those written in <code>bash</code>, at least.</p>
-<p> [2]: Note that this is different from having a type system of "wtf are types?? <a href="https://www.destroyallsoftware.com/talks/wat">wat</a>" - JavaScript is a good example of a language with such a type system, as is (to my understanding) PHP. The shell, on the other hand, has no type system <em>at all</em>.</p>
+<p> [2]: Note that this is different from having a type system of &#x22;wtf are types?? <a href="https://www.destroyallsoftware.com/talks/wat">wat</a>&#x22; - JavaScript is a good example of a language with such a type system, as is (to my understanding) PHP. The shell, on the other hand, has no type system <em>at all</em>.</p>
 
             </div>
           </article>
@@ -103,17 +103,17 @@ $PAGER longfile.txt
               <time datetime="2017-12-20T17:44:18-05:00"><a href="/blog/2017/12/">December</a> 20, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/personal/" class="p-category">personal</a>. Last edited 
               <time datetime="2017-12-29T02:57:23.000-07:00">December 29, 2017</time>.
             </p>
-            <div class="e-content"><p>So I just wanted to write something up real fast to document my development priorities over my upcoming winter break (which starts tomorrow, whoohoo!). This is just generally useful to have, because I'm forgetful, but will also help keep me accountable since the list is public.</p>
+            <div class="e-content"><p>So I just wanted to write something up real fast to document my development priorities over my upcoming winter break (which starts tomorrow, whoohoo!). This is just generally useful to have, because I&#x27;m forgetful, but will also help keep me accountable since the list is public.</p>
 <p>So, here are the projects I want to get done, in rough order of priority:</p>
 <ol>
 <li>Polish up an <a href="https://github.com/nodejs/node/pull/14164#issuecomment-325553163">outstanding Node.js Pull Request</a> that automatically generates manpages for every module shipped with Node core</li>
 <li>Deal with GPG key signing which I have been procrasinating on for, well, years now</li>
-<li>Push some Debian packaging work forward (I've done some work to get the <a href="https://tracker.debian.org/pkg/profanity">Profanity packaging</a> up-to-date, and I want to get <a href="https://github.com/strugee/filter-other-days">filter-other-days</a> into Debian as well)</li>
-<li>Finish up v1 of <a href="https://github.com/strugee/lazymention">lazymention</a> - high-priority since it's so close to being done!</li>
+<li>Push some Debian packaging work forward (I&#x27;ve done some work to get the <a href="https://tracker.debian.org/pkg/profanity">Profanity packaging</a> up-to-date, and I want to get <a href="https://github.com/strugee/filter-other-days">filter-other-days</a> into Debian as well)</li>
+<li>Finish up v1 of <a href="https://github.com/strugee/lazymention">lazymention</a> - high-priority since it&#x27;s so close to being done!</li>
 <li>Finally push through and implement <a href="https://github.com/pump-io/pump.io/issues/1241">ActivityPub in pump.io core</a></li>
 <li>Clear <a href="https://github.com/pump-io/pump.io/pulls">the backlog of PRs</a> sent to pump.io</li>
 </ol>
-<p>I also am setting a goal of writing at least two blog posts per week, and I want to try to get some editing done on a paper I'm planning to try to get published (though I'm not sure if I'll end up doing this, honestly).</p>
+<p>I also am setting a goal of writing at least two blog posts per week, and I want to try to get some editing done on a paper I&#x27;m planning to try to get published (though I&#x27;m not sure if I&#x27;ll end up doing this, honestly).</p>
 <p>That seems like a lot, honestly, and yet I feel like I must have missed something - I will update this list if I think of anything else!</p>
 <p>Cheers, and happy holidays everyone! \o/</p>
 
@@ -126,17 +126,17 @@ $PAGER longfile.txt
               <time datetime="2017-12-08T20:24:57-05:00"><a href="/blog/2017/12/">December</a> 8, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a> and <a href="/blog/category/releases/" class="p-category">releases</a>. Last edited 
               <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
             </p>
-            <div class="e-content"><p>I'm really excited to announce that pump.io 5.1 is officially in beta!</p>
-<p>This release makes a wide array of improvements. One of the features I'm most excited about is <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">zero-downtime restarts</a>, which will allow administrators to gracefully roll over to new configurations and codebases with absolutely no user-visible impact! Aside from that, here's a list of highlights:</p>
+            <div class="e-content"><p>I&#x27;m really excited to announce that pump.io 5.1 is officially in beta!</p>
+<p>This release makes a wide array of improvements. One of the features I&#x27;m most excited about is <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">zero-downtime restarts</a>, which will allow administrators to gracefully roll over to new configurations and codebases with absolutely no user-visible impact! Aside from that, here&#x27;s a list of highlights:</p>
 <ul>
 <li>The daemon now generates startup log warnings on bad configurations, including insecure <code>secret</code> values and internal parameters</li>
 <li>An official <code>Dockerfile</code> is now included with the release</li>
-<li>The logged-out mobile homepage's menu icon is no longer incorrectly styled as black</li>
+<li>The logged-out mobile homepage&#x27;s menu icon is no longer incorrectly styled as black</li>
 <li>SockJS connections no longer fail due to authorization problems</li>
 </ul>
-<p>As usual, this release also includes some small updates to dependencies. Plus, we started tracking how much code our test suite covers! We've also significantly cleaned up the documentation and moved almost all of the in-repository documentation to ReadTheDocs, where it's a lot more organized and accessible. If you want more than just these highlights, you can check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510-beta-0---2017-12-08">the changelog</a>.</p>
-<p>Note that while the repository includes a <code>Dockerfile</code> now, we have not yet begun publishing on Docker Hub due to some security logistics that need to be figured out - when we do, it'll be announced in all the usual places (including this blog).</p>
-<p>I'm so excited for people to try out this release. 5.1 beta 0 is a drop-in replacement for 5.0, so if you're on 5.0 and want to live (more) on the bleeding edge, you can upgrade with <code>npm install -g pump.io@5.1</code> if you have an npm-based install. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0-beta.0</code> tag. And as always, if you encounter any problems you can reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
+<p>As usual, this release also includes some small updates to dependencies. Plus, we started tracking how much code our test suite covers! We&#x27;ve also significantly cleaned up the documentation and moved almost all of the in-repository documentation to ReadTheDocs, where it&#x27;s a lot more organized and accessible. If you want more than just these highlights, you can check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510-beta-0---2017-12-08">the changelog</a>.</p>
+<p>Note that while the repository includes a <code>Dockerfile</code> now, we have not yet begun publishing on Docker Hub due to some security logistics that need to be figured out - when we do, it&#x27;ll be announced in all the usual places (including this blog).</p>
+<p>I&#x27;m so excited for people to try out this release. 5.1 beta 0 is a drop-in replacement for 5.0, so if you&#x27;re on 5.0 and want to live (more) on the bleeding edge, you can upgrade with <code>npm install -g pump.io@5.1</code> if you have an npm-based install. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0-beta.0</code> tag. And as always, if you encounter any problems you can reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
 
             </div>
           </article>
@@ -146,12 +146,12 @@ $PAGER longfile.txt
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
               <time datetime="2017-11-01T20:39:53-04:00"><a href="/blog/2017/11/">November</a> 1, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/releases/" class="p-category">releases</a> and <a href="/blog/category/sysadmin/" class="p-category">sysadmin</a>
             </p>
-            <div class="e-content"><p>I'm pleased to announce <code>filter-other-days</code> 1.0.1. This is a bugfix release primarily improving portability to other Unix-like operating systems; in particular, the test suite now fully passes under FreeBSD. Specifically:</p>
+            <div class="e-content"><p>I&#x27;m pleased to announce <code>filter-other-days</code> 1.0.1. This is a bugfix release primarily improving portability to other Unix-like operating systems; in particular, the test suite now fully passes under FreeBSD. Specifically:</p>
 <ul>
-<li>Various portability bugs in the test suite itself were fixed - the test suite no longer relies on a GNU <code>date</code> (with GNU <code>date -d</code> semantics) or a fully-functional <code>/dev/fd</code> (the fallback option is named pipes), and it doesn't hardcode bash's install path as <code>/bin/bash</code></li>
-<li>Some non-portable uses of <code>echo "\n"</code> which break under BSD systems were replaced with <code>printf</code> invocations</li>
-<li>Travis CI now checks <code>filter-other-days</code> with Debian's <code>checkbashisms</code> script, which is run in strict mode</li>
-<li>Non-portable uses of <code>test</code>'s <code>-o</code> option were caught by <code>checkbashisms</code> and replaced with <code>||</code></li>
+<li>Various portability bugs in the test suite itself were fixed - the test suite no longer relies on a GNU <code>date</code> (with GNU <code>date -d</code> semantics) or a fully-functional <code>/dev/fd</code> (the fallback option is named pipes), and it doesn&#x27;t hardcode bash&#x27;s install path as <code>/bin/bash</code></li>
+<li>Some non-portable uses of <code>echo &#x22;\n&#x22;</code> which break under BSD systems were replaced with <code>printf</code> invocations</li>
+<li>Travis CI now checks <code>filter-other-days</code> with Debian&#x27;s <code>checkbashisms</code> script, which is run in strict mode</li>
+<li>Non-portable uses of <code>test</code>&#x27;s <code>-o</code> option were caught by <code>checkbashisms</code> and replaced with <code>||</code></li>
 </ul>
 <p>With these changes I expect that <code>filter-other-days</code> will probably run on all major BSD distributions. I intend to confirm this hypothesis soon and have filed bugs for <a href="https://github.com/strugee/filter-other-days/issues/12">OpenBSD</a> and <a href="https://github.com/strugee/filter-other-days/issues/13">NetBSD</a>, plus <a href="https://github.com/strugee/filter-other-days/issues/14">illumos</a> just for kicks.</p>
 <p>As with 1.0.0, you can clone <code>filter-other-days</code> <a href="https://github.com/strugee/filter-other-days">from GitHub</a> or you can download a (signed) <a href="https://github.com/strugee/filter-other-days/releases/tag/v1.0.1">tarball</a>. Please do <a href="https://github.com/strugee/filter-other-days/issues/new">report any bugs</a> you find in the release.</p>
@@ -166,19 +166,19 @@ $PAGER longfile.txt
               <time datetime="2017-10-20T19:19:51-04:00"><a href="/blog/2017/10/">October</a> 20, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/security/" class="p-category">security</a>, <a href="/blog/category/sysadmin/" class="p-category">sysadmin</a> and <a href="/blog/category/releases/" class="p-category">releases</a>. Last edited 
               <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
             </p>
-            <div class="e-content"><p>I've just published version 1.0 of my latest project, <code>filter-other-days</code> - a shell script to filter logfiles for today's date in an Artificial Ignorance-compatible way.</p>
-<p>If you haven't heard of <a href="http://www.ranum.com/security/computer_security/papers/ai/index.html">Artificial Ignorance</a>, it's something you should look into cause it's pretty awesome. Here's the tl;dr: it doesn't make sense to look for all the "interesting" things  in logfiles, because it's not actually possible to enumerate all the failure conditions of a system. So instead what we do is <em>throw away</em> entries that we're <em>sure</em> are just routine. Since we've gotten rid of all the uninteresting entries, whatever is left has to be interesting.</p>
-<p>I find this pretty compelling, and decided to start implementing it on my Tor relay. I quickly realized that my ideal workflow would be to configure cron to send me email with a daily report of interesting log entries. However, this presented a problem: how to get just today's log entries? I wanted to be able to handle all logfiles at once instead of receiving different reports for different logs, so I had to be able to parse all logfiles in the same way. My relay runs on FreeBSD, so the logs are unstructured text files, and even worse, several daemons (like Tor itself) write timestamps in a different format - this makes parsing all logfiles at once super difficult because I couldn't just trivially <code>grep</code> for today's date since that would end up dropping legitimate entries from logfiles that formatted their timestamps differently.</p>
-<p>I briefly considered trying to write a regex to match all sorts of different timestamp formats, but quickly rejected this idea as too fragile. There are a lot of moving parts in a modern operating system - what if e.g. a daemon changed its defaults about how to format timestamps? Or, more likely, what if I simply missed a particular format present in my logs? Then I'd be accidentally throwing away an entire logfile. To solve this problem, I decided to apply the same idea behind Artificial Ignorance - if I couldn't reliably, 100% match log entries from today's date, I could do the next best thing and attempt to discard all entries from <em>other</em> dates. In this case the worst that could happen is me recieving irrelevant information, and I'd be basically guaranteed to never miss an legitimate entry from today.</p>
+            <div class="e-content"><p>I&#x27;ve just published version 1.0 of my latest project, <code>filter-other-days</code> - a shell script to filter logfiles for today&#x27;s date in an Artificial Ignorance-compatible way.</p>
+<p>If you haven&#x27;t heard of <a href="http://www.ranum.com/security/computer_security/papers/ai/index.html">Artificial Ignorance</a>, it&#x27;s something you should look into cause it&#x27;s pretty awesome. Here&#x27;s the tl;dr: it doesn&#x27;t make sense to look for all the &#x22;interesting&#x22; things  in logfiles, because it&#x27;s not actually possible to enumerate all the failure conditions of a system. So instead what we do is <em>throw away</em> entries that we&#x27;re <em>sure</em> are just routine. Since we&#x27;ve gotten rid of all the uninteresting entries, whatever is left has to be interesting.</p>
+<p>I find this pretty compelling, and decided to start implementing it on my Tor relay. I quickly realized that my ideal workflow would be to configure cron to send me email with a daily report of interesting log entries. However, this presented a problem: how to get just today&#x27;s log entries? I wanted to be able to handle all logfiles at once instead of receiving different reports for different logs, so I had to be able to parse all logfiles in the same way. My relay runs on FreeBSD, so the logs are unstructured text files, and even worse, several daemons (like Tor itself) write timestamps in a different format - this makes parsing all logfiles at once super difficult because I couldn&#x27;t just trivially <code>grep</code> for today&#x27;s date since that would end up dropping legitimate entries from logfiles that formatted their timestamps differently.</p>
+<p>I briefly considered trying to write a regex to match all sorts of different timestamp formats, but quickly rejected this idea as too fragile. There are a lot of moving parts in a modern operating system - what if e.g. a daemon changed its defaults about how to format timestamps? Or, more likely, what if I simply missed a particular format present in my logs? Then I&#x27;d be accidentally throwing away an entire logfile. To solve this problem, I decided to apply the same idea behind Artificial Ignorance - if I couldn&#x27;t reliably, 100% match log entries from today&#x27;s date, I could do the next best thing and attempt to discard all entries from <em>other</em> dates. In this case the worst that could happen is me recieving irrelevant information, and I&#x27;d be basically guaranteed to never miss an legitimate entry from today.</p>
 <p><code>filter-other-days</code> is a working implementation of this design. Originally I put it with the other random scripts I keep with my <a href="https://github.com/strugee/dots/tree/master/bin">dotfiles</a>, but it quickly became obvious that it was useful as a standalone project. So I <a href="https://github.com/strugee/dots/commit/7dd7e2755c55194cdff1c7b24b24bca72581e346">extracted</a> it into its own repository, which now lives <a href="https://github.com/strugee/filter-other-days">on GitHub</a>. From there I continued to improve the script while adding a test suite and writing extensive documentation (including a Unix manpage - I always feel like a wizardly hacker when writing those things). This took, by my estimation, somewhere between 10 and 15 hours because this is actually a shockingly non-trivial problem, but mostly because regexes are hard.</p>
-<p>But today I finally finished! So I'm super excited to announce that version 1.0 of <code>filter-other-days</code> is now available. You can either clone it from GitHub or download a <a href="https://github.com/strugee/filter-other-days/releases/tag/v1.0.0">tarball</a> (and the accompanying signature, if you want). It works pretty well already, but I have some ideas for future directions the project could go:</p>
+<p>But today I finally finished! So I&#x27;m super excited to announce that version 1.0 of <code>filter-other-days</code> is now available. You can either clone it from GitHub or download a <a href="https://github.com/strugee/filter-other-days/releases/tag/v1.0.0">tarball</a> (and the accompanying signature, if you want). It works pretty well already, but I have some ideas for future directions the project could go:</p>
 <ol>
-<li>Logic allowing you to actually specify the date you want to filter for, instead of assuming it's today (though you actually can already get this behavior using <code>faketime</code>; that's what the test suite does)</li>
+<li>Logic allowing you to actually specify the date you want to filter for, instead of assuming it&#x27;s today (though you actually can already get this behavior using <code>faketime</code>; that&#x27;s what the test suite does)</li>
 <li>Removal of the dependency on GNU <code>seq</code> - this is, to my knowledge, the only non-POSIX requirement of <code>filter-other-days</code></li>
 <li>Debian package, maybe?</li>
-<li>More log formats (please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> if you have formats <code>filter-other-days</code> doesn't recognize - which you probably do!)</li>
+<li>More log formats (please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> if you have formats <code>filter-other-days</code> doesn&#x27;t recognize - which you probably do!)</li>
 </ol>
-<p>If you find this project useful, let me know! I'd love to hear about how people are using it. Or if it breaks (or doesn't fill your usecases), please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> or send patches - I love those, too! Either way, may the logs be with you!</p>
+<p>If you find this project useful, let me know! I&#x27;d love to hear about how people are using it. Or if it breaks (or doesn&#x27;t fill your usecases), please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> or send patches - I love those, too! Either way, may the logs be with you!</p>
 
             </div>
           </article>

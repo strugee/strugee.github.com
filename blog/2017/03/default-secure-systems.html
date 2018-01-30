@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-© Copyright 2012-2016 AJ Jordan
+© Copyright 2012-2018 AJ Jordan
 This file is part of strugee.net.
 strugee.net is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,6 +23,11 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
     <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <title>Default-secure systems - strugee.net</title>
+    <link rel="preconnect" href="https://webmention.io/">
+    <link rel="pingback" href="https://webmention.io/strugee.net/xmlrpc">
+    <link rel="webmention" href="https://webmention.io/strugee.net/webmention">
+    <script src="/js/webmentions.js" type="text/javascript"></script>
     <!-- IndieWeb components, with <3-->
     <link rel="me" href="mailto:alex@strugee.net">
     <link rel="me" href="sms:17607054581">
@@ -36,10 +41,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://twitter.com/strugee2">
     <link rel="me" href="https://plus.google.com/+AlexJordan">
     <link rel="me" href="https://www.instagram.com/strugee2/">
-    <title>Default-secure systems - strugee.net</title>
-    <link rel="pingback" href="https://webmention.io/strugee.net/xmlrpc">
-    <link rel="webmention" href="https://webmention.io/strugee.net/webmention">
-    <script src="/js/webmentions.js" type="text/javascript"></script>
   </head>
   <body>
     <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
@@ -64,31 +65,31 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
             <time datetime="2017-03-13T15:59:17-05:00"><a href="/blog/2017/03/">March</a> 13, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/security/" class="p-category">security</a>
           </p>
-          <div class="e-content"><p>So recently I presented on <a href="https://strugee.net/presentation-operational-security/">operational security</a> and then started in on the nightmare that is <a href="https://strugee.net/presentation-https-deployment/">HTTPS deployment</a>. And like I did with <a href="https://strugee.net/blog/2017/01/new-programming-language-part-i-handlers">language-level security</a> (I <em>still</em> need to write part 2 of that post), I thought to myself, this is so difficult. Why isn't there something that will do this for me? That's what my latest project is.</p>
-<p>Here's the tl;dr:</p>
+          <div class="e-content"><p>So recently I presented on <a href="https://strugee.net/presentation-operational-security/">operational security</a> and then started in on the nightmare that is <a href="https://strugee.net/presentation-https-deployment/">HTTPS deployment</a>. And like I did with <a href="https://strugee.net/blog/2017/01/new-programming-language-part-i-handlers">language-level security</a> (I <em>still</em> need to write part 2 of that post), I thought to myself, this is so difficult. Why isn&#x27;t there something that will do this for me? That&#x27;s what my latest project is.</p>
+<p>Here&#x27;s the tl;dr:</p>
 <pre><code>type(app)
-=> Django/Express.js/etc. app
+=&#x3E; Django/Express.js/etc. app
 secure_system(app)
-=> Docker image
+=&#x3E; Docker image
 </code></pre>
-<p>Or in other words, you'll be able to take an existing web app that you've written, run it through this system, and it will spit out a complete, reasonably-secure system image.</p>
-<p>Let's step back.</p>
+<p>Or in other words, you&#x27;ll be able to take an existing web app that you&#x27;ve written, run it through this system, and it will spit out a complete, reasonably-secure system image.</p>
+<p>Let&#x27;s step back.</p>
 <h2 id="the-status-quo">The status quo</h2>
-<p>Currently, when a developer wants to run a web app, they can either use something like Heroku, which is fully manged, or a VM from DigitalOcean or Amazon EC2 or something. There are a variety of reasons you might not want to use Heroku, but the only other option is a VM - and with a VM, you get a bare system where you have to set up everything from scratch. Lots of developers just don't have the operational experience to do this properly or securely, but it's not like they can go and get an operations team to do it for them. So they end up with systems that may have active security problems as well as little to no defense-in-depth mitigations for when security inevitably fails. Security is just another operational concern the developer has no time and no expertise to deal with, so it just doesn't happen. The developer spins up a VM, gets it to where it "works" and then moves on. <strong>This is not good enough.</strong></p>
-<p>I don't want to create a false dichotomy, though: this is not the developer's fault. Everyone has conflicting priorities and it's unreasonable to expect the developer to spend lots of time learning to administrate systems so that they can then spend even more time, you know, administering systems. The problem is that there just isn't enough options available - we have to provide something better.</p>
+<p>Currently, when a developer wants to run a web app, they can either use something like Heroku, which is fully manged, or a VM from DigitalOcean or Amazon EC2 or something. There are a variety of reasons you might not want to use Heroku, but the only other option is a VM - and with a VM, you get a bare system where you have to set up everything from scratch. Lots of developers just don&#x27;t have the operational experience to do this properly or securely, but it&#x27;s not like they can go and get an operations team to do it for them. So they end up with systems that may have active security problems as well as little to no defense-in-depth mitigations for when security inevitably fails. Security is just another operational concern the developer has no time and no expertise to deal with, so it just doesn&#x27;t happen. The developer spins up a VM, gets it to where it &#x22;works&#x22; and then moves on. <strong>This is not good enough.</strong></p>
+<p>I don&#x27;t want to create a false dichotomy, though: this is not the developer&#x27;s fault. Everyone has conflicting priorities and it&#x27;s unreasonable to expect the developer to spend lots of time learning to administrate systems so that they can then spend even more time, you know, administering systems. The problem is that there just isn&#x27;t enough options available - we have to provide something better.</p>
 <h2 id="a-middle-ground">A middle ground</h2>
 <p>This is what my project is about: creating a middle ground between fully-managed deployment platforms and barebones, setup-from-scratch VMs.</p>
 <p>This project rests on the idea that operational security (at least, in a single-server, single-admin context) flows from consistency, least privilege, and proactive, defense-in-depth security measures. Here are a couple core design goals:</p>
 <ol>
-<li>Meet developers where they are. Configuration management like Puppet is a great way to enforce consistency, but it adds a level of indirection and is just another thing that people running hobbyist projects don't have time to learn.</li>
+<li>Meet developers where they are. Configuration management like Puppet is a great way to enforce consistency, but it adds a level of indirection and is just another thing that people running hobbyist projects don&#x27;t have time to learn.</li>
 <li>Tight integration with apps - this excludes more obscure types of web applications, but gives us a better footing to set up a solid deployment environment. It also may let us integrate more tightly with things like Content Security Policy in the future.</li>
-<li>Support virtual hosting. The ability to run multiple apps while paying for a single VM is a compelling reason people go with VMs over e.g. Heroku - we won't be helping anyone if we leave this out.</li>
+<li>Support virtual hosting. The ability to run multiple apps while paying for a single VM is a compelling reason people go with VMs over e.g. Heroku - we won&#x27;t be helping anyone if we leave this out.</li>
 <li>Upgrades are optional. Any system image created by this project will present a system that is organized and can be maintained and modified by hand without breaking everything.</li>
 <li>Upgrades are possible. Tight app framework integration will aid with putting data into well-known places that can be backed up and migrated to a new image generated by a newer version of this system.</li>
-<li>Not designed for "real" production environments. Any project that has a dedicated operations person should not be using this; they should be rolling their own custom environments with something like Puppet. Accordingly, there won't be compromises in security in favor of flexibility - it's designed to cover 75% of cases "pretty well", which is still better than the status quo for smaller projects (almost 100% of cases don't have any security at all).</li>
+<li>Not designed for &#x22;real&#x22; production environments. Any project that has a dedicated operations person should not be using this; they should be rolling their own custom environments with something like Puppet. Accordingly, there won&#x27;t be compromises in security in favor of flexibility - it&#x27;s designed to cover 75% of cases &#x22;pretty well&#x22;, which is still better than the status quo for smaller projects (almost 100% of cases don&#x27;t have any security at all).</li>
 </ol>
-<p>I'd also like to highlight one really important decision: the output is complete system images. Probably at first this will mean Docker containers but this could easily be turned into VM images. This is a critical part of the design because it allows us to make broad, sweeping changes - for example, preferring system components written in memory-safe languages, replacing OpenSSL with LibreSSL, or creating systemd unit files that lock down service runtime environments to reduce the impact of a compromise. These improvements aren't possible unless we control the whole system. And because upgrades are optional but possible, the developer can get security improvements by "just" upgrading a component that they use, in the same way that they'd upgrade a library or something, as opposed to security being a continuous process they have to worry about. Again, obviously not perfect - but much better than the status quo.</p>
-<p>I hope to have a MVP out Real Soon Now™. But in the meantime, if you have thoughts, feel free to reach out.</p>
+<p>I&#x27;d also like to highlight one really important decision: the output is complete system images. Probably at first this will mean Docker containers but this could easily be turned into VM images. This is a critical part of the design because it allows us to make broad, sweeping changes - for example, preferring system components written in memory-safe languages, replacing OpenSSL with LibreSSL, or creating systemd unit files that lock down service runtime environments to reduce the impact of a compromise. These improvements aren&#x27;t possible unless we control the whole system. And because upgrades are optional but possible, the developer can get security improvements by &#x22;just&#x22; upgrading a component that they use, in the same way that they&#x27;d upgrade a library or something, as opposed to security being a continuous process they have to worry about. Again, obviously not perfect - but much better than the status quo.</p>
+<p>I hope to have a MVP out Real Soon Now&#x2122;. But in the meantime, if you have thoughts, feel free to reach out.</p>
 
           </div>
         </article>

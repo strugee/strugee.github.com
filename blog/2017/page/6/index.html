@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-© Copyright 2012-2016 AJ Jordan
+© Copyright 2012-2018 AJ Jordan
 This file is part of strugee.net.
 strugee.net is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,6 +23,9 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
     <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <title>Posts from 2017 - strugee.net</title>
+    <!-- TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...-->
+    <link rel="alternate" type="application/rss+xml" href="index.rss">
     <!-- IndieWeb components, with <3-->
     <link rel="me" href="mailto:alex@strugee.net">
     <link rel="me" href="sms:17607054581">
@@ -36,9 +39,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://twitter.com/strugee2">
     <link rel="me" href="https://plus.google.com/+AlexJordan">
     <link rel="me" href="https://www.instagram.com/strugee2/">
-    <title>Posts from 2017 - strugee.net</title>
-    <!-- TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...-->
-    <link rel="alternate" type="application/rss+xml" href="index.rss">
   </head>
   <body>
     <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
@@ -67,39 +67,39 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
               <time datetime="2017-02-20T14:58:53-05:00"><a href="/blog/2017/02/">February</a> 20, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/stratic/" class="p-category">stratic</a>
             </p>
-            <div class="e-content"><p>So a couple days ago I published <code>generator-stratic@1.0.0-beta.1</code> to npm. Since Stratic is now officially in beta, I thought I'd write up a guide to converting a regular, static site to a Stratic-powered blog.</p>
-<p>Each step in this blog post (part 1 of 2[?]) will take you closer to having a fully-functional blog, but because of Stratic's decoupled design, you can work through them at your own pace. Each step will leave you with a functional environment (i.e. nothing will be "broken" such that you can't work on your website anymore).</p>
+            <div class="e-content"><p>So a couple days ago I published <code>generator-stratic@1.0.0-beta.1</code> to npm. Since Stratic is now officially in beta, I thought I&#x27;d write up a guide to converting a regular, static site to a Stratic-powered blog.</p>
+<p>Each step in this blog post (part 1 of 2[?]) will take you closer to having a fully-functional blog, but because of Stratic&#x27;s decoupled design, you can work through them at your own pace. Each step will leave you with a functional environment (i.e. nothing will be &#x22;broken&#x22; such that you can&#x27;t work on your website anymore).</p>
 <p>You can see the steps in this post in action at <a href="https://github.com/straticjs/static-to-stratic">straticjs/static-to-stratic</a>. Each commit corresponds to a step in this post.</p>
-<p>Let's get started!</p>
+<p>Let&#x27;s get started!</p>
 <h3>Initial setup</h3>
-<p>The site we'll be converting is currently pretty simple. It has an <code>index.html</code> and a <code>projects.html</code>. Each of these includes <code>/css/main.css</code> and <code>/js/main.js</code>. Also, they both have a navigation section and a footer that are duplicated across each page. Each time Alyssa P. Hacker - the website's owner - makes a change to these (for example to fix the copyright year in the footer), she has to change both HTML files. The best way for her to add a new page will be to copy an existing HTML file and then change it. This is a little unideal.</p>
-<p>Alyssa tracks her website on GitHub (in the example repository mentioned above). Here are links for the <a href="https://github.com/straticjs/static-to-stratic/blob/18a7a7da03a2f84f525f0b699a43005067428199/index.html"><code>index.html</code></a> and the <a href="https://github.com/straticjs/static-to-stratic/blob/18a7a7da03a2f84f525f0b699a43005067428199/projects.html"><code>projects.html</code></a> we'll be working with.</p>
-<p>Here's a visual of the project layout:</p>
+<p>The site we&#x27;ll be converting is currently pretty simple. It has an <code>index.html</code> and a <code>projects.html</code>. Each of these includes <code>/css/main.css</code> and <code>/js/main.js</code>. Also, they both have a navigation section and a footer that are duplicated across each page. Each time Alyssa P. Hacker - the website&#x27;s owner - makes a change to these (for example to fix the copyright year in the footer), she has to change both HTML files. The best way for her to add a new page will be to copy an existing HTML file and then change it. This is a little unideal.</p>
+<p>Alyssa tracks her website on GitHub (in the example repository mentioned above). Here are links for the <a href="https://github.com/straticjs/static-to-stratic/blob/18a7a7da03a2f84f525f0b699a43005067428199/index.html"><code>index.html</code></a> and the <a href="https://github.com/straticjs/static-to-stratic/blob/18a7a7da03a2f84f525f0b699a43005067428199/projects.html"><code>projects.html</code></a> we&#x27;ll be working with.</p>
+<p>Here&#x27;s a visual of the project layout:</p>
 <pre><code>% tree .
 .
-├── css
-│   └── main.css
-├── index.html
-├── js
-│   └── main.js
-└── projects.html
+&#x251C;&#x2500;&#x2500; css
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; main.css
+&#x251C;&#x2500;&#x2500; index.html
+&#x251C;&#x2500;&#x2500; js
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; main.js
+&#x2514;&#x2500;&#x2500; projects.html
 
 2 directories, 4 files
 </code></pre>
 <p>When Alyssa needs to preview her website, she manually runs <code>http-server .</code>.</p>
-<p>Since Alyssa uses GitHub she publishes her website on GitHub Pages, so her website is in the <code>master</code> branch of her git repository. (Here we're assuming that the repository is called <code>aphacker.github.io</code> or something, instead of <code>static-to-stratic</code>.)</p>
-<p>In addition to adding blog support, we'll improve Alyssa's website by reducing duplication while still allowing her to publish to GitHub Pages.</p>
+<p>Since Alyssa uses GitHub she publishes her website on GitHub Pages, so her website is in the <code>master</code> branch of her git repository. (Here we&#x27;re assuming that the repository is called <code>aphacker.github.io</code> or something, instead of <code>static-to-stratic</code>.)</p>
+<p>In addition to adding blog support, we&#x27;ll improve Alyssa&#x27;s website by reducing duplication while still allowing her to publish to GitHub Pages.</p>
 <h3>Step 1 - adding gulp</h3>
-<p>Before we do anything else, we need to add a build system. Stratic is designed to work with <a href="">gulpjs</a>, so that's the one we'll be using.</p>
+<p>Before we do anything else, we need to add a build system. Stratic is designed to work with <a href="">gulpjs</a>, so that&#x27;s the one we&#x27;ll be using.</p>
 <p>Adding gulp is super easy. First, we need to create a <code>package.json</code>, so we do <code>npm init</code>:</p>
 <pre><code>% npm init
 This utility will walk you through creating a package.json file.
 It only covers the most common items, and tries to guess sensible defaults.
 
-See `npm help json` for definitive documentation on these fields
+See &#x60;npm help json&#x60; for definitive documentation on these fields
 and exactly what they do.
 
-Use `npm install &#x3C;pkg> --save` afterwards to install a package and
+Use &#x60;npm install &#x3C;pkg&#x3E; --save&#x60; afterwards to install a package and
 save it as a dependency in the package.json file.
 
 Press ^C at any time to quit.
@@ -110,144 +110,144 @@ entry point: (index.js)
 test command:
 git repository: (https://github.com/straticjs/static-to-stratic.git)
 keywords:
-author: Alyssa P. Hacker &#x3C;alyssaphacker@example.net>
+author: Alyssa P. Hacker &#x3C;alyssaphacker@example.net&#x3E;
 license: (ISC) AGPL-3.0+
 About to write to /Users/alex/Development/static-to-stratic/package.json:
 
 {
-  "name": "static-to-stratic",
-  "version": "1.0.0",
-  "description": "Personal website of Alyssa P. Hacker",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" &#x26;&#x26; exit 1"
+  &#x22;name&#x22;: &#x22;static-to-stratic&#x22;,
+  &#x22;version&#x22;: &#x22;1.0.0&#x22;,
+  &#x22;description&#x22;: &#x22;Personal website of Alyssa P. Hacker&#x22;,
+  &#x22;main&#x22;: &#x22;index.js&#x22;,
+  &#x22;scripts&#x22;: {
+    &#x22;test&#x22;: &#x22;echo \&#x22;Error: no test specified\&#x22; &#x26;&#x26; exit 1&#x22;
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/straticjs/static-to-stratic.git"
+  &#x22;repository&#x22;: {
+    &#x22;type&#x22;: &#x22;git&#x22;,
+    &#x22;url&#x22;: &#x22;git+https://github.com/straticjs/static-to-stratic.git&#x22;
   },
-  "author": "Alyssa P. Hacker &#x3C;alyssaphacker@example.net>",
-  "license": "AGPL-3.0+",
-  "bugs": {
-    "url": "https://github.com/straticjs/static-to-stratic/issues"
+  &#x22;author&#x22;: &#x22;Alyssa P. Hacker &#x3C;alyssaphacker@example.net&#x3E;&#x22;,
+  &#x22;license&#x22;: &#x22;AGPL-3.0+&#x22;,
+  &#x22;bugs&#x22;: {
+    &#x22;url&#x22;: &#x22;https://github.com/straticjs/static-to-stratic/issues&#x22;
   },
-  "homepage": "https://github.com/straticjs/static-to-stratic#readme"
+  &#x22;homepage&#x22;: &#x22;https://github.com/straticjs/static-to-stratic#readme&#x22;
 }
 
 
 Is this ok? (yes) yes
 </code></pre>
-<p>A couple things to note here: in general, the defaults are fine to accept. We've provided a description and an author, but these are optional since this isn't actually going to be published on the npm registry. They're just kind of nice to have.</p>
-<p>The same goes for the license, which in this case is the <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">Affero GPL 3.0 or above</a> - however, as the copyright holder you are of course free to <a href="https://choosealicense.com/">choose whatever license</a> you want. (Or no license, although I'd discourage you from doing that.)</p>
-<p>Once we have a <code>package.json</code>, we can go ahead and install gulp and another module we'll need, <code>ecstatic</code>:</p>
+<p>A couple things to note here: in general, the defaults are fine to accept. We&#x27;ve provided a description and an author, but these are optional since this isn&#x27;t actually going to be published on the npm registry. They&#x27;re just kind of nice to have.</p>
+<p>The same goes for the license, which in this case is the <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">Affero GPL 3.0 or above</a> - however, as the copyright holder you are of course free to <a href="https://choosealicense.com/">choose whatever license</a> you want. (Or no license, although I&#x27;d discourage you from doing that.)</p>
+<p>Once we have a <code>package.json</code>, we can go ahead and install gulp and another module we&#x27;ll need, <code>ecstatic</code>:</p>
 <pre><code>% npm install --save-dev gulp ecstatic
 </code></pre>
-<p>If you haven't used gulp previously, you'll also need to install <code>gulp-cli</code>:</p>
+<p>If you haven&#x27;t used gulp previously, you&#x27;ll also need to install <code>gulp-cli</code>:</p>
 <pre><code>% npm install -g gulp-cli
 </code></pre>
-<p>At this point, we'll need to move some files around. Now that we have a build system, we can organize our repository however we want instead of putting stuff exactly where we want it in production.</p>
-<p>You can do this however you want. The organization that you'll find most projects using, though, is to put stuff in a <code>src</code> directory. Let's make that right now.</p>
+<p>At this point, we&#x27;ll need to move some files around. Now that we have a build system, we can organize our repository however we want instead of putting stuff exactly where we want it in production.</p>
+<p>You can do this however you want. The organization that you&#x27;ll find most projects using, though, is to put stuff in a <code>src</code> directory. Let&#x27;s make that right now.</p>
 <pre><code>% mkdir src
 % git mv *.html src
 % git mv css src/styles
 % git mv js src/scripts
 </code></pre>
 <p>Finally, create a file named <code>gulpfile.js</code> and put the following in it:</p>
-<pre><code>var gulp = require('gulp'),
-    http = require('http'),
-    ecstatic = require('ecstatic');
+<pre><code>var gulp = require(&#x27;gulp&#x27;),
+    http = require(&#x27;http&#x27;),
+    ecstatic = require(&#x27;ecstatic&#x27;);
 
-gulp.task('build:html', function() {
-    gulp.src('src/*.html')
-        .pipe(gulp.dest('dist'));
+gulp.task(&#x27;build:html&#x27;, function() {
+    gulp.src(&#x27;src/*.html&#x27;)
+        .pipe(gulp.dest(&#x27;dist&#x27;));
 });
 
-gulp.task('build:css', function() {
-    gulp.src('src/styles/*')
-        .pipe(gulp.dest('dist/css'));
+gulp.task(&#x27;build:css&#x27;, function() {
+    gulp.src(&#x27;src/styles/*&#x27;)
+        .pipe(gulp.dest(&#x27;dist/css&#x27;));
 });
 
-gulp.task('build:js', function() {
-    gulp.src('src/scripts/*')
-        .pipe(gulp.dest('dist/js'));
+gulp.task(&#x27;build:js&#x27;, function() {
+    gulp.src(&#x27;src/scripts/*&#x27;)
+        .pipe(gulp.dest(&#x27;dist/js&#x27;));
 });
 
-gulp.task('watch', ['build'], function() {
-    gulp.watch('src/*.html', ['build:html']);
-    gulp.watch('src/styles/*', ['build:css']);
-    gulp.watch('src/scripts/*', ['build:js']);
+gulp.task(&#x27;watch&#x27;, [&#x27;build&#x27;], function() {
+    gulp.watch(&#x27;src/*.html&#x27;, [&#x27;build:html&#x27;]);
+    gulp.watch(&#x27;src/styles/*&#x27;, [&#x27;build:css&#x27;]);
+    gulp.watch(&#x27;src/scripts/*&#x27;, [&#x27;build:js&#x27;]);
 });
 
-gulp.task('serve', ['watch'], function() {
+gulp.task(&#x27;serve&#x27;, [&#x27;watch&#x27;], function() {
         http.createServer(
-                ecstatic({ root: __dirname + '/dist' })
+                ecstatic({ root: __dirname + &#x27;/dist&#x27; })
         ).listen(8080);
 });
 
-gulp.task('build', ['build:html', 'build:css', 'build:js']);
+gulp.task(&#x27;build&#x27;, [&#x27;build:html&#x27;, &#x27;build:css&#x27;, &#x27;build:js&#x27;]);
 
-gulp.task('default', ['serve']);
+gulp.task(&#x27;default&#x27;, [&#x27;serve&#x27;]);
 </code></pre>
-<p>This gives us a pretty good starting point. This gulpfile defines a couple tasks that simply copy source files into <code>dist</code>. The <code>watch</code> task watches for changes and rebuilds when they occur, and the <code>serve</code> task starts up a server, replacing Alyssa's usage of <code>http-server</code>. This provides exactly the same workflow as before: Alyssa runs one command and then she can look at her site on <code>localhost:8080</code>. You can use different task names if you want (for example, <code>html</code> instead of <code>build:html</code>, etc.), but these are what <code>generator-stratic</code> gives you.</p>
-<p>However, there's one problem: Alyssa can't deploy her site anymore. If she pushed like this, visitors would have to visit e.g. <code>https://aphacker.github.io/src/projects</code> instead of <code>https://aphacker.github.io/projects</code>! That's no good.</p>
-<p>In order to rectify this, we'll create a new git branch, <code>src</code>. <code>src</code> will contain the source files, and we'll put the final, built site in <code>master</code>, which is what's served by GitHub Pages. So:</p>
+<p>This gives us a pretty good starting point. This gulpfile defines a couple tasks that simply copy source files into <code>dist</code>. The <code>watch</code> task watches for changes and rebuilds when they occur, and the <code>serve</code> task starts up a server, replacing Alyssa&#x27;s usage of <code>http-server</code>. This provides exactly the same workflow as before: Alyssa runs one command and then she can look at her site on <code>localhost:8080</code>. You can use different task names if you want (for example, <code>html</code> instead of <code>build:html</code>, etc.), but these are what <code>generator-stratic</code> gives you.</p>
+<p>However, there&#x27;s one problem: Alyssa can&#x27;t deploy her site anymore. If she pushed like this, visitors would have to visit e.g. <code>https://aphacker.github.io/src/projects</code> instead of <code>https://aphacker.github.io/projects</code>! That&#x27;s no good.</p>
+<p>In order to rectify this, we&#x27;ll create a new git branch, <code>src</code>. <code>src</code> will contain the source files, and we&#x27;ll put the final, built site in <code>master</code>, which is what&#x27;s served by GitHub Pages. So:</p>
 <pre><code>% git checkout -b src
 % git push --set-upstream origin src
 </code></pre>
-<p>Great. Now, we need to add something to put the built files (i.e. the contents of <code>dist</code>) in <code>master</code>. We'll use the <code>gh-pages</code> module for this. First install it and a dependency we'll need:</p>
+<p>Great. Now, we need to add something to put the built files (i.e. the contents of <code>dist</code>) in <code>master</code>. We&#x27;ll use the <code>gh-pages</code> module for this. First install it and a dependency we&#x27;ll need:</p>
 <pre><code>% npm install --save-dev gh-pages gulp-util
 </code></pre>
 <p>Next, make it available in the gulpfile by adding a line at the end of <code>require()</code> statements:</p>
-<pre><code>var gulp = require('gulp'),
-    http = require('http'),
-    ecstatic = require('ecstatic');
+<pre><code>var gulp = require(&#x27;gulp&#x27;),
+    http = require(&#x27;http&#x27;),
+    ecstatic = require(&#x27;ecstatic&#x27;);
 </code></pre>
 <p>And finally, add a <code>deploy</code> task somewhere in the gulpfile:</p>
-<pre><code>gulp.task('deploy', ['build'], function(done) {
-    ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log, branch: 'master' }, done);
+<pre><code>gulp.task(&#x27;deploy&#x27;, [&#x27;build&#x27;], function(done) {
+    ghpages.publish(path.join(__dirname, &#x27;dist&#x27;), { logger: gutil.log, branch: &#x27;master&#x27; }, done);
 });
 </code></pre>
-<p>Now whenever Alyssa wants to deploy a new version of her website, she just runs <code>gulp deploy</code> and it'll be taken care of for her. (ProTip™: change the default branch to <code>src</code> on GitHub. That way visitors and new clones see the source files, not the build files generated by a program.)</p>
-<p>The very last thing we need to do is add a <code>.gitignore</code> file since we're installing Node modules and have a build directory now. We'll just use GitHub's, adding a line for <code>dist/</code> at the end:</p>
-<pre><code>% curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore > .gitignore
-% echo "\ndist/\n" >> .gitignore
+<p>Now whenever Alyssa wants to deploy a new version of her website, she just runs <code>gulp deploy</code> and it&#x27;ll be taken care of for her. (ProTip&#x2122;: change the default branch to <code>src</code> on GitHub. That way visitors and new clones see the source files, not the build files generated by a program.)</p>
+<p>The very last thing we need to do is add a <code>.gitignore</code> file since we&#x27;re installing Node modules and have a build directory now. We&#x27;ll just use GitHub&#x27;s, adding a line for <code>dist/</code> at the end:</p>
+<pre><code>% curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore &#x3E; .gitignore
+% echo &#x22;\ndist/\n&#x22; &#x3E;&#x3E; .gitignore
 </code></pre>
-<p>Now we've got a functionally equivalent development setup based on gulp. Success!</p>
+<p>Now we&#x27;ve got a functionally equivalent development setup based on gulp. Success!</p>
 <h3>Step 2: converting HTML to Pug</h3>
-<p>The next step is to convert the HTML to <a href="https://pugjs.org">Pug</a>. Pug (formerly known as Jade) is a language that compiles to HTML. It lets you do useful things like inherit from a common layout as well as looping over JavaScript variables. If you're not familiar with Pug, you should go take a look at its syntax now.</p>
-<p>The easiest way to do this conversion is to get a program to do it for you. <a href="http://html2jade.aaron-powell.com/">Here's the one I used</a> way back when; you may be able to find a better one. The generated Pug will be valid but not the prettiest - you may want to wait to clean it up since we're going to do some work to reduce the duplication soon.</p>
-<p>Once you've got the converted Pug, you should rename the relevant HTML file to have a <code>.pug</code> extention, then replace the contents with the Pug. Do this for each HTML file.</p>
+<p>The next step is to convert the HTML to <a href="https://pugjs.org">Pug</a>. Pug (formerly known as Jade) is a language that compiles to HTML. It lets you do useful things like inherit from a common layout as well as looping over JavaScript variables. If you&#x27;re not familiar with Pug, you should go take a look at its syntax now.</p>
+<p>The easiest way to do this conversion is to get a program to do it for you. <a href="http://html2jade.aaron-powell.com/">Here&#x27;s the one I used</a> way back when; you may be able to find a better one. The generated Pug will be valid but not the prettiest - you may want to wait to clean it up since we&#x27;re going to do some work to reduce the duplication soon.</p>
+<p>Once you&#x27;ve got the converted Pug, you should rename the relevant HTML file to have a <code>.pug</code> extention, then replace the contents with the Pug. Do this for each HTML file.</p>
 <p>The last step here is to make gulp build the Pug. Install <code>gulp-pug</code>:</p>
 <pre><code>% npm install --save-dev gulp-pug
 </code></pre>
-<p>Then add <code>pug = require('gulp-pug')</code> to the end of the <code>var</code> declaration at the top of your gulpfile. Finally, change your <code>html</code> task to look like this:</p>
-<pre><code>gulp.task('build:html', function() {
-    gulp.src('src/*.pug')
+<p>Then add <code>pug = require(&#x27;gulp-pug&#x27;)</code> to the end of the <code>var</code> declaration at the top of your gulpfile. Finally, change your <code>html</code> task to look like this:</p>
+<pre><code>gulp.task(&#x27;build:html&#x27;, function() {
+    gulp.src(&#x27;src/*.pug&#x27;)
         .pipe(pug({pretty: true}))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest(&#x27;dist&#x27;));
 });
 </code></pre>
-<p>We'll also need to fix the <code>watch</code> task so it has:</p>
-<pre><code>gulp.watch('src/*.pug', ['build:html']);
+<p>We&#x27;ll also need to fix the <code>watch</code> task so it has:</p>
+<pre><code>gulp.watch(&#x27;src/*.pug&#x27;, [&#x27;build:html&#x27;]);
 </code></pre>
 <p>which will watch Pug files instead of HTML files.</p>
-<p>That's it! Alyssa's site is now building with Pug instead of HTML.</p>
+<p>That&#x27;s it! Alyssa&#x27;s site is now building with Pug instead of HTML.</p>
 <h3>Step 3: splitting out the layout</h3>
-<p>Pug's looping and flow control constructs will be very useful to us later on, but we can get some immediate productivity wins by splitting out the site layout so it's not duplicated across every Pug file.</p>
-<p>There's one tricky thing about this: the navigation is mostly the same between pages, but not quite - the page the user is currently on shouldn't be a link. We'll solve this by using a <code>block</code> directive for each link. That way, we can override just what needs to be changed, while introducing no duplication.</p>
-<p>You'll have to figure out exactly what parts of your personal layout make sense to be split out. In Alyssa's case, there are three main things that are mostly or fully duplicated across pages:</p>
+<p>Pug&#x27;s looping and flow control constructs will be very useful to us later on, but we can get some immediate productivity wins by splitting out the site layout so it&#x27;s not duplicated across every Pug file.</p>
+<p>There&#x27;s one tricky thing about this: the navigation is mostly the same between pages, but not quite - the page the user is currently on shouldn&#x27;t be a link. We&#x27;ll solve this by using a <code>block</code> directive for each link. That way, we can override just what needs to be changed, while introducing no duplication.</p>
+<p>You&#x27;ll have to figure out exactly what parts of your personal layout make sense to be split out. In Alyssa&#x27;s case, there are three main things that are mostly or fully duplicated across pages:</p>
 <ol>
 <li>The navigation bar</li>
 <li>The footer</li>
 <li>Invisible metadata and script/style includes</li>
 </ol>
-<p>These are what we'll split out. First, we'll make a copy of <code>index.pug</code> and put it in <code>src/includes/layout.pug</code>. (Again, you can organize your files however you want - but in projects generated by <code>generator-stratic</code>, utility Pug files go in <code>src/includes</code>.) Next, edit out the page-specific content and replace them with <code>block</code> directives. Finally, edit each navigation bar item so it has its own <code>block</code> directive, leaving the old code as the default for the <code>block</code> directive.</p>
-<p>Here's what this looks like when we do this to Alyssa's site:</p>
+<p>These are what we&#x27;ll split out. First, we&#x27;ll make a copy of <code>index.pug</code> and put it in <code>src/includes/layout.pug</code>. (Again, you can organize your files however you want - but in projects generated by <code>generator-stratic</code>, utility Pug files go in <code>src/includes</code>.) Next, edit out the page-specific content and replace them with <code>block</code> directives. Finally, edit each navigation bar item so it has its own <code>block</code> directive, leaving the old code as the default for the <code>block</code> directive.</p>
+<p>Here&#x27;s what this looks like when we do this to Alyssa&#x27;s site:</p>
 <pre><code>doctype html
 html
   head
-    meta(charset='UTF-8')
-    link(href='/css/main.css', rel='stylesheet', type='text/css')
+    meta(charset=&#x27;UTF-8&#x27;)
+    link(href=&#x27;/css/main.css&#x27;, rel=&#x27;stylesheet&#x27;, type=&#x27;text/css&#x27;)
     block head
   body
     block heading
@@ -255,63 +255,63 @@ html
       ul
         block nav-homepage
           li
-            a(href='/') Homepage
+            a(href=&#x27;/&#x27;) Homepage
         block nav-projects
           li
-            a(href='/projects') Projects
+            a(href=&#x27;/projects&#x27;) Projects
 
     block body
 
     footer
       p &#x26;copy; Copyright 2016 Alyssa P. Hacker.
-    script(src='/js/main.js', type='text/javascript')
+    script(src=&#x27;/js/main.js&#x27;, type=&#x27;text/javascript&#x27;)
 </code></pre>
-<p>Note how I've replaced the <code>h1</code> element (the contents of which vary per-page) with <code>block heading</code>, I've added a <code>block head</code> directive so we can specify the title per-page, I've made a <code>block</code> for each navigation link so we can override them if we want to individually (otherwise they'll have the default of being a link), and I've added <code>block body</code> for the main content. I've also cleaned out a bunch of the cruft the automatic converter put in there.</p>
-<p>Now, we can edit <code>index.pug</code> so that it inherits from <code>layout.pug</code> - we'll use the <code>extends</code> keyword for this. Then we just fill in the content we want using block. Here's what this looks like after we're finished with Alyssa's site:</p>
+<p>Note how I&#x27;ve replaced the <code>h1</code> element (the contents of which vary per-page) with <code>block heading</code>, I&#x27;ve added a <code>block head</code> directive so we can specify the title per-page, I&#x27;ve made a <code>block</code> for each navigation link so we can override them if we want to individually (otherwise they&#x27;ll have the default of being a link), and I&#x27;ve added <code>block body</code> for the main content. I&#x27;ve also cleaned out a bunch of the cruft the automatic converter put in there.</p>
+<p>Now, we can edit <code>index.pug</code> so that it inherits from <code>layout.pug</code> - we&#x27;ll use the <code>extends</code> keyword for this. Then we just fill in the content we want using block. Here&#x27;s what this looks like after we&#x27;re finished with Alyssa&#x27;s site:</p>
 <pre><code>extends includes/layout.pug
 
 block head
-  title Alyssa P. Hacker's homepage
+  title Alyssa P. Hacker&#x27;s homepage
 
 block heading
-  h1 Alyssa P. Hacker's homepage
+  h1 Alyssa P. Hacker&#x27;s homepage
 
 block nav-homepage
   li Homepage
 
 block body
-  p This is the homepage of Alyssa P. Hacker. You can check out the projects I've worked on #[a(href='/projects') here].
+  p This is the homepage of Alyssa P. Hacker. You can check out the projects I&#x27;ve worked on #[a(href=&#x27;/projects&#x27;) here].
 </code></pre>
-<p>You'll note that I've cleaned out some cruft here, too. We have one last thing to fix: if we change the layout, nothing will get rebuilt. We can fix this by changing the <code>watch</code> task again so that the line for watching Pug files reads:</p>
-<pre><code>gulp.watch(['src/*.pug', 'src/includes/*.pug'], ['build:html']);
+<p>You&#x27;ll note that I&#x27;ve cleaned out some cruft here, too. We have one last thing to fix: if we change the layout, nothing will get rebuilt. We can fix this by changing the <code>watch</code> task again so that the line for watching Pug files reads:</p>
+<pre><code>gulp.watch([&#x27;src/*.pug&#x27;, &#x27;src/includes/*.pug&#x27;], [&#x27;build:html&#x27;]);
 </code></pre>
-<p>Sweet! <code>index.pug</code> is way shorter than what we had before and includes <em>just</em> the content now. We can do the same thing to <code>projects.pug</code>. Then Alyssa can, for example, correct the copyright year in <code>layout.pug</code> - i.e., once - and that change will go into both <code>index.html</code> <em>and</em> <code>projects.html</code>. I've gone ahead and made the change for her.</p>
-<p>To give a high-level overview, here's what Alyssa's site looks like now:</p>
+<p>Sweet! <code>index.pug</code> is way shorter than what we had before and includes <em>just</em> the content now. We can do the same thing to <code>projects.pug</code>. Then Alyssa can, for example, correct the copyright year in <code>layout.pug</code> - i.e., once - and that change will go into both <code>index.html</code> <em>and</em> <code>projects.html</code>. I&#x27;ve gone ahead and made the change for her.</p>
+<p>To give a high-level overview, here&#x27;s what Alyssa&#x27;s site looks like now:</p>
 <pre><code>% tree -I node_modules .
 .
-├── dist
-│   ├── css
-│   │   └── main.css
-│   ├── index.html
-│   ├── js
-│   │   └── main.js
-│   └── projects.html
-├── gulpfile.js
-├── package.json
-└── src
-    ├── includes
-    │   └── layout.pug
-    ├── index.pug
-    ├── projects.pug
-    ├── scripts
-    │   └── main.js
-    └── styles
-        └── main.css
+&#x251C;&#x2500;&#x2500; dist
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; css
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; main.css
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; index.html
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; js
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; main.js
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; projects.html
+&#x251C;&#x2500;&#x2500; gulpfile.js
+&#x251C;&#x2500;&#x2500; package.json
+&#x2514;&#x2500;&#x2500; src
+    &#x251C;&#x2500;&#x2500; includes
+    &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; layout.pug
+    &#x251C;&#x2500;&#x2500; index.pug
+    &#x251C;&#x2500;&#x2500; projects.pug
+    &#x251C;&#x2500;&#x2500; scripts
+    &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; main.js
+    &#x2514;&#x2500;&#x2500; styles
+        &#x2514;&#x2500;&#x2500; main.css
 
 7 directories, 11 files
 </code></pre>
 <h3>Next time...</h3>
-<p>This post is long enough already, so I'll stop here. We've converted Alyssa's site to have a really solid base, so next time we'll build on top of this work to add superpowered blog features, powered by Stratic.</p>
+<p>This post is long enough already, so I&#x27;ll stop here. We&#x27;ve converted Alyssa&#x27;s site to have a really solid base, so next time we&#x27;ll build on top of this work to add superpowered blog features, powered by Stratic.</p>
 <p>Now go apply this to your own site!</p>
 
             </div>
@@ -323,7 +323,7 @@ block body
               <time datetime="2017-02-19T02:42:52-05:00"><a href="/blog/2017/02/">February</a> 19, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/personal/" class="p-category">personal</a>
             </p>
             <div class="e-content"><p>This is week 6 of being at the <a href="https://recurse.com">Recurse Center</a>. </p>
-<p>(I feel obligated to point out that this is being published a week later than it's supposed to be because I got behind. I am, however, very confident that the following is accurate. I used GitHub history and location data to help me remember the parts that were fuzzy.)</p>
+<p>(I feel obligated to point out that this is being published a week later than it&#x27;s supposed to be because I got behind. I am, however, very confident that the following is accurate. I used GitHub history and location data to help me remember the parts that were fuzzy.)</p>
 <script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
 <h3>Day 19</h3>
 <p>Not at RC. Total time at RC 0h0m.</p>
@@ -331,25 +331,25 @@ block body
 <h3>Day 20</h3>
 <p>Arrived ~16:45, departed ~22:10, total time at RC 5h25m.</p>
 <p>Somewhat unproductive day. Spent most of it just trawling the web. I was completely exhausted since I got back to my apartment from the airport at 3 in the morning. (My flight got in late, I waited at the airport for a while to see my sister, and at 12:30 I got on my train away from the AirTrain station except that it was in the wrong direction. Also, fun fact, subways and trains run <em>really</em> infrequently at 1 AM. Who knew!?)</p>
-<p>I did, however, write the slides for the next day's Security Club presentation on the basics of cryptography. Started them pretty late, though, and mostly finished them at home, which was unfortunate since I was up real late again.</p>
+<p>I did, however, write the slides for the next day&#x27;s Security Club presentation on the basics of cryptography. Started them pretty late, though, and mostly finished them at home, which was unfortunate since I was up real late again.</p>
 <h3>Day 21</h3>
 <p>Arrived ~13:00, departed ~22:00, total time at RC 9h0m.</p>
-<p>Arrived with a little time to spare before teaching Cryptography Basics for Security Club. Didn't do much in the afternoon before leaving to walk down to the waterfront with 15 people or so, which took an hour and was really, really lovely, honestly. Especially since the Winter 1 batch is ending so soon.</p>
+<p>Arrived with a little time to spare before teaching Cryptography Basics for Security Club. Didn&#x27;t do much in the afternoon before leaving to walk down to the waterfront with 15 people or so, which took an hour and was really, really lovely, honestly. Especially since the Winter 1 batch is ending so soon.</p>
 <h3>Day 22</h3>
 <p>Arrived ~12:00, departed ~5:00, total time at RC 17h00m.</p>
-<p>Spent the morning and early afternoon pairing with <a href="https://github.com/Jmeggesto">Jackie</a> on <a href="https://github.com/strugee/icalc">icalc</a>. We fixed a maddeningly weird bug where, when the user input an incorrect value, the operation type prompt would be displayed twice. You can see the fix <a href="https://github.com/strugee/icalc/commit/fb20487c5385cb0ae6192cd6540c98fbd82ff2d0#diff-2045016cb90d1e65d71c2407a2570927">here</a> - the problem was that <code>getchar()</code> was retrieving the newline used to "submit" the operation type when the function was called again (recursively). In other words, the stdin stream had <em>two</em> characters on it - the incorrect character, and the newline. The solution was to just use a different function from libc that did this correctly. The entire process was pretty educational, since it required delving into C strings, the libc manpages, etc. After fixing that, Jackie and I paired on <a href="https://github.com/Jmeggesto/bank-prettify">a JavaScript project</a> that will display Bank of America account balances on the commandline (a non-trivial problem, since Bank of America requires JavaScript).</p>
+<p>Spent the morning and early afternoon pairing with <a href="https://github.com/Jmeggesto">Jackie</a> on <a href="https://github.com/strugee/icalc">icalc</a>. We fixed a maddeningly weird bug where, when the user input an incorrect value, the operation type prompt would be displayed twice. You can see the fix <a href="https://github.com/strugee/icalc/commit/fb20487c5385cb0ae6192cd6540c98fbd82ff2d0#diff-2045016cb90d1e65d71c2407a2570927">here</a> - the problem was that <code>getchar()</code> was retrieving the newline used to &#x22;submit&#x22; the operation type when the function was called again (recursively). In other words, the stdin stream had <em>two</em> characters on it - the incorrect character, and the newline. The solution was to just use a different function from libc that did this correctly. The entire process was pretty educational, since it required delving into C strings, the libc manpages, etc. After fixing that, Jackie and I paired on <a href="https://github.com/Jmeggesto/bank-prettify">a JavaScript project</a> that will display Bank of America account balances on the commandline (a non-trivial problem, since Bank of America requires JavaScript).</p>
 <p>In the late afternoon, switched gears a bit to review a PRISM Break PR.</p>
-<p>In the evening, I gave a presentation at Thursday night presentations entitled "Mercurial for Git folks". I put zero effort into slides and instead simply opened up a bunch of tabs and terminal windows with content I wanted to point to while I was talking. Then I got up there and just... talked about why Mercurial is neat. At the beginning I asked who used Git (most hands, including mine, went up) and who hated Git (a fair number of hands, including mine, went up). So that was pretty amusing. I talked about how the design was pretty similar to Git, how Mercurial has extensions (because it's written in Python), how that plays into its "disable confusing/dangerous stuff like the staging area and rebase by default" philosophy, and how I've been learning it by just using <a href="https://hg-git.github.io/">hg-git</a> with GitHub. I thought it went pretty badly, because I didn't feel like it was very coherent. But the people I asked about it said it was actually pretty good, so that feels nice.</p>
-<p>After that, we had the end-of-batch/goodbye Rose party. :'(</p>
-<p>I spent a lot of time discussing politics and education with <a href="https://github.com/steph-rage">Stephanie</a>, which was lovely, and had some other long and interesting conversations that I wish I remember but don't, truthfully. Spent quite a bit of time with <a href="https://github.com/inytar">Pieter</a>, <a href="https://github.com/heatherbooker">Heather</a>, and David L messing around on top of the desk chairs, which completely filled Hopper. Eventually ended up sitting in Babbage with Rose, James, Heather, and some other folks (can't remember, honestly) just hanging out. We jacked the space heater way up so it felt like a sauna (aka reeeeeeal nice) and just talked about stuff. Around the 2-3 AM mark Heather and I got bundled up and went out to go to the pharmacy (which turned out to actually be literally right next door) and buy chocolate and nail polish. And then I spent somewhere between 1.5 to 2 hours painting my nails a fabulously sparkly red color called "Devil's Stare" from a brand called "Sinful Colors" - a combination which strikes me as being nothing short of <em>wild</em>.</p>
-<p>At around 5 AM, everyone decided to go to sleep. I was the only person to go home, and honestly the only reason I did so was because I knew I'd want a shower in the morning. So I spent about 15 minutes trying to find the stupid switch to turn off the kitchen lights, finally gave up and went home, and fell asleep a short while after the sun rose.</p>
+<p>In the evening, I gave a presentation at Thursday night presentations entitled &#x22;Mercurial for Git folks&#x22;. I put zero effort into slides and instead simply opened up a bunch of tabs and terminal windows with content I wanted to point to while I was talking. Then I got up there and just... talked about why Mercurial is neat. At the beginning I asked who used Git (most hands, including mine, went up) and who hated Git (a fair number of hands, including mine, went up). So that was pretty amusing. I talked about how the design was pretty similar to Git, how Mercurial has extensions (because it&#x27;s written in Python), how that plays into its &#x22;disable confusing/dangerous stuff like the staging area and rebase by default&#x22; philosophy, and how I&#x27;ve been learning it by just using <a href="https://hg-git.github.io/">hg-git</a> with GitHub. I thought it went pretty badly, because I didn&#x27;t feel like it was very coherent. But the people I asked about it said it was actually pretty good, so that feels nice.</p>
+<p>After that, we had the end-of-batch/goodbye Rose party. :&#x27;(</p>
+<p>I spent a lot of time discussing politics and education with <a href="https://github.com/steph-rage">Stephanie</a>, which was lovely, and had some other long and interesting conversations that I wish I remember but don&#x27;t, truthfully. Spent quite a bit of time with <a href="https://github.com/inytar">Pieter</a>, <a href="https://github.com/heatherbooker">Heather</a>, and David L messing around on top of the desk chairs, which completely filled Hopper. Eventually ended up sitting in Babbage with Rose, James, Heather, and some other folks (can&#x27;t remember, honestly) just hanging out. We jacked the space heater way up so it felt like a sauna (aka reeeeeeal nice) and just talked about stuff. Around the 2-3 AM mark Heather and I got bundled up and went out to go to the pharmacy (which turned out to actually be literally right next door) and buy chocolate and nail polish. And then I spent somewhere between 1.5 to 2 hours painting my nails a fabulously sparkly red color called &#x22;Devil&#x27;s Stare&#x22; from a brand called &#x22;Sinful Colors&#x22; - a combination which strikes me as being nothing short of <em>wild</em>.</p>
+<p>At around 5 AM, everyone decided to go to sleep. I was the only person to go home, and honestly the only reason I did so was because I knew I&#x27;d want a shower in the morning. So I spent about 15 minutes trying to find the stupid switch to turn off the kitchen lights, finally gave up and went home, and fell asleep a short while after the sun rose.</p>
 <h3>Friday</h3>
-<p>Arrived ~18:00, departed ~1:15, total time at RC 7h15m. As always, Friday doesn't count as a day because RC is technically not in session.</p>
-<p>Arrived exceedingly late since I woke up around, you know, 5. Got to RC and did very little before noticing a very large party leaving for dinner, which I joined and ate with (despite saying before I left that I'd had breakfast recently, so I "wasn't going to get anything"). We went out to get Chinese food, then went to a place that served Asian dessert of some kind (I've forgotten). It was beyond lovely, honestly.</p>
-<p>(I also mentioned at dinner that I'd missed a week of blogging, so during a discussion with <a href="https://github.com/chirs">Chris</a> about it I posted to a Zulip topic named "shame AJ" soliciting ideas for a punishment as well as moving the regular Iron Blogger meeting to Tuesday due to the Spring 1 introduction day.)</p>
+<p>Arrived ~18:00, departed ~1:15, total time at RC 7h15m. As always, Friday doesn&#x27;t count as a day because RC is technically not in session.</p>
+<p>Arrived exceedingly late since I woke up around, you know, 5. Got to RC and did very little before noticing a very large party leaving for dinner, which I joined and ate with (despite saying before I left that I&#x27;d had breakfast recently, so I &#x22;wasn&#x27;t going to get anything&#x22;). We went out to get Chinese food, then went to a place that served Asian dessert of some kind (I&#x27;ve forgotten). It was beyond lovely, honestly.</p>
+<p>(I also mentioned at dinner that I&#x27;d missed a week of blogging, so during a discussion with <a href="https://github.com/chirs">Chris</a> about it I posted to a Zulip topic named &#x22;shame AJ&#x22; soliciting ideas for a punishment as well as moving the regular Iron Blogger meeting to Tuesday due to the Spring 1 introduction day.)</p>
 <h3>Executive summary</h3>
 <p>This week was particularly unproductive. I only did a little bit of work on icalc, my C project, and other than that the only really RC-related project I did was my security club presentation on cryptography basics. This was mostly because my sleep schedule was super messed up from Brussels, and then got messed up again (just as it was getting back to normal) on Thursday.</p>
-<p>This week was also very emotional, since it was the Winter 1s' last week. To all my Winter 1 friends: you made my time at RC amazing and welcoming and exciting and wonderful and I loved being around you all. And I will miss you for a very long time. &#x3C;3</p>
+<p>This week was also very emotional, since it was the Winter 1s&#x27; last week. To all my Winter 1 friends: you made my time at RC amazing and welcoming and exciting and wonderful and I loved being around you all. And I will miss you for a very long time. &#x3C;3</p>
 <p>(*<em>starts crying a lil bit</em>*)</p>
 <p>Total time at RC 38 hours 40 minutes; cumulative time 239 hours 25 minutes.</p>
 
@@ -362,14 +362,14 @@ block body
               <time datetime="2017-02-14T17:01:19-05:00"><a href="/blog/2017/02/">February</a> 14, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/personal/" class="p-category">personal</a>, <a href="/blog/category/musings/" class="p-category">musings</a> and <a href="/blog/category/culture/" class="p-category">culture</a>. Last edited 
               <time datetime="2018-01-08T03:10:57.000-07:00">January 8, 2018</time>.
             </p>
-            <div class="e-content"><p>So I want to talk (real quick) about gender representation in tech. Specifically, the fact that it's abysmal. Women[1] usually account for, at most, <a href="https://www.cnet.com/news/women-in-tech-the-numbers-dont-add-up/">30% of the employees in a company</a> and that number is often much lower. Even at the companies where it's 30%, that number is misleading because it doesn't adress management positions which are often much lower. (For reference, women accounted for about 59% of the overall workforce as of 2015, when the article I pulled those numbers from was published.) <a href="http://fortune.com/2014/10/02/women-leave-tech-culture/">Here's an article</a> that says that on average, women leave the industry within 7 years of being in it. Let me repeat that, because I didn't say they leave their jobs, or take a break. They completely leave the <em>entire technology industry</em>. And unfortunately it makes sense, since incidents of sexism in tech are <a href="http://geekfeminism.wikia.com/wiki/Category:Incidents">rampant</a>.</p>
-<p>Unlike (most of) the rest of the tech world, the <a href="https://recurse.com">Recurse Center</a> is mostly (completely?) gender-balanced. I want to point out that while for years I've believed in diversity, it didn't become clear to me how much <a href="https://www.opensocietyfoundations.org/voices/implicit-bias-and-social-justice">implicit bias</a> I held until I joined RC. I find that, having previously spent significant amounts of time in environments that were predominantly white, cis and male, <strong>I find myself needing to self-correct discriminatory and gender-based unconscious assumptions significantly less frequently at RC</strong>. In other words, my subconscious is making less incorrect, gender-based suggestions about what people are like that I then have to consciously reject. I would attribute this almost 100% to the fact that at RC I'm surrounded by lots of people who are a) super talented and know their shit and b) aren't male.</p>
-<p>If I have a point to this blog post (and I'm not sure that I do), it'd be to underscore what many have said before me: representation and role models are important. Advocating for gender equality is good and important, but in the end what really matters is what's actually in people's heads. That's mostly influenced by what they see in their immediate lives, and that's why representation is so important - believing in equality is great, but presenting actual evidence to your subconscious that its biases are incorrect is a much more powerful way to improve the way you perceive the world.</p>
-<p>If folks have any comments or different perspectives, I'd love to hear them <a href="/contact">privately</a> or via <a href="https://webmention.net/">WebMention</a>.</p>
-<p> [1]: I'm focusing on women here because I'm not aware of any statistics about non-binary people in tech. But it's worth noting that it's a huge problem for them, too.</p>
-<p><strong>Update February 22nd:</strong> the lovely <a href="https://twitter.com/rhonorv">Rachel Vincent</a> from RC faculty says this about RC's gender-balancing:</p>
+            <div class="e-content"><p>So I want to talk (real quick) about gender representation in tech. Specifically, the fact that it&#x27;s abysmal. Women[1] usually account for, at most, <a href="https://www.cnet.com/news/women-in-tech-the-numbers-dont-add-up/">30% of the employees in a company</a> and that number is often much lower. Even at the companies where it&#x27;s 30%, that number is misleading because it doesn&#x27;t adress management positions which are often much lower. (For reference, women accounted for about 59% of the overall workforce as of 2015, when the article I pulled those numbers from was published.) <a href="http://fortune.com/2014/10/02/women-leave-tech-culture/">Here&#x27;s an article</a> that says that on average, women leave the industry within 7 years of being in it. Let me repeat that, because I didn&#x27;t say they leave their jobs, or take a break. They completely leave the <em>entire technology industry</em>. And unfortunately it makes sense, since incidents of sexism in tech are <a href="http://geekfeminism.wikia.com/wiki/Category:Incidents">rampant</a>.</p>
+<p>Unlike (most of) the rest of the tech world, the <a href="https://recurse.com">Recurse Center</a> is mostly (completely?) gender-balanced. I want to point out that while for years I&#x27;ve believed in diversity, it didn&#x27;t become clear to me how much <a href="https://www.opensocietyfoundations.org/voices/implicit-bias-and-social-justice">implicit bias</a> I held until I joined RC. I find that, having previously spent significant amounts of time in environments that were predominantly white, cis and male, <strong>I find myself needing to self-correct discriminatory and gender-based unconscious assumptions significantly less frequently at RC</strong>. In other words, my subconscious is making less incorrect, gender-based suggestions about what people are like that I then have to consciously reject. I would attribute this almost 100% to the fact that at RC I&#x27;m surrounded by lots of people who are a) super talented and know their shit and b) aren&#x27;t male.</p>
+<p>If I have a point to this blog post (and I&#x27;m not sure that I do), it&#x27;d be to underscore what many have said before me: representation and role models are important. Advocating for gender equality is good and important, but in the end what really matters is what&#x27;s actually in people&#x27;s heads. That&#x27;s mostly influenced by what they see in their immediate lives, and that&#x27;s why representation is so important - believing in equality is great, but presenting actual evidence to your subconscious that its biases are incorrect is a much more powerful way to improve the way you perceive the world.</p>
+<p>If folks have any comments or different perspectives, I&#x27;d love to hear them <a href="/contact">privately</a> or via <a href="https://webmention.net/">WebMention</a>.</p>
+<p> [1]: I&#x27;m focusing on women here because I&#x27;m not aware of any statistics about non-binary people in tech. But it&#x27;s worth noting that it&#x27;s a huge problem for them, too.</p>
+<p><strong>Update February 22nd:</strong> the lovely <a href="https://twitter.com/rhonorv">Rachel Vincent</a> from RC faculty says this about RC&#x27;s gender-balancing:</p>
 <blockquote>
-<p>Of the folks who are currently in-batch (Winter 2's and Spring 1's), ~36% identify as women. It's roughly the same for the community as a whole (~33%), though we don't have super accurate numbers because we don't update information on folks' gender. The most gender balanced batches were a little over 40% women. We're always pushing for 50/50, though. 😊 Our overall strategy is to try to get an applicant pool that is as gender balanced as possible, and we don't do any kind of balancing during the admissions process itself.</p>
+<p>Of the folks who are currently in-batch (Winter 2&#x27;s and Spring 1&#x27;s), ~36% identify as women. It&#x27;s roughly the same for the community as a whole (~33%), though we don&#x27;t have super accurate numbers because we don&#x27;t update information on folks&#x27; gender. The most gender balanced batches were a little over 40% women. We&#x27;re always pushing for 50/50, though. &#x1F60A; Our overall strategy is to try to get an applicant pool that is as gender balanced as possible, and we don&#x27;t do any kind of balancing during the admissions process itself.</p>
 </blockquote>
 
             </div>
@@ -384,17 +384,17 @@ block body
 <script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
 <h3>Day 15</h3>
 <p>Arrived ~10:20, departed ~16:30, arrived ~20:00, departed ~23:30, total time at RC 9h40m.</p>
-<p>Somehow managed to get up early and arrive at my checkin early, despite being dead-tired (I couldn't get to sleep so I was running on ~5 hours of sleep). Spent most of today working on my HTTPS presentation, but took 30 minutes to an hour or so off to make a couple small improvements to my website - mostly just trimming the projects page and adding information to the contact page about how to communicate securely with me. Left for a while to have dinner with a friend and returned via the subway[1] to work on my HTTPS presentation some more.</p>
-<p>(Note 1/31: I felt quite productive today, but in hindsight really didn't get a whole lot done since I was just so tired.)</p>
+<p>Somehow managed to get up early and arrive at my checkin early, despite being dead-tired (I couldn&#x27;t get to sleep so I was running on ~5 hours of sleep). Spent most of today working on my HTTPS presentation, but took 30 minutes to an hour or so off to make a couple small improvements to my website - mostly just trimming the projects page and adding information to the contact page about how to communicate securely with me. Left for a while to have dinner with a friend and returned via the subway[1] to work on my HTTPS presentation some more.</p>
+<p>(Note 1/31: I felt quite productive today, but in hindsight really didn&#x27;t get a whole lot done since I was just so tired.)</p>
 <p> [1]: which truthfully made me feel unreasonably accomplished since my phone died right as I looked up directions, but I got on the right subway and figured out I could transfer and take a closer line halfway through and eventually made it back anyway</p>
 <h3>Day 16</h3>
 <p>Arrived ~10:20, departed ~23:10, total time at RC 12h50m.</p>
-<p>Spent - no joke - basically all of today working on my HTTPS presentation, which in addition to actually writing the content entailed reminding myself of how things like e.g. TLS False Start actually work. Reminding and/or properly learning (for False Start in particular I had a vague idea of how it worked before, but didn't really understand it).</p>
+<p>Spent - no joke - basically all of today working on my HTTPS presentation, which in addition to actually writing the content entailed reminding myself of how things like e.g. TLS False Start actually work. Reminding and/or properly learning (for False Start in particular I had a vague idea of how it worked before, but didn&#x27;t really understand it).</p>
 <p>Took about an hour off in the evening to help repaint a large stretch of wall in the space as part of the cleaning party. Then went back to HTTPS. Highly productive day.</p>
 <h3>Day 17</h3>
 <p>Arrived ~11:30, departed ~17:40, total time at RC 6h10m.</p>
-<p>Caught up with some GitHub stuff in the morning before teaching HTTPS. We went for an hour and a half and <em>still</em> skipped the entire section on TLS performance because HTTPS is complicated and hacky and also <em>really</em> terrible. (As <a href="https://github.com/eeclaire">Claire</a> put it, "I'm now terrified of browsing the web." Me too, Claire. Me too.) I think it went really well, even though it was a little overwhelming for everyone at times.</p>
-<p>Spent a bit of time watching YouTube videos on how Diffie-Hellmann works and how Elliptic-Curve Diffie-Hellman (ECDHE) works - we'd touched on both of these during the presentation and I needed to put them in Zulip. The one on plain Diffie-Hellmann was just a refresher, but the one on ECDHE was something I'd previously tried to watch <em>several</em> times and had always been too confused. But, this time I got it! Whooo! So that felt awesome.</p>
+<p>Caught up with some GitHub stuff in the morning before teaching HTTPS. We went for an hour and a half and <em>still</em> skipped the entire section on TLS performance because HTTPS is complicated and hacky and also <em>really</em> terrible. (As <a href="https://github.com/eeclaire">Claire</a> put it, &#x22;I&#x27;m now terrified of browsing the web.&#x22; Me too, Claire. Me too.) I think it went really well, even though it was a little overwhelming for everyone at times.</p>
+<p>Spent a bit of time watching YouTube videos on how Diffie-Hellmann works and how Elliptic-Curve Diffie-Hellman (ECDHE) works - we&#x27;d touched on both of these during the presentation and I needed to put them in Zulip. The one on plain Diffie-Hellmann was just a refresher, but the one on ECDHE was something I&#x27;d previously tried to watch <em>several</em> times and had always been too confused. But, this time I got it! Whooo! So that felt awesome.</p>
 <p>Left early to go home and sqeeze in some laundry before closing out the evening by going to an RC-organized talk on <a href="https://crystal-lang.org/">Crystal</a>.</p>
 <h3>Day 18</h3>
 <p>Arrived ~10:30, departed ~14:30, total time at RC 4h0m.</p>
@@ -403,7 +403,7 @@ block body
 <p>Not at RC. Total time at RC 0h0m.</p>
 <p>In Brussels for <a href="https://fosdem.org/2017/">FOSDEM</a>.</p>
 <h3>Executive summary</h3>
-<p>This week had its ups and downs. I was really productive on the HTTPS stuff, but other than that I didn't reeeally get a lot done.</p>
+<p>This week had its ups and downs. I was really productive on the HTTPS stuff, but other than that I didn&#x27;t reeeally get a lot done.</p>
 <p>Total time at RC 32 hours 40 minutes; cumulative time 230 hours 45 minutes.</p>
 
             </div>
@@ -418,33 +418,33 @@ block body
 <script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
 <h3>Day 11</h3>
 <p>Arrived ~10:50, departed ~23:20, total time at RC 12h30m.</p>
-<p>Arrived 20 minutes late for my checkin, but checked in with <a href="https://stanzheng.com/">Stanley</a> and <a href="https://github.com/heatherbooker">Heather</a> anyway. Started <a href="https://pump.strugee.net/alex/note/q1vco7XwRk6JsYteqTQqPA">an experiment</a> where I turned on <a href="https://www.eff.org/https-everywhere">HTTPS Everywhere</a>'s "block all unencrypted requests" option, which has been, uh, <em>interesting</em> so far. Spent most of the day working on blog-related things - finishing up and publishing <a href="https://strugee.net/blog/2017/01/rc-week-3">RC week 3</a> (which I just straight up forgot to publish on Saturday) along with <a href="https://strugee.net/blog/2017/01/surveillance-priorities">Surveillance priorities</a> which I finished exactly two minutes before[1] the start of this week's Iron Blogger challenge meeting. Other than that, poked a little at implementing <a href="https://github.com/processone/ejabberd/issues/1364">OCSP stapling support</a> in <a href="https://www.ejabberd.im/">ejabberd</a>, which is something I want to do for a number of reasons:</p>
+<p>Arrived 20 minutes late for my checkin, but checked in with <a href="https://stanzheng.com/">Stanley</a> and <a href="https://github.com/heatherbooker">Heather</a> anyway. Started <a href="https://pump.strugee.net/alex/note/q1vco7XwRk6JsYteqTQqPA">an experiment</a> where I turned on <a href="https://www.eff.org/https-everywhere">HTTPS Everywhere</a>&#x27;s &#x22;block all unencrypted requests&#x22; option, which has been, uh, <em>interesting</em> so far. Spent most of the day working on blog-related things - finishing up and publishing <a href="https://strugee.net/blog/2017/01/rc-week-3">RC week 3</a> (which I just straight up forgot to publish on Saturday) along with <a href="https://strugee.net/blog/2017/01/surveillance-priorities">Surveillance priorities</a> which I finished exactly two minutes before[1] the start of this week&#x27;s Iron Blogger challenge meeting. Other than that, poked a little at implementing <a href="https://github.com/processone/ejabberd/issues/1364">OCSP stapling support</a> in <a href="https://www.ejabberd.im/">ejabberd</a>, which is something I want to do for a number of reasons:</p>
 <ol>
-<li>It'll give me a chance to look at some Erlang, which will be a really interesting experience</li>
-<li>It'll give me a chance to try doing something with the OpenSSL API, which is a complete horror show but nonetheless something I would like (some) experience in</li>
+<li>It&#x27;ll give me a chance to look at some Erlang, which will be a really interesting experience</li>
+<li>It&#x27;ll give me a chance to try doing something with the OpenSSL API, which is a complete horror show but nonetheless something I would like (some) experience in</li>
 <li>I run ejabberd in production and, you know, really want stapling support</li>
 </ol>
 <p>Ended the night by going to Fat Cat.</p>
-<p> [1]: I actually already had a longer post mostly written, but I realized as I was going to finish it that the experiment that I was proposing had a) been done before and b) mostly failed. So I ended up writing "Surveillance priorities" from scratch in a hurry instead.</p>
+<p> [1]: I actually already had a longer post mostly written, but I realized as I was going to finish it that the experiment that I was proposing had a) been done before and b) mostly failed. So I ended up writing &#x22;Surveillance priorities&#x22; from scratch in a hurry instead.</p>
 <h3>Day 12</h3>
 <p>Arrived ~10:50, departed ~17:50, total time at RC 7h0m.</p>
-<p>Arrived late again, despite leaving a good <em>15 to 20 minutes earlier</em>. Freaking subway. ANYWAY. Checked in on Zulip instead of in person. The day was semi-productive - I worked a little on my operational security presentation for tomorrow, but a lot of my time was spent talking with Rose, discussing the programming language I'm planning to work on/invent. Left early to do laundry at home and then closed out the evening by finishing my presentation as well as finding and reporting a (common and uninteresting) security vulnerability in a web application[2] - unnamed for obvious reasons.</p>
-<p>As a side note, as Stanley put it, <a href="https://www.recurse.com/blog/112-how-rc-uses-zulip">I'm RC famous</a>! Kind of, I guess. \o/</p>
+<p>Arrived late again, despite leaving a good <em>15 to 20 minutes earlier</em>. Freaking subway. ANYWAY. Checked in on Zulip instead of in person. The day was semi-productive - I worked a little on my operational security presentation for tomorrow, but a lot of my time was spent talking with Rose, discussing the programming language I&#x27;m planning to work on/invent. Left early to do laundry at home and then closed out the evening by finishing my presentation as well as finding and reporting a (common and uninteresting) security vulnerability in a web application[2] - unnamed for obvious reasons.</p>
+<p>As a side note, as Stanley put it, <a href="https://www.recurse.com/blog/112-how-rc-uses-zulip">I&#x27;m RC famous</a>! Kind of, I guess. \o/</p>
 <p> [2]: I actually thought I found the same problem in another project, except it turned out that I totally missed something and so instead of being cool I ended up embarrassing myself on GitHub instead. Sadface :(</p>
 <h3>Day 13</h3>
 <p>Arrived ~10:35, departed ~00:10, total time at RC 13h35m.</p>
 <p>Arrived in the middle of my checkin. Spent the morning taking care of some general maintenance tasks, including getting ready to present on operational security, which I did in the afternoon. Spent most of the rest of the day thinking about the design of my programming language and putting it together into a blog post. In the evening, started trying to fix <a href="https://github.com/sandstorm-io/sandcats/issues/153">a bug in Sandstorm</a> which was breaking my production install. Also, had my Princeton interview via Skype, which I think went extremely well. Yay! My interviewer was awesome and we had a really interesting conversation.</p>
-<p>As a side note, I got to wear my new libuv shirt today, and it is seriously <a href="https://pump.strugee.net/alex/image/zAFejrr9RY6pLFHpSlXBbQ">the coolest shirt I've ever seen</a>.</p>
+<p>As a side note, I got to wear my new libuv shirt today, and it is seriously <a href="https://pump.strugee.net/alex/image/zAFejrr9RY6pLFHpSlXBbQ">the coolest shirt I&#x27;ve ever seen</a>.</p>
 <h3>Day 14</h3>
 <p>Arrived ~10:35, departed ~1:40, total time at RC 15h5m.</p>
-<p>Arrived in the middle of my checkin again (still better than earlier in the week, though). It wasn't anything groundbreaking, but it did give me the opportunity to get more hands-on Mercurial experience (and learn a lot about Mercurial's different branching styles). Working in an unfamiliar codebase was also a good experience, as was dealing with Sandstorm's custom UDP protocol. It wasn't really what I meant to do with the day, but also not a total wash.</p>
+<p>Arrived in the middle of my checkin again (still better than earlier in the week, though). It wasn&#x27;t anything groundbreaking, but it did give me the opportunity to get more hands-on Mercurial experience (and learn a lot about Mercurial&#x27;s different branching styles). Working in an unfamiliar codebase was also a good experience, as was dealing with Sandstorm&#x27;s custom UDP protocol. It wasn&#x27;t really what I meant to do with the day, but also not a total wash.</p>
 <p>Attended Thursday presentations followed by Game Night in the evening which was <em>very</em> fun - I played some poker, then lost at chess a bunch of times to Hussein (even when we played Blitz Chess, which he said he was bad at). Then we switched to Go for a while. Finished out the evening by just hanging out with <a href="http://another.workingagenda.com">Fenimore</a>, <a href="https://github.com/Husseinfarah93">Hussein</a>, and <a href="http://kacyjam.es/">James</a>, which was a lot of fun.</p>
 <h3>Friday</h3>
-<p>Arrived ~15:10, departed ~23:50, total time at RC 8h40m. As always, Friday doesn't count as a day because RC is technically not in session.</p>
-<p>Slept in pretty late today. Attended the monthly pump.io meeting immediately upon arrival (sadly Evan wasn't there). Spent the rest of the day responding to PRs - which took a lot of time but didn't actually result in a lot of code - then authoring a Huginn PR to <a href="">add titles</a> to all pages.</p>
+<p>Arrived ~15:10, departed ~23:50, total time at RC 8h40m. As always, Friday doesn&#x27;t count as a day because RC is technically not in session.</p>
+<p>Slept in pretty late today. Attended the monthly pump.io meeting immediately upon arrival (sadly Evan wasn&#x27;t there). Spent the rest of the day responding to PRs - which took a lot of time but didn&#x27;t actually result in a lot of code - then authoring a Huginn PR to <a href="">add titles</a> to all pages.</p>
 <h3>Executive summary</h3>
-<p>In a shocking turn of events, this week was relatively productive, but could've been better. I challenged myself a little bit, but I think I can and should do more.</p>
-<p>Checkins really helped. Even when I missed the checkin it provided motivation to get up and get moving. 10:30 may be a little too early for me though, so I'm not sure if I'll continue doing it next week.</p>
+<p>In a shocking turn of events, this week was relatively productive, but could&#x27;ve been better. I challenged myself a little bit, but I think I can and should do more.</p>
+<p>Checkins really helped. Even when I missed the checkin it provided motivation to get up and get moving. 10:30 may be a little too early for me though, so I&#x27;m not sure if I&#x27;ll continue doing it next week.</p>
 <p>Total time at RC 56 hours 50 minutes; cumulative time 198 hours 5 minutes.</p>
 
             </div>

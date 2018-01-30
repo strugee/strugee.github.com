@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-© Copyright 2012-2016 AJ Jordan
+© Copyright 2012-2018 AJ Jordan
 This file is part of strugee.net.
 strugee.net is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,6 +23,11 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
     <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <title>pump.io 5.1 is in beta - strugee.net</title>
+    <link rel="preconnect" href="https://webmention.io/">
+    <link rel="pingback" href="https://webmention.io/strugee.net/xmlrpc">
+    <link rel="webmention" href="https://webmention.io/strugee.net/webmention">
+    <script src="/js/webmentions.js" type="text/javascript"></script>
     <!-- IndieWeb components, with <3-->
     <link rel="me" href="mailto:alex@strugee.net">
     <link rel="me" href="sms:17607054581">
@@ -36,10 +41,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://twitter.com/strugee2">
     <link rel="me" href="https://plus.google.com/+AlexJordan">
     <link rel="me" href="https://www.instagram.com/strugee2/">
-    <title>pump.io 5.1 is in beta - strugee.net</title>
-    <link rel="pingback" href="https://webmention.io/strugee.net/xmlrpc">
-    <link rel="webmention" href="https://webmention.io/strugee.net/webmention">
-    <script src="/js/webmentions.js" type="text/javascript"></script>
   </head>
   <body>
     <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
@@ -65,17 +66,17 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
             <time datetime="2017-12-08T20:24:57-05:00"><a href="/blog/2017/12/">December</a> 8, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a> and <a href="/blog/category/releases/" class="p-category">releases</a>. Last edited 
             <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
           </p>
-          <div class="e-content"><p>I'm really excited to announce that pump.io 5.1 is officially in beta!</p>
-<p>This release makes a wide array of improvements. One of the features I'm most excited about is <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">zero-downtime restarts</a>, which will allow administrators to gracefully roll over to new configurations and codebases with absolutely no user-visible impact! Aside from that, here's a list of highlights:</p>
+          <div class="e-content"><p>I&#x27;m really excited to announce that pump.io 5.1 is officially in beta!</p>
+<p>This release makes a wide array of improvements. One of the features I&#x27;m most excited about is <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">zero-downtime restarts</a>, which will allow administrators to gracefully roll over to new configurations and codebases with absolutely no user-visible impact! Aside from that, here&#x27;s a list of highlights:</p>
 <ul>
 <li>The daemon now generates startup log warnings on bad configurations, including insecure <code>secret</code> values and internal parameters</li>
 <li>An official <code>Dockerfile</code> is now included with the release</li>
-<li>The logged-out mobile homepage's menu icon is no longer incorrectly styled as black</li>
+<li>The logged-out mobile homepage&#x27;s menu icon is no longer incorrectly styled as black</li>
 <li>SockJS connections no longer fail due to authorization problems</li>
 </ul>
-<p>As usual, this release also includes some small updates to dependencies. Plus, we started tracking how much code our test suite covers! We've also significantly cleaned up the documentation and moved almost all of the in-repository documentation to ReadTheDocs, where it's a lot more organized and accessible. If you want more than just these highlights, you can check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510-beta-0---2017-12-08">the changelog</a>.</p>
-<p>Note that while the repository includes a <code>Dockerfile</code> now, we have not yet begun publishing on Docker Hub due to some security logistics that need to be figured out - when we do, it'll be announced in all the usual places (including this blog).</p>
-<p>I'm so excited for people to try out this release. 5.1 beta 0 is a drop-in replacement for 5.0, so if you're on 5.0 and want to live (more) on the bleeding edge, you can upgrade with <code>npm install -g pump.io@5.1</code> if you have an npm-based install. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0-beta.0</code> tag. And as always, if you encounter any problems you can reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
+<p>As usual, this release also includes some small updates to dependencies. Plus, we started tracking how much code our test suite covers! We&#x27;ve also significantly cleaned up the documentation and moved almost all of the in-repository documentation to ReadTheDocs, where it&#x27;s a lot more organized and accessible. If you want more than just these highlights, you can check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510-beta-0---2017-12-08">the changelog</a>.</p>
+<p>Note that while the repository includes a <code>Dockerfile</code> now, we have not yet begun publishing on Docker Hub due to some security logistics that need to be figured out - when we do, it&#x27;ll be announced in all the usual places (including this blog).</p>
+<p>I&#x27;m so excited for people to try out this release. 5.1 beta 0 is a drop-in replacement for 5.0, so if you&#x27;re on 5.0 and want to live (more) on the bleeding edge, you can upgrade with <code>npm install -g pump.io@5.1</code> if you have an npm-based install. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0-beta.0</code> tag. And as always, if you encounter any problems you can reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
 
           </div>
         </article>
