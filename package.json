@@ -4,7 +4,6 @@
   "description": "Personal website for AJ Jordan, powering strugee.net",
   "main": "js/main.js",
   "dependencies": {
-    "es6-promise": "^4.2.2",
     "whatwg-fetch": "^2.0.2"
   },
   "devDependencies": {

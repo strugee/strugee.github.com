@@ -21,9 +21,6 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 
 // Polyfills
 
-if (!window.Promise) {
-	require('es6-promise').polyfill(); // eslint-disable-line global-require
-}
 require('whatwg-fetch');
 
 (function() {
@@ -64,8 +61,8 @@ require('whatwg-fetch');
 		monospaceIcon.addEventListener('click', handleMonospaceIconClick, false);
 
 		// Abort if the browser can't do what we're looking for
-		if (!Array.prototype.forEach || !document.querySelectorAll || !window.history.pushState || !window.DOMParser) {
-			console.warn('Either Array.prototype.forEach(), document.querySelectorAll(), DOMParser(), or history.pushState() support is missing from your browser! Night mode/monospace state will not persist. Please upgrade.'); // eslint-disable-line max-len
+		if (!Array.prototype.forEach || !document.querySelectorAll || !window.history.pushState || !window.DOMParser || !window.Promise) {
+			console.warn('Either Array.prototype.forEach(), document.querySelectorAll(), DOMParser(), history.pushState(), or window.Promise support is missing from your browser! Night mode/monospace state will not persist. Please upgrade.'); // eslint-disable-line max-len
 			return;
 		}
 

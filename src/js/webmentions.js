@@ -19,11 +19,13 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+if (!window.Promise) {
+	console.log('Your browser doesn\'t support window.Promise; cannot retrieve Webmentions. Please upgrade.');
+	return;
+}
+
 // Polyfills
 
-if (!window.Promise) {
-	require('es6-promise').polyfill(); // eslint-disable-line global-require
-}
 require('whatwg-fetch');
 
 (function() {
