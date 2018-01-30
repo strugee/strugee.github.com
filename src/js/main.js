@@ -21,7 +21,6 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 
 // Polyfills
 
-// TODO Array#forEach polyfill
 if (!window.Promise) {
 	require('es6-promise').polyfill(); // eslint-disable-line global-require
 }
