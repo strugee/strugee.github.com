@@ -20,8 +20,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
+    <link rel="preload" href="https://members.internetdefenseleague.org/include/?url=&amp;campaign=&amp;variant=modal">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
     <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
     <title>filter-other-days: Artificial Ignorance-compatible logfile date filtering - strugee.net</title>
     <link rel="preconnect" href="https://webmention.io/">
@@ -43,7 +43,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://www.instagram.com/strugee2/">
   </head>
   <body>
-    <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+    <div id="container">
       <header>
         <h1 id="topheader">strugee.net</h1>
         <nav id="navbar">
@@ -66,19 +66,19 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
             <time datetime="2017-10-20T19:19:51-04:00"><a href="/blog/2017/10/">October</a> 20, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/security/" class="p-category">security</a>, <a href="/blog/category/sysadmin/" class="p-category">sysadmin</a> and <a href="/blog/category/releases/" class="p-category">releases</a>. Last edited 
             <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
           </p>
-          <div class="e-content"><p>I&#x27;ve just published version 1.0 of my latest project, <code>filter-other-days</code> - a shell script to filter logfiles for today&#x27;s date in an Artificial Ignorance-compatible way.</p>
-<p>If you haven&#x27;t heard of <a href="http://www.ranum.com/security/computer_security/papers/ai/index.html">Artificial Ignorance</a>, it&#x27;s something you should look into cause it&#x27;s pretty awesome. Here&#x27;s the tl;dr: it doesn&#x27;t make sense to look for all the &#x22;interesting&#x22; things  in logfiles, because it&#x27;s not actually possible to enumerate all the failure conditions of a system. So instead what we do is <em>throw away</em> entries that we&#x27;re <em>sure</em> are just routine. Since we&#x27;ve gotten rid of all the uninteresting entries, whatever is left has to be interesting.</p>
-<p>I find this pretty compelling, and decided to start implementing it on my Tor relay. I quickly realized that my ideal workflow would be to configure cron to send me email with a daily report of interesting log entries. However, this presented a problem: how to get just today&#x27;s log entries? I wanted to be able to handle all logfiles at once instead of receiving different reports for different logs, so I had to be able to parse all logfiles in the same way. My relay runs on FreeBSD, so the logs are unstructured text files, and even worse, several daemons (like Tor itself) write timestamps in a different format - this makes parsing all logfiles at once super difficult because I couldn&#x27;t just trivially <code>grep</code> for today&#x27;s date since that would end up dropping legitimate entries from logfiles that formatted their timestamps differently.</p>
-<p>I briefly considered trying to write a regex to match all sorts of different timestamp formats, but quickly rejected this idea as too fragile. There are a lot of moving parts in a modern operating system - what if e.g. a daemon changed its defaults about how to format timestamps? Or, more likely, what if I simply missed a particular format present in my logs? Then I&#x27;d be accidentally throwing away an entire logfile. To solve this problem, I decided to apply the same idea behind Artificial Ignorance - if I couldn&#x27;t reliably, 100% match log entries from today&#x27;s date, I could do the next best thing and attempt to discard all entries from <em>other</em> dates. In this case the worst that could happen is me recieving irrelevant information, and I&#x27;d be basically guaranteed to never miss an legitimate entry from today.</p>
+          <div class="e-content"><p>I've just published version 1.0 of my latest project, <code>filter-other-days</code> - a shell script to filter logfiles for today's date in an Artificial Ignorance-compatible way.</p>
+<p>If you haven't heard of <a href="http://www.ranum.com/security/computer_security/papers/ai/index.html">Artificial Ignorance</a>, it's something you should look into cause it's pretty awesome. Here's the tl;dr: it doesn't make sense to look for all the "interesting" things  in logfiles, because it's not actually possible to enumerate all the failure conditions of a system. So instead what we do is <em>throw away</em> entries that we're <em>sure</em> are just routine. Since we've gotten rid of all the uninteresting entries, whatever is left has to be interesting.</p>
+<p>I find this pretty compelling, and decided to start implementing it on my Tor relay. I quickly realized that my ideal workflow would be to configure cron to send me email with a daily report of interesting log entries. However, this presented a problem: how to get just today's log entries? I wanted to be able to handle all logfiles at once instead of receiving different reports for different logs, so I had to be able to parse all logfiles in the same way. My relay runs on FreeBSD, so the logs are unstructured text files, and even worse, several daemons (like Tor itself) write timestamps in a different format - this makes parsing all logfiles at once super difficult because I couldn't just trivially <code>grep</code> for today's date since that would end up dropping legitimate entries from logfiles that formatted their timestamps differently.</p>
+<p>I briefly considered trying to write a regex to match all sorts of different timestamp formats, but quickly rejected this idea as too fragile. There are a lot of moving parts in a modern operating system - what if e.g. a daemon changed its defaults about how to format timestamps? Or, more likely, what if I simply missed a particular format present in my logs? Then I'd be accidentally throwing away an entire logfile. To solve this problem, I decided to apply the same idea behind Artificial Ignorance - if I couldn't reliably, 100% match log entries from today's date, I could do the next best thing and attempt to discard all entries from <em>other</em> dates. In this case the worst that could happen is me recieving irrelevant information, and I'd be basically guaranteed to never miss an legitimate entry from today.</p>
 <p><code>filter-other-days</code> is a working implementation of this design. Originally I put it with the other random scripts I keep with my <a href="https://github.com/strugee/dots/tree/master/bin">dotfiles</a>, but it quickly became obvious that it was useful as a standalone project. So I <a href="https://github.com/strugee/dots/commit/7dd7e2755c55194cdff1c7b24b24bca72581e346">extracted</a> it into its own repository, which now lives <a href="https://github.com/strugee/filter-other-days">on GitHub</a>. From there I continued to improve the script while adding a test suite and writing extensive documentation (including a Unix manpage - I always feel like a wizardly hacker when writing those things). This took, by my estimation, somewhere between 10 and 15 hours because this is actually a shockingly non-trivial problem, but mostly because regexes are hard.</p>
-<p>But today I finally finished! So I&#x27;m super excited to announce that version 1.0 of <code>filter-other-days</code> is now available. You can either clone it from GitHub or download a <a href="https://github.com/strugee/filter-other-days/releases/tag/v1.0.0">tarball</a> (and the accompanying signature, if you want). It works pretty well already, but I have some ideas for future directions the project could go:</p>
+<p>But today I finally finished! So I'm super excited to announce that version 1.0 of <code>filter-other-days</code> is now available. You can either clone it from GitHub or download a <a href="https://github.com/strugee/filter-other-days/releases/tag/v1.0.0">tarball</a> (and the accompanying signature, if you want). It works pretty well already, but I have some ideas for future directions the project could go:</p>
 <ol>
-<li>Logic allowing you to actually specify the date you want to filter for, instead of assuming it&#x27;s today (though you actually can already get this behavior using <code>faketime</code>; that&#x27;s what the test suite does)</li>
+<li>Logic allowing you to actually specify the date you want to filter for, instead of assuming it's today (though you actually can already get this behavior using <code>faketime</code>; that's what the test suite does)</li>
 <li>Removal of the dependency on GNU <code>seq</code> - this is, to my knowledge, the only non-POSIX requirement of <code>filter-other-days</code></li>
 <li>Debian package, maybe?</li>
-<li>More log formats (please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> if you have formats <code>filter-other-days</code> doesn&#x27;t recognize - which you probably do!)</li>
+<li>More log formats (please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> if you have formats <code>filter-other-days</code> doesn't recognize - which you probably do!)</li>
 </ol>
-<p>If you find this project useful, let me know! I&#x27;d love to hear about how people are using it. Or if it breaks (or doesn&#x27;t fill your usecases), please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> or send patches - I love those, too! Either way, may the logs be with you!</p>
+<p>If you find this project useful, let me know! I'd love to hear about how people are using it. Or if it breaks (or doesn't fill your usecases), please <a href="https://github.com/strugee/filter-other-days/issues">report bugs</a> or send patches - I love those, too! Either way, may the logs be with you!</p>
 
           </div>
         </article>
@@ -114,7 +114,16 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="toys"><a id="monospace-icon" href="javascript:void(0);" title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was &quot;making [their] life&quot; monospace.">~</a><a id="lightbulb-icon" href="javascript:void(0);">
           <div class="icon-lightbulb"></div></a></div>
       <script type="text/javascript" src="/js/main.js"></script>
-      <script type="text/javascript" src="/js/idl.js"></script>
+      <script type="text/javascript">
+        window._idl = {};
+        _idl.variant = "modal";
+        (function() {
+        	var idl = document.createElement('script');
+        	idl.async = true;
+        	idl.src = 'https://members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'modal');
+        	document.getElementsByTagName('body')[0].appendChild(idl);
+        })();
+      </script>
     </div>
   </body>
 </html>

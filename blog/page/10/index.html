@@ -20,8 +20,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
+    <link rel="preload" href="https://members.internetdefenseleague.org/include/?url=&amp;campaign=&amp;variant=modal">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
     <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
     <title>Blog - strugee.net</title>
     <!-- TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...-->
@@ -41,7 +41,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://www.instagram.com/strugee2/">
   </head>
   <body>
-    <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+    <div id="container">
       <header>
         <h1 id="topheader">strugee.net</h1>
         <nav id="navbar">
@@ -60,7 +60,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Blog</h2>
-          <p id="postsFrom">Show only posts from <a href="/blog/2014/">2014</a> <a href="/blog/2015/">2015</a> <a href="/blog/2016/">2016</a> <a href="/blog/2017/">2017</a> <a href="/blog/2018/">2018</a> 
+          <p id="postsFrom">Show only posts from <a href="/blog/2014/">2014</a> <a href="/blog/2015/">2015</a> <a href="/blog/2016/">2016</a> <a href="/blog/2017/">2017</a> <a href="/blog/2018/">2018</a> or categorized in <a href="/blog/category/personal/" class="p-category">personal</a>, <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/politics/" class="p-category">politics</a> and <a href="/blog/category/explanations/" class="p-category">explanations</a>
           </p>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/11/pump.io-2.0.0-beta-is-here">
               <h2 class="p-name">Pump.io 2.0.0 beta is here</h2></a>
@@ -69,11 +69,11 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
               <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
             </p>
             <div class="e-content"><p>Greetings!</p>
-<p>As pump.io is gearing up for our 2.0.0 release, I just published a beta to npm. We&#x27;d love it if any interested admins could upgrade their nodes and report any bugs you may run in to. (All bug reports are helpful, but just so we&#x27;re clear, we&#x27;re likely to only fix regressions from 1.0.0.)</p>
+<p>As pump.io is gearing up for our 2.0.0 release, I just published a beta to npm. We'd love it if any interested admins could upgrade their nodes and report any bugs you may run in to. (All bug reports are helpful, but just so we're clear, we're likely to only fix regressions from 1.0.0.)</p>
 <h3>Changes</h3>
 <p>Pump.io 2.0.0 beta is a drop-in replacement for 1.0.0 <strong>unless</strong> you have any plugins configured or you modify the templates.</p>
 <p>Plugins are likely to be affected by the upgrade to Express 3.x. The easiest way to migrate is probably to just run pump.io, test out the relevant parts of the app, and see where your plugin crashes. You might also want to look at the <a href="https://github.com/expressjs/express/blob/master/History.md#300--2012-10-23">Express 3 change log</a>.</p>
-<p>If you modified the templates, you&#x27;ll be affected by the templates&#x27; rewrite from utml into Jade. Migration should be relatively painless but has to be done manually. Your best bet will be to save a copy of the diff you created, undo your changes, upgrade, then use the diff you saved to reintroduce your changes. You&#x27;ll have to run <code>npm run build</code> after making changes to Jade files.</p>
+<p>If you modified the templates, you'll be affected by the templates' rewrite from utml into Jade. Migration should be relatively painless but has to be done manually. Your best bet will be to save a copy of the diff you created, undo your changes, upgrade, then use the diff you saved to reintroduce your changes. You'll have to run <code>npm run build</code> after making changes to Jade files.</p>
 <p>For the list of non-breaking changes, see <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#200-beta-1---2016-11-02">the change log</a>.</p>
 <h3>Upgrading</h3>
 <p>Upgrading is very easy. If you used our recommended install method, and installed from npm, you can upgrade to the beta with:</p>
@@ -91,7 +91,7 @@ npm run build
 </code></pre>
 <p>Make sure to restart pump.io after performing the upgrade.</p>
 <h3>Getting help</h3>
-<p>If you have any issues upgrading to or running the beta, please don&#x27;t hesitate to get in touch with <a href="https://github.com/e14n/pump.io/wiki/Community">the community</a>. You can also email me at <a href="mailto:alex@strugee.net">alex@strugee.net</a>.</p>
+<p>If you have any issues upgrading to or running the beta, please don't hesitate to get in touch with <a href="https://github.com/e14n/pump.io/wiki/Community">the community</a>. You can also email me at <a href="mailto:alex@strugee.net">alex@strugee.net</a>.</p>
 
             </div>
           </article>
@@ -112,26 +112,26 @@ npm run build
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
               <time datetime="2016-10-19T17:40:18-07:00"><a href="/blog/2016/10/">October</a> 19, <a href="/blog/2016/">2016</a></time> in <a href="/blog/category/musings/" class="p-category">musings</a>
             </p>
-            <div class="e-content"><p>Recently GitHub launched two new ways to merge Pull Requests: &#x22;rebase and merge&#x22; and &#x22;squash and merge&#x22;. That means that projects now have three ways to merge PRs:</p>
+            <div class="e-content"><p>Recently GitHub launched two new ways to merge Pull Requests: "rebase and merge" and "squash and merge". That means that projects now have three ways to merge PRs:</p>
 <ul>
-<li>Merge - creates a merge commit merging the branch (even if it&#x27;s fast-forwardable)</li>
+<li>Merge - creates a merge commit merging the branch (even if it's fast-forwardable)</li>
 <li>Rebase and merge - rebases on top of the target branch and fast-forwards</li>
 <li>Squash and merge - rebases on top of the target branch, squashes all commits into a single commit, and fast-forwards</li>
 </ul>
-<p>Now, the default is &#x22;squash and merge&#x22;, because apparently that&#x27;s what people find to be the &#x22;prettiest&#x22; history. This bothers me for one simple reason: a squash and merge default means a <em>history destruction</em> default[1].</p>
-<p>The whole point of commit squashing is to destroy history. Sometimes that&#x27;s fine - for example, I might squash a typo fix into an earlier commit, because who cares that I typo&#x27;d <code>vare</code> instead of <code>var</code>? However, anything less trivial than typo fixes is valuable information about how the project evolved. Even if all of the commits just add stuff, and don&#x27;t change what&#x27;s happened earlier in the branch (i.e. even if the direction the implementation&#x27;s taking doesn&#x27;t change part-way through) the history contained in the branch is <em>still</em> valuable, because the branch&#x27;s shortlog will give you a nice overview of exactly what changes happened in the branch. Now, you could of course make the argument that commit squashing shows that same information because by default, in both Git and GitHub, the commit messages being squashed are included in the suggested final commit message. I prefer keeping the individual commits, but that&#x27;s a valid argument.</p>
-<p>However, that doesn&#x27;t change the fact that in cases where the implementation direction <em>does</em> change part-way through, GitHub&#x27;s default is actively promoting the irrevocable[2] destruction of valuable history. Lots and lots of people use the GitHub Merge Button, especially those who are new to Git. This default is causing those people to unwittingly destroy valuable information. Sure, it looks nicer in the commit log, and I totally advocate for using squash and merge when it makes sense. But those cases are few and far between - it&#x27;s basically just a small changes, plus a couple typo fixes or additions. And besides, I think it&#x27;s far better to have a default of an ugly history rather than a default of an incomplete history. The former may not be the prettiest to look at, but the latter has the potential to actively stop people from doing their jobs[3].</p>
-<p>For those curious, here&#x27;s when I use each mode of the GitHub Merge Button:</p>
+<p>Now, the default is "squash and merge", because apparently that's what people find to be the "prettiest" history. This bothers me for one simple reason: a squash and merge default means a <em>history destruction</em> default[1].</p>
+<p>The whole point of commit squashing is to destroy history. Sometimes that's fine - for example, I might squash a typo fix into an earlier commit, because who cares that I typo'd <code>vare</code> instead of <code>var</code>? However, anything less trivial than typo fixes is valuable information about how the project evolved. Even if all of the commits just add stuff, and don't change what's happened earlier in the branch (i.e. even if the direction the implementation's taking doesn't change part-way through) the history contained in the branch is <em>still</em> valuable, because the branch's shortlog will give you a nice overview of exactly what changes happened in the branch. Now, you could of course make the argument that commit squashing shows that same information because by default, in both Git and GitHub, the commit messages being squashed are included in the suggested final commit message. I prefer keeping the individual commits, but that's a valid argument.</p>
+<p>However, that doesn't change the fact that in cases where the implementation direction <em>does</em> change part-way through, GitHub's default is actively promoting the irrevocable[2] destruction of valuable history. Lots and lots of people use the GitHub Merge Button, especially those who are new to Git. This default is causing those people to unwittingly destroy valuable information. Sure, it looks nicer in the commit log, and I totally advocate for using squash and merge when it makes sense. But those cases are few and far between - it's basically just a small changes, plus a couple typo fixes or additions. And besides, I think it's far better to have a default of an ugly history rather than a default of an incomplete history. The former may not be the prettiest to look at, but the latter has the potential to actively stop people from doing their jobs[3].</p>
+<p>For those curious, here's when I use each mode of the GitHub Merge Button:</p>
 <ul>
-<li>Merge - when I have a long-running branch that made significant changes and/or diverged significantly from the target branch. In this case, it&#x27;s valuable to clearly distinguish what&#x27;s part of the project and what isn&#x27;t. Rebase and merge is no good because then it&#x27;s not clear in the history when the branch started and ended. This is particularly evident when looking at <code>git log --graph</code>.</li>
-<li>Rebase and merge - what I use most of the time. I use this when there were a couple small commits that were interesting enough to preserve the difference, but the overall change wasn&#x27;t so huge that it needs to be clearly distinguished in the history. This provides a nice and pretty commit graph.</li>
-<li>Squash and merge - I rarely use this. When I do, it&#x27;s because all of the commits on some branch are <em>so</em> trivial, they really don&#x27;t matter. Mostly this means that the overall change is tiny, and the only additional commits that are added are small additions to the first.</li>
+<li>Merge - when I have a long-running branch that made significant changes and/or diverged significantly from the target branch. In this case, it's valuable to clearly distinguish what's part of the project and what isn't. Rebase and merge is no good because then it's not clear in the history when the branch started and ended. This is particularly evident when looking at <code>git log --graph</code>.</li>
+<li>Rebase and merge - what I use most of the time. I use this when there were a couple small commits that were interesting enough to preserve the difference, but the overall change wasn't so huge that it needs to be clearly distinguished in the history. This provides a nice and pretty commit graph.</li>
+<li>Squash and merge - I rarely use this. When I do, it's because all of the commits on some branch are <em>so</em> trivial, they really don't matter. Mostly this means that the overall change is tiny, and the only additional commits that are added are small additions to the first.</li>
 </ul>
-<p>So there you have it. How I use GitHub&#x27;s Merge Button, and why I think the &#x22;squash and merge&#x22; default should be considered harmful.</p>
+<p>So there you have it. How I use GitHub's Merge Button, and why I think the "squash and merge" default should be considered harmful.</p>
 <p>Footnotes:</p>
-<p> [1]: I&#x27;d like to point out that this is only a problem in Git. Mercurial has (or will have shortly) <a href="https://www.mercurial-scm.org/wiki/ChangesetEvolution">Changeset Evolution</a>, which keeps track of how changesets evolve over time. I.e. when you rewrite history, you&#x27;re not losing any information.</p>
-<p> [2]: I&#x27;m sure some of you are about to excitedly tell me about a fantastic tool called the reflog, and I really should read Pro Git because it&#x27;s a fantastic book and has an entire chapter on data recovery. <em>I know</em>. The reflog is <em>not</em> the right answer for this; not only is it local to (likely) a single developer&#x27;s machine, but it only stretches back a couple months and only works if the old, dangling commits aren&#x27;t garbage-collected. By the time someone might be interested in looking at the history that was lost, it&#x27;s probably far, far too late.</p>
-<p> [3]: Another rarely-encountered but very serious problem with both &#x22;squash and merge&#x22; <em>and</em> &#x22;rebase and merge&#x22; is when people merge upstream changes in a PR. This is a perfectly legitimate workflow - PRs are great for discussing changes, etc. (although a lot of people think they&#x27;re the <em>only</em> way to merge things, so they open PRs and then immediately merge them - this, IMHO, is very much <em>not</em> a legitimate workflow) - but if you do anything but merge (which includes both GitHub&#x27;s &#x22;Merge&#x22; option and fast-forwarding locally on the CLI), you may have a Very Bad Time the next time you go to merge upstream changes to your fork. Why? Because in Git&#x27;s view, the changes you merged the first time <em>haven&#x27;t actually been merged</em>. After all, commit SHAs are nowhere to be found in the tree, since when you rewrote history you changed those IDs! Git has no way of knowing that your rewritten commits and the supposedly &#x22;unmerged&#x22; commits are basically equivalent. (Mercurial, on the other hand, would&#x27;ve kept track of this information and would have no problem at all.)</p>
+<p> [1]: I'd like to point out that this is only a problem in Git. Mercurial has (or will have shortly) <a href="https://www.mercurial-scm.org/wiki/ChangesetEvolution">Changeset Evolution</a>, which keeps track of how changesets evolve over time. I.e. when you rewrite history, you're not losing any information.</p>
+<p> [2]: I'm sure some of you are about to excitedly tell me about a fantastic tool called the reflog, and I really should read Pro Git because it's a fantastic book and has an entire chapter on data recovery. <em>I know</em>. The reflog is <em>not</em> the right answer for this; not only is it local to (likely) a single developer's machine, but it only stretches back a couple months and only works if the old, dangling commits aren't garbage-collected. By the time someone might be interested in looking at the history that was lost, it's probably far, far too late.</p>
+<p> [3]: Another rarely-encountered but very serious problem with both "squash and merge" <em>and</em> "rebase and merge" is when people merge upstream changes in a PR. This is a perfectly legitimate workflow - PRs are great for discussing changes, etc. (although a lot of people think they're the <em>only</em> way to merge things, so they open PRs and then immediately merge them - this, IMHO, is very much <em>not</em> a legitimate workflow) - but if you do anything but merge (which includes both GitHub's "Merge" option and fast-forwarding locally on the CLI), you may have a Very Bad Time the next time you go to merge upstream changes to your fork. Why? Because in Git's view, the changes you merged the first time <em>haven't actually been merged</em>. After all, commit SHAs are nowhere to be found in the tree, since when you rewrote history you changed those IDs! Git has no way of knowing that your rewritten commits and the supposedly "unmerged" commits are basically equivalent. (Mercurial, on the other hand, would've kept track of this information and would have no problem at all.)</p>
 
             </div>
           </article>
@@ -141,8 +141,8 @@ npm run build
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
               <time datetime="2016-10-17T19:40:43-07:00"><a href="/blog/2016/10/">October</a> 17, <a href="/blog/2016/">2016</a></time> in <a href="/blog/category/musings/" class="p-category">musings</a>
             </p>
-            <div class="e-content"><p>Recently I backed up and restored both my Android phone and my Android tablet. There were a couple reasons for both of these. The tablet had been borked for quite a long time (any time I tried to upgrade it from the Android 5.0 build it was running, it failed - also the thing just froze randomly). The phone was on the CyanogenMod nightly channel and I wanted to switch to the snapshot channel, plus within the past couple days both WiFi and the cell network data connection straight up stopped working so it was pretty unusable. At first I wanted to switch to <a href="https://copperhead.co/android/">CopperheadOS</a> on both devices. CopperheadOS doesn&#x27;t support GApps and will probably never support GApps (for very good reasons), and I said, maybe I can make it work. Sadly, I couldn&#x27;t - I still regrettably need stuff from the Google Play Store. (The tablet ended up back on stock because I want fast upgrades, and the phone ended up on CyanogenMod because they have the fastest upgrades while still offering root.)</p>
-<p>The whole experience made me think, though - what would it take to create something that functioned like GApps, but respected your freedom? I&#x27;m sure some people reading are already scrambling to link me to their favorite Google Play Services reimplementation, but this isn&#x27;t the only thing that&#x27;s in GApps. You gotta think about the user experience, too. Such a system should be able to:</p>
+            <div class="e-content"><p>Recently I backed up and restored both my Android phone and my Android tablet. There were a couple reasons for both of these. The tablet had been borked for quite a long time (any time I tried to upgrade it from the Android 5.0 build it was running, it failed - also the thing just froze randomly). The phone was on the CyanogenMod nightly channel and I wanted to switch to the snapshot channel, plus within the past couple days both WiFi and the cell network data connection straight up stopped working so it was pretty unusable. At first I wanted to switch to <a href="https://copperhead.co/android/">CopperheadOS</a> on both devices. CopperheadOS doesn't support GApps and will probably never support GApps (for very good reasons), and I said, maybe I can make it work. Sadly, I couldn't - I still regrettably need stuff from the Google Play Store. (The tablet ended up back on stock because I want fast upgrades, and the phone ended up on CyanogenMod because they have the fastest upgrades while still offering root.)</p>
+<p>The whole experience made me think, though - what would it take to create something that functioned like GApps, but respected your freedom? I'm sure some people reading are already scrambling to link me to their favorite Google Play Services reimplementation, but this isn't the only thing that's in GApps. You gotta think about the user experience, too. Such a system should be able to:</p>
 <ul>
 <li>Provide the nice APIs that Google Play Services does</li>
 <li>Store your photos in the cloud, like Google Photos</li>
@@ -152,11 +152,11 @@ npm run build
 <li>Ditto for Google Assistant</li>
 <li>Integrate into the initial device setup to configure all this stuff</li>
 </ul>
-<p>I&#x27;m sure there are more that I&#x27;ve missed.</p>
-<p>Honestly, we&#x27;re actually quite close to this. The first bullet can be mostly accomplished with something like <a href="https://microg.org/">microG</a>. Automatic backup and photo storage needs a UI, but fundamentally can be accomplished with any generic WebDAV implementation. F-Droid can be used as the app store. Imagine this: you take a bunch of photos and install a bunch of freedom-respecting apps on your phone. Then, you get a new one. When you set it up, the phone prompts you to sign in to your WebDAV account (which could be e.g. ownCloud, or a WebDAV implementation on <a href="https://sandstorm.io/">Sandstorm</a>) and then automatically reinstalls all your apps from F-Droid, as well as retrieving their data from ownCloud. When you open the built-in gallery app, all your photos are already there because they&#x27;re seamlessly backed up to the cloud. <em>Your</em> cloud. Transfer can be accomplished in a lot of ways, but I can easily see it building on the above.</p>
-<p>Supporting something like Google Now is non-trivial, but I&#x27;ve even already proposed <a href="https://github.com/cantino/huginn/issues/1583">a feature for Huginn</a> that would make this possible. Google Assistant would be very, very difficult, but even without that, we&#x27;d have come a long way.</p>
-<p>This reality is not that far off. What&#x27;s missing is some UI pieces and a nice ZIP that can be flashed on top of ROMs, similar to how GApps are flashed today. So who&#x27;s going to put it all together?</p>
-<p>(I suppose I&#x27;ve just volunteered myself - oh well... I&#x27;ll just add it to my endless list of projects.)</p>
+<p>I'm sure there are more that I've missed.</p>
+<p>Honestly, we're actually quite close to this. The first bullet can be mostly accomplished with something like <a href="https://microg.org/">microG</a>. Automatic backup and photo storage needs a UI, but fundamentally can be accomplished with any generic WebDAV implementation. F-Droid can be used as the app store. Imagine this: you take a bunch of photos and install a bunch of freedom-respecting apps on your phone. Then, you get a new one. When you set it up, the phone prompts you to sign in to your WebDAV account (which could be e.g. ownCloud, or a WebDAV implementation on <a href="https://sandstorm.io/">Sandstorm</a>) and then automatically reinstalls all your apps from F-Droid, as well as retrieving their data from ownCloud. When you open the built-in gallery app, all your photos are already there because they're seamlessly backed up to the cloud. <em>Your</em> cloud. Transfer can be accomplished in a lot of ways, but I can easily see it building on the above.</p>
+<p>Supporting something like Google Now is non-trivial, but I've even already proposed <a href="https://github.com/cantino/huginn/issues/1583">a feature for Huginn</a> that would make this possible. Google Assistant would be very, very difficult, but even without that, we'd have come a long way.</p>
+<p>This reality is not that far off. What's missing is some UI pieces and a nice ZIP that can be flashed on top of ROMs, similar to how GApps are flashed today. So who's going to put it all together?</p>
+<p>(I suppose I've just volunteered myself - oh well... I'll just add it to my endless list of projects.)</p>
 
             </div>
           </article>
@@ -168,7 +168,7 @@ npm run build
               <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
             </p>
             <div class="e-content"><p><a href="https://github.com/e14n/pump.io/releases/tag/v1.0.0">Pump.io 1.0.0</a> is officially available! Whoooo!</p>
-<p>I just wanted to write up an announcement real quick to celebrate. Here&#x27;s a sample what&#x27;s gone into this release:</p>
+<p>I just wanted to write up an announcement real quick to celebrate. Here's a sample what's gone into this release:</p>
 <ul>
 <li>Node 4.x support</li>
 <li>Lots of security improvements including a better cross-site scripting scrubber and security-related headers that help protect the web UI (most notably, the web UI now declares a Content Security Policy)</li>
@@ -178,7 +178,7 @@ npm run build
 <li>And of course, tons of minor bugfixes and improvements</li>
 </ul>
 <p>For more details, see the brand-new <a href="https://github.com/e14n/pump.io/blob/master/CHANGELOG.md#100---2016-08-26">change log</a>.</p>
-<p>And of course since we&#x27;re now past 0.x.x releases, we&#x27;re now officially making a commitment to the community to make only API-compatible changes going forward (or at least, until 2.0.0!).</p>
+<p>And of course since we're now past 0.x.x releases, we're now officially making a commitment to the community to make only API-compatible changes going forward (or at least, until 2.0.0!).</p>
 <p>As this release <em>does</em> improve security and fixes a lot of bugs, node administrators are encouraged to upgrade as soon as possible. If you have a global, npm-based install, you can upgrade with:</p>
 <pre><code>sudo npm install -g pump.io
 </code></pre>
@@ -187,9 +187,9 @@ npm run build
 git checkout v1.0.0
 npm install --production
 </code></pre>
-<p>If you&#x27;re upgrading from 0.3.0, everything should Just Work(tm). Don&#x27;t forget to restart your daemon!</p>
-<p>One final note - the rumors are true. While we&#x27;re not doing so <em>yet</em>, we are, in fact, planning to deprecate running under Node.js 0.10 and 0.12 very soon. Also, if you upgrade to Node.js 4.x early, the new, better XSS scrubber will be enabled - <em>however</em>, be aware that pump.io is far less tested under Node.js 4.x and you are likely to run into more bugs than you would under 0.10 or 0.12. This is an unfortunate situation, but sadly there&#x27;s really nothing to be done about it. :(</p>
-<p>Special thanks to Menno Vossen, Laura Arjona, Evan Prodromou, Jan Kusanagi and all the other volunteers who did so many different things to make this release happen. It truly wouldn&#x27;t have happened without you.</p>
+<p>If you're upgrading from 0.3.0, everything should Just Work(tm). Don't forget to restart your daemon!</p>
+<p>One final note - the rumors are true. While we're not doing so <em>yet</em>, we are, in fact, planning to deprecate running under Node.js 0.10 and 0.12 very soon. Also, if you upgrade to Node.js 4.x early, the new, better XSS scrubber will be enabled - <em>however</em>, be aware that pump.io is far less tested under Node.js 4.x and you are likely to run into more bugs than you would under 0.10 or 0.12. This is an unfortunate situation, but sadly there's really nothing to be done about it. :(</p>
+<p>Special thanks to Menno Vossen, Laura Arjona, Evan Prodromou, Jan Kusanagi and all the other volunteers who did so many different things to make this release happen. It truly wouldn't have happened without you.</p>
 <p>Enjoy the release!</p>
 <p>With &#x3C;3,</p>
 <p>AJ</p>
@@ -227,7 +227,16 @@ npm install --production
       <div id="toys"><a id="monospace-icon" href="javascript:void(0);" title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was &quot;making [their] life&quot; monospace.">~</a><a id="lightbulb-icon" href="javascript:void(0);">
           <div class="icon-lightbulb"></div></a></div>
       <script type="text/javascript" src="/js/main.js"></script>
-      <script type="text/javascript" src="/js/idl.js"></script>
+      <script type="text/javascript">
+        window._idl = {};
+        _idl.variant = "modal";
+        (function() {
+        	var idl = document.createElement('script');
+        	idl.async = true;
+        	idl.src = 'https://members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'modal');
+        	document.getElementsByTagName('body')[0].appendChild(idl);
+        })();
+      </script>
     </div>
   </body>
 </html>

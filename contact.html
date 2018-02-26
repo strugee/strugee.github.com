@@ -20,8 +20,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
+    <link rel="preload" href="https://members.internetdefenseleague.org/include/?url=&amp;campaign=&amp;variant=modal">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
     <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
     <title>Contact - strugee.net</title>
     <meta name="description" content="AJ Jordan's contact page">
@@ -40,7 +40,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://www.instagram.com/strugee2/">
   </head>
   <body>
-    <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+    <div id="container">
       <header>
         <h1 id="topheader">strugee.net</h1>
         <nav id="navbar">
@@ -106,7 +106,16 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="toys"><a id="monospace-icon" href="javascript:void(0);" title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was &quot;making [their] life&quot; monospace.">~</a><a id="lightbulb-icon" href="javascript:void(0);">
           <div class="icon-lightbulb"></div></a></div>
       <script type="text/javascript" src="/js/main.js"></script>
-      <script type="text/javascript" src="/js/idl.js"></script>
+      <script type="text/javascript">
+        window._idl = {};
+        _idl.variant = "modal";
+        (function() {
+        	var idl = document.createElement('script');
+        	idl.async = true;
+        	idl.src = 'https://members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'modal');
+        	document.getElementsByTagName('body')[0].appendChild(idl);
+        })();
+      </script>
     </div>
   </body>
 </html>

@@ -20,8 +20,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
+    <link rel="preload" href="https://members.internetdefenseleague.org/include/?url=&amp;campaign=&amp;variant=modal">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
     <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
     <title>Posts categorized as "indieweb" - strugee.net</title>
     <!-- TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...-->
@@ -41,7 +41,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://www.instagram.com/strugee2/">
   </head>
   <body>
-    <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+    <div id="container">
       <header>
         <h1 id="topheader">strugee.net</h1>
         <nav id="navbar">
@@ -69,10 +69,10 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
             <div class="e-content">
               <p class="indienews-note"><em>This post also appeared on <a href="https://news.indieweb.org/en" class="u-syndication">IndieNews</a>.</em></p><p>Last night I hit publish on version 1.0.0 of a new project, <a href="https://github.com/strugee/lazymention">lazymention</a>! Whoohoo!</p>
 <p>tl;dr: lazymention exists to add Webmention support to static sites!</p>
-<p>To elaborate a little bit, I developed lazymention because I had a problem with this site: I wanted to send outbound <a href="https://indieweb.org/Webmention">Webmentions</a> when I link to things, but my website is completely static. (Webmention, in case you didn&#x27;t know, is a way to notify another website that you linked to them, so the other website can display some UI about your reply or whatever.) The page builds happen on my local machine, not on the server. One option would be to just send Webmentions from my local machine too, but this isn&#x27;t really a good solution for a couple reasons. First, I couldn&#x27;t do it automatically at build-time because the built pages wouldn&#x27;t have been deployed to the server yet, so receivers of my Webmentions would reject the mentions due to the source being nonexistant. That meant that I would have to have a separate step, which wouldn&#x27;t really be <em>that</em> big of a deal (lazymention reqires pinging a server too) except for the second reason: I would need some way to keep track of where I&#x27;d already sent Webmentions to, and that would require synchronizing across computers. Probably the only decent way to do that would be to check it into Git, but having a program&#x27;s data store checked in right next to the source code just feels kinda ugly. Plus, then it can&#x27;t be shared with other people as a service.</p>
-<p>So instead of doing it locally, I elected to build a server instead. Here&#x27;s how it works: you mark up your stuff with <a href="https://indieweb.org/h-feed"><code>h-feed</code></a> and <a href="https://indieweb.org/h-entry"><code>h-entry</code></a>, and whenever anything happens (e.g. you publish a new blog post or whatever), you ping lazymention with the URL (either the feed or the post itself). lazymention will use your microformats2 markup to find the canonical location for a given post, then it will find all the links in the post and send Webmentions for them. And presto! You&#x27;ve just sent Webmentions for your blog. lazymention also records when it&#x27;s sent mentions, so if you ping it again, nothing will happen unless you&#x27;ve updated your content. I&#x27;m also planning to add <a href="https://indieweb.org/WebSub">WebSub</a> support to lazymention, too, and that&#x27;ll work in the exact same way.</p>
-<p>lazymention is super easy to get started with, especially because I&#x27;ve provided thorough documentation in the <a href="https://github.com/strugee/lazymention/blob/master/README.md">README</a>. If you find anything that&#x27;s confusing or missing, please let me know by <a href="https://github.com/strugee/lazymention/issues/new">filing an issue</a>! I&#x27;d love to get it fixed. In fact, I&#x27;d be thrilled to hear about both positive <em>and</em> negative installation experiences.</p>
-<p>Oh, and one more thing - lazymention is reusable in other applications. If you&#x27;re writing a Node.js app and want to reuse its HTTP API, you can use its embedding API to get at the Express application and <code>Router</code> used internally. I&#x27;m not sure if people will actually find this useful, but I wrote it just for kicks anyway. See <a href="https://github.com/strugee/lazymention/blob/master/README.md#embedding">the embedding documentation</a> for more!</p>
+<p>To elaborate a little bit, I developed lazymention because I had a problem with this site: I wanted to send outbound <a href="https://indieweb.org/Webmention">Webmentions</a> when I link to things, but my website is completely static. (Webmention, in case you didn't know, is a way to notify another website that you linked to them, so the other website can display some UI about your reply or whatever.) The page builds happen on my local machine, not on the server. One option would be to just send Webmentions from my local machine too, but this isn't really a good solution for a couple reasons. First, I couldn't do it automatically at build-time because the built pages wouldn't have been deployed to the server yet, so receivers of my Webmentions would reject the mentions due to the source being nonexistant. That meant that I would have to have a separate step, which wouldn't really be <em>that</em> big of a deal (lazymention reqires pinging a server too) except for the second reason: I would need some way to keep track of where I'd already sent Webmentions to, and that would require synchronizing across computers. Probably the only decent way to do that would be to check it into Git, but having a program's data store checked in right next to the source code just feels kinda ugly. Plus, then it can't be shared with other people as a service.</p>
+<p>So instead of doing it locally, I elected to build a server instead. Here's how it works: you mark up your stuff with <a href="https://indieweb.org/h-feed"><code>h-feed</code></a> and <a href="https://indieweb.org/h-entry"><code>h-entry</code></a>, and whenever anything happens (e.g. you publish a new blog post or whatever), you ping lazymention with the URL (either the feed or the post itself). lazymention will use your microformats2 markup to find the canonical location for a given post, then it will find all the links in the post and send Webmentions for them. And presto! You've just sent Webmentions for your blog. lazymention also records when it's sent mentions, so if you ping it again, nothing will happen unless you've updated your content. I'm also planning to add <a href="https://indieweb.org/WebSub">WebSub</a> support to lazymention, too, and that'll work in the exact same way.</p>
+<p>lazymention is super easy to get started with, especially because I've provided thorough documentation in the <a href="https://github.com/strugee/lazymention/blob/master/README.md">README</a>. If you find anything that's confusing or missing, please let me know by <a href="https://github.com/strugee/lazymention/issues/new">filing an issue</a>! I'd love to get it fixed. In fact, I'd be thrilled to hear about both positive <em>and</em> negative installation experiences.</p>
+<p>Oh, and one more thing - lazymention is reusable in other applications. If you're writing a Node.js app and want to reuse its HTTP API, you can use its embedding API to get at the Express application and <code>Router</code> used internally. I'm not sure if people will actually find this useful, but I wrote it just for kicks anyway. See <a href="https://github.com/strugee/lazymention/blob/master/README.md#embedding">the embedding documentation</a> for more!</p>
 <p>Cheers, and happy mentioning! Elegant outbound Webmention for static sites is here.</p>
 
             </div>
@@ -108,7 +108,16 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="toys"><a id="monospace-icon" href="javascript:void(0);" title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was &quot;making [their] life&quot; monospace.">~</a><a id="lightbulb-icon" href="javascript:void(0);">
           <div class="icon-lightbulb"></div></a></div>
       <script type="text/javascript" src="/js/main.js"></script>
-      <script type="text/javascript" src="/js/idl.js"></script>
+      <script type="text/javascript">
+        window._idl = {};
+        _idl.variant = "modal";
+        (function() {
+        	var idl = document.createElement('script');
+        	idl.async = true;
+        	idl.src = 'https://members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'modal');
+        	document.getElementsByTagName('body')[0].appendChild(idl);
+        })();
+      </script>
     </div>
   </body>
 </html>

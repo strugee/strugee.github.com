@@ -20,8 +20,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
+    <link rel="preload" href="https://members.internetdefenseleague.org/include/?url=&amp;campaign=&amp;variant=modal">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
     <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
     <title>Posts from August 2017 - strugee.net</title>
     <!-- TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...-->
@@ -41,7 +41,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://www.instagram.com/strugee2/">
   </head>
   <body>
-    <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+    <div id="container">
       <header>
         <h1 id="topheader">strugee.net</h1>
         <nav id="navbar">
@@ -65,40 +65,40 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">here</a> on 
               <time datetime="2017-08-18T02:01:16-07:00"><a href="/blog/2017/08/">August</a> 18, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
             </p>
-            <div class="e-content"><p>I&#x27;m thrilled to announce that zero-downtime restarts, which I&#x27;ve been hacking on for the past week or two, <a href="https://github.com/pump-io/pump.io/pull/1406">have just landed</a> in pump.io master!</p>
-<p>Zero-downtime restarts require at least two cluster workers and MongoDB as a Databank driver (we&#x27;ll eventually relax the latter requirement as we continue to test the feature). Here&#x27;s how it works:</p>
+            <div class="e-content"><p>I'm thrilled to announce that zero-downtime restarts, which I've been hacking on for the past week or two, <a href="https://github.com/pump-io/pump.io/pull/1406">have just landed</a> in pump.io master!</p>
+<p>Zero-downtime restarts require at least two cluster workers and MongoDB as a Databank driver (we'll eventually relax the latter requirement as we continue to test the feature). Here's how it works:</p>
 <ol>
 <li>An administrator sends SIGUSR2 to the master pump.io process (note that SIGUSR1 is <a href="https://nodejs.org/api/process.html#process_signal_events">reserved by Node.js</a>)</li>
 <li>The master process builds a queue of worker processes that need to be restarted</li>
 <li>The master process picks a random worker from the queue and sends it a signal asking it to gracefully shut down</li>
 <li>The worker process shuts down its HTTP server, which causes it to stop accepting new connections - it will do the same for the bounce server, if applicable</li>
-<li>The worker shuts down its database connection once the HTTP server is completely shut down, meaning that it&#x27;s done servicing in-flight requests</li>
+<li>The worker shuts down its database connection once the HTTP server is completely shut down, meaning that it's done servicing in-flight requests</li>
 <li>The worker closes its connection with the master process and Node.js automatically terminates due to there being no listeners on the event loop</li>
-<li>The master recognizes the death of the worker process, replaces it, waits for the new worker to signal that it&#x27;s listening for connections, and repeats from step 3 until the queue is empty</li>
+<li>The master recognizes the death of the worker process, replaces it, waits for the new worker to signal that it's listening for connections, and repeats from step 3 until the queue is empty</li>
 </ol>
-<p>This works because only one worker is shut down at a time, allowing the other workers to continue servicing requests while the one worker is restarted. We wait until the new worker actually signals it&#x27;s ready to process requests before beginning the process for another worker.</p>
+<p>This works because only one worker is shut down at a time, allowing the other workers to continue servicing requests while the one worker is restarted. We wait until the new worker actually signals it's ready to process requests before beginning the process for another worker.</p>
 <p>Such a feature requires careful error handling, so there are a lot of built-in checks to prevent administrators from shooting themselves in the foot:</p>
 <ul>
-<li>If there&#x27;s a restart already in progress, SIGUSR2 is ignored</li>
-<li>If there&#x27;s only 1 cluster worker, the restart request is refused (because there would be downtime and you should just restart the master)</li>
+<li>If there's a restart already in progress, SIGUSR2 is ignored</li>
+<li>If there's only 1 cluster worker, the restart request is refused (because there would be downtime and you should just restart the master)</li>
 <li>
-<p>The master process will load a magic number from the <em>new</em> code and compare it with the <em>old</em> magic number loaded when the master process started - if they don&#x27;t match, SIGUSR2 will be refused. This number will be incremented for things that would make zero-downtime restarts cause problems, for example:</p>
+<p>The master process will load a magic number from the <em>new</em> code and compare it with the <em>old</em> magic number loaded when the master process started - if they don't match, SIGUSR2 will be refused. This number will be incremented for things that would make zero-downtime restarts cause problems, for example:</p>
 <ul>
 <li>The logic in the master process itself changing</li>
 <li>Cross-process logic changing, such that a new worker communicating with old workers would cause problems</li>
 <li>Database changes</li>
 </ul>
 </li>
-<li>If a worker process doesn&#x27;t shut itself down within 30 seconds, it will be killed</li>
+<li>If a worker process doesn't shut itself down within 30 seconds, it will be killed</li>
 <li>
-<p>If a zero-downtime restart fails for any reason, the master process will refuse SIGUSR2 and will not respawn any more cluster workers, even if they crash - this is because something must have gone <em>seriously</em> wrong, either with the master, the workers, or the new code, and it&#x27;s better to just restart everything. Currently this condition occurs when:</p>
+<p>If a zero-downtime restart fails for any reason, the master process will refuse SIGUSR2 and will not respawn any more cluster workers, even if they crash - this is because something must have gone <em>seriously</em> wrong, either with the master, the workers, or the new code, and it's better to just restart everything. Currently this condition occurs when:</p>
 <ul>
 <li>A new worker died directly after being spawned (e.g. from invalid JSON in <code>pump.io.json</code>)</li>
-<li>A new worker signaled that it couldn&#x27;t bind to the appropriate ports</li>
+<li>A new worker signaled that it couldn't bind to the appropriate ports</li>
 </ul>
 </li>
 </ul>
-<p>While these checks do a lot to catch problems, they&#x27;re not a silver bullet, and we strongly recommend that administrators watch their logs as they trigger restarts. However, this is still a <em>huge</em> win for the admin experience - the most exciting part of this for me is that it&#x27;s the first step we need to take towards having fully automatic updates, which has been a dream of mine for a long while now.</p>
+<p>While these checks do a lot to catch problems, they're not a silver bullet, and we strongly recommend that administrators watch their logs as they trigger restarts. However, this is still a <em>huge</em> win for the admin experience - the most exciting part of this for me is that it's the first step we need to take towards having fully automatic updates, which has been a dream of mine for a long while now.</p>
 <p>Admins running from git master can start experimenting with this feature today, and it will be released during the <em>next</em> release cycle - i.e. with the 5.1 beta and stable, <em>not</em> the current 5.0 beta. Since this is highly experimental, we want this to have as much time for testing as possible. You can also check out the <a href="https://pumpio.readthedocs.io/en/latest/administration/zero-downtime-restarts.html">official documentation</a> on this feature.</p>
 <p>I hope people enjoy this! And as always, feel free to <a href="https://github.com/pump-io/pump.io/issues/new">report any bugs</a>.</p>
 
@@ -111,13 +111,13 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
               <time datetime="2017-08-07T14:51:12-04:00"><a href="/blog/2017/08/">August</a> 7, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a> and <a href="/blog/category/releases/" class="p-category">releases</a>. Last edited 
               <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
             </p>
-            <div class="e-content"><p>I&#x27;m excited to announce that pump.io 5.0.0 is now officially in beta!</p>
+            <div class="e-content"><p>I'm excited to announce that pump.io 5.0.0 is now officially in beta!</p>
 <p>This is another big release and makes a wide variety of improvements. Here are some highlights from <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#500-beta-0---2017-08-07">the changelog</a>:</p>
 <ul>
 <li>More complete documentation</li>
 <li>Small improvements to the administrator experience</li>
 <li>A better web UI, including some user experience polishing as well as an upgrade to more performant and better-licensed libraries</li>
-<li>A fix for crashes related to &#x22;login with remote account&#x22; (although this one was backported in 4.1.1)</li>
+<li>A fix for crashes related to "login with remote account" (although this one was backported in 4.1.1)</li>
 <li>Significant security improvements in the <a href="https://pumpio.readthedocs.io/en/latest/administration/upstream-systemd-unit.html">systemd service</a> shipped with the package</li>
 <li>Lots of internal refactoring and simplification made possible by dropping Node 0.10/0.12 support</li>
 </ul>
@@ -157,7 +157,16 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="toys"><a id="monospace-icon" href="javascript:void(0);" title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was &quot;making [their] life&quot; monospace.">~</a><a id="lightbulb-icon" href="javascript:void(0);">
           <div class="icon-lightbulb"></div></a></div>
       <script type="text/javascript" src="/js/main.js"></script>
-      <script type="text/javascript" src="/js/idl.js"></script>
+      <script type="text/javascript">
+        window._idl = {};
+        _idl.variant = "modal";
+        (function() {
+        	var idl = document.createElement('script');
+        	idl.async = true;
+        	idl.src = 'https://members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'modal');
+        	document.getElementsByTagName('body')[0].appendChild(idl);
+        })();
+      </script>
     </div>
   </body>
 </html>

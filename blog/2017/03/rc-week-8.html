@@ -20,8 +20,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
+    <link rel="preload" href="https://members.internetdefenseleague.org/include/?url=&amp;campaign=&amp;variant=modal">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
     <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
     <title>RC week 8 - strugee.net</title>
     <link rel="preconnect" href="https://webmention.io/">
@@ -43,7 +43,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://www.instagram.com/strugee2/">
   </head>
   <body>
-    <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+    <div id="container">
       <header>
         <h1 id="topheader">strugee.net</h1>
         <nav id="navbar">
@@ -69,28 +69,28 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
 <h3 id="day-27">Day 27</h3>
 <p>Arrived ~10:35, departed ~0:30, total time at RC 13h55m.</p>
-<p>Had a nice discussion about Stratic in my checkin group this morning. After that I went to the Capture The Flag introduction workshop, then spent essentially the entire rest of the day finishing up <a href="https://strugee.net/blog/2017/02/from-static-to-stratic-part-1">static to Stratic</a> (which included, in a truly horrifying fashion, me rewriting and force-pushing the demo repository&#x27;s history a good four times or so) so I&#x27;d have a post up for the iron bloggers meeting. Also spent some time fixing some bugs in <a href="https://github.com/straticjs/generator-stratic">generator-stratic</a> and published the beta 2 release with those fixes. Closed out the evening by digging into a remark problem where <code>&#x3C;script&#x3E;</code> tags would be stripped from posts. Ended up just asking on Gitter.</p>
+<p>Had a nice discussion about Stratic in my checkin group this morning. After that I went to the Capture The Flag introduction workshop, then spent essentially the entire rest of the day finishing up <a href="https://strugee.net/blog/2017/02/from-static-to-stratic-part-1">static to Stratic</a> (which included, in a truly horrifying fashion, me rewriting and force-pushing the demo repository's history a good four times or so) so I'd have a post up for the iron bloggers meeting. Also spent some time fixing some bugs in <a href="https://github.com/straticjs/generator-stratic">generator-stratic</a> and published the beta 2 release with those fixes. Closed out the evening by digging into a remark problem where <code>&#x3C;script></code> tags would be stripped from posts. Ended up just asking on Gitter.</p>
 <h3 id="day-28">Day 28</h3>
 <p>Arrived ~10:30, departed ~20:40, total time at RC 10h10m.</p>
-<p>Continued to investigate the remark problem based on replies received overnight - turns out it was a bug in remark fixed in a release that had gone out the door literally the same day I asked. After that I spent the day upgrading <a href="https://github.com/straticjs/generator-stratic">generator-stratic</a> (which, remember, was originally scaffolded <a href="https://strugee.net/blog/2014/12/new-blog-new-site">years ago</a>) to newer and newer releases of <code>yeoman-generator</code> until it used <code>yeoman-generator@latest</code>. Then I spent time adding some basic tests - they&#x27;re kind of just smoketests for now (are the correct files generated, does <code>gulp serve</code> work) but I <a href="https://github.com/straticjs/generator-stratic/issues/11">intend</a> to expand them. Also moved over some issues to the new <a href="https://github.com/straticjs/RFCs">straticjs/RFCs</a> repository and attended Casual Presentations.</p>
+<p>Continued to investigate the remark problem based on replies received overnight - turns out it was a bug in remark fixed in a release that had gone out the door literally the same day I asked. After that I spent the day upgrading <a href="https://github.com/straticjs/generator-stratic">generator-stratic</a> (which, remember, was originally scaffolded <a href="https://strugee.net/blog/2014/12/new-blog-new-site">years ago</a>) to newer and newer releases of <code>yeoman-generator</code> until it used <code>yeoman-generator@latest</code>. Then I spent time adding some basic tests - they're kind of just smoketests for now (are the correct files generated, does <code>gulp serve</code> work) but I <a href="https://github.com/straticjs/generator-stratic/issues/11">intend</a> to expand them. Also moved over some issues to the new <a href="https://github.com/straticjs/RFCs">straticjs/RFCs</a> repository and attended Casual Presentations.</p>
 <h3 id="day-29">Day 29</h3>
 <p>Arrived ~10:50, departed ~20:35, total time at RC 9h45m.</p>
-<p>Didn&#x27;t do a whole lot codewise today. However, I did teach Unix fundamentals for Beginner Club, which went pretty well - I just spent the entire time in the commandline, demonstrating different commands. We spent a little time talking about shell scripting, but not much. I forgot to cover conditionals, which was dumb since they&#x27;re pretty weird in shell scripting. Spent some time in the afternoon starting a draft of <a href="https://strugee.net/blog/2017/02/how-i-passed-2k-github-contributions">How I passed 2k GitHub contributions</a></p>
-<p>Watched Kiki&#x27;s Delivery Service in the evening.</p>
+<p>Didn't do a whole lot codewise today. However, I did teach Unix fundamentals for Beginner Club, which went pretty well - I just spent the entire time in the commandline, demonstrating different commands. We spent a little time talking about shell scripting, but not much. I forgot to cover conditionals, which was dumb since they're pretty weird in shell scripting. Spent some time in the afternoon starting a draft of <a href="https://strugee.net/blog/2017/02/how-i-passed-2k-github-contributions">How I passed 2k GitHub contributions</a></p>
+<p>Watched Kiki's Delivery Service in the evening.</p>
 <h3 id="day-30">Day 30</h3>
 <p>Arrived ~10:35, departed ~00:05, total time at RC 13h30m.</p>
-<p>Finished and published <a href="https://strugee.net/blog/2017/02/how-i-passed-2k-github-contributions">How I passed 2k GitHub contributions</a>. Presented <a href="https://strugee.net/presentation-cryptography-basics">cryptography basics</a> at Security Club, then spent a lot of time fixing miscellaneous items on steevie. In particular ejabberd was apparently configured to use a standalone certificate bundle (instead of symlinking to something in <code>/etc/letsencrypt/live</code>) - this was because ejabberd requires the private key and the full chain to be in the same file. TLS certificate renewal didn&#x27;t properly update this bundle, so XMPP client connections weren&#x27;t working. ZNC was broken in the same way, so I fixed both of those. I also spent some time setting up a system to publish everything custom in <code>/usr/local</code> <a href="https://github.com/strugee/steevie-usr-local">on GitHub</a> so that it&#x27;s public and version-controlled. So that&#x27;s nice.</p>
+<p>Finished and published <a href="https://strugee.net/blog/2017/02/how-i-passed-2k-github-contributions">How I passed 2k GitHub contributions</a>. Presented <a href="https://strugee.net/presentation-cryptography-basics">cryptography basics</a> at Security Club, then spent a lot of time fixing miscellaneous items on steevie. In particular ejabberd was apparently configured to use a standalone certificate bundle (instead of symlinking to something in <code>/etc/letsencrypt/live</code>) - this was because ejabberd requires the private key and the full chain to be in the same file. TLS certificate renewal didn't properly update this bundle, so XMPP client connections weren't working. ZNC was broken in the same way, so I fixed both of those. I also spent some time setting up a system to publish everything custom in <code>/usr/local</code> <a href="https://github.com/strugee/steevie-usr-local">on GitHub</a> so that it's public and version-controlled. So that's nice.</p>
 <h3 id="friday">Friday</h3>
-<p>Arrived ~15:50, departed ~1:00, total time at RC 9h10m. As always, Friday doesn&#x27;t count as a day because RC is technically not in session.</p>
+<p>Arrived ~15:50, departed ~1:00, total time at RC 9h10m. As always, Friday doesn't count as a day because RC is technically not in session.</p>
 <p>Came in super late (though I woke up earlier). Almost immediately after that I attended an initial meeting about starting an RFC reading group (an idea I floated on Zulip a couple days ago). Spent most of the day poking at IETF things as well as responding to <a href="https://github.com/hubot-scripts/hubot-seen">hubot-seen</a> PR comments. I just got write access! \o/</p>
-<p>Closed out the evening by attending Bottle Share Friday, where I had a long discussion with <a href="http://www.aberke.com/">Alex</a> about running my own email server (which spun off into a discussion of how completely terrible and busted email is), followed by a long discussion about whether Apple&#x27;s release schedule for Safari and attitude towards new web features and third-party iOS rendering engines is justifiable.</p>
+<p>Closed out the evening by attending Bottle Share Friday, where I had a long discussion with <a href="http://www.aberke.com/">Alex</a> about running my own email server (which spun off into a discussion of how completely terrible and busted email is), followed by a long discussion about whether Apple's release schedule for Safari and attitude towards new web features and third-party iOS rendering engines is justifiable.</p>
 <h3 id="saturday">Saturday</h3>
-<p>Arrived ~11:15, departed ~23:30, total time at RC 12h15m. Saturday doesn&#x27;t count as a day because RC is not in session.</p>
-<p>Marathoned Lord of the Rings today. The showing was small and people drifted in and out but most of the time there were a couple people watching, which was fun. The original plan was to watch the director&#x27;s cut versions, watching The Return of the King on Sunday, but we ended up watching the regular versions because you can&#x27;t rent the director&#x27;s cuts off Amazon, and I wasn&#x27;t about to pay $30 for movies that I <em>already own</em> on DVD back home. We probably would&#x27;ve still watched on Sunday, except that I went out to get pizza for dinnr and found out that it was pouring rain (with thunder/lightning and everything). So I decided we&#x27;d watch The Return of the King and wait for the rain to let up, which worked beautifully.</p>
+<p>Arrived ~11:15, departed ~23:30, total time at RC 12h15m. Saturday doesn't count as a day because RC is not in session.</p>
+<p>Marathoned Lord of the Rings today. The showing was small and people drifted in and out but most of the time there were a couple people watching, which was fun. The original plan was to watch the director's cut versions, watching The Return of the King on Sunday, but we ended up watching the regular versions because you can't rent the director's cuts off Amazon, and I wasn't about to pay $30 for movies that I <em>already own</em> on DVD back home. We probably would've still watched on Sunday, except that I went out to get pizza for dinnr and found out that it was pouring rain (with thunder/lightning and everything). So I decided we'd watch The Return of the King and wait for the rain to let up, which worked beautifully.</p>
 <p><a href="https://github.com/Husseinfarah93">Hussein</a> came in just as I was about to leave and stated that he almost had a heart attack because he sprinted literally from his apartment to Duane Reade, which truthfully was absolutely <em>hilarious</em>. We had some fun wandering around Duane Reade trying to find soap (which I needed to buy) before we both headed home.</p>
-<p>(As a side note, my favorite brand of mac &#x27;n&#x27; cheese by far is Annie&#x27;s, which my local supermarket does not carry. But apparently Duane Reade does!? Wat???)</p>
+<p>(As a side note, my favorite brand of mac 'n' cheese by far is Annie's, which my local supermarket does not carry. But apparently Duane Reade does!? Wat???)</p>
 <h3 id="executive-summary">Executive summary</h3>
-<p>This week was weirdly divided - some parts were hyper-productive and some parts were pretty terrible. I certainly got a lot of work done on Stratic, and I taught a lot. But I didn&#x27;t really do a good job of working on stuff that pushed my programming abilities forward.</p>
+<p>This week was weirdly divided - some parts were hyper-productive and some parts were pretty terrible. I certainly got a lot of work done on Stratic, and I taught a lot. But I didn't really do a good job of working on stuff that pushed my programming abilities forward.</p>
 <p>Total time at RC 68 hours 45 minutes; cumulative time 363 hours 10 minutes.</p>
 
           </div>
@@ -127,7 +127,16 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="toys"><a id="monospace-icon" href="javascript:void(0);" title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was &quot;making [their] life&quot; monospace.">~</a><a id="lightbulb-icon" href="javascript:void(0);">
           <div class="icon-lightbulb"></div></a></div>
       <script type="text/javascript" src="/js/main.js"></script>
-      <script type="text/javascript" src="/js/idl.js"></script>
+      <script type="text/javascript">
+        window._idl = {};
+        _idl.variant = "modal";
+        (function() {
+        	var idl = document.createElement('script');
+        	idl.async = true;
+        	idl.src = 'https://members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'modal');
+        	document.getElementsByTagName('body')[0].appendChild(idl);
+        })();
+      </script>
     </div>
   </body>
 </html>

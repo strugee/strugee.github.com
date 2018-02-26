@@ -20,8 +20,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
+    <link rel="preload" href="https://members.internetdefenseleague.org/include/?url=&amp;campaign=&amp;variant=modal">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- IE7 support isn't really needed, but this addition is so easy I might as well --><!--[if lte IE 7]> <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"> <![endif]-->
     <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
     <title>RC week 10 - strugee.net</title>
     <link rel="preconnect" href="https://webmention.io/">
@@ -43,7 +43,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="me" href="https://www.instagram.com/strugee2/">
   </head>
   <body>
-    <div id="container"><!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.<![endif]-->
+    <div id="container">
       <header>
         <h1 id="topheader">strugee.net</h1>
         <nav id="navbar">
@@ -70,25 +70,25 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <h3 id="day-35">Day 35</h3>
 <p>Arrived ~13:00, departed ~21:30, total time at RC 8h30m.</p>
 <p>Decided (in the morning) to sleep in because honestly, I was just really behind on sleep.</p>
-<p>Didn&#x27;t do a whole lot today. Took care of the monthly pump.io release, but spent most of the day writing <a href="https://strugee.net/blog/2017/03/driftless-at-1000-mph">Driftless at 1,000 mph</a>. In the evening (i.e. after the Iron Blogger meeting) I spent some time fixing ejabberd&#x27;s configuration to use the new access control syntax (I&#x27;d rewritten the config a while back, but hadn&#x27;t deployed it yet because it broke logins).</p>
+<p>Didn't do a whole lot today. Took care of the monthly pump.io release, but spent most of the day writing <a href="https://strugee.net/blog/2017/03/driftless-at-1000-mph">Driftless at 1,000 mph</a>. In the evening (i.e. after the Iron Blogger meeting) I spent some time fixing ejabberd's configuration to use the new access control syntax (I'd rewritten the config a while back, but hadn't deployed it yet because it broke logins).</p>
 <h3 id="day-36">Day 36</h3>
 <p>Arrived ~10:40, departed ~23:40, total time at RC 13h0m.</p>
-<p>Spent basically all day working on <a href="https://github.com/strugee/realtime.recurse.com">realtime.recurse.com</a>. I (mostly) finished up the bits that watch the filesystem and dispatch events (including the &#x22;periodic&#x22; submission logic), then started in on an automatic update mechanism. I&#x27;m pretty pleased with how it&#x27;s turning out - I think it&#x27;s pretty elegant. And, it&#x27;s secure - updates are required to be cryptographically signed by yours truly. Went out to Black Burger with a <em>bunch</em> of people before going to Fat Cat in the evening. Then came back, worked on the updater a little more, and went home.</p>
+<p>Spent basically all day working on <a href="https://github.com/strugee/realtime.recurse.com">realtime.recurse.com</a>. I (mostly) finished up the bits that watch the filesystem and dispatch events (including the "periodic" submission logic), then started in on an automatic update mechanism. I'm pretty pleased with how it's turning out - I think it's pretty elegant. And, it's secure - updates are required to be cryptographically signed by yours truly. Went out to Black Burger with a <em>bunch</em> of people before going to Fat Cat in the evening. Then came back, worked on the updater a little more, and went home.</p>
 <h3 id="day-37">Day 37</h3>
 <p>Arrived ~14:40, departed ~23:20, total time at RC 8h40m.</p>
 <p>Overslept by accident this morning. Spent a bit of time in the afternoon dealing with email, then focused on realtime.recurse.com - basically I was just working on the autoupater I started yesterday. My Python is <em>definitely</em> improving!</p>
-<p>I&#x27;m actually really pleased with the updater. It&#x27;s pretty elegant, I think. Basically whenever the server sees a request coming from the client, it checks the <code>User-Agent</code> header to see if the client&#x27;s out of date and, if so, sends back an <code>X-Requires-Upgrade</code> header. Upon receiving this header the client will go fetch version information, which it&#x27;ll use to download and verify an update bundle cryptographically signed by me. Yay for secure updates, and yay for simplicity! (Note that this design basically just reuses the connections the client is already making to the server, so it doesn&#x27;t have to poll for updates all the time.)</p>
-<p>I also spent a couple hours talking with Mikhail, discussing a lot of things - ranging from how Node.js&#x27;s event loop works to the <code>is</code> keyword in Python to static site generator architecture compared to dynamic site architecture.</p>
+<p>I'm actually really pleased with the updater. It's pretty elegant, I think. Basically whenever the server sees a request coming from the client, it checks the <code>User-Agent</code> header to see if the client's out of date and, if so, sends back an <code>X-Requires-Upgrade</code> header. Upon receiving this header the client will go fetch version information, which it'll use to download and verify an update bundle cryptographically signed by me. Yay for secure updates, and yay for simplicity! (Note that this design basically just reuses the connections the client is already making to the server, so it doesn't have to poll for updates all the time.)</p>
+<p>I also spent a couple hours talking with Mikhail, discussing a lot of things - ranging from how Node.js's event loop works to the <code>is</code> keyword in Python to static site generator architecture compared to dynamic site architecture.</p>
 <h3 id="day-38">Day 38</h3>
 <p>Arrived ~9:50, departed ~23:00, total time at RC 13h10m.</p>
-<p>Woke up, completely naturally, around 7 AM despite going to sleep at 3 AM. This was so surprising - and this is a true story - that I thought I had woken up at 7 PM and missed the entire day, including Security Club, Abstract Salad Factory, and Thursday night presentations. I was <em>really</em> mad, honestly. But then I looked at my watch and realized that I was on 24-hour time but it didn&#x27;t say &#x22;19:00&#x22; and also my alarms were in the future and my phone was in 24-hour time too and also Anja on Zulip said &#x22;?&#x22; when I said I&#x27;d slept through Security Club. Despite the overwhelming evidence in the end, though, I still had a weird feeling that it was 7 PM. So that&#x27;s the story of how, for a good 5 or 10 minutes, I genuinely believed I&#x27;d slept through the entire day.</p>
-<p>Once I got to RC, I spent the morning finally(!) merging in a bunch of upstream <code>ejabberd.yml</code> config changes to steevie&#x27;s ejabberd configuration, which got me closer to fixing the awful spam problem I have. Then I went to Abstract Salad Factory, followed by Security Club. Then in the afternoon (and after presentations) I started reading <a href="https://www.freebsd.org/">FreeBSD</a> documentation since that&#x27;s what I&#x27;m running my new Tor relay on - as I discovered a couple days ago, my old one apparently got hung during boot and was consuming 100% CPU due to the kernel image being corrupted or something. I chose FreeBSD because a) it&#x27;s a rock-solid system, b) it&#x27;s a good opportunity to gain experience with administrating a BSD, and c) it increases the diversity of the Tor network. Also, had a conference call in the afternoon with the <a href="https://www.eff.org/">EFF</a> and Paul from <a href="https://ta3mseattle.org/index.php/Main_Page">TA3M Seattle</a> about TA3M Seattle joining the EFF&#x27;s <a href="https://www.eff.org/electronic-frontier-alliance">Electronic Frontier Alliance</a>, which was exciting for everyone.</p>
+<p>Woke up, completely naturally, around 7 AM despite going to sleep at 3 AM. This was so surprising - and this is a true story - that I thought I had woken up at 7 PM and missed the entire day, including Security Club, Abstract Salad Factory, and Thursday night presentations. I was <em>really</em> mad, honestly. But then I looked at my watch and realized that I was on 24-hour time but it didn't say "19:00" and also my alarms were in the future and my phone was in 24-hour time too and also Anja on Zulip said "?" when I said I'd slept through Security Club. Despite the overwhelming evidence in the end, though, I still had a weird feeling that it was 7 PM. So that's the story of how, for a good 5 or 10 minutes, I genuinely believed I'd slept through the entire day.</p>
+<p>Once I got to RC, I spent the morning finally(!) merging in a bunch of upstream <code>ejabberd.yml</code> config changes to steevie's ejabberd configuration, which got me closer to fixing the awful spam problem I have. Then I went to Abstract Salad Factory, followed by Security Club. Then in the afternoon (and after presentations) I started reading <a href="https://www.freebsd.org/">FreeBSD</a> documentation since that's what I'm running my new Tor relay on - as I discovered a couple days ago, my old one apparently got hung during boot and was consuming 100% CPU due to the kernel image being corrupted or something. I chose FreeBSD because a) it's a rock-solid system, b) it's a good opportunity to gain experience with administrating a BSD, and c) it increases the diversity of the Tor network. Also, had a conference call in the afternoon with the <a href="https://www.eff.org/">EFF</a> and Paul from <a href="https://ta3mseattle.org/index.php/Main_Page">TA3M Seattle</a> about TA3M Seattle joining the EFF's <a href="https://www.eff.org/electronic-frontier-alliance">Electronic Frontier Alliance</a>, which was exciting for everyone.</p>
 <h3 id="friday">Friday</h3>
-<p>Arrived ~13:00, departed ~22:30, total time at RC 9h30m. As always, Friday doesn&#x27;t count as a day because RC is technically not in session.</p>
-<p>Didn&#x27;t do a whole lot of coding. Spent a while helping <a href="https://jxself.org/">Jason</a> debug <a href="https://datamost.com/">Datamost</a>&#x27;s 3.0.0 upgrade (which apparently broke uploads). Attended presentations for the RC Game Jam, then fixed the documentation that caused Jason&#x27;s problems. Spent a little bit of time polishing the website and README, too.</p>
+<p>Arrived ~13:00, departed ~22:30, total time at RC 9h30m. As always, Friday doesn't count as a day because RC is technically not in session.</p>
+<p>Didn't do a whole lot of coding. Spent a while helping <a href="https://jxself.org/">Jason</a> debug <a href="https://datamost.com/">Datamost</a>'s 3.0.0 upgrade (which apparently broke uploads). Attended presentations for the RC Game Jam, then fixed the documentation that caused Jason's problems. Spent a little bit of time polishing the website and README, too.</p>
 <p>In the evening, fixed people being banned from ejabberd MUCs, then proceeded to fix my spam problem. Whoooooo! Then I kept working on my Tor relay.</p>
 <h3 id="executive-summary">Executive summary</h3>
-<p>Like any week, this had moments where I wasn&#x27;t very productive. But overall I think it was pretty good - I made a lot of progress on realtime.recurse.com (and improved my Python in the process), and I made a lot of progress on setting up my Tor relay again (and learned a bunch about FreeBSD in the process). Also, I fixed my ejabberd spam problem. I learned nothing from that, but thank <em>god</em> I did it because the spam problem was honestly <em>awful</em>. The one issue was that I just didn&#x27;t do a very good job getting up and making it to checkins.</p>
+<p>Like any week, this had moments where I wasn't very productive. But overall I think it was pretty good - I made a lot of progress on realtime.recurse.com (and improved my Python in the process), and I made a lot of progress on setting up my Tor relay again (and learned a bunch about FreeBSD in the process). Also, I fixed my ejabberd spam problem. I learned nothing from that, but thank <em>god</em> I did it because the spam problem was honestly <em>awful</em>. The one issue was that I just didn't do a very good job getting up and making it to checkins.</p>
 <p>Total time at RC 52 hours 50 minutes; cumulative time 464 hours 50 minutes.</p>
 
           </div>
@@ -125,7 +125,16 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="toys"><a id="monospace-icon" href="javascript:void(0);" title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was &quot;making [their] life&quot; monospace.">~</a><a id="lightbulb-icon" href="javascript:void(0);">
           <div class="icon-lightbulb"></div></a></div>
       <script type="text/javascript" src="/js/main.js"></script>
-      <script type="text/javascript" src="/js/idl.js"></script>
+      <script type="text/javascript">
+        window._idl = {};
+        _idl.variant = "modal";
+        (function() {
+        	var idl = document.createElement('script');
+        	idl.async = true;
+        	idl.src = 'https://members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'modal');
+        	document.getElementsByTagName('body')[0].appendChild(idl);
+        })();
+      </script>
     </div>
   </body>
 </html>
