@@ -28,7 +28,7 @@ mixin renderPost(post, baseURL, isIndex)
 				|  #{post.data.time.dayOfMonthStr}, 
 				a(href=baseURL+post.data.time.yearStr+'/')= post.data.time.yearStr
 			|  in 
-			+categoryList(categories, 'and')
+			+categoryList(categories, baseURL, 'and')
 			//- TODO maybe show exact timestamps if the post is edited on the same day?
 			if post.data.edited
 				| . Last edited 

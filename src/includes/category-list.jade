@@ -1,4 +1,4 @@
-mixin categoryList(categories, word)
+mixin categoryList(categories, baseURL, word)
 	for category, index in categories
 		a.p-category(href=baseURL+'category/' + category + '/') #{category}
 		if index < categories.length - 2

@@ -1,6 +1,7 @@
 include /src/includes/post.jade
+include /src/includes/category-list.jade
 
-mixin streamIndex(streamType, baseURL)
+mixin streamIndex(streamType, baseURL, featuredCategories)
 	.h-feed
 		//- Index title
 		if indexType === 'main'
@@ -9,6 +10,9 @@ mixin streamIndex(streamType, baseURL)
 				each year in includedYears
 					a(href=baseURL + year + '/')= year
 					| 
+				if featuredCategories
+					| or categorized in 
+					+categoryList(featuredCategories, baseURL, 'or')
 		else if indexType === 'year'
 			h2.p-name Posts from #{year}
 			p#postsFrom Show only posts from 
