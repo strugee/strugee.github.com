@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--
+© Copyright 2012-2018 AJ Jordan
+This file is part of strugee.net.
+strugee.net is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+strugee.net is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!-- Made and coded by AJ Jordan-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="preload" href="https://members.internetdefenseleague.org/include/?url=&amp;campaign=&amp;variant=modal">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <title>Temporary signing keys - strugee.net</title>
+    <link rel="preconnect" href="https://webmention.io/">
+    <link rel="pingback" href="https://webmention.io/strugee.net/xmlrpc">
+    <link rel="webmention" href="https://webmention.io/strugee.net/webmention">
+    <script src="/js/webmentions.js" type="text/javascript"></script>
+    <!-- IndieWeb components, with <3-->
+    <link rel="me" href="mailto:alex@strugee.net">
+    <link rel="me" href="sms:17607054581">
+    <link rel="me" href="xmpp:alex@strugee.net">
+    <link rel="me" href="https://github.com/strugee">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://pump.strugee.net/alex">
+    <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
+    <link rel="me" href="https://media.strugee.net/u/alex">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://www.instagram.com/strugee2/">
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1 id="topheader">strugee.net</h1>
+        <nav id="navbar">
+          <ul>
+            <li id="navlabel" class="navlink">Nav &nbsp;::</li>
+            <li class="navlink"><a href="/">Home</a></li>
+            <li class="navlink"><a href="/projects">Projects</a></li>
+            <li class="navlink"><a href="/talks">Talks</a></li>
+            <li class="navlink"><a href="/gpg">GPG Key</a></li>
+            <li class="navlink"><a href="/contact">Contact</a></li>
+            <li class="navlink"><a href="/blog/">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="content">
+        <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry">
+          <h1 class="p-name">Temporary signing keys</h1>
+          <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
+            <time datetime="2018-04-17T23:01:33-04:00"><a href="/blog/2018/04/">April</a> 17, <a href="/blog/2018/">2018</a></time> in <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/security/" class="p-category">security</a>
+          </p>
+          <div class="e-content"><p>So unfortunately, recently I have lost my Nitrokey, which I liked very much. In addition to this being fairly upsetting, I am now left with the sticky situation of not being able to sign code - while I have a master key (from which I can generate new subkeys), I'm currently at college and my copy of the key is sitting 3,000 miles away at home.</p>
+<p>To get around this situation, I've generated a temporary signing keypair. This keypair is set to expire after 3 months (and I don't intend to renew it). When I have access to my master keypair, I will revoke the old subkeys, generate new subkeys (it was probably time, anyway) and revoke the temporary keypair.</p>
+<p>The new fingerprint is <code>D825FD54D9B940FF0FFFB31AA4FDB7BE12F63EC3</code>. I have uploaded the key to <a href="https://github.com/strugee.gpg">GitHub</a> as well as the Ubuntu keyserver and <code>keys.gnupg.net</code> (just as my original was). The key is also incorporated into my Keybase account so that you can bootstrap trust in it, if you want to verify software signatures or whatever.</p>
+
+          </div>
+        </article>
+        <hr>
+        <p id="webmention-replies-header">WebMention replies</p>
+        <div id="webmentions"></div>
+        <noscript>
+          <p>Couldn't load WebMentions because you turned your JavaScript off. Sorry about that!</p>
+        </noscript>
+      </div>
+      <footer>
+        <p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a href="https://github.com/strugee/strugee.github.com">on GitHub</a>.</p>
+        <p>&copy; Copyright 2012-2018 AJ Jordan.</p>
+      </footer>
+      <!-- Piwik-->
+      <!-- Note that this Piwik instance is self-hosted and so doesn't leak metadata. Also, critically, it respects Do Not Track.-->
+      <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="//piwik.strugee.net/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
+      <noscript>
+        <p><img src="//piwik.strugee.net/piwik.php?idsite=1" style="border:0;" alt=""></p>
+      </noscript>
+      <!-- End Piwik Code-->
+      <div id="toys"><a id="monospace-icon" href="javascript:void(0);" title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was &quot;making [their] life&quot; monospace.">~</a><a id="lightbulb-icon" href="javascript:void(0);">
+          <div class="icon-lightbulb"></div></a></div>
+      <script type="text/javascript" src="/js/main.js"></script>
+      <script type="text/javascript">
+        window._idl = {};
+        _idl.variant = "modal";
+        (function() {
+        	var idl = document.createElement('script');
+        	idl.async = true;
+        	idl.src = 'https://members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'modal');
+        	document.getElementsByTagName('body')[0].appendChild(idl);
+        })();
+      </script>
+    </div>
+  </body>
+</html>

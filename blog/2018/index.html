@@ -48,7 +48,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <ul>
             <li id="navlabel" class="navlink">Nav &nbsp;::</li>
             <li class="navlink"><a href="/">Home</a></li>
-            <li class="navlink"><a href="/services">Services</a></li>
             <li class="navlink"><a href="/projects">Projects</a></li>
             <li class="navlink"><a href="/talks">Talks</a></li>
             <li class="navlink"><a href="/gpg">GPG Key</a></li>
@@ -60,8 +59,20 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts from 2018</h2>
-          <p id="postsFrom">Show only posts from <a href="/blog/2018/01/">January</a> <a href="/blog/2018/02/">February</a> 
+          <p id="postsFrom">Show only posts from <a href="/blog/2018/01/">January</a> <a href="/blog/2018/02/">February</a> <a href="/blog/2018/04/">April</a> 
           </p>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2018/04/new-temporary-signing-keys">
+              <h2 class="p-name">New temporary signing keys</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
+              <time datetime="2018-04-17T23:01:33-04:00"><a href="/blog/2018/04/">April</a> 17, <a href="/blog/2018/">2018</a></time> in <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/security/" class="p-category">security</a>
+            </p>
+            <div class="e-content"><p>So unfortunately, recently I have lost my Nitrokey, which I liked very much. In addition to this being fairly upsetting, I am now left with the sticky situation of not being able to sign code - while I have a master key (from which I can generate new subkeys), I'm currently at college and my copy of the key is sitting 3,000 miles away at home.</p>
+<p>To get around this situation, I've generated a temporary signing keypair. This keypair is set to expire after 3 months (and I don't intend to renew it). When I have access to my master keypair, I will revoke the old subkeys, generate new subkeys (it was probably time, anyway) and revoke the temporary keypair.</p>
+<p>The new fingerprint is <code>D825FD54D9B940FF0FFFB31AA4FDB7BE12F63EC3</code>. I have uploaded the key to <a href="https://github.com/strugee.gpg">GitHub</a> as well as the Ubuntu keyserver and <code>keys.gnupg.net</code> (just as my original was). The key is also incorporated into my Keybase account so that you can bootstrap trust in it, if you want to verify software signatures or whatever.</p>
+
+            </div>
+          </article>
+          <hr/>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2018/02/how-dns-works">
               <h2 class="p-name">How to evaluate domain registrars: a DNS story</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
@@ -213,33 +224,8 @@ directory on the box that the web server is configured to serve from. (Registrar
             </div>
           </article>
           <hr/>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2018/01/pump.io-5.1-stable-published-to-npm">
-              <h2 class="p-name">pump.io 5.1 stable published to npm</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2018/01/pump.io-5.1-stable-published-to-npm">here</a> on 
-              <time datetime="2018-01-06T04:09:43-07:00"><a href="/blog/2018/01/">January</a> 6, <a href="/blog/2018/">2018</a></time> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a>, <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/releases/" class="p-category">releases</a>. Last edited 
-              <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
-            </p>
-            <div class="e-content"><p>Last night I officially published pump.io 5.1 to npm as a stable release!</p>
-<p>As I wrote in the beta announcement, this release contains a variety of improvements:</p>
-<ul>
-<li><a href="/blog/2017/08/zero-downtime-restarts-have-landed">Zero-downtime restarts</a>, which allows administrators to seamlessly roll over to new configurations and codebases</li>
-<li>The daemon now generates startup log warnings on bad configurations, including insecure <code>secret</code> values and internal parameters</li>
-<li>An official <code>Dockerfile</code> is now included with the release</li>
-<li>The logged-out mobile homepage's menu icon is no longer incorrectly styled as black</li>
-<li>An authorization problem with SockJS connections has been fixed</li>
-</ul>
-<p>5.1 stable <em>does</em> include one change the beta didn't: a bump to the version of the <code>gm</code> npm package which we depend on. This bump was done as a precautionary measure, as previous versions of <code>gm</code> depended on a version of the <code>debug</code> module which was vulnerable to denial-of-service security bugs.</p>
-<p>As a project, we addressed these bugs <a href="/blog/2017/10/denial-of-service-security-fixes-now-available">back in October</a> when we issued security releases for all supported release branches, and at the time we confirmed that the vulnerable function wasn't used by <code>gm</code>. Today's <code>gm</code> bump does <em>not</em> constitute a security release; instead, we're just bumping the version as a precautionary measure in case we missed something in October's assessment of the situation.</p>
-<p>Aside from the <code>gm</code> bump, there are (as usual) miscellaneous version bumps included in this release. We've also started tracking test suite coverage information as well as overhauled our <a href="https://pumpio.readthedocs.io/">documentation on ReadTheDocs</a>, moving most of the in-repository documentation there.</p>
-<p>If you want even more details of this release, you can also check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510---2018-01-05">the changelog</a>.</p>
-<p>pump 5.1 is a drop-in replacement for 5.0. That means if you're using our recommended installation method and installing from npm, you can upgrade with <code>npm install -g pump.io@5.1</code>. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0</code> tag. And as always, if you encounter any problems, please feel free to reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
-<p>Finally, I would be remiss if I didn't point out that pump.io has a <strong>brand-new announcement mailing list</strong>! While the blog is great for announcing new releases, not everyone finds it convenient to check. Also, if we issue new betas in the middle of a release cycle, these aren't typically announced on the blog. Therefore in the future <em>all</em> new releases will be announced on the mailing list, not just initial betas. If you want to subscribe to the mailing list, you may do so <a href="https://lists.strugee.net/mailman/listinfo/pumpio-announce">here</a> - you'll get announcements of new features only, not e.g. feature announcements as seen on this blog. I hope people find this service useful!</p>
-
-            </div>
-          </article>
-          <hr/>
           <div id="pages-footer">
-            <p>Page 1 of 1</p>
+            <p><span class="disabled-arrow">←</span> ⋅ Page 1 out of 2 ⋅ <a href="page/2">→</a></p>
           </div>
         </div>
       </div>
