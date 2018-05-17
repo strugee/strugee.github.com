@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--
+© Copyright 2012-2018 AJ Jordan
+This file is part of strugee.net.
+strugee.net is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+strugee.net is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!-- Made and coded by AJ Jordan-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="preload" href="https://members.internetdefenseleague.org/include/?url=&amp;campaign=&amp;variant=modal">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <title>Posts from May 2018 - strugee.net</title>
+    <!-- TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...-->
+    <link rel="alternate" type="application/rss+xml" href="index.rss">
+    <!-- IndieWeb components, with <3-->
+    <link rel="me" href="mailto:alex@strugee.net">
+    <link rel="me" href="sms:17607054581">
+    <link rel="me" href="xmpp:alex@strugee.net">
+    <link rel="me" href="https://github.com/strugee">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://pump.strugee.net/alex">
+    <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
+    <link rel="me" href="https://media.strugee.net/u/alex">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://www.instagram.com/strugee2/">
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1 id="topheader">strugee.net</h1>
+        <nav id="navbar">
+          <ul>
+            <li id="navlabel" class="navlink">Nav &nbsp;::</li>
+            <li class="navlink"><a href="/">Home</a></li>
+            <li class="navlink"><a href="/services">Services</a></li>
+            <li class="navlink"><a href="/projects">Projects</a></li>
+            <li class="navlink"><a href="/talks">Talks</a></li>
+            <li class="navlink"><a href="/gpg">GPG Key</a></li>
+            <li class="navlink"><a href="/contact">Contact</a></li>
+            <li class="navlink"><a href="/blog/">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="content">
+        <div class="h-feed">
+          <h2 class="p-name">Posts from May 2018</h2>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2018/05/pump.io-5.1.1-docker-images-and-node-4">
+              <h2 class="p-name">pump.io 5.1.1, Docker images, and sunsetting Node 4 support</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2018/05/pump.io-5.1.1-docker-images-and-node-4">here</a> on 
+              <time datetime="2018-05-05T20:06:18-07:00"><a href="/blog/2018/05/">May</a> 5, <a href="/blog/2018/">2018</a></time> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a>, <a href="/blog/category/releases/" class="p-category">releases</a> and <a href="/blog/category/development/" class="p-category">development</a>
+            </p>
+            <div class="e-content"><p>It's been a (relatively) long time since we've put anything on this blog, and I think it's high time for an update - especially since there are so many exciting things afoot! Not only is pump.io 5.1.1 now on npm, but we have new experimental Docker images! With <a href="https://medium.com/the-node-js-collection/april-2018-release-updates-from-the-node-js-project-71687e1f7742">upstream having already dropped security support</a>, we're also planning to drop support for Node 4 soon.</p>
+<p>Let's take these one at a time.</p>
+<h2>pump.io 5.1.1</h2>
+<p>Several months ago I <a href="https://github.com/pump-io/pump.io/pull/1438">landed</a> a patch from contributor <a href="https://github.com/vxcamiloxv">Camilo QS</a> fixing a bug in pump.io's session handling in a route serving uploads. This bug made it so that non-public uploads would always return HTTP 403 Unauthorized, even if the user actually <em>was</em> authorized. Clearly, this makes uploads unusable for people who don't like to post everything publicly. <a href="https://identi.ca/evan">Evan</a> suggested that we should backport this bugfix since it's so high-impact, and I agree. So that's what pump.io 5.1.1 contains: a bugfix for uploads. Since it's a patch release 5.1.1 is a drop-in replacement for any 5.x pump.io release, so I'd highly encourage administrators to upgrade as soon as it's convenient. We'd also love it if you <a href="https://github.com/pump-io/pump.io/issues">file any bugs you find</a>, and feel free to get in touch with the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> if you need help or have questions. As a reminder, you can subscribe to our <a href="https://lists.strugee.net/mailman/listinfo/pumpio-announce">low-volume announce mailing list</a> to get email when we put out new releases like this. Also, I would be remiss if I didn't mention that my signing key setup has changed temporarily - see <a href="/blog/2018/04/new-temporary-signing-keys">here</a> if you want to cryptographically verify the 5.1.1 release.</p>
+<p>If you're on an npm-based install, you can upgrade with <code>npm install -g pump.io@5.1.1</code>. If you're on a source-based install, you can upgrade by integrating the latest commits in the <code>5.1.x</code> branch. See <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#511---2018-05-05">here</a> for the changelog.</p>
+<p>But that's not all. pump.io 5.1.1 also includes another exciting change: with this release, we've integrated automation to relase pump.io Docker images too.</p>
+<h2>Docker images</h2>
+<p>We've wanted to release pump.io Docker images for <a href="https://github.com/pump-io/pump.io/issues/789">a long time</a>. But Docker has a well-known problem: security vulnerabilities in Docker Hub images <a href="https://www.infoq.com/news/2015/05/Docker-Image-Vulnerabilities">are</a> <a href="https://blog.acolyer.org/2017/04/03/a-study-of-security-vulnerabilities-on-docker-hub/">rampant</a>. Even though we've had a <code>Dockerfile</code> in the repository <a href="https://github.com/pump-io/pump.io/pull/1348">for a while</a> thanks to contributor <a href="https://github.com/JanKoppe">thunfisch</a>, we didn't want to release official Docker images if we weren't sure we could always provide security support for them.</p>
+<p>Unfortunately, Docker the company has done very little to address this problem. Most of their solutions are aimed at image consumers, not authors. Docker Hub has <em>some</em> capacity for automatically rebuilding images, but unfortunately, it's not enough and you end up having to roll everything yourself anwyay. Pretty disappointing - so we had to get creative.</p>
+<p>Our solution to this problem is to utilize Travis CI's <a href="https://docs.travis-ci.com/user/cron-jobs/">cron functionality</a>. Every day, Travis will automatically trigger jobs that do nothing but build pump.io Docker images. These images are then pushed to Docker Hub. If nothing has changed, Docker Hub recognizes that the "new" images are actually identical with what's already there, and nothing happens. But if there <em>has</em> been a change, like a native dependency receiving a security update, then the image ID will change and Docker Hub will accept the updated image. This cronjob is enabled for the <code>5.1.x</code> branch and master (which as a side effect, means that alpha Docker images are published within 24 hours of a git push), and in the future it will be enabled on all branches that we actively support. Thus, Docker users can easily set up automation to ensure that they're running insecure images for, at most, 24 hours.</p>
+<p>If you're interested in trying out the Docker images, we'd love to know how it goes. They should still be treated as experimental at the moment, and early feedback would be super useful. You can read more details in our <a href="https://pumpio.readthedocs.io/en/latest/installation/about-docker-images.html">ReadTheDocs documentation</a>.</p>
+<p>Note that there are still more changes that we'd like to make to the Docker images. These changes didn't make it into the 5.1.1 packaging since they felt too invasive for a patch release. Instead we plan to make them in the next release, which is planned to be semver-major. Which brings me neatly to the last topic...</p>
+<h2>Sunsetting Node 4, 5, and 7 support</h2>
+<p>We had a good run, but it's time to say goodbye: Node.js upstream has <a href="https://medium.com/the-node-js-collection/april-2018-release-updates-from-the-node-js-project-71687e1f7742">marked</a> Node 4.x as end-of-life, and in accordance with our <a href="https://github.com/pump-io/pump.io/wiki/Node.js-version-support">version policy</a>, we're doing the same. Since this is a semver-major change, we're also taking the opportunity to drop support for Node 5.x and Node 7.x. These changes have been made as of commit <a href="https://github.com/pump-io/pump.io/commit/32ad78812ed767621418b8dd57f11ce86a01b49f">32ad78</a>, and soon we'll be ripping out old code used to support these versions, as well as upgrading dependencies that have recently started requiring newer Nodes.</p>
+<p>Anyone still on these versions is encouraged to upgrade as soon as possible, as Node.js upstream is no longer providing security support for them. Administrators can use the <a href="https://github.com/nodesource/distributions">NodeSource</a> packages, or they can try out our new Docker images, which use a modern Node version internally.</p>
+<p>Please reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> if you need any help making the transition. And good luck!</p>
+
+            </div>
+          </article>
+          <hr/>
+          <div id="pages-footer">
+            <p>Page 1 of 1</p>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a href="https://github.com/strugee/strugee.github.com">on GitHub</a>.</p>
+        <p>&copy; Copyright 2012-2018 AJ Jordan.</p>
+      </footer>
+      <!-- Piwik-->
+      <!-- Note that this Piwik instance is self-hosted and so doesn't leak metadata. Also, critically, it respects Do Not Track.-->
+      <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="//piwik.strugee.net/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
+      <noscript>
+        <p><img src="//piwik.strugee.net/piwik.php?idsite=1" style="border:0;" alt=""></p>
+      </noscript>
+      <!-- End Piwik Code-->
+      <div id="toys"><a id="monospace-icon" href="javascript:void(0);" title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was &quot;making [their] life&quot; monospace.">~</a><a id="lightbulb-icon" href="javascript:void(0);">
+          <div class="icon-lightbulb"></div></a></div>
+      <script type="text/javascript" src="/js/main.js"></script>
+      <script type="text/javascript">
+        window._idl = {};
+        _idl.variant = "modal";
+        (function() {
+        	var idl = document.createElement('script');
+        	idl.async = true;
+        	idl.src = 'https://members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'modal');
+        	document.getElementsByTagName('body')[0].appendChild(idl);
+        })();
+      </script>
+    </div>
+  </body>
+</html>

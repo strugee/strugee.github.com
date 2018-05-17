@@ -48,6 +48,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <ul>
             <li id="navlabel" class="navlink">Nav &nbsp;::</li>
             <li class="navlink"><a href="/">Home</a></li>
+            <li class="navlink"><a href="/services">Services</a></li>
             <li class="navlink"><a href="/projects">Projects</a></li>
             <li class="navlink"><a href="/talks">Talks</a></li>
             <li class="navlink"><a href="/gpg">GPG Key</a></li>
@@ -61,6 +62,46 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h2 class="p-name">Blog</h2>
           <p id="postsFrom">Show only posts from <a href="/blog/2014/">2014</a> <a href="/blog/2015/">2015</a> <a href="/blog/2016/">2016</a> <a href="/blog/2017/">2017</a> <a href="/blog/2018/">2018</a> or categorized in <a href="/blog/category/personal/" class="p-category">personal</a>, <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/politics/" class="p-category">politics</a> and <a href="/blog/category/explanations/" class="p-category">explanations</a>
           </p>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/05/stratic-part-one">
+              <h2 class="p-name">Stratic part one is done!</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
+              <time datetime="2016-05-28T14:09:38-08:00"><a href="/blog/2016/05/">May</a> 28, <a href="/blog/2016/">2016</a></time> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/releases/" class="p-category">releases</a> and <a href="/blog/category/stratic/" class="p-category">stratic</a>. Last edited 
+              <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
+            </p>
+            <div class="e-content"><p>Whooooooooooo!</p>
+<p>I am so, so, <em>so</em> thrilled to announce that the first part of <a href="https://github.com/strugee/generator-stratic">Stratic</a> is complete! And you can see the result right here on strugee.net, since this blog post was generated with Stratic!</p>
+<p><strong>tl;dr</strong>:</p>
+<pre><code>var rename = require('gulp-rename');
+var markdown = require('gulp-markdown');
+var parse = require('stratic-parse-header');
+var straticToJson = require('stratic-post-to-json-data');
+var jadeTemplate = require('gulp-jade-template');
+var dateInPath = require('stratic-date-in-path');
+
+gulp.task('posts', function() {
+    return gulp.src('src/blog/*.md')
+               .pipe(parse())
+               .pipe(markdown())
+               .pipe(dateInPath())
+               .pipe(straticToJson())
+               .pipe(jadeTemplate('src/blog/post.jade'))
+               .pipe(rename({ extname: '.html' }))
+               .pipe(gulp.dest('dist/blog'));
+});
+</code></pre>
+<p>How <em>gorgeous</em> is that?? Let me explain how it works. (I'll assume the reader is familiar with <a href="https://github.com/gulpjs/gulp">Gulp</a> and <a href="https://nodejs.org/en/">Node.js</a>.)</p>
+<p>So the <code>gulp.src()</code> call is pretty obvious. We just read all the blog posts into the stream. Note, however, that <code>gulp.src()</code> doesn't stream text, per se - it streams <a href="https://github.com/gulpjs/vinyl">Vinyl</a> file objects. This will become important later.</p>
+<p>Now, the first piece of custom Stratic code that we use is the <code>stratic-parse-header</code> module. This module takes a Markdown file with a standard Stratic header (see <a href="https://strugee.net/blog/2014/11/new-blog-new-site">my original announcement</a> for details), parses the header, strips it out, then returns the new, headerless Markdown. However, the new Vinyl file object has a couple of new properties from the parsing phase - specifically, <code>file.title</code>, <code>file.author</code>, <code>file.time</code>, and <code>file.categories</code> now exist. This is why the fact that Vinyl is used is important - now <em>any</em> Gulp plugin downstream from where <code>parse()</code> is run can use all of these values in whatever way it wants. (See <a href="https://github.com/strugee/stratic-parse-header/blob/master/README.md">the README</a> for more details.)</p>
+<p>Now our Vinyl file object is <em>only</em> the content of the post, and it has additional Stratic metadata attached to it. Awesome! The next thing that we do is render the Markdown, just using a standard Gulp plugin for this. Easy breezy. After that, we pipe to the <code>stratic-date-in-path</code> module, which adds the year and month to paths. For example, without <code>stratic-date-in-path</code>, this blog post would be at <code>https://strugee.net/blog/stratic-part-one</code>. However, since I <em>do</em> use <code>stratic-date-in-path</code>, the post lives at <code>https://strugee.net/blog/2016/05/stratic-part-one</code> instead. Nice, right? Eventually I'll write code to generate pretty indexes for each year and month - that's what Stratic part 2 is for.</p>
+<p>The next thing we do is pipe to the <code>stratic-post-to-json-data</code> module. This module is specifically designed to work with the <code>gulp-jade-template</code> module, which expects the file contents to be some JSON that will be given as data to a <a href="http://jade-lang.com/">Jade</a> template, whose rendered HTML becomes the new file contents. What sets up that JSON? You guessed it - <code>stratic-post-to-json-data</code>. That's all it does. It just creates an object that contains the metadata and the actual post text, runs it through <code>JSON.stringify()</code>, and sets the file contents equal to the result. Just how <code>gulp-jade-template</code> likes it.</p>
+<p>And with that, we've successfully rendered a blog post. Whooooooooooo! I'm so pumped about this software. The call to <code>rename()</code> is just a little housekeeping, and then we write the whole thing back to disk with <code>gulp.dest()</code>. Awesome.</p>
+<p>It's worth noting that the real beauty in this code isn't what the code actually does, but the extreme modularity of the whole thing. Unlike projects like <a href="https://jekyllrb.com/">Jekyll</a> or even <a href="http://wintersmith.io/">Wintersmith</a>, this isn't a giant, monolithic framework. It's all standard Node and Gulp. Note how (for example) we didn't need a custom plugin for Markdown - we just used the standard <code>gulp-markdown</code>. Don't like Markdown? No problem. Write something to extract post metadata from your preferred format, replace <code>parse()</code> with that and <code>markdown()</code> with a different renderer, and you're golden. All the rest will continue to work the <em>exact</em> same - adding dates to paths, rendering the template, etc. - because everything's decoupled from everything else. Each component can be trivially swapped out and replaced with something new and better, and the rest of the system continues to work. Gorgeous.</p>
+<p>I've got to go now, but I'm not done blogging. I'll be back soon to talk about the work going on in <a href="http://pump.io/">pump.io</a>, and I'll be back (much?) later to talk about Stratic part two (aka, pretty indexes).</p>
+<p>Whooooooooooooooooooooo!</p>
+
+            </div>
+          </article>
+          <hr/>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/05/re-bitcoin">
               <h2 class="p-name">Re: Bitcoin, Magical Thinking, and Political Ideology</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
@@ -187,39 +228,8 @@ E: Sub-process /usr/bin/dpkg returned an error code (1)
             </div>
           </article>
           <hr/>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2014/12/new-blog-new-site">
-              <h2 class="p-name">New blog, new site!</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-              <time datetime="2014-12-27T03:44:42-08:00"><a href="/blog/2014/12/">December</a> 27, <a href="/blog/2014/">2014</a></time> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/stratic/" class="p-category">stratic</a>
-            </p>
-            <div class="e-content"><p>I'm back! Sort of. Very sort of.</p>
-<p>I've known for a while that I'm going to ditch Blogger. That's a large part of why I delayed posting stuff to my blog for so long: I didn't have blog software that I really wanted to use, but I didn't want to just put more data into Blogger. Eventually, though, I realized that it would take me a while to write software that a) built an actual blog from Markdown and b) worked the way I wanted it to, so I decided that I would just start cranking out posts and write the software to build them later. And then of course there was the week or three that I spent procrastinating on writing... oh well. I'm here now.</p>
-<p>Anyway, it's <s>two</s> three AM as I write this, so I should go to sleep soon. I have a lot of stuff I want to write about, so I'll be brief.</p>
-<h3>Summer</h3>
-<p>I haven't written anything publicly since <a href="http://ramblingsfromalex.blogspot.com/2014/06/reset-net.html">Reset the Net</a>, way back in June. So I should probably cover some of the things I've been doing.</p>
-<p>First, I ran a <a href="https://www.cryptoparty.in/">CryptoParty</a>! It was hosted at <a href="http://blackcoffeecoop.com/">Black Coffee</a>'s old location on Pine, and it was absolutely fantastic. We had a small group of people but it was really fun, anyway. The slides are <a href="https://github.com/strugee/cryptoparty-seattle">on GitHub</a> - and speaking of which, I've switched to <a href="https://github.com/markdalgleish/bespoke.js">Bespoke.js</a> for all my presentations. Hell yeah HTML5!</p>
-<p>Right after the CryptoParty was over, I actually had the opportunity to drive down to Portland for <a href="http://debconf14.debconf.org/">DebConf '14</a>, which was one of the most fantastic experiences of my entire life. I met a lot of really cool people there, I got my new <a href="https://strugee.net/gpg">key</a> (also generated over the summer) signed by a lot of Debian folks, and I played a lot of evening games (not Werewolf - the other one). One of the coolest parts was the fact that I actually got to meet two of my heros - Linus Torvalds came and did a Q&#x26;A with us (video of it is available <a href="https://youtu.be/1Mg5_gxNXTo">here</a>) and John Sullivan, Executive Director of the FSF, did a BoF-style talk on how we can get to a point where Debian is on the FSF free distribution list. I got a chance to talk to both of them afterwards, which was undoubtedly one of the coolest things that has ever happened to me thus far.</p>
-<h3>Robotics</h3>
-<p>Yes, the school year started and I'm a junior now. It's rough.</p>
-<p>I'm on 5619 this year at robotics (Gabe, our main mentor, actually called me at DebConf to talk about it). I was a little annoyed to not be on 2856 at first, but it's worked out for the best. We're actually doing really well this year, and I'm so proud of the work we've been doing on the robot. It's difficult - it's much more complicated this year than last year, and there's basically no room on the thing. We had to move <em>wires</em> out of the way to make room for our scissor lift to come down properly. Speaking of which, we have a working scissor lift, which has never been accomplished at SAAS before, at least not during a season! So that's awesome.</p>
-<p>We had a rough time our second competition, due to a lot of things - the Field Control System lag was bothering our driver, Wilson, so I wrote up something quick to fix it. I went to test it, and as soon as I ran our scissor lift up, one of the bars - which (of course) we made out of wood - snapped. So we had to rush to fix it before we had to go on the field in three matches or something. And because the bar broke, I didn't get to test the new teleop, and when Wilson tried to drive with it on the field, it broke horribly. Luckily we did pretty well in the first competition, and that gave us a nice buffer to make up for our losses the second time. I can't claim that we're doing well, but we're not doing horribly, either. <a href="https://youtu.be/gJzJUveTyyo">Here's a video</a> showcasing the first competition, and <a href="https://youtu.be/bdcG_WOOLwU">here's a second one</a> of the work the club did beforehand to prepare. Please excuse the weird camera angle of me intensely working on the code because of the time crunch of FTC competition.</p>
-<h3>Patching Firefox</h3>
-<p>Over Thanksgiving break, I wrote my first Firefox patch! There was a bit of the DevTools that was bugging me, so I fixed it, in true free and open source software fasion. Unfortunately I'm having some trouble writing tests for it, and I haven't had time to track down the information that I need, so the patch hasn't made it into the tree yet. Soon, though! It's on my list of things to do during break. You can see everything over in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1106353">bug 1106353</a>.</p>
-<h3>Mail</h3>
-<p>I've spent hours of work, spread out over a number of months, working on steevie's mail subsystem. And I'm proud to say that as of a couple weeks ago, I'm finally done. I had to buy a block of static IPs for it, which I felt really cool for doing. There's still a lot of work to do - SPF, outbound DKIM signing, better TLS, Roundcube, ManageSieve, antispam, moving to LDAP from MySQL... the list goes on and on and on, but the system works. And I'm really proud of it. Anyway, I have a new email now: <a href="mailto:alex@strugee.net">alex@strugee.net</a>. I've even set up the customary names to forward to me: you can email <a href="mailto:postmaster@strugee.net">postmaster</a> for email trouble, <a href="mailto:webmaster@strugee.net">webmaster</a> for problems with the web server, and even <a href="mailto:hostmaster@strugee.net">hostmaster</a> for general stuff. Or root, if you're APT or cron or somesuch. It'll all reach me.</p>
-<h3>Christmas</h3>
-<p>It was Christmas yesterday! Merry Christmas, Internet! I got a bunch of books, including The C Programming Language, Second Edition (yes, this is <em>the</em> book that K&#x26;R C is sort of named after), which was <em>very</em> exciting for me. I also got a budget for steevie approved, so now I can buy a bunch of hardware that I need. Hello, RAID 10 array!</p>
-<h3>Stratic</h3>
-<p>So, finally onto the juicy development part. <a href="https://github.com/strugee/generator-stratic">Stratic</a> is the name of my new pet project. Stratic is the STReaming stATIC site builder. It's like <a href="https://wintersmith.io/">Wintersmith</a>, except that it runs on <a href="http://gulpjs.com">Gulp</a>, which I've fallen in love with over the summer. Because of that, it's a little weird - there'll be some custom components used to support it, but the main body of code is actually... a Yeoman generator.</p>
-<p>There hasn't been much activity in the repo because I'm using the <a href="https://github.com/strugee/strugee.github.com">strugee.github.com repository</a>, which still runs strugee.net even though I'm not on GitHub Pages anymore, as a testbed for Stratic. Once I've ironed out all the kinks, then I'll land all my work in the <a href="https://github.com/strugee/generator-stratic">generator-stratic repository</a>.</p>
-<p>I'm very tired, and I want to go to bed, but before I do I figure I should explain the format of this post. Yes, this is Stratic format. It's pure Markdown, but with some additional semantics that Stratic will use to build out the blog. I figure that not many people will use &#x3C;h1>s in their posts, so the Markdown equivalent (#) is used to distinguish the actual post text from what is essentially a header. I did something unusual, though, because even though the header is essentially for Stratic - who authored the post and when, what it's called, etc. - I wanted the Markdown to be at least somewhat readable in source form. Therefore, you're actually allowed to put anything you want in the header section. The values are distinguished by double quotation marks. Stratic will figure out what they mean based on their position. The first set of quotation marks contain the title, the second set contains the date, the third set contains the author, and the fourth set contains a comma-separated list of categories that the blog post should go in. The date looks a little weird - it's seconds since the epoch plus an optional UTC offset. It could be made more human-readable, but then you've got to parse stuff and it just turns into a nightmare. So I opted to sacrifice readability for elegance.</p>
-<p>So! This is a blog post without a blog. Soon, I'll finish up Stratic and this will no longer remain solely in source form. I'm excited! I've already rewritten strugee.net in Jade, and used the opportunity to refresh <a href="https://strugee.net/services">the services page</a>. Time to get crackin'.</p>
-
-            </div>
-          </article>
-          <hr/>
           <div id="pages-footer">
-            <p><a href="../11">←</a> ⋅ Page 12 out of 12 ⋅ <span class="disabled-arrow">→</span></p>
+            <p><a href="../11">←</a> ⋅ Page 12 out of 13 ⋅ <a href="../13">→</a></p>
           </div>
         </div>
       </div>
