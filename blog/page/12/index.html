@@ -63,6 +63,50 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h2 class="p-name">Blog</h2>
           <p id="postsFrom">Show only posts from <a href="/blog/2014/">2014</a> <a href="/blog/2015/">2015</a> <a href="/blog/2016/">2016</a> <a href="/blog/2017/">2017</a> <a href="/blog/2018/">2018</a> or categorized in <a href="/blog/category/personal/" class="p-category">personal</a>, <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/politics/" class="p-category">politics</a> and <a href="/blog/category/explanations/" class="p-category">explanations</a>
           </p>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/08/new-stuff-in-pump.io">
+              <h2 class="p-name">New stuff in pump.io</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
+              <time datetime="2016-08-08T01:26:32-04:00"><a href="/blog/2016/08/">August</a> 8, <a href="/blog/2016/">2016</a></time> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/pump.io/" class="p-category">pump.io</a>
+            </p>
+            <div class="e-content"><p>So I promised <a href="https://strugee.net/blog/2016/05/stratic-part-one">a (long) while ago</a> that I'd blog about all the stuff going on in <a href="http://pump.io">pump.io</a>. And there is a <em>lot</em> going on. Where to even begin?</p>
+<h3>LFNW talk</h3>
+<p>I think the first thing I should mention is <a href="https://linuxfestnorthwest.org/2016/sessions/pumpio-community">the talk</a> I gave at LinuxFest Northwest this year. It went really, really well (even though I finished half the slides the night before), and people seemed to be really engaged, especially during questions. It starts off by covering the history behind pump.io: that includes the relevant protocols, like OStatus and <a href="http://activitystrea.ms">ActivityStreams</a>, but also the motivation behind abandoning StatusNet (aka current GNU Social) in favor of a brand-new network. Next I move on to the way that pump.io itself works, namely, its function as a generic ActivityStreams distribution engine. To put this another way, I explain why this quote from <a href="https://github.com/e14n/pump.io/blob/master/README.md">the README</a>:</p>
+<blockquote>
+<p>I post something and my followers see it. That's the rough idea behind the pump.</p>
+</blockquote>
+<p>is a pretty accurate way of describing what pump.io actually does. (I quote that quite a few times in the slides themselves.) I end with a discussion of the recent developments in the community, which are of course wonderful, and a short call-to-action for people to contribute - either directly to the software, or by joining the network and spreading pump.io.</p>
+<p>Oh, and by the way - the talk was recorded! So you can watch it <a href="https://www.youtube.com/watch?v=uQ6RVTFdYNc">on YouTube</a> or, even better, <a href="https://media.strugee.net/u/alex/m/linuxfest-northwest-2016-pump-io-the-community/">on my personal MediaGoblin</a>. Fitting, since (as I mention in the talk) MediaGoblin federation will soon be released, and it's based on (and fully interoperable with) the pump.io protocol!</p>
+<h3>Conservancy application</h3>
+<p>Pump.io is applying to the <a href="https://sfconservancy.org/">Software Freedom Conservancy</a>! This is super fantastic for us for a number of reasons. One of the biggest advantages is the fact that inside Conservancy (assuming our application is accepted), we'll be able to take donations much, much easier. This is primarily important because nodes in the pump.io network are volunteer-run, but they still require funds to operate. We're thinking about models wherein people will be able to donate to "pump.io", and then some (most?) of those funds will be used to pay for the network. (In particular, they'll be used to pay for the existing E14N nodes that Evan currently runs, which will become extremely useful once we transition those nodes to community owners). Conservancy also provides useful miscellaneous services, like owning our logo and making sure that if we encounter license violations, the license is properly enforced. But perhaps most importantly, becoming part of Conservancy cements pump.io even more in the community - both the group of people working on the software &#x26; network, but also the larger free software world.</p>
+<h3>ReadTheDocs</h3>
+<p>We've started a <a href="http://pumpio.readthedocs.io/en/latest/">dedicated space</a> for project documentation, hosted on ReadTheDocs. We're plannning to move a bunch of content from the GitHub wiki into this project, and hopefully it'll become a thorough and central place for pump.io documentation - both for users and for deployers.</p>
+<h3>Triage</h3>
+<p>We've spent quite a bit of time going through open issues and prioritizing them. A lot of issues have a release target now, and it feels really nice to feel like our issue tracker is a bit more organized.</p>
+<p>Special thanks to <a href="https://identi.ca/larjona">Laura Arjona</a> for driving this work.</p>
+<h3>Various minor code improvements</h3>
+<p>There have been a <em>bunch</em> of small bugfixes and improvements that have gone into the <code>master</code> branch - some of them user-facing, and some of them making the development experience better. Notable changes include:</p>
+<ul>
+<li>Migrating from Connect 1.x to Connect 2.x (this is just a start - Connect 2.x is still deprecated, but it gets us closer than we were to relying on a fully non-deprecated stack)</li>
+<li>JSHint is now automatically run against <code>bin/</code> and <code>routes/</code> when <code>npm test</code> is run. This makes it super obvious when there are regressions in code quality, especially in Pull Requests (since Travis CI will fail if JSHint doesn't succeed.)</li>
+<li>JSCS is now used to enforce code style. It's automatically run against the entire codebase (whoo!) when you run <code>npm test</code>, and it's awesome for the same reason - much of the style-related feedback that would've previously ended up in a Pull Request can now be dealt with directly on a local development machine, reducing PR review time for both the reviewer <em>and</em> the contributor.</li>
+<li>LibreJS is now <a href="https://github.com/e14n/pump.io/pull/1058">supported</a></li>
+<li>Tests now pass! Whooooooooo! (Thanks to Menno Vossen for sending <a href="https://github.com/e14n/pump.io/pull/1136">the enormous Pull Request</a> that made this happen.)</li>
+</ul>
+<p>Those are just the bigger ones, of course - there are a bunch of even smaller problems that got squashed as well. I'd also like to point out that quite a few of these were long-standing PRs which <em>finally</em> made it into core, which is awesome for everyone.</p>
+<h3>Express 3.x migration</h3>
+<p>I've been putting in a lot of work to migrate pump.io to Express 3.x. It's a huge amount of work, but when complete, it will bring us very, very close to being able to migrate onto Express 4.x, which is modern and fully-supported by upstream. Basically what I've been doing is just running the app, seeing where it crashes, going to the exception site, and fixing the problem. Rinse, repeat. You can check out this work on the <a href="https://github.com/e14n/pump.io/tree/express-3.x"><code>express-3.x</code></a> branch - currently, this branch can successfully start up the app, but will crash pretty soon after you try to do almost anything else.</p>
+<p>This work, unfortunately, is on hold while another important project is completed: converting all the templates from utml to Jade.</p>
+<h3>utml to Jade transition</h3>
+<p>This is basically what it sounds like. Previously, the templates in pump.io were based on <a href="https://github.com/mikefrey/utml">utml</a>, which is essentially a thin wrapper around <a href="http://underscorejs.org/#template">Underscore.js's <code>_.template()</code></a> function. However, utml doesn't work with Express 3.x (and it's not really worth <em>making</em> it work), plus it's not the prettiest to work with. <a href="http://jade-lang.com/">Jade</a> is an extremely popular templating language in Node-land nowadays, so a couple months ago I spent somewhere between 14 and 18 hours going through and rewriting all the utml in Jade, which was absolutely brutal - but necessary. Then, of course, I had to fix the client-side templating logic to handle Jade instead of Underscore templates, which took quite a while, along with the fact that I made a very large number of minor (largely cosmetic) errors in my conversions.</p>
+<p>As I said above, this was kind of awful work (<em>especially</em> the beginning), but it's necessary and great, as it paves the way for Express 3.x <em>and</em> massively improves the contributor experience.</p>
+<p>You can check out the gory details of this work in <a href="https://github.com/e14n/pump.io/pull/1170">PR #1170</a>, and the original reasoning behind why we're doing this in <a href="https://github.com/e14n/pump.io/issues/1167">issue #1167</a>. This work is actually done, but I'm going to write a separate blog post about it, calling for testers.</p>
+<h3>Upcoming 1.0.0 release</h3>
+<p>Last but <strong>certainly</strong> not least, we're gearing up for our 1.0.0 release! From a codebase standpoint, this is really just a small bugfix release (although it will make a lot of things less broken and - if I recall correctly - fix the actual installation process), but more importantly, it means that we're now committing to <a href="http://semver.org/">semantic versioning</a>, which is a win for everyone (but especially administrators). The main thing that needs to be fixed before this goes out the door is the behavior of the XSS scrubber, which was accidentally made a little too aggressive. This is being tracked in <a href="https://github.com/e14n/pump.io/issues/1169">issue #1169</a>.</p>
+<p>As a bonus, I'm also designing a t-shirt that (if there's sufficient interest) we may print as a celebration of this release - but more on this in my next post.</p>
+
+            </div>
+          </article>
+          <hr/>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2016/06/work-on-strugee-net">
               <h2 class="p-name">Work on strugee.net</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
@@ -157,71 +201,6 @@ gulp.task('posts', function() {
 <p>But coding isn't just about logic. At <a href="http://opensourcebridge.org/">OSBRIDGE</a> this year, I attended a session about the beauty of code - it's hard to describe to someone who doesn't live and breathe code, but we all know it when we see it. We as a community value elegance in code; clever algorithms; thinking outside the box, and as I said in my <a href="https://strugee.net/presentation-just-do-it/#19">Just Do It slides</a>, the mere existance of Ruby proves this. So when I described programming as being like art, part of where I was getting that is the analogy I actually said (being able to easily mess around), but part of it was coming from my appreciation of the beauty of code. Part of it was coming from my sense of the aesthetic properties of programming.</p>
 <p>I want us, as a community, in both our regular coding but also our educational outreach, to stop pretending that programming is so logical that it <em>is</em> math. Yes, there are elements of mathematics in coding. Lots of it, even. But to treat programming as a branch of mathematics is doing a disservice to the practice. So in addition to treating programming as a form of math, I want us to start treating programming as a form of art. There <em>is</em> such a thing as ugly code. The entire concept of refactoring would barely exist if that wasn't true. So let's start truly appreciating the aesthetic beauty of code, and let's start teaching that. To be honest, I'm not sure how you would teach that. But it couldn't hurt to try.</p>
 <p>But even if we can and should treat it as both of those things, that doesn't mean that we should make that the be-all-end-all of how we describe programming. I truly believe that programming is not a branch of mathematics. And it's not an art form, either. Programming is neither of those things and both of those things; it is something entirely new, and we should treat it as such. If this isn't true, why do people swear by certain software? Why do people (including myself) aggressively sticker their laptops to showcase what software they use? And if this isn't true, how is it possible that people <em>love</em> their code?</p>
-
-            </div>
-          </article>
-          <hr/>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2015/09/revisiting-my-tor-relay">
-              <h2 class="p-name">Revisiting my Tor relay</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-              <time datetime="2015-09-04T16:34:29-08:00"><a href="/blog/2015/09/">September</a> 4, <a href="/blog/2015/">2015</a></time> in <a href="/blog/category/sysadmin/" class="p-category">sysadmin</a> and <a href="/blog/category/tor/" class="p-category">tor</a>
-            </p>
-            <div class="e-content"><p>(Okay, so I <em>miserably</em> failed my blog-every-day thing. Shut up. Maybe next time I'll try every week or something... anyway.)</p>
-<p>A couple of days ago I logged into the <a href="https://atlas.torproject.org/#details/710E9E3A0A443E3FD33D2801298042783CAD2EAE">Tor relay I run</a> to show someone the ARM graphs. I had a fair amount of traffic, so the graphs were fairly impressive, but I'm also in the habit of running <code>apt-get update; apt-get upgrade</code> every time I log into a server, so I did that too. To my surprise, I got a message telling me that there was a dependency problem with my kernel! So like the great sysadmin I am, I looked at such a fundamental system problem, shrugged my shoulders, and said, "oh, I should probably fix that". And then logged out.</p>
-<p>Well, I did end up fixing it today. And boy, was it an adventure. My first step was to ignore the APT problems and edit my <code>torrc</code>, to reflect a) the fact that I'm not eligible for the AWS Free Tier anymore (so I needed to throttle bandwidth), b) my new email, and c) my new GPG key. With that being done, I knew that I could easily have the system fix dependency problems by doing a simple <code>apt-get install -f</code>. Easy!</p>
-<p>Well, no. That tried to install some Linux kernel headers, which seemed all well and good, until I got this:</p>
-<pre><code>Unpacking linux-headers-3.2.0-90 (from .../linux-headers-3.2.0-90_3.2.0-90.128_all.deb) ...
-dpkg: error processing /var/cache/apt/archives/linux-headers-3.2.0-90_3.2.0-90.128_all.deb (--unpack):
-unable to create `/usr/src/linux-headers-3.2.0-90/arch/arm/plat-pxa/include/plat/dma.h.dpkg-new' (while processing `./usr/src/linux-headers-3.2.0-90/arch/arm/plat-pxa/include/plat/dma.h'): No space left on device
-No apport report written because the error message indicates a disk full error
-dpkg-deb: error: subprocess paste was killed by signal (Broken pipe)
-</code></pre>
-<p>Um, what? How am I out of free space? Okay, whatever. I knew that there were probably a lot of packages cached in <code>/var/cache/apt/</code>, including old, vulnerable packages that had been replaced by the unattended upgrades system. I did an <code>ls</code>, and found only about five <code>.deb</code> files - something must have been automatically cleaning that directory. I was getting a little worried now, but I nuked the files anyway and reran <code>apt-get install -f</code>. <em>Same thing</em>. Well, okay, maybe I didn't get rid of enough stuff? How much did I need?</p>
-<pre><code>$ df -h /
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/xvda1      4.0G  2.2G  1.6G  59% /
-</code></pre>
-<p>At this point I'm in full-on "something-is-seriously-wrong-and-I-<em>need</em>-to-recover" mode. How was it possible that I had only used 59% of the filesystem, but <code>dpkg</code> was saying my disk was full? A little searching the internet later, I found the culprit:</p>
-<pre><code>$ df -i
-Filesystem     Inodes  IUsed IFree IUse% Mounted on
-/dev/xvda1     262144 257479  4665   99% /
-udev            74758    377 74381    1% /dev
-tmpfs           76179    259 75920    1% /run
-none            76179      3 76176    1% /run/lock
-none            76179      1 76178    1% /run/shm
-</code></pre>
-<p>I hadn't run out of disk space. But I <em>had</em> run out of inodes. (Isn't this supposed to happen to <em>other</em> people?)</p>
-<p>I tried removing some stuff via APT, but that refused to do anything due to the dependency problems. My next thought was that there were probably a bunch of old processes running that were essentially holding a bunch of inodes hostage. I couldn't install <code>debian-goodies</code>, so I couldn't use <code>checkrestart</code>, but I improvised by looping over all running services in a for loop, and restarting them.</p>
-<p>Still nothing.</p>
-<p>I'm not proud of what I did next. But I was backed into a corner, so I did something only <code>dpkg</code> is supposed to do. I ran <code>rm -r</code> on a couple directories in <code>/usr/src</code>. And boy, it was like magic. Suddenly <code>apt-get install -f</code> worked like a charm. It started to upgrade a couple packages, rebuilding some GRUB configuration files... and then came to a screeching halt.</p>
-<pre><code>Setting up linux-headers-3.2.0-90-virtual (3.2.0-90.128) ...
-dpkg: dependency problems prevent configuration of linux-headers-virtual:
-linux-headers-virtual depends on linux-headers-3.2.0-68-virtual; however:
-Package linux-headers-3.2.0-68-virtual is not installed.
-dpkg: error processing linux-headers-virtual (--configure):
-dependency problems - leaving unconfigured
-No apport report written because the error message indicates its a followup error from a previous failure.
-dpkg: dependency problems prevent configuration of linux-virtual:
-linux-virtual depends on linux-headers-virtual (= 3.2.0.68.81); however:
-Package linux-headers-virtual is not configured yet.
-dpkg: error processing linux-virtual (--configure):
-dependency problems - leaving unconfigured
-No apport report written because the error message indicates its a followup error from a previous failure.
-Errors were encountered while processing:
-linux-headers-virtual
-linux-virtual
-E: Sub-process /usr/bin/dpkg returned an error code (1)
-</code></pre>
-<p>Are you kidding?? <em>More</em> errors?</p>
-<p>Turns out that APT is essentially the only thing on this system that makes large changes to the filesystem. So the probability that APT would be the program to trigger the inode limit was pretty high. It started an upgrade run, then got interrupted in the middle by the "no space left on device" error, leaving the dependency tree in a state that we in the tech community call "100% totally screwed". (This is the technical term.)</p>
-<p>I'll spare you the gory details, but I ended up trying to chase down packages in the Ubuntu archive, running <code>ubuntu-support-status</code> beacuse I was wondering if the packages I was looking for actually <em>weren't in</em> the archive, because they were unsupported, using <code>aptitude</code> instead of <code>apt-get</code> (because <code>aptitude</code>'s dependency resolver tends to be better), etc. Finally the solution turned out to be doing <code>dpkg --install</code> on the exact right <code>.deb</code>s in the exact right order, which finally satisfied APT's dependency woes, allowed <code>apt-get install -f</code> to fix the configuration problems, and allowed the hundreds of packages which had been waiting for an upgrade to <em>finally</em> install. Whew!</p>
-<p>Anyway, I need to upgrade the version of Ubuntu the system is on (currently it's 12.04.5 LTS), because Tor is out of date (among other reasons). However, since that will involve taking the system down for a reboot, I wanted to memorialize the following:</p>
-<pre><code>$ uptime
-00:01:47 up 392 days, 17:15,  1 user,  load average: 0.05, 0.04, 0.05
-</code></pre>
-<p>Holy moly. This system is bordering on 400 days of uptime. That's over a year of continuous run time! Astonishing.</p>
-<p>Wish me luck with this upgrade...</p>
-<p><strong>tl;dr</strong>: inode limits are <em>killer</em>.</p>
 
             </div>
           </article>

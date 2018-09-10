@@ -61,6 +61,27 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "blaggregator"</h2>
+          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/pump.io-5.1-is-in-beta">
+              <h2 class="p-name">pump.io 5.1 is in beta</h2></a>
+            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/12/pump.io-5.1-is-in-beta">here</a> on 
+              <time datetime="2017-12-08T20:24:57-05:00"><a href="/blog/2017/12/">December</a> 8, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a> and <a href="/blog/category/releases/" class="p-category">releases</a>. Last edited 
+              <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
+            </p>
+            <div class="e-content"><p>I'm really excited to announce that pump.io 5.1 is officially in beta!</p>
+<p>This release makes a wide array of improvements. One of the features I'm most excited about is <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">zero-downtime restarts</a>, which will allow administrators to gracefully roll over to new configurations and codebases with absolutely no user-visible impact! Aside from that, here's a list of highlights:</p>
+<ul>
+<li>The daemon now generates startup log warnings on bad configurations, including insecure <code>secret</code> values and internal parameters</li>
+<li>An official <code>Dockerfile</code> is now included with the release</li>
+<li>The logged-out mobile homepage's menu icon is no longer incorrectly styled as black</li>
+<li>SockJS connections no longer fail due to authorization problems</li>
+</ul>
+<p>As usual, this release also includes some small updates to dependencies. Plus, we started tracking how much code our test suite covers! We've also significantly cleaned up the documentation and moved almost all of the in-repository documentation to ReadTheDocs, where it's a lot more organized and accessible. If you want more than just these highlights, you can check out <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#510-beta-0---2017-12-08">the changelog</a>.</p>
+<p>Note that while the repository includes a <code>Dockerfile</code> now, we have not yet begun publishing on Docker Hub due to some security logistics that need to be figured out - when we do, it'll be announced in all the usual places (including this blog).</p>
+<p>I'm so excited for people to try out this release. 5.1 beta 0 is a drop-in replacement for 5.0, so if you're on 5.0 and want to live (more) on the bleeding edge, you can upgrade with <code>npm install -g pump.io@5.1</code> if you have an npm-based install. If you have a source-based install, you should merge and/or switch to the <code>v5.1.0-beta.0</code> tag. And as always, if you encounter any problems you can reach out to the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> or <a href="https://github.com/pump-io/pump.io/issues">file bugs you find</a>.</p>
+
+            </div>
+          </article>
+          <hr/>
           <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/11/filter-other-days-is-portable-to-freebsd">
               <h2 class="p-name">filter-other-days is portable to FreeBSD</h2></a>
             <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
@@ -173,28 +194,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>While these checks do a lot to catch problems, they're not a silver bullet, and we strongly recommend that administrators watch their logs as they trigger restarts. However, this is still a <em>huge</em> win for the admin experience - the most exciting part of this for me is that it's the first step we need to take towards having fully automatic updates, which has been a dream of mine for a long while now.</p>
 <p>Admins running from git master can start experimenting with this feature today, and it will be released during the <em>next</em> release cycle - i.e. with the 5.1 beta and stable, <em>not</em> the current 5.0 beta. Since this is highly experimental, we want this to have as much time for testing as possible. You can also check out the <a href="https://pumpio.readthedocs.io/en/latest/administration/zero-downtime-restarts.html">official documentation</a> on this feature.</p>
 <p>I hope people enjoy this! And as always, feel free to <a href="https://github.com/pump-io/pump.io/issues/new">report any bugs</a>.</p>
-
-            </div>
-          </article>
-          <hr/>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/08/pump.io-5.0-beta-released">
-              <h2 class="p-name">pump.io 5.0 beta released</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/08/pump.io-5.0-beta-released">here</a> on 
-              <time datetime="2017-08-07T14:51:12-04:00"><a href="/blog/2017/08/">August</a> 7, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a> and <a href="/blog/category/releases/" class="p-category">releases</a>. Last edited 
-              <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
-            </p>
-            <div class="e-content"><p>I'm excited to announce that pump.io 5.0.0 is now officially in beta!</p>
-<p>This is another big release and makes a wide variety of improvements. Here are some highlights from <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#500-beta-0---2017-08-07">the changelog</a>:</p>
-<ul>
-<li>More complete documentation</li>
-<li>Small improvements to the administrator experience</li>
-<li>A better web UI, including some user experience polishing as well as an upgrade to more performant and better-licensed libraries</li>
-<li>A fix for crashes related to "login with remote account" (although this one was backported in 4.1.1)</li>
-<li>Significant security improvements in the <a href="https://pumpio.readthedocs.io/en/latest/administration/upstream-systemd-unit.html">systemd service</a> shipped with the package</li>
-<li>Lots of internal refactoring and simplification made possible by dropping Node 0.10/0.12 support</li>
-</ul>
-<p>Many of these changes - particularly the systemd changes and the fact that (<a href="http://pump.io/blog/2017/07/pump.io-4.1-is-out">as previously announced</a>) Node 0.10 and 0.12 are no longer supported - will require administrator intervention. Be sure to read our <a href="https://pumpio.readthedocs.io/en/latest/upgrades/4.x-to-5.x.html">upgrade guide</a> for details on how to deal with these changes.</p>
-<p>All of these features add up to make pump.io 5.0 beta the most stable and secure release yet. As always, it will go through our beta period for about a month before being released as a fully stable version. If you try it out, the <a href="https://github.com/pump-io/pump.io/wiki/Community">community</a> would love to hear about it - and be sure to <a href="https://github.com/pump-io/pump.io/issues">report any bugs</a> you encounter!</p>
 
             </div>
           </article>
