@@ -3,6 +3,9 @@ title: "Legacy"
 time:
   epoch: 1536548509
   utcoffset: "UTC-4"
+edited:
+  epoch: 1536556119
+  utcoffset: "UTC-4"
 author: "AJ Jordan"
 categories:
   - personal
@@ -13,7 +16,7 @@ categories:
 
 Recently I turned 20 years old. As the days continue to go by, I have been struggling with the concept of time.
 
-Probably this feeling started with me seeing photos of this year's SAAS robotics teams. I was on the robotics team for four years (I've [written about it a little before][robotics]) but recently I found that all of a sudden, I know barely anyone in the photos. Thirteen people in robotics graduated[1] high school last year, people I've known since they were freshmen (or in the case of [Jesse][] and [Matt][], even longer). And I have found that the way I think about [Redshift Robotics][] has changed: I don't quite think of it as something I used to be a part of, at least not that simply. Instead I think of it as my legacy.
+Probably this feeling started with me seeing photos of this year's SAAS robotics teams. I was on the robotics team for four years (I've [written about it a little before][robotics]) but recently I found that all of a sudden, I know barely anyone in the photos. Fifteen people in robotics graduated[1] high school last year, people I've largely known since they were freshmen (or in the case of [Jesse][] and [Matt][], even longer). Some of them are very close friends. And I have found that the way I think about [Redshift Robotics][] has changed: I don't quite think of it as something I used to be a part of, at least not that simply. Instead I think of it as my legacy.
 
 > legacy: _n._ something handed down from an ancestor or a predecessor or from the past
 
