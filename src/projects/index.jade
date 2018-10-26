@@ -37,10 +37,20 @@ block content
 		p In <a href="http://pump.io">pump.io</a> we needed to look into what Node versions different Linux distributions ship, so we could figure out when we could drop support for old Node versions. So I went and looked at a bunch of distribution sites, put all the data into a nice JSON file, wrote some nice <a href="http://jade-lang.com/">Jade</a> to display it, and put it up on <a href="https://nodecompat.com">nodecompat.com</a>.
 		p Eventually, I'll add a neat JS-powered selector that lets you interactively filter distros and versions based on what Node versions you're willing to support and/or what distributions you know you <em>have</em> to support. In the meantime, though, the site fufills its original purpose. Hence, "completed".
 
+                h3
+                        a(href='https://github.com/strugee/lazymention') lazymention
+                p lazymention helps you send Webmentions for your static <a href="https://indieweb.org/">IndieWeb</a> site. When you publish to your site, you ping lazymention, and it will poll your site, parse the microformats2 markup, and send Webmentions for content it hasn't seen before.
+                p Support for sending WebSub notifications is planned for some point in the future.
+
 		h3
 			a(href='https://github.com/strugee/fulldom-server') fulldom-server
 		p fulldom exposes a single endpoint at <code>/&lt;url&gt;</code> which, when sent an HTTP GET request, will give you back the serialized DOM of the page at <code>&lt;url&gt;</code> when the page's JS has "finished running". "Finished running" is in quotes because determining when a page's JS is "finished running" is basically impossible, so the point at which the DOM is serialized is based on a user-provided heuristic.
 		p This is useful for scraping webpages which fill in their content with JS (i.e. webpages that <a href="http://tantek.com/2015/069/t1/js-dr-javascript-required-dead">suck at being webpages</a>) with, say, <a href="https://github.com/cantino/huginn">Huginn</a>.
+
+                h3
+                        a(href='https://offandonagain.org') offandonagain.org
+                p For those times when you just gotta ask: have they tried turning it off and on again? Returns random GIFs (mostly). Conceived during the week of Open Source Bridge 2017.
+                p The source (and more documentation) is <a href="https://github.com/strugee/offandonagain.org">on GitHub</a>. The <a href="https://github.com/strugee/node-serve-random">underlying module</a> is too.
 
 		h3
 			a(href='https://isthefieldcontrolsystemdown.com') Is The Field Control System Down?
