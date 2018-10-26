@@ -22,7 +22,8 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <meta name="viewport" content="width=device-width">
     <link rel="preload" href="https://members.internetdefenseleague.org/include/?url=&amp;campaign=&amp;variant=modal">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/main.css"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="author" href="/humans.txt"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
     <title>Projects - strugee.net</title>
     <meta name="description" content="AJ Jordan's projects">
     <!-- IndieWeb components, with <3-->
@@ -76,9 +77,15 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h3><a href="https://nodecompat.com">nodecompat.com</a></h3>
           <p>In <a href="http://pump.io">pump.io</a> we needed to look into what Node versions different Linux distributions ship, so we could figure out when we could drop support for old Node versions. So I went and looked at a bunch of distribution sites, put all the data into a nice JSON file, wrote some nice <a href="http://jade-lang.com/">Jade</a> to display it, and put it up on <a href="https://nodecompat.com">nodecompat.com</a>.</p>
           <p>Eventually, I'll add a neat JS-powered selector that lets you interactively filter distros and versions based on what Node versions you're willing to support and/or what distributions you know you <em>have</em> to support. In the meantime, though, the site fufills its original purpose. Hence, "completed".</p>
+          <h3><a href="https://github.com/strugee/lazymention">lazymention</a></h3>
+          <p>lazymention helps you send Webmentions for your static <a href="https://indieweb.org/">IndieWeb</a> site. When you publish to your site, you ping lazymention, and it will poll your site, parse the microformats2 markup, and send Webmentions for content it hasn't seen before.</p>
+          <p>Support for sending WebSub notifications is planned for some point in the future.</p>
           <h3><a href="https://github.com/strugee/fulldom-server">fulldom-server</a></h3>
           <p>fulldom exposes a single endpoint at <code>/&lt;url&gt;</code> which, when sent an HTTP GET request, will give you back the serialized DOM of the page at <code>&lt;url&gt;</code> when the page's JS has "finished running". "Finished running" is in quotes because determining when a page's JS is "finished running" is basically impossible, so the point at which the DOM is serialized is based on a user-provided heuristic.</p>
           <p>This is useful for scraping webpages which fill in their content with JS (i.e. webpages that <a href="http://tantek.com/2015/069/t1/js-dr-javascript-required-dead">suck at being webpages</a>) with, say, <a href="https://github.com/cantino/huginn">Huginn</a>.</p>
+          <h3><a href="https://offandonagain.org">offandonagain.org</a></h3>
+          <p>For those times when you just gotta ask: have they tried turning it off and on again? Returns random GIFs (mostly). Conceived during the week of Open Source Bridge 2017.</p>
+          <p>The source (and more documentation) is <a href="https://github.com/strugee/offandonagain.org">on GitHub</a>. The <a href="https://github.com/strugee/node-serve-random">underlying module</a> is too.</p>
           <h3><a href="https://isthefieldcontrolsystemdown.com">Is The Field Control System Down?</a></h3>
           <p>Once I was at an FTC event where the Field Control System was down for about two hours. While I was waiting in the stands, I bought the domain for this website, created the web page in GitHub's web interface (because I was using a tablet), and SSH'd into my server and deployed it.</p>
           <h3><a href="https://github.com/strugee/gh-pages-bootstrap">gh-pages-bootstrap</a></h3>
@@ -89,7 +96,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h3><a href="https://github.com/strugee/dots">Dotfiles</a></h3>
           <p>I keep all my dotfiles on GitHub. This repository is ever-improving, because I spend way too much time customizing/playing with my environment and not enough time doing real work.</p>
           <h3><a href="https://github.com/strugee/steevie">steevie</a></h3>
-          <p>The continual maintenance and improvement of steevie. This includes both traditional system administration work as well as Puppet stuff.</p>
+          <p>The continual maintenance and improvement of steevie. This includes both traditional system administration work as well as SaltStack stuff.</p>
           <h3><a href="https://stratic.js.org">Stratic</a></h3>
           <p>Stratic is the streaming static site generator. It's comparible to Jekyll or Wintersmith, but instead of having a monolithic framework that you have to learn, it's all implemented in streaming Node.js modules orchestrated using Gulp. That means that not only do you have the power of The Node Way&trade; - small, composable modules that can easily be swapped out for something different - but you have the power of all of npm, too. Zero plugins required.</p>
           <h3><a href="https://atlas.torproject.org/#details/C3CFCC9B5993A6F0D1349858C598C4A78AFE51F9">Tor relay</a></h3>
