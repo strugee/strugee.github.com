@@ -165,13 +165,14 @@ require('whatwg-fetch');
 				}
 
 				mentionsElement.appendChild(p);
-				mentionsElement.setAttribute('data-initialized', 'true');
 			});
 		})
 		.catch(function(err) {
 			console.log('Encountered Webmention error:', err);
 			mentionsElement.appendChild(document.createTextNode('Couldn\'t fetch Webmentions. Try refreshing?'));
 		});
+
+		mentionsElement.setAttribute('data-initialized', 'true');
 	}
 
 	document.addEventListener('turbolinks:load', function() {
