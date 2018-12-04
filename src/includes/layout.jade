@@ -19,6 +19,7 @@ doctype html
 html(lang='en')
 	head
 		include ../includes/header.jade
+		script(src='/js/main.js', defer)
 		block head
 		include ../includes/indieweb.jade
 
@@ -59,7 +60,7 @@ html(lang='en')
 				a#monospace-icon(href='javascript:void(0);', title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was \"making [their] life\" monospace.") ~
 				a#lightbulb-icon(href='javascript:void(0);')
 					.icon-lightbulb
-			script(src='/js/main.js')
+
 			script.
 				window._idl = {};
 				_idl.variant = "modal";
