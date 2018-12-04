@@ -48,6 +48,9 @@ require('whatwg-fetch');
 		initialized = true;
 
 		var mentionsElement = document.getElementById('webmentions');
+		// Sometimes happens because of Turbolinks?
+		if (!mentionsElement) return;
+		if (mentionsElement.getAttribute('data-initialized') === "true") return;
 
 		// Only when the DOM is ready do we register Promise stuff that interacts with it
 		req.then(function(response) {
@@ -162,6 +165,7 @@ require('whatwg-fetch');
 				}
 
 				mentionsElement.appendChild(p);
+				mentionsElement.setAttribute('data-initialized', 'true');
 			});
 		})
 		.catch(function(err) {
@@ -170,14 +174,11 @@ require('whatwg-fetch');
 		});
 	}
 
-	document.addEventListener('DOMContentLoaded', init, false);
-	var oldListener = document.onreadystatechange;
-	document.onreadystatechange = function() {
-		if (document.readyState === 'interactive') {
-			init();
-			if (typeof oldListener === 'function') oldListener();
-		}
-	};
+	document.addEventListener('turbolinks:load', function() {
+		req = fetch('https://webmention.io/api/mentions?target=' + window.location);
+		initialized = false;
+		init();
+	}, false);
 
 	// TODO add in some "Loading..." text or something
 })();

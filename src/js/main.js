@@ -19,9 +19,8 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-// Polyfills
-
-require('whatwg-fetch');
+var Turbolinks = require('turbolinks');
+Turbolinks.start();
 
 (function() {
 	'use strict';
@@ -59,76 +58,6 @@ require('whatwg-fetch');
 
 		icon.addEventListener('click', handleIconClick, false);
 		monospaceIcon.addEventListener('click', handleMonospaceIconClick, false);
-
-		// Abort if the browser can't do what we're looking for
-		if (!Array.prototype.forEach || !document.querySelectorAll || !window.history.pushState || !window.DOMParser || !window.Promise) {
-			console.warn('Either Array.prototype.forEach(), document.querySelectorAll(), DOMParser(), history.pushState(), or window.Promise support is missing from your browser! Night mode/monospace state will not persist. Please upgrade.'); // eslint-disable-line max-len
-			return;
-		}
-
-		bindNavLinkHandlers(document.querySelectorAll('.navlink'));
-
-		window.onpopstate = handlePopState;
-	}
-
-	function bindNavLinkHandlers(nodeList) {
-		console.log('Binding event handlers to some navigation links.');
-		var navLinks = [];
-
-		for (var i = 0; i < nodeList.length; i++) {
-			navLinks.push(nodeList[i]);
-		}
-
-		navLinks.forEach(function(el) {
-			el.addEventListener('click', handleNavLinkClick, false);
-		});
-	}
-
-	function handlePopState() {
-		console.log('Handling a popState event.');
-		replaceContentWithTarget(window.location.pathname);
-	}
-
-	function handleNavLinkClick(event) {
-		/* eslint no-invalid-this: "off" */
-		console.log('Handling navigation click.');
-
-		if (typeof this !== 'object') {
-			console.error('Something has gone seriously wrong, and `this` isn\'t an instance of Node. Letting the browser handle the link click.'); // eslint-disable-line max-len
-			return;
-		}
-
-		event.preventDefault();
-
-		var element = this.children[0];
-		var target = element.attributes.href.value;
-
-		replaceContentWithTarget(target);
-	}
-
-	function replaceContentWithTarget(target) {
-		console.log('Requesting URL: ' + target);
-		fetch(target)
-			.then(function(response) {
-				return response.text();
-			})
-			.then(function(body) {
-				var parser = new DOMParser();
-				var doc = parser.parseFromString(body, 'text/html');
-
-				var nav = doc.getElementById('navbar');
-				var content = doc.getElementById('content');
-				var oldNav = document.getElementById('navbar');
-				var oldContent = document.getElementById('content');
-
-				bindNavLinkHandlers(nav.querySelectorAll('.navlink'));
-
-				document.title = doc.title;
-				oldNav.parentNode.replaceChild(nav, oldNav);
-				oldContent.parentNode.replaceChild(content, oldContent);
-
-				history.pushState({}, doc.title, target);
-			});
 	}
 
 	function handleIconClick() {
