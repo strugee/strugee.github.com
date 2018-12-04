@@ -24,6 +24,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="author" href="/humans.txt"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <script src="/js/main.js" defer></script>
     <title>Posts categorized as "pump.io" - strugee.net</title>
     <!-- TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...-->
     <link rel="alternate" type="application/rss+xml" href="index.rss">
@@ -214,28 +215,9 @@ npm run build
         <p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a href="https://github.com/strugee/strugee.github.com">on GitHub</a>.</p>
         <p>&copy; Copyright 2012-2018 AJ Jordan.</p>
       </footer>
-      <!-- Piwik-->
-      <!-- Note that this Piwik instance is self-hosted and so doesn't leak metadata. Also, critically, it respects Do Not Track.-->
-      <script type="text/javascript">
-        var _paq = _paq || [];
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-        var u="//piwik.strugee.net/";
-        _paq.push(['setTrackerUrl', u+'piwik.php']);
-        _paq.push(['setSiteId', 1]);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-        })();
-      </script>
-      <noscript>
-        <p><img src="//piwik.strugee.net/piwik.php?idsite=1" style="border:0;" alt=""></p>
-      </noscript>
-      <!-- End Piwik Code-->
       <div id="toys"><a id="monospace-icon" href="javascript:void(0);" title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was &quot;making [their] life&quot; monospace.">~</a><a id="lightbulb-icon" href="javascript:void(0);">
           <div class="icon-lightbulb"></div></a></div>
-      <script type="text/javascript" src="/js/main.js"></script>
-      <script type="text/javascript">
+      <script data-turbolinks-eval="false">
         window._idl = {};
         _idl.variant = "modal";
         (function() {
