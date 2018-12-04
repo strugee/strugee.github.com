@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Personal website for AJ Jordan, powering strugee.net",
   "main": "js/main.js",
+  "private": true,
   "dependencies": {
     "whatwg-fetch": "^2.0.2"
   },
