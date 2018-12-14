@@ -49,7 +49,7 @@ mixin streamIndex(streamType, baseURL, featuredCategories)
 					p
 						span.disabled-arrow ←
 						|  ⋅ Page #{page} out of #{pageCount} ⋅ 
-						a(href='page/2') →
+						a(href='page/2/') →
 				else if page === pageCount
 					p
 						a(href=pageUrl(page, -1)) ←
