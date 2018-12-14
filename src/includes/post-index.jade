@@ -40,7 +40,7 @@ mixin streamIndex(streamType, baseURL, featuredCategories)
 		//- Pages
 		- function pageUrl(cur, next) {
 		- 	if (cur === 2 && next === -1) return '../..';
-		- 	return '../' + (cur + next);
+		- 	return '../' + (cur + next) + '/';
 		- 	}
 
 		#pages-footer
