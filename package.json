@@ -9,7 +9,7 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "browserify": "^13.0.1",
+    "browserify": "^16.2.3",
     "ecstatic": "^2.1.0",
     "eslint": "^2.13.1",
     "eslint-config-strict": "^9.1.0",
