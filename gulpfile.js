@@ -32,6 +32,8 @@ var source = require('vinyl-source-stream');
 var addsrc = require('gulp-add-src');
 var ecstatic = require('ecstatic');
 
+function noop() {}
+
 var categoryDefaults = [];
 
 /* eslint-env node */
@@ -42,14 +44,14 @@ var categoryDefaults = [];
 
 /* TODO: validate HTML */
 
-gulp.task('html', function() {
+var html = exports.html = function html() {
 	return gulp.src(['src/**/*.jade', '!src/blog/*.jade', '!src/includes/*.jade'])
 	           .pipe(jade({ pretty: true }))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist'));
-});
+};
 
-gulp.task('css', function() {
+var css = exports.css = function css() {
 	return merge(gulp.src('src/styles/*')
 	                 .pipe(stylus())
 	                 .pipe(rename({ extname: '.css' }))
@@ -57,19 +59,19 @@ gulp.task('css', function() {
 	             gulp.src('css/*')
 	                 .pipe(gulp.dest('dist/css'))
 	            );
-});
+};
 
-gulp.task('images', function() {
+var images = exports.images = function images() {
 	return gulp.src('src/images/*')
 	           .pipe(gulp.dest('dist/images'));
-});
+};
 
-gulp.task('font', function() {
+var font = exports.font = function font() {
 	return gulp.src('font/*')
 	           .pipe(gulp.dest('dist/font'));
-});
+};
 
-gulp.task('js', function() {
+var js = exports.js = function js() {
 	var staticFiles = gulp.src(['src/js/*.js', '!src/js/main.js', '!src/js/webmentions.js']).pipe(gulp.dest('./dist/js'));
 	var webmentions = browserify({
 		entries: 'src/js/webmentions.js',
@@ -87,9 +89,9 @@ gulp.task('js', function() {
 	  .pipe(gulp.dest('./dist/js'));
 
 	return merge(staticFiles, webmentions, main);
-});
+};
 
-gulp.task('post-index', function() {
+var postIndex = exports['post-index'] = function postIndex() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(frontMatter())
 	           .pipe(filterDrafts())
@@ -103,9 +105,9 @@ gulp.task('post-index', function() {
 	           .pipe(jade({pretty: true, basedir: __dirname}))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist/blog'));
-});
+};
 
-gulp.task('posts', function() {
+var posts = exports.posts = function posts() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(frontMatter())
 	           .pipe(filterDrafts())
@@ -118,9 +120,9 @@ gulp.task('posts', function() {
 	           .pipe(jade({pretty: true, basedir: __dirname}))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist/blog'));
-});
+};
 
-gulp.task('rss', function() {
+var rss = exports.rss = function rss() {
 	return gulp.src('src/blog/*.md')
 	           .pipe(frontMatter())
 	           .pipe(filterDrafts())
@@ -137,37 +139,37 @@ gulp.task('rss', function() {
 	           }, 'https://strugee.net/blog/'))
 	           .pipe(rename({ extname: '.rss' }))
 	           .pipe(gulp.dest('dist/blog'));
-});
+};
 
-gulp.task('ping', pingLazymention('http://strugee.net:7517/jobs/submit', 'https://strugee.net/blog/'));
+var ping = exports.ping = pingLazymention('http://strugee.net:7517/jobs/submit', 'https://strugee.net/blog/');
 
-gulp.task('misc', function() {
+var misc = exports.misc = function misc() {
 	return gulp.src(['COPYING', 'src/misc/*', 'src/misc/.*'])
 	           .pipe(gulp.dest('dist'));
-});
+};
 
 /* Lint tasks */
 
-gulp.task('csslint');
+var csslint = exports.csslint = noop;
 
-gulp.task('jshint', function() {
+var jshint = exports.jshint = function jshint() {
 	return gulp.src(['src/js/*.js', '!vendor/*', '!plugins.js'])
 	           .pipe(jshint());
-});
+};
 
 /* Helper tasks */
 
-gulp.task('blog', ['posts','post-index', 'rss']);
+var blog = exports.blog = gulp.parallel(exports.posts, postIndex, rss);
 
-gulp.task('build', ['html', 'css', 'js', 'font', 'images', 'blog', 'misc']);
+var build = exports.build = gulp.parallel(html, css, js, font, images, blog, misc);
 
-gulp.task('lint', ['csslint', 'jshint']);
+var lint = exports.lint = gulp.series(csslint, jshint);
 
-gulp.task('deploy', ['build'], function(done) {
+var deploy = exports.deploy = gulp.series(build, function(done) {
 	ghpages.publish(path.join(__dirname, 'dist'), { logger: log, branch: 'master' }, done);
 });
 
-gulp.task('watch', ['build'], function() {
+var watch = exports.watch = gulp.parallel(build, function() {
 	gulp.watch('src/*.jade', ['html']);
 	gulp.watch(['src/blog/*.md', 'src/blog/*.jade'], ['blog']);
 	gulp.watch('src/includes/*.jade', ['html', 'blog']);
@@ -175,7 +177,7 @@ gulp.task('watch', ['build'], function() {
 	gulp.watch('src/js/*.js', ['js']);
 });
 
-gulp.task('serve', ['watch'], function() {
+var serve = exports.serve = gulp.parallel(watch, function() {
 	http.createServer(
 		ecstatic({ root: __dirname + '/dist' })
 	).listen(process.env.PORT || 8080);
@@ -183,4 +185,4 @@ gulp.task('serve', ['watch'], function() {
 
 /* Default task */
 
-gulp.task('default', ['build', 'lint']);
+exports.default = gulp.series(lint, build);
