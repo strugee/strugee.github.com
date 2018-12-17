@@ -152,6 +152,7 @@ var misc = exports.misc = function misc() {
 
 var csslint = exports.csslint = noop;
 
+// XXX this is completely busted since Gulp 4!
 var jshint = exports.jshint = function jshint() {
 	return gulp.src(['src/js/*.js', '!vendor/*', '!plugins.js'])
 	           .pipe(jshint());
