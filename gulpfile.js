@@ -29,7 +29,6 @@ var sort = require('gulp-sort');
 var stylus = require('gulp-stylus');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
-var addsrc = require('gulp-add-src');
 var ecstatic = require('ecstatic');
 
 function noop(done) { process.nextTick(done); }
@@ -99,7 +98,7 @@ var postIndex = exports['post-index'] = function postIndex() {
 	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders))
 	           .pipe(dateInPath())
 	           .pipe(decorateFiles())
-	           .pipe(addsrc('src/blog/index.jade'))
+	           .pipe(gulp.src('src/blog/index.jade', {passthrough: true}))
 	           .pipe(postsToIndex('index.jade'))
 	           .pipe(paginateIndexes())
 	           .pipe(jade({pretty: true, basedir: __dirname}))
@@ -115,7 +114,7 @@ var posts = exports.posts = function posts() {
 	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders).use(slug))
 	           .pipe(dateInPath())
 	           .pipe(decorateFiles())
-	           .pipe(addsrc('src/blog/post.jade'))
+	           .pipe(gulp.src('src/blog/post.jade', {passthrough: true}))
 	           .pipe(attachToTemplate('post.jade'))
 	           .pipe(jade({pretty: true, basedir: __dirname}))
 	           .pipe(rename({ extname: '.html' }))
@@ -129,7 +128,7 @@ var rss = exports.rss = function rss() {
 	           .pipe(defaultCategories(categoryDefaults))
 	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
-	           .pipe(addsrc('src/blog/index.jade'))
+	           .pipe(gulp.src('src/blog/index.jade', {passthrough: true}))
 	           .pipe(postsToIndex('index.jade'))
 	           .pipe(truncateIndexes())
 	           .pipe(indexesToRss({
