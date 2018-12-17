@@ -38,7 +38,7 @@
     "stratic-paginate-indexes": "^1.0.1",
     "stratic-posts-to-index": "^2.0.0",
     "stratic-truncate-indexes": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^2.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
