@@ -4,7 +4,7 @@ var gulp = require('gulp');
 
 var http = require('http');
 var path = require('path');
-var jade = require('gulp-jade');
+var jade = require('gulp-pug');
 var jshint = require('gulp-jshint');
 var rename = require('gulp-rename');
 var remark = require('gulp-remark');
@@ -44,7 +44,7 @@ var categoryDefaults = [];
 /* TODO: validate HTML */
 
 var html = exports.html = function html() {
-	return gulp.src(['src/**/*.jade', '!src/blog/*.jade', '!src/includes/*.jade'])
+	return gulp.src(['src/**/*.pug', '!src/blog/*.pug', '!src/includes/*.pug'])
 	           .pipe(jade({ pretty: true }))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist'));
@@ -98,8 +98,8 @@ var postIndex = exports['post-index'] = function postIndex() {
 	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders))
 	           .pipe(dateInPath())
 	           .pipe(decorateFiles())
-	           .pipe(gulp.src('src/blog/index.jade', {passthrough: true}))
-	           .pipe(postsToIndex('index.jade'))
+	           .pipe(gulp.src('src/blog/index.pug', {passthrough: true}))
+	           .pipe(postsToIndex('index.pug'))
 	           .pipe(paginateIndexes())
 	           .pipe(jade({pretty: true, basedir: __dirname}))
 	           .pipe(rename({ extname: '.html' }))
@@ -114,8 +114,8 @@ var posts = exports.posts = function posts() {
 	           .pipe(remark({quiet: true}).use(remarkHtml).use(adjustHeaders).use(slug))
 	           .pipe(dateInPath())
 	           .pipe(decorateFiles())
-	           .pipe(gulp.src('src/blog/post.jade', {passthrough: true}))
-	           .pipe(attachToTemplate('post.jade'))
+	           .pipe(gulp.src('src/blog/post.pug', {passthrough: true}))
+	           .pipe(attachToTemplate('post.pug'))
 	           .pipe(jade({pretty: true, basedir: __dirname}))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist/blog'));
@@ -128,8 +128,8 @@ var rss = exports.rss = function rss() {
 	           .pipe(defaultCategories(categoryDefaults))
 	           .pipe(remark({quiet: true}).use(remarkHtml))
 	           .pipe(dateInPath())
-	           .pipe(gulp.src('src/blog/index.jade', {passthrough: true}))
-	           .pipe(postsToIndex('index.jade'))
+	           .pipe(gulp.src('src/blog/index.pug', {passthrough: true}))
+	           .pipe(postsToIndex('index.pug'))
 	           .pipe(truncateIndexes())
 	           .pipe(indexesToRss({
 		           title: 'strugee.net blog',
@@ -170,9 +170,9 @@ var deploy = exports.deploy = gulp.series(build, function(done) {
 });
 
 var watch = exports.watch = gulp.parallel(build, function watch() {
-	gulp.watch('src/*.jade', html);
-	gulp.watch(['src/blog/*.md', 'src/blog/*.jade'], blog);
-	gulp.watch('src/includes/*.jade', gulp.parallel(html, blog));
+	gulp.watch('src/*.pug', html);
+	gulp.watch(['src/blog/*.md', 'src/blog/*.pug'], blog);
+	gulp.watch('src/includes/*.pug', gulp.parallel(html, blog));
 	gulp.watch(['src/styles/*.styl', 'src/styles/lib/*.styl'], css);
 	gulp.watch('src/js/*.js', js);
 });
