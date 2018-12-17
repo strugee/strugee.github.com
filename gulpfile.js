@@ -32,7 +32,7 @@ var source = require('vinyl-source-stream');
 var addsrc = require('gulp-add-src');
 var ecstatic = require('ecstatic');
 
-function noop() {}
+function noop(done) { process.nextTick(done); }
 
 var categoryDefaults = [];
 
