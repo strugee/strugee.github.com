@@ -170,7 +170,7 @@ var deploy = exports.deploy = gulp.series(build, function(done) {
 	ghpages.publish(path.join(__dirname, 'dist'), { logger: log, branch: 'master' }, done);
 });
 
-var watch = exports.watch = gulp.parallel(build, function() {
+var watch = exports.watch = gulp.parallel(build, function watch() {
 	gulp.watch('src/*.jade', html);
 	gulp.watch(['src/blog/*.md', 'src/blog/*.jade'], blog);
 	gulp.watch('src/includes/*.jade', gulp.parallel(html, blog));
@@ -178,7 +178,7 @@ var watch = exports.watch = gulp.parallel(build, function() {
 	gulp.watch('src/js/*.js', js);
 });
 
-var serve = exports.serve = gulp.parallel(watch, function() {
+var serve = exports.serve = gulp.parallel(watch, function listen() {
 	http.createServer(
 		ecstatic({ root: __dirname + '/dist' })
 	).listen(process.env.PORT || 8080);
