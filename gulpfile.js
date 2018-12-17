@@ -171,11 +171,11 @@ var deploy = exports.deploy = gulp.series(build, function(done) {
 });
 
 var watch = exports.watch = gulp.parallel(build, function() {
-	gulp.watch('src/*.jade', ['html']);
-	gulp.watch(['src/blog/*.md', 'src/blog/*.jade'], ['blog']);
-	gulp.watch('src/includes/*.jade', ['html', 'blog']);
-	gulp.watch(['src/styles/*.styl', 'src/styles/lib/*.styl'], ['css']);
-	gulp.watch('src/js/*.js', ['js']);
+	gulp.watch('src/*.jade', html);
+	gulp.watch(['src/blog/*.md', 'src/blog/*.jade'], blog);
+	gulp.watch('src/includes/*.jade', gulp.parallel(html, blog));
+	gulp.watch(['src/styles/*.styl', 'src/styles/lib/*.styl'], css);
+	gulp.watch('src/js/*.js', js);
 });
 
 var serve = exports.serve = gulp.parallel(watch, function() {
