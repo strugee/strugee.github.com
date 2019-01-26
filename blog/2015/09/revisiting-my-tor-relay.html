@@ -51,7 +51,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
         <h1 id="topheader">strugee.net</h1>
         <nav id="navbar">
           <ul>
-            <li id="navlabel" class="navlink">Nav &nbsp;::</li>
+            <li class="navlink" id="navlabel">Nav &nbsp;::</li>
             <li class="navlink"><a href="/">Home</a></li>
             <li class="navlink"><a href="/services">Services</a></li>
             <li class="navlink"><a href="/projects/">Projects</a></li>
@@ -63,10 +63,10 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
         </nav>
       </header>
       <div id="content">
-        <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry">
+        <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
           <h1 class="p-name">Revisiting my Tor relay</h1>
-          <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-            <time datetime="2015-09-04T16:34:29-08:00"><a href="/blog/2015/09/">September</a> 4, <a href="/blog/2015/">2015</a></time> in <a href="/blog/category/sysadmin/" class="p-category">sysadmin</a> and <a href="/blog/category/tor/" class="p-category">tor</a>
+          <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
+            <time datetime="2015-09-04T16:34:29-08:00"><a href="/blog/2015/09/">September</a> 4, <a href="/blog/2015/">2015</a></time> in <a class="p-category" href="/blog/category/sysadmin/">sysadmin</a> and <a class="p-category" href="/blog/category/tor/">tor</a>
           </p>
           <div class="e-content"><p>(Okay, so I <em>miserably</em> failed my blog-every-day thing. Shut up. Maybe next time I'll try every week or something... anyway.)</p>
 <p>A couple of days ago I logged into the <a href="https://atlas.torproject.org/#details/710E9E3A0A443E3FD33D2801298042783CAD2EAE">Tor relay I run</a> to show someone the ARM graphs. I had a fair amount of traffic, so the graphs were fairly impressive, but I'm also in the habit of running <code>apt-get update; apt-get upgrade</code> every time I log into a server, so I did that too. To my surprise, I got a message telling me that there was a dependency problem with my kernel! So like the great sysadmin I am, I looked at such a fundamental system problem, shrugged my shoulders, and said, "oh, I should probably fix that". And then logged out.</p>

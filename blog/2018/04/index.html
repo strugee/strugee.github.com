@@ -49,7 +49,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
         <h1 id="topheader">strugee.net</h1>
         <nav id="navbar">
           <ul>
-            <li id="navlabel" class="navlink">Nav &nbsp;::</li>
+            <li class="navlink" id="navlabel">Nav &nbsp;::</li>
             <li class="navlink"><a href="/">Home</a></li>
             <li class="navlink"><a href="/services">Services</a></li>
             <li class="navlink"><a href="/projects/">Projects</a></li>
@@ -63,10 +63,10 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts from April 2018</h2>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2018/04/new-temporary-signing-keys">
+          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2018/04/new-temporary-signing-keys">
               <h2 class="p-name">New temporary signing keys</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-              <time datetime="2018-04-17T23:01:33-04:00"><a href="/blog/2018/04/">April</a> 17, <a href="/blog/2018/">2018</a></time> in <a href="/blog/category/personal/" class="p-category">personal</a> and <a href="/blog/category/security/" class="p-category">security</a>
+            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
+              <time datetime="2018-04-17T23:01:33-04:00"><a href="/blog/2018/04/">April</a> 17, <a href="/blog/2018/">2018</a></time> in <a class="p-category" href="/blog/category/personal/">personal</a> and <a class="p-category" href="/blog/category/security/">security</a>
             </p>
             <div class="e-content"><p>So unfortunately, recently I have lost my Nitrokey, which I liked very much. In addition to this being fairly upsetting, I am now left with the sticky situation of not being able to sign code - while I have a master key (from which I can generate new subkeys), I'm currently at college and my copy of the key is sitting 3,000 miles away at home.</p>
 <p>To get around this situation, I've generated a temporary signing keypair. This keypair is set to expire after 3 months (and I don't intend to renew it). When I have access to my master keypair, I will revoke the old subkeys, generate new subkeys (it was probably time, anyway) and revoke the temporary keypair.</p>

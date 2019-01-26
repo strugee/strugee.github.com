@@ -49,7 +49,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
         <h1 id="topheader">strugee.net</h1>
         <nav id="navbar">
           <ul>
-            <li id="navlabel" class="navlink">Nav &nbsp;::</li>
+            <li class="navlink" id="navlabel">Nav &nbsp;::</li>
             <li class="navlink"><a href="/">Home</a></li>
             <li class="navlink"><a href="/services">Services</a></li>
             <li class="navlink"><a href="/projects/">Projects</a></li>
@@ -65,14 +65,14 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h2 class="p-name">Posts from 2017</h2>
           <p id="postsFrom">Show only posts from <a href="/blog/2017/01/">January</a> <a href="/blog/2017/02/">February</a> <a href="/blog/2017/11/">November</a> <a href="/blog/2017/12/">December</a> <a href="/blog/2017/03/">March</a> <a href="/blog/2017/04/">April</a> <a href="/blog/2017/05/">May</a> <a href="/blog/2017/06/">June</a> <a href="/blog/2017/08/">August</a> <a href="/blog/2017/10/">October</a> 
           </p>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/announcing-lazymention-elegant-outbound-webmention-for-static-sites">
+          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2017/12/announcing-lazymention-elegant-outbound-webmention-for-static-sites">
               <h2 class="p-name">Announcing lazymention: elegant outbound Webmention for static sites</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-              <time datetime="2017-12-29T17:52:04-08:00"><a href="/blog/2017/12/">December</a> 29, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/development/" class="p-category">development</a>, <a href="/blog/category/indieweb/" class="p-category">indieweb</a> and <a href="/blog/category/releases/" class="p-category">releases</a>. Last edited 
+            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
+              <time datetime="2017-12-29T17:52:04-08:00"><a href="/blog/2017/12/">December</a> 29, <a href="/blog/2017/">2017</a></time> in <a class="p-category" href="/blog/category/development/">development</a>, <a class="p-category" href="/blog/category/indieweb/">indieweb</a> and <a class="p-category" href="/blog/category/releases/">releases</a>. Last edited 
               <time datetime="2018-06-26T13:00:25.000-07:00">June 26, 2018</time>.
             </p>
             <div class="e-content">
-              <p class="indienews-note"><em>This post also appeared on <a href="https://news.indieweb.org/en" class="u-syndication">IndieNews</a>.</em></p><p>Last night I hit publish on version 1.0.0 of a new project, <a href="https://github.com/strugee/lazymention">lazymention</a>! Whoohoo!</p>
+              <p class="indienews-note"><em>This post also appeared on <a class="u-syndication" href="https://news.indieweb.org/en">IndieNews</a>.</em></p><p>Last night I hit publish on version 1.0.0 of a new project, <a href="https://github.com/strugee/lazymention">lazymention</a>! Whoohoo!</p>
 <p>tl;dr: lazymention exists to add Webmention support to static sites!</p>
 <p>To elaborate a little bit, I developed lazymention because I had a problem with this site: I wanted to send outbound <a href="https://indieweb.org/Webmention">Webmentions</a> when I link to things, but my website is completely static. (Webmention, in case you didn't know, is a way to notify another website that you linked to them, so the other website can display some UI about your reply or whatever.) The page builds happen on my local machine, not on the server. One option would be to just send Webmentions from my local machine too, but this isn't really a good solution for a couple reasons. First, I couldn't do it automatically at build-time because the built pages wouldn't have been deployed to the server yet, so receivers of my Webmentions would reject the mentions due to the source being nonexistant. That meant that I would have to have a separate step, which wouldn't really be <em>that</em> big of a deal (lazymention requires pinging a server too) except for the second reason: I would need some way to keep track of where I'd already sent Webmentions to, and that would require synchronizing across computers. Probably the only decent way to do that would be to check it into Git, but having a program's data store checked in right next to the source code just feels kinda ugly. Plus, then it can't be shared with other people as a service.</p>
 <p>So instead of doing it locally, I elected to build a server instead. Here's how it works: you mark up your stuff with <a href="https://indieweb.org/h-feed"><code>h-feed</code></a> and <a href="https://indieweb.org/h-entry"><code>h-entry</code></a>, and whenever anything happens (e.g. you publish a new blog post or whatever), you ping lazymention with the URL (either the feed or the post itself). lazymention will use your microformats2 markup to find the canonical location for a given post, then it will find all the links in the post and send Webmentions for them. And presto! You've just sent Webmentions for your blog. lazymention also records when it's sent mentions, so if you ping it again, nothing will happen unless you've updated your content. I'm also planning to add <a href="https://indieweb.org/WebSub">WebSub</a> support to lazymention, too, and that'll work in the exact same way.</p>
@@ -83,10 +83,10 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
             </div>
           </article>
           <hr/>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/shell-script-is-one-of-the-purest-forms-of-human-expression">
+          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2017/12/shell-script-is-one-of-the-purest-forms-of-human-expression">
               <h2 class="p-name">Shell script is one of the purest forms of human expression</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-              <time datetime="2017-12-28T00:08:20-07:00"><a href="/blog/2017/12/">December</a> 28, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/musings/" class="p-category">musings</a>
+            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
+              <time datetime="2017-12-28T00:08:20-07:00"><a href="/blog/2017/12/">December</a> 28, <a href="/blog/2017/">2017</a></time> in <a class="p-category" href="/blog/category/musings/">musings</a>
             </p>
             <div class="e-content"><p>While I was at the <a href="https://www.recurse.com/">Recurse Center</a>, I came up with an interesting theory, and today I thought I'd finally formally write about it on my blog. Here it is: shell script is one of the purest forms of human expression, at least as far as technology is concerned.</p>
 <p>Why? Well, shell script is this weird mix of actual programming language things and macro expansions, and even the programming things tend to be... odd, to put it politely. As a trivial example, did you know that this:</p>
@@ -120,10 +120,10 @@ $PAGER longfile.txt
             </div>
           </article>
           <hr/>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/winter-break-priorities-2017-18">
+          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2017/12/winter-break-priorities-2017-18">
               <h2 class="p-name">Winter break priorities, 2017-18</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-              <time datetime="2017-12-20T17:44:18-05:00"><a href="/blog/2017/12/">December</a> 20, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/personal/" class="p-category">personal</a>. Last edited 
+            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
+              <time datetime="2017-12-20T17:44:18-05:00"><a href="/blog/2017/12/">December</a> 20, <a href="/blog/2017/">2017</a></time> in <a class="p-category" href="/blog/category/personal/">personal</a>. Last edited 
               <time datetime="2017-12-29T02:57:23.000-07:00">December 29, 2017</time>.
             </p>
             <div class="e-content"><p>So I just wanted to write something up real fast to document my development priorities over my upcoming winter break (which starts tomorrow, whoohoo!). This is just generally useful to have, because I'm forgetful, but will also help keep me accountable since the list is public.</p>
@@ -143,10 +143,10 @@ $PAGER longfile.txt
             </div>
           </article>
           <hr/>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/12/pump.io-5.1-is-in-beta">
+          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2017/12/pump.io-5.1-is-in-beta">
               <h2 class="p-name">pump.io 5.1 is in beta</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/12/pump.io-5.1-is-in-beta">here</a> on 
-              <time datetime="2017-12-08T20:24:57-05:00"><a href="/blog/2017/12/">December</a> 8, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/pump.io/" class="p-category">pump.io</a> and <a href="/blog/category/releases/" class="p-category">releases</a>. Last edited 
+            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/12/pump.io-5.1-is-in-beta">here</a> on 
+              <time datetime="2017-12-08T20:24:57-05:00"><a href="/blog/2017/12/">December</a> 8, <a href="/blog/2017/">2017</a></time> in <a class="p-category" href="/blog/category/pump.io/">pump.io</a> and <a class="p-category" href="/blog/category/releases/">releases</a>. Last edited 
               <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
             </p>
             <div class="e-content"><p>I'm really excited to announce that pump.io 5.1 is officially in beta!</p>
@@ -164,10 +164,10 @@ $PAGER longfile.txt
             </div>
           </article>
           <hr/>
-          <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry"><a href="/blog/2017/11/webmention-test-post">
+          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2017/11/webmention-test-post">
               <h2 class="p-name">Webmention test post</h2></a>
-            <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-              <time datetime="2017-11-24T20:24:46-05:00"><a href="/blog/2017/11/">November</a> 24, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/development/" class="p-category">development</a>
+            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
+              <time datetime="2017-11-24T20:24:46-05:00"><a href="/blog/2017/11/">November</a> 24, <a href="/blog/2017/">2017</a></time> in <a class="p-category" href="/blog/category/development/">development</a>
             </p>
             <div class="e-content"><p>Once again I need to test whether <a href="https://github.com/strugee/lazymention">lazymention</a> - and more importantly, the underlying libraries (<a href="https://github.com/strugee/node-send-webmention">node-send-webmention</a> and <a href="https://github.com/strugee/node-get-webmention-url">node-get-webmention-url</a>) - complies with the <a href="https://www.w3.org/TR/webmention/">W3C spec</a>. I'll be using <a href="https://webmention.rocks/">webmention.rocks</a>, so, here's a large list of links:</p>
 <p><a href="https://webmention.rocks/test/1">Test 1</a>, <a href="https://webmention.rocks/test/2">Test 2</a>, <a href="https://webmention.rocks/test/3">Test 3</a>, <a href="https://webmention.rocks/test/4">Test 4</a>, <a href="https://webmention.rocks/test/5">Test 5</a>, <a href="https://webmention.rocks/test/6">Test 6</a>, <a href="https://webmention.rocks/test/7">Test 7</a>, <a href="https://webmention.rocks/test/8">Test 8</a>, <a href="https://webmention.rocks/test/9">Test 9</a>, <a href="https://webmention.rocks/test/10">Test 10</a>, <a href="https://webmention.rocks/test/11">Test 11</a>, <a href="https://webmention.rocks/test/12">Test 12</a>, <a href="https://webmention.rocks/test/13">Test 13</a>, <a href="https://webmention.rocks/test/14">Test 14</a>, <a href="https://webmention.rocks/test/15">Test 15</a>, <a href="https://webmention.rocks/test/16">Test 16</a>, <a href="https://webmention.rocks/test/17">Test 17</a>, <a href="https://webmention.rocks/test/18">Test 18</a>, <a href="https://webmention.rocks/test/19">Test 19</a>, <a href="https://webmention.rocks/test/20">Test 20</a>, <a href="https://webmention.rocks/test/21">Test 21</a>, <a href="https://webmention.rocks/test/22">Test 22</a>, <a href="https://webmention.rocks/test/23/page">Test 23</a></p>

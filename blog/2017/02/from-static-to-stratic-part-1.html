@@ -51,7 +51,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
         <h1 id="topheader">strugee.net</h1>
         <nav id="navbar">
           <ul>
-            <li id="navlabel" class="navlink">Nav &nbsp;::</li>
+            <li class="navlink" id="navlabel">Nav &nbsp;::</li>
             <li class="navlink"><a href="/">Home</a></li>
             <li class="navlink"><a href="/services">Services</a></li>
             <li class="navlink"><a href="/projects/">Projects</a></li>
@@ -63,10 +63,10 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
         </nav>
       </header>
       <div id="content">
-        <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" class="h-entry">
+        <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
           <h1 class="p-name">From static to Stratic - part 1</h1>
-          <p class="post-metadata">Published by <a href="https://strugee.net/" rel="author" class="p-author h-card">AJ Jordan</a> on 
-            <time datetime="2017-02-20T14:58:53-05:00"><a href="/blog/2017/02/">February</a> 20, <a href="/blog/2017/">2017</a></time> in <a href="/blog/category/development/" class="p-category">development</a> and <a href="/blog/category/stratic/" class="p-category">stratic</a>
+          <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
+            <time datetime="2017-02-20T14:58:53-05:00"><a href="/blog/2017/02/">February</a> 20, <a href="/blog/2017/">2017</a></time> in <a class="p-category" href="/blog/category/development/">development</a> and <a class="p-category" href="/blog/category/stratic/">stratic</a>
           </p>
           <div class="e-content"><p>So a couple days ago I published <code>generator-stratic@1.0.0-beta.1</code> to npm. Since Stratic is now officially in beta, I thought I'd write up a guide to converting a regular, static site to a Stratic-powered blog.</p>
 <p>Each step in this blog post (part 1 of 2[?]) will take you closer to having a fully-functional blog, but because of Stratic's decoupled design, you can work through them at your own pace. Each step will leave you with a functional environment (i.e. nothing will be "broken" such that you can't work on your website anymore).</p>
@@ -91,7 +91,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>Since Alyssa uses GitHub she publishes her website on GitHub Pages, so her website is in the <code>master</code> branch of her git repository. (Here we're assuming that the repository is called <code>aphacker.github.io</code> or something, instead of <code>static-to-stratic</code>.)</p>
 <p>In addition to adding blog support, we'll improve Alyssa's website by reducing duplication while still allowing her to publish to GitHub Pages.</p>
 <h3 id="step-1---adding-gulp">Step 1 - adding gulp</h3>
-<p>Before we do anything else, we need to add a build system. Stratic is designed to work with <a href="">gulpjs</a>, so that's the one we'll be using.</p>
+<p>Before we do anything else, we need to add a build system. Stratic is designed to work with [gulpjs][], so that's the one we'll be using.</p>
 <p>Adding gulp is super easy. First, we need to create a <code>package.json</code>, so we do <code>npm init</code>:</p>
 <pre><code>% npm init
 This utility will walk you through creating a package.json file.

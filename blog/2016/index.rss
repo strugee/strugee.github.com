@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[strugee.net blog - 2016]]></title><description><![CDATA[strugee.net blog - 2016]]></description><link>https://strugee.net/blog/2016</link><generator>stratic-indexes-to-rss</generator><lastBuildDate>Fri, 14 Dec 2018 08:09:02 GMT</lastBuildDate><atom:link href="https://strugee.net/blog/2016/index.rss" rel="self" type="application/rss+xml"/><copyright><![CDATA[© Copyright 2012-2018 AJ Jordan. Available under the GNU Affero GPL.]]></copyright><webMaster><![CDATA[AJ Jordan <alex@strugee.net>]]></webMaster><item><title><![CDATA[Where we're headed (a.k.a. I'm worried)]]></title><description><![CDATA[<p>(These are some thoughts I've had after reading <a href="http://www.nytimes.com/2016/12/14/nyregion/donald-trump-democrats-lawsuits.html?_r=0">To Combat Trump, Democrats Ready a G.O.P. Tactic: Lawsuits</a> in the New York Times.)</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[strugee.net blog - 2016]]></title><description><![CDATA[strugee.net blog - 2016]]></description><link>https://strugee.net/blog/2016</link><generator>stratic-indexes-to-rss</generator><lastBuildDate>Sat, 26 Jan 2019 09:30:54 GMT</lastBuildDate><atom:link href="https://strugee.net/blog/2016/index.rss" rel="self" type="application/rss+xml"/><copyright><![CDATA[© Copyright 2012-2018 AJ Jordan. Available under the GNU Affero GPL.]]></copyright><webMaster><![CDATA[AJ Jordan <alex@strugee.net>]]></webMaster><item><title><![CDATA[Where we're headed (a.k.a. I'm worried)]]></title><description><![CDATA[<p>(These are some thoughts I've had after reading <a href="http://www.nytimes.com/2016/12/14/nyregion/donald-trump-democrats-lawsuits.html?_r=0">To Combat Trump, Democrats Ready a G.O.P. Tactic: Lawsuits</a> in the New York Times.)</p>
 <p>I'm worried.</p>
 <p>I'm worried about my country.</p>
 <p>Believe it or not, I'm not talking about Trump. Of course he's horrible, and he's something to be seriously worried about, but I think he's really only a symptom of a much deeper issue in America, which is this: we are in an arms race with ourselves. (One might also describe it as civil war.)</p>
@@ -19,23 +19,17 @@
 <h2>General guidelines</h2>
 <ul>
 <li>Don't talk to police</li>
-<li>
-<p>If possible, leave your phone at home</p>
-<ul>
+<li>If possible, leave your phone at home<ul>
 <li>If this isn't possible, leave your phone in Airplane Mode or even better, turn it off. <strong>It is not enough to not post anything; you cannot connect to the cell network <em>at all</em>.</strong> See <a href="https://en.wikipedia.org/wiki/IMSI-catcher">IMSI catchers</a>.</li>
 <li>Use a passcode on your phone - this gives you a better position under the 5th Amendment for resisting a search of your phone</li>
 <li>If police try to force you to give up the passcode of your phone, they are probably breaking the law</li>
 <li><strong>Disable fingerprint unlock</strong>, as <a href="http://time.com/3558936/fingerprint-password-fifth-amendment/">police are legally allowed to force you to unlock the phone via your fingerprint</a> (note: this link is insecure; consider visiting it in <a href="https://www.torproject.org/">Tor Browser</a>)</li>
-<li>
-<p>Make sure full-disk encryption is enabled on your phone</p>
-<ul>
+<li>Make sure full-disk encryption is enabled on your phone<ul>
 <li>iPhone users: this is already on if you're using iOS 8 or later</li>
 <li>Android users: this is often enabled by default, but you should check by going to Settings &gt; Security and looking under "Encryption"</li>
 <li>Windows Phone users: not available. Leave your phone at home.</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
 <li>Do not bring laptops or tablets - the 5th Amendment protections above <a href="https://www.cnet.com/news/doj-we-can-force-you-to-decrypt-that-laptop/">do <em>not</em> necessarily apply</a> to these devices, so they can be seized and searched even without a warrant</li>
 <li><a href="https://www.youtube.com/watch?v=d-7o9xYp7eE"><strong>Seriously do <em>not</em> talk to the police</strong></a></li>
 <li>Use strong encryption for everything you do online</li>
@@ -77,7 +71,7 @@
 <p>Note that this release includes security improvements - namely, a newer Express version and a better TLS configuration - and therefore <strong>admins are encouraged to upgrade ASAP</strong>.</p>
 <p>For the full list of changes, see <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#204---2016-11-13">the change log</a>.</p>
 <h3>Breaking changes</h3>
-<p>(As I said in <a href="https://strugee.net/blog/">the beta announcement</a>:)</p>
+<p>(As I said in [the beta announcement][0]:)</p>
 <p>Pump.io 2.0.4 is a drop-in replacement for 1.0.0 <strong>unless</strong> you have any plugins configured or you modify the templates.</p>
 <p>Plugins are likely to be affected by the upgrade to Express 3.x. The easiest way to migrate is probably to just run pump.io, test out the relevant parts of the app, and see where your plugin crashes. You might also want to look at the <a href="https://github.com/expressjs/express/blob/master/History.md#300--2012-10-23">Express 3 change log</a>.</p>
 <p>If you modified the templates, you'll be affected by the templates' rewrite from utml into Jade. Migration should be relatively painless but has to be done manually. Your best bet will be to save a copy of the diff you created, undo your changes, upgrade, then use the diff you saved to reintroduce your changes. You'll have to run <code>npm run build</code> after making changes to Jade files.</p>
