@@ -40,7 +40,16 @@ along with strugee.net.  If not, see <http://www.gnu.org/licenses/>.
 	</url>
 
 	<url>
+		<loc>https://strugee.net/talks</loc>
+	</url>
+	<url>
 		<loc>https://strugee.net/gpg</loc>
+	</url>
+	<url>
+		<loc>https://strugee.net/contact</loc>
+	</url>
+	<url>
+		<loc>https://strugee.net/blog/</loc>
 	</url>
 	<url>
 		<loc>https://strugee.net/cryptoparty-seattle/</loc>
