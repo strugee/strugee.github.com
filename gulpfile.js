@@ -143,7 +143,12 @@ var rss = exports.rss = function rss() {
 var ping = exports.ping = pingLazymention('http://strugee.net:7517/jobs/submit', 'https://strugee.net/blog/');
 
 var misc = exports.misc = function misc() {
-	return gulp.src(['COPYING', 'src/misc/*', 'src/misc/.*'])
+	return gulp.src(['COPYING', 'src/misc/**/*', 'src/misc/.*'])
+	           .pipe(rename(function(path) {
+	           	if (path.dirname === 'well-known') path.dirname = '.well-known';
+	           	// This next one isn't *really* needed, but it keeps a useless empty directory out of dist/
+	           	if (path.basename === 'well-known') path.basename = '.well-known';
+	           }))
 	           .pipe(gulp.dest('dist'));
 };
 
