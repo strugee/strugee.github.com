@@ -11,6 +11,8 @@ categories:
   - development
   - releases
   - pump.io
+aggregators:
+  lobsters: https://lobste.rs/s/qzkoqp/pump_io_2_0_0_beta_is_here
 ---
 
 Greetings!

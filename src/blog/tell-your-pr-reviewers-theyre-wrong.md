@@ -11,6 +11,8 @@ categories:
   - tips
   - culture
   - blaggregator
+aggregators:
+  lobsters: https://lobste.rs/s/k5jtsd/tell_your_pr_reviewers_they_re_wrong
 ---
 
 Have you ever submitted a Pull Request and had the maintainer give you feedback that says something is wrong? This is of course, perfectly natural, and is why we do Pull Request reviews in the first place. But have you ever thought it was actually the _maintainer_ doing the review who was wrong?

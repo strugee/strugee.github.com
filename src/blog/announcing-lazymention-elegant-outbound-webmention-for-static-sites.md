@@ -14,6 +14,8 @@ categories:
   - blaggregator
 syndicate:
   - indienews
+aggregators:
+  lobsters: https://lobste.rs/s/kip3yk/announcing_lazymention_elegant
 ---
 
 Last night I hit publish on version 1.0.0 of a new project, [lazymention][]! Whoohoo!

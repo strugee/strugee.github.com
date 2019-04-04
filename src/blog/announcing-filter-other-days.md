@@ -13,6 +13,8 @@ categories:
   - sysadmin
   - releases
   - blaggregator
+aggregators:
+  lobsters: https://lobste.rs/s/kfav4c/filter_other_days_artificial_ignorance
 ---
 
 I've just published version 1.0 of my latest project, `filter-other-days` - a shell script to filter logfiles for today's date in an Artificial Ignorance-compatible way.
