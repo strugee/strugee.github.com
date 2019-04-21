@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--
+© Copyright 2012-2018 AJ Jordan
+This file is part of strugee.net.
+strugee.net is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+strugee.net is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!-- Made and coded by AJ Jordan-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="preload" href="https://members.internetdefenseleague.org/include/?url=&amp;campaign=&amp;variant=modal">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css" title="Original gray">
+    <link rel="author" href="/humans.txt"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <script src="/js/main.js" defer></script>
+    <title>Make ReCaptcha's &quot;I'm not a robot&quot; accurate - strugee.net</title>
+    <link rel="preconnect" href="https://webmention.io/">
+    <link rel="pingback" href="https://webmention.io/strugee.net/xmlrpc">
+    <link rel="webmention" href="https://webmention.io/strugee.net/webmention">
+    <script src="/js/webmentions.js" defer></script>
+    <!-- IndieWeb components, with <3-->
+    <link rel="me" href="mailto:alex@strugee.net">
+    <link rel="me" href="sms:17607054581">
+    <link rel="me" href="xmpp:alex@strugee.net">
+    <link rel="me" href="https://github.com/strugee">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://pump.strugee.net/alex">
+    <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
+    <link rel="me" href="https://media.strugee.net/u/alex">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://www.instagram.com/strugee2/">
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1 id="topheader">strugee.net</h1>
+        <nav id="navbar">
+          <ul>
+            <li class="navlink" id="navlabel">Nav &nbsp;::</li>
+            <li class="navlink"><a href="/">Home</a></li>
+            <li class="navlink"><a href="/services">Services</a></li>
+            <li class="navlink"><a href="/projects/">Projects</a></li>
+            <li class="navlink"><a href="/talks">Talks</a></li>
+            <li class="navlink"><a href="/gpg">GPG Key</a></li>
+            <li class="navlink"><a href="/contact">Contact</a></li>
+            <li class="navlink"><a href="/blog/">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="content">
+        <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+          <h1 class="p-name">Make ReCaptcha's &quot;I'm not a robot&quot; accurate</h1>
+          <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
+            <time datetime="2019-04-20T22:05:58-04:00"><a href="/blog/2019/04/">April</a> 20, <a href="/blog/2019/">2019</a></time> in <a class="p-category" href="/blog/category/development/">development</a>
+          </p>
+          <div class="e-content"><p>A month or two ago, my friend Evan <a href="https://twitter.com/evanpro/status/1098367574969077761">tweeted</a>:</p>
+<blockquote>
+<p>Fuck reCaptcha.</p>
+<p>I am sick of doing unpaid labour classifying images for Google.</p>
+<p>We need a captcha widget that contributes to the global commons instead of siphoning value into yet another proprietary lockbox.</p>
+</blockquote>
+<p>Frankly I agree. Not only am I being forced to do Google's dirty work, but ReCaptcha is known to make life extremely difficult for Tor users. I've literally spent 15 minutes before trying to solve a stupid captcha and eventually I gave up because Google just wouldn't let me past. ReCaptcha profits off of innocent users who are just trying to go about their business on the web, and Google is exploiting people in order to build a locked-up, proprietary image recognition system. Why are we, the users, not allowed to have access to the fruits of the labor that we are forced to provide for free? Because of this, today I am announcing an advanced, next-generation, cutting-edge platform that is poised to <em>revolutionize</em> this problem space.</p>
+<p>Nah, just kidding (mostly). Inspired by <a href="https://twitter.com/evanpro/status/1098987608020008961">another tweet from Evan</a>, I threw together a browser extension in like 30 minutes that changes "I'm not a robot" to "I want to do unpaid image classification". After a long exchange with the fine folks behind addons.mozilla.org (because my account is so old that when I logged in I hit <a href="https://github.com/mozilla/addons-server/issues/8765">this bug</a> and got 500 Internal Server Error), I've finally sorted out my logins, and today I've uploaded the latest version of this extension to both addons.mozilla.org and the Chrome Web Store. So at least if you're getting screwed by Google, you'll be able to make them be honest about how they're screwing you.</p>
+<p>In the words of the README:</p>
+<blockquote>
+<p>This was Evan Prodromou's idea unless you like it, in which case the idea to follow through and make an actual extension was totally all mine.</p>
+</blockquote>
+<p>I hope people enjoy this extension! <em>Make ReCaptcha's "I'm not a robot" accurate</em> is available as a <a href="https://addons.mozilla.org/en-US/firefox/addon/make-recaptcha-text-accurate/">Firefox extension</a> and as a <a href="https://chrome.google.com/webstore/detail/make-recaptchas-im-not-a/olbjmgkbokabjfaelgogjjllpnfjgdoe">Chrome extension</a>.</p>
+
+          </div>
+        </article>
+        <hr>
+        <p id="webmention-replies-header">WebMention replies</p>
+        <div id="webmentions"></div>
+        <noscript>
+          <p>Couldn't load WebMentions because you turned your JavaScript off. Sorry about that!</p>
+        </noscript>
+      </div>
+      <footer>
+        <p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a rel="license" href="https://github.com/strugee/strugee.github.com">on GitHub</a>. English copy is additionally licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons BY-SA 4.0</a>.</p>
+        <p>&copy; Copyright 2012-2019 AJ Jordan.</p>
+      </footer>
+      <div id="toys" data-turbolinks-permanent><a id="monospace-icon" href="javascript:void(0);" aria-label="Tilde button to enable monospace-style webpage display" title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was &quot;making [their] life&quot; monospace.">~</a><a id="lightbulb-icon" href="javascript:void(0);" aria-label="Lightbulb button to enable dark webpage display">
+          <div class="icon-lightbulb"></div></a></div>
+      <script data-turbolinks-eval="false">
+        window._idl = {};
+        _idl.variant = "modal";
+        (function() {
+        	var idl = document.createElement('script');
+        	idl.async = true;
+        	idl.src = 'https://members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'modal');
+        	document.getElementsByTagName('body')[0].appendChild(idl);
+        })();
+      </script>
+    </div>
+  </body>
+</html>

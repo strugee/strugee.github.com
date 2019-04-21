@@ -63,6 +63,46 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "development"</h2>
+          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2016/05/stratic-part-one">
+              <h2 class="p-name">Stratic part one is done!</h2></a>
+            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
+              <time datetime="2016-05-28T14:09:38-08:00"><a href="/blog/2016/05/">May</a> 28, <a href="/blog/2016/">2016</a></time> in <a class="p-category" href="/blog/category/development/">development</a>, <a class="p-category" href="/blog/category/releases/">releases</a> and <a class="p-category" href="/blog/category/stratic/">stratic</a>. Last edited 
+              <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
+            </p>
+            <div class="e-content"><p>Whooooooooooo!</p>
+<p>I am so, so, <em>so</em> thrilled to announce that the first part of <a href="https://github.com/strugee/generator-stratic">Stratic</a> is complete! And you can see the result right here on strugee.net, since this blog post was generated with Stratic!</p>
+<p><strong>tl;dr</strong>:</p>
+<pre><code>var rename = require('gulp-rename');
+var markdown = require('gulp-markdown');
+var parse = require('stratic-parse-header');
+var straticToJson = require('stratic-post-to-json-data');
+var jadeTemplate = require('gulp-jade-template');
+var dateInPath = require('stratic-date-in-path');
+
+gulp.task('posts', function() {
+    return gulp.src('src/blog/*.md')
+               .pipe(parse())
+               .pipe(markdown())
+               .pipe(dateInPath())
+               .pipe(straticToJson())
+               .pipe(jadeTemplate('src/blog/post.jade'))
+               .pipe(rename({ extname: '.html' }))
+               .pipe(gulp.dest('dist/blog'));
+});
+</code></pre>
+<p>How <em>gorgeous</em> is that?? Let me explain how it works. (I'll assume the reader is familiar with <a href="https://github.com/gulpjs/gulp">Gulp</a> and <a href="https://nodejs.org/en/">Node.js</a>.)</p>
+<p>So the <code>gulp.src()</code> call is pretty obvious. We just read all the blog posts into the stream. Note, however, that <code>gulp.src()</code> doesn't stream text, per se - it streams <a href="https://github.com/gulpjs/vinyl">Vinyl</a> file objects. This will become important later.</p>
+<p>Now, the first piece of custom Stratic code that we use is the <code>stratic-parse-header</code> module. This module takes a Markdown file with a standard Stratic header (see <a href="https://strugee.net/blog/2014/11/new-blog-new-site">my original announcement</a> for details), parses the header, strips it out, then returns the new, headerless Markdown. However, the new Vinyl file object has a couple of new properties from the parsing phase - specifically, <code>file.title</code>, <code>file.author</code>, <code>file.time</code>, and <code>file.categories</code> now exist. This is why the fact that Vinyl is used is important - now <em>any</em> Gulp plugin downstream from where <code>parse()</code> is run can use all of these values in whatever way it wants. (See <a href="https://github.com/strugee/stratic-parse-header/blob/master/README.md">the README</a> for more details.)</p>
+<p>Now our Vinyl file object is <em>only</em> the content of the post, and it has additional Stratic metadata attached to it. Awesome! The next thing that we do is render the Markdown, just using a standard Gulp plugin for this. Easy breezy. After that, we pipe to the <code>stratic-date-in-path</code> module, which adds the year and month to paths. For example, without <code>stratic-date-in-path</code>, this blog post would be at <code>https://strugee.net/blog/stratic-part-one</code>. However, since I <em>do</em> use <code>stratic-date-in-path</code>, the post lives at <code>https://strugee.net/blog/2016/05/stratic-part-one</code> instead. Nice, right? Eventually I'll write code to generate pretty indexes for each year and month - that's what Stratic part 2 is for.</p>
+<p>The next thing we do is pipe to the <code>stratic-post-to-json-data</code> module. This module is specifically designed to work with the <code>gulp-jade-template</code> module, which expects the file contents to be some JSON that will be given as data to a <a href="http://jade-lang.com/">Jade</a> template, whose rendered HTML becomes the new file contents. What sets up that JSON? You guessed it - <code>stratic-post-to-json-data</code>. That's all it does. It just creates an object that contains the metadata and the actual post text, runs it through <code>JSON.stringify()</code>, and sets the file contents equal to the result. Just how <code>gulp-jade-template</code> likes it.</p>
+<p>And with that, we've successfully rendered a blog post. Whooooooooooo! I'm so pumped about this software. The call to <code>rename()</code> is just a little housekeeping, and then we write the whole thing back to disk with <code>gulp.dest()</code>. Awesome.</p>
+<p>It's worth noting that the real beauty in this code isn't what the code actually does, but the extreme modularity of the whole thing. Unlike projects like <a href="https://jekyllrb.com/">Jekyll</a> or even <a href="http://wintersmith.io/">Wintersmith</a>, this isn't a giant, monolithic framework. It's all standard Node and Gulp. Note how (for example) we didn't need a custom plugin for Markdown - we just used the standard <code>gulp-markdown</code>. Don't like Markdown? No problem. Write something to extract post metadata from your preferred format, replace <code>parse()</code> with that and <code>markdown()</code> with a different renderer, and you're golden. All the rest will continue to work the <em>exact</em> same - adding dates to paths, rendering the template, etc. - because everything's decoupled from everything else. Each component can be trivially swapped out and replaced with something new and better, and the rest of the system continues to work. Gorgeous.</p>
+<p>I've got to go now, but I'm not done blogging. I'll be back soon to talk about the work going on in <a href="http://pump.io/">pump.io</a>, and I'll be back (much?) later to talk about Stratic part two (aka, pretty indexes).</p>
+<p>Whooooooooooooooooooooo!</p>
+
+            </div>
+          </article>
+          <hr/>
           <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2015/11/programming-as-an-art-form">
               <h2 class="p-name">Programming as an art form</h2></a>
             <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 

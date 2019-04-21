@@ -63,6 +63,28 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "development"</h2>
+          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2019/04/make-recaptchas-im-not-a-robot-accurate">
+              <h2 class="p-name">Make ReCaptcha's &quot;I'm not a robot&quot; accurate</h2></a>
+            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
+              <time datetime="2019-04-20T22:05:58-04:00"><a href="/blog/2019/04/">April</a> 20, <a href="/blog/2019/">2019</a></time> in <a class="p-category" href="/blog/category/development/">development</a>
+            </p>
+            <div class="e-content"><p>A month or two ago, my friend Evan <a href="https://twitter.com/evanpro/status/1098367574969077761">tweeted</a>:</p>
+<blockquote>
+<p>Fuck reCaptcha.</p>
+<p>I am sick of doing unpaid labour classifying images for Google.</p>
+<p>We need a captcha widget that contributes to the global commons instead of siphoning value into yet another proprietary lockbox.</p>
+</blockquote>
+<p>Frankly I agree. Not only am I being forced to do Google's dirty work, but ReCaptcha is known to make life extremely difficult for Tor users. I've literally spent 15 minutes before trying to solve a stupid captcha and eventually I gave up because Google just wouldn't let me past. ReCaptcha profits off of innocent users who are just trying to go about their business on the web, and Google is exploiting people in order to build a locked-up, proprietary image recognition system. Why are we, the users, not allowed to have access to the fruits of the labor that we are forced to provide for free? Because of this, today I am announcing an advanced, next-generation, cutting-edge platform that is poised to <em>revolutionize</em> this problem space.</p>
+<p>Nah, just kidding (mostly). Inspired by <a href="https://twitter.com/evanpro/status/1098987608020008961">another tweet from Evan</a>, I threw together a browser extension in like 30 minutes that changes "I'm not a robot" to "I want to do unpaid image classification". After a long exchange with the fine folks behind addons.mozilla.org (because my account is so old that when I logged in I hit <a href="https://github.com/mozilla/addons-server/issues/8765">this bug</a> and got 500 Internal Server Error), I've finally sorted out my logins, and today I've uploaded the latest version of this extension to both addons.mozilla.org and the Chrome Web Store. So at least if you're getting screwed by Google, you'll be able to make them be honest about how they're screwing you.</p>
+<p>In the words of the README:</p>
+<blockquote>
+<p>This was Evan Prodromou's idea unless you like it, in which case the idea to follow through and make an actual extension was totally all mine.</p>
+</blockquote>
+<p>I hope people enjoy this extension! <em>Make ReCaptcha's "I'm not a robot" accurate</em> is available as a <a href="https://addons.mozilla.org/en-US/firefox/addon/make-recaptcha-text-accurate/">Firefox extension</a> and as a <a href="https://chrome.google.com/webstore/detail/make-recaptchas-im-not-a/olbjmgkbokabjfaelgogjjllpnfjgdoe">Chrome extension</a>.</p>
+
+            </div>
+          </article>
+          <hr/>
           <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2018/05/pump.io-5.1.1-docker-images-and-node-4">
               <h2 class="p-name">pump.io 5.1.1, Docker images, and sunsetting Node 4 support</h2></a>
             <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2018/05/pump.io-5.1.1-docker-images-and-node-4">here</a> on 
@@ -186,18 +208,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <p>lazymention is super easy to get started with, especially because I've provided thorough documentation in the <a href="https://github.com/strugee/lazymention/blob/master/README.md">README</a>. If you find anything that's confusing or missing, please let me know by <a href="https://github.com/strugee/lazymention/issues/new">filing an issue</a>! I'd love to get it fixed. In fact, I'd be thrilled to hear about both positive <em>and</em> negative installation experiences.</p>
 <p>Oh, and one more thing - lazymention is reusable in other applications. If you're writing a Node.js app and want to reuse its HTTP API, you can use its embedding API to get at the Express application and <code>Router</code> used internally. I'm not sure if people will actually find this useful, but I wrote it just for kicks anyway. See <a href="https://github.com/strugee/lazymention/blob/master/README.md#embedding">the embedding documentation</a> for more!</p>
 <p>Cheers, and happy mentioning! Elegant outbound Webmention for static sites is here.</p>
-
-            </div>
-          </article>
-          <hr/>
-          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2017/11/webmention-test-post">
-              <h2 class="p-name">Webmention test post</h2></a>
-            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
-              <time datetime="2017-11-24T20:24:46-05:00"><a href="/blog/2017/11/">November</a> 24, <a href="/blog/2017/">2017</a></time> in <a class="p-category" href="/blog/category/development/">development</a>
-            </p>
-            <div class="e-content"><p>Once again I need to test whether <a href="https://github.com/strugee/lazymention">lazymention</a> - and more importantly, the underlying libraries (<a href="https://github.com/strugee/node-send-webmention">node-send-webmention</a> and <a href="https://github.com/strugee/node-get-webmention-url">node-get-webmention-url</a>) - complies with the <a href="https://www.w3.org/TR/webmention/">W3C spec</a>. I'll be using <a href="https://webmention.rocks/">webmention.rocks</a>, so, here's a large list of links:</p>
-<p><a href="https://webmention.rocks/test/1">Test 1</a>, <a href="https://webmention.rocks/test/2">Test 2</a>, <a href="https://webmention.rocks/test/3">Test 3</a>, <a href="https://webmention.rocks/test/4">Test 4</a>, <a href="https://webmention.rocks/test/5">Test 5</a>, <a href="https://webmention.rocks/test/6">Test 6</a>, <a href="https://webmention.rocks/test/7">Test 7</a>, <a href="https://webmention.rocks/test/8">Test 8</a>, <a href="https://webmention.rocks/test/9">Test 9</a>, <a href="https://webmention.rocks/test/10">Test 10</a>, <a href="https://webmention.rocks/test/11">Test 11</a>, <a href="https://webmention.rocks/test/12">Test 12</a>, <a href="https://webmention.rocks/test/13">Test 13</a>, <a href="https://webmention.rocks/test/14">Test 14</a>, <a href="https://webmention.rocks/test/15">Test 15</a>, <a href="https://webmention.rocks/test/16">Test 16</a>, <a href="https://webmention.rocks/test/17">Test 17</a>, <a href="https://webmention.rocks/test/18">Test 18</a>, <a href="https://webmention.rocks/test/19">Test 19</a>, <a href="https://webmention.rocks/test/20">Test 20</a>, <a href="https://webmention.rocks/test/21">Test 21</a>, <a href="https://webmention.rocks/test/22">Test 22</a>, <a href="https://webmention.rocks/test/23/page">Test 23</a></p>
-<p>Hopefully it works \o/</p>
 
             </div>
           </article>
