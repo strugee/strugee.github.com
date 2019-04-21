@@ -3,6 +3,9 @@ title: "Make ReCaptcha's \"I'm not a robot\" accurate"
 time:
   epoch: 1555812358
   utcoffset: "UTC-4"
+edited:
+  epoch: 1555817510
+  utcoffset: "UTC-4"
 author: "AJ Jordan"
 categories:
   - development
