@@ -55,6 +55,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
             <li class="navlink"><a href="/talks">Talks</a></li>
             <li class="navlink"><a href="/gpg">GPG Key</a></li>
             <li class="navlink"><a href="/contact">Contact</a></li>
+            <li class="navlink"><a href="https://liberapay.com/strugee/">Tip me</a></li>
             <li class="navlink"><a href="/blog/">Blog</a></li>
           </ul>
         </nav>
@@ -75,6 +76,9 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h3><a href="https://github.com/strugee/filter-other-days">filter-other-days</a></h3>
           <p>Filter for today's date in logfiles in an Artificial Ignorance-compatible way. Or in other words, make sure you never miss logs from today, even if you forget about stuff or if <code>filter-other-days</code> can't handle your logfile format.</p>
           <p>You can read more about the background of and impetus for this design <a href="/blog/2017/10/announcing-filter-other-days">on my blog</a>.</p>
+          <h3><a href="https://github.com/strugee/recaptcha-unpaid-labor">Make ReCaptcha's "I'm not a robot" accurate extension</a></h3>
+          <p>Correct the "I'm not a robot" text of ReCaptcha to be more accurate - the new-and-improved version says "I want to do unpaid image classification". ReCaptcha sucks for lots of reasons - it's annoying, arbitrary, and extremely hostile to Tor users - but this is the only problem fixable in a WebExtension.</p>
+          <p>You can read more about the background for this extension <a href="/blog/2019/04/make-recaptchas-im-not-a-robot-accurate">on my blog</a>, or you can skip directly to installing it <a href="https://addons.mozilla.org/en-US/firefox/addon/make-recaptcha-text-accurate/">in Firefox</a> or <a href="https://chrome.google.com/webstore/detail/make-recaptchas-im-not-a/olbjmgkbokabjfaelgogjjllpnfjgdoe">in Chrome</a>.</p>
           <h3><a href="https://nodecompat.com">nodecompat.com</a></h3>
           <p>In <a href="http://pump.io">pump.io</a> we needed to look into what Node versions different Linux distributions ship, so we could figure out when we could drop support for old Node versions. So I went and looked at a bunch of distribution sites, put all the data into a nice JSON file, wrote some nice <a href="http://jade-lang.com/">Jade</a> to display it, and put it up on <a href="https://nodecompat.com">nodecompat.com</a>.</p>
           <p>Eventually, I'll add a neat JS-powered selector that lets you interactively filter distros and versions based on what Node versions you're willing to support and/or what distributions you know you <em>have</em> to support. In the meantime, though, the site fufills its original purpose. Hence, "completed".</p>
@@ -87,8 +91,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <h3><a href="https://offandonagain.org">offandonagain.org</a></h3>
           <p>For those times when you just gotta ask: have they tried turning it off and on again? Returns random GIFs (mostly). Conceived during the week of Open Source Bridge 2017.</p>
           <p>The source (and more documentation) is <a href="https://github.com/strugee/offandonagain.org">on GitHub</a>. The <a href="https://github.com/strugee/node-serve-random">underlying module</a> is too.</p>
-          <h3><a href="https://isthefieldcontrolsystemdown.com">Is The Field Control System Down?</a></h3>
-          <p>Once I was at an FTC event where the Field Control System was down for about two hours. While I was waiting in the stands, I bought the domain for this website, created the web page in GitHub's web interface (because I was using a tablet), and SSH'd into my server and deployed it.</p>
           <h3><a href="https://github.com/strugee/gh-pages-bootstrap">gh-pages-bootstrap</a></h3>
           <p>Recreate the URL scheme that GitHub Pages gives you, to avoid breaking links if you move to your own server. Currently it's a little aggressive (it deploys forks, which GitHub Pages does not) and could use some more features, but it gets the job done. Written primarily because I had this exact problem when moving to steevie.</p>
         </section>
@@ -105,11 +107,9 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <p>In March 2017 the relay crashed due to an unresolvable boot problem - I took this as an opportunity to properly configure the relay from scratch as well as switch to FreeBSD to improve the network diversity. I brought the new relay online August 5th 2017. Its configuration is version-controlled <a href="https://github.com/strugee/torrc">on GitHub</a>.</p>
         </section>
         <section>
-          <h2>Incomplete projects</h2>
+          <h2>Projects on the back-burner</h2>
           <h3><a href="fractured-reality/">Fractured Reality</a></h3>
           <p>An exploration game like no other.</p>
-          <h3><a href="https://github.com/strugee/icalc">icalc</a></h3>
-          <p>Terrible interactive calculator. Quoting from the <code>icalc(1)</code> manpage: &quot;Don't use this. I wrote it to learn C, Make and troff. It's terrible and you almost certainly want <code>bc(1)</code> instead.&quot;</p>
           <h3><a href="https://github.com/strugee/emergence-story">emergence-story</a></h3>
           <p>Experimental story software that utilizes the concept of emergence.</p>
         </section>
