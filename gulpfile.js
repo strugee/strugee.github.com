@@ -175,7 +175,8 @@ var deploy = exports.deploy = gulp.series(build, function(done) {
 });
 
 var watch = exports.watch = gulp.parallel(build, function watch() {
-	gulp.watch('src/*.pug', html);
+	// XXX should pick up subdirectories automatically
+	gulp.watch(['src/*.pug', 'src/projects/*.pug'], html);
 	gulp.watch(['src/blog/*.md', 'src/blog/*.pug'], blog);
 	gulp.watch('src/includes/*.pug', gulp.parallel(html, blog));
 	gulp.watch(['src/styles/*.styl', 'src/styles/lib/*.styl'], css);
