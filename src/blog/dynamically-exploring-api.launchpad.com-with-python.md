@@ -19,7 +19,7 @@ Then I hit on an idea. Lots of those pages talked about [launchpadlib][], the Py
 
 After a while of poking at it in the REPL, I had a few lines of code in the REPL that were giving me the data I wanted, in the right format. Exactly what those lines were I can't remember, since it was a couple months ago (and to be honest I'm feeling lazy and don't want to go digging for them in my REPL history). That's okay though, because they're not that interesting anyway. What's really interesting is what I realized next: somewhere, _launchpadlib was actually making the **exact** request I wanted to make_. So what if I just found that place?
 
-Turns out that launchpadlib uses [Requests][], the de-facto standard HTTP library in the Python world. 
+Turns out that launchpadlib uses [Requests][], the de-facto standard HTTP library in the Python world. Requests in turn uses a library called `urllib3`, and `urllib3` will automatically log all requests it makes out of the boc.
 
  [count-your-issues]: 
  [Launchpad]: https://launchpad.net/
