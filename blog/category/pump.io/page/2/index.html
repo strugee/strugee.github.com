@@ -64,6 +64,45 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       <div id="content">
         <div class="h-feed">
           <h2 class="p-name">Posts categorized as "pump.io"</h2>
+          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2017/08/zero-downtime-restarts-have-landed">
+              <h2 class="p-name">Zero-downtime restarts have landed</h2></a>
+            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/08/zero-downtime-restarts-have-landed">here</a> on 
+              <time datetime="2017-08-18T02:01:16-07:00"><a href="/blog/2017/08/">August</a> 18, <a href="/blog/2017/">2017</a></time> in <a class="p-category" href="/blog/category/pump.io/">pump.io</a>
+            </p>
+            <div class="e-content"><p>I'm thrilled to announce that zero-downtime restarts, which I've been hacking on for the past week or two, <a href="https://github.com/pump-io/pump.io/pull/1406">have just landed</a> in pump.io master!</p>
+<p>Zero-downtime restarts require at least two cluster workers and MongoDB as a Databank driver (we'll eventually relax the latter requirement as we continue to test the feature). Here's how it works:</p>
+<ol>
+<li>An administrator sends SIGUSR2 to the master pump.io process (note that SIGUSR1 is <a href="https://nodejs.org/api/process.html#process_signal_events">reserved by Node.js</a>)</li>
+<li>The master process builds a queue of worker processes that need to be restarted</li>
+<li>The master process picks a random worker from the queue and sends it a signal asking it to gracefully shut down</li>
+<li>The worker process shuts down its HTTP server, which causes it to stop accepting new connections - it will do the same for the bounce server, if applicable</li>
+<li>The worker shuts down its database connection once the HTTP server is completely shut down, meaning that it's done servicing in-flight requests</li>
+<li>The worker closes its connection with the master process and Node.js automatically terminates due to there being no listeners on the event loop</li>
+<li>The master recognizes the death of the worker process, replaces it, waits for the new worker to signal that it's listening for connections, and repeats from step 3 until the queue is empty</li>
+</ol>
+<p>This works because only one worker is shut down at a time, allowing the other workers to continue servicing requests while the one worker is restarted. We wait until the new worker actually signals it's ready to process requests before beginning the process for another worker.</p>
+<p>Such a feature requires careful error handling, so there are a lot of built-in checks to prevent administrators from shooting themselves in the foot:</p>
+<ul>
+<li>If there's a restart already in progress, SIGUSR2 is ignored</li>
+<li>If there's only 1 cluster worker, the restart request is refused (because there would be downtime and you should just restart the master)</li>
+<li>The master process will load a magic number from the <em>new</em> code and compare it with the <em>old</em> magic number loaded when the master process started - if they don't match, SIGUSR2 will be refused. This number will be incremented for things that would make zero-downtime restarts cause problems, for example:<ul>
+<li>The logic in the master process itself changing</li>
+<li>Cross-process logic changing, such that a new worker communicating with old workers would cause problems</li>
+<li>Database changes</li>
+</ul></li>
+<li>If a worker process doesn't shut itself down within 30 seconds, it will be killed</li>
+<li>If a zero-downtime restart fails for any reason, the master process will refuse SIGUSR2 and will not respawn any more cluster workers, even if they crash - this is because something must have gone <em>seriously</em> wrong, either with the master, the workers, or the new code, and it's better to just restart everything. Currently this condition occurs when:<ul>
+<li>A new worker died directly after being spawned (e.g. from invalid JSON in <code>pump.io.json</code>)</li>
+<li>A new worker signaled that it couldn't bind to the appropriate ports</li>
+</ul></li>
+</ul>
+<p>While these checks do a lot to catch problems, they're not a silver bullet, and we strongly recommend that administrators watch their logs as they trigger restarts. However, this is still a <em>huge</em> win for the admin experience - the most exciting part of this for me is that it's the first step we need to take towards having fully automatic updates, which has been a dream of mine for a long while now.</p>
+<p>Admins running from git master can start experimenting with this feature today, and it will be released during the <em>next</em> release cycle - i.e. with the 5.1 beta and stable, <em>not</em> the current 5.0 beta. Since this is highly experimental, we want this to have as much time for testing as possible. You can also check out the <a href="https://pumpio.readthedocs.io/en/latest/administration/zero-downtime-restarts.html">official documentation</a> on this feature.</p>
+<p>I hope people enjoy this! And as always, feel free to <a href="https://github.com/pump-io/pump.io/issues/new">report any bugs</a>.</p>
+
+            </div>
+          </article>
+          <hr/>
           <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2017/08/pump.io-5.0-beta-released">
               <h2 class="p-name">pump.io 5.0 beta released</h2></a>
             <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2017/08/pump.io-5.0-beta-released">here</a> on 
@@ -156,53 +195,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <h2>Looking forward</h2>
 <p>The Express 4.x upgrade is a big change, and it's definitely possible that stuff has broken. We want to make sure that breakage doesn't make it into production. This change went into pump.io 4.0, which will go through our normal <a href="https://github.com/pump-io/pump.io/wiki/Release-cycle">release cycle</a>. That means it'll be in beta for a month before being released. As a part of that, <a href="https://jxself.org/">Jason Self</a> - who's kind enough to administer <a href="https://datamost.com/">Datamost</a> - has agreed to have a test day where Datamost upgrades to the beta for a day, then downgrade it again. This test day will give us much wider exposure than we would've gotten otherwise, which will be incredibly valuable feedback in the effort to identify and fix regressions. We haven't set a date yet, but if you'd like to join Jason in helping us find bugs, please get in touch with <a href="https://github.com/pump-io/pump.io/wiki/Community">the community</a>. We'd love your help.</p>
 <p>Beyond the immediate release, though, there's still things to look forward to. Express 4.x gives us a better way to structure routing code, and a refactor to use this structure <a href="https://github.com/pump-io/pump.io/issues/1232">is planned</a>. There's a lot of room for improvement. But really, the most important benefit is this: technical debt is a far less pressing issue than before. That means that we can shift focus and spend more time fixing user-facing bugs, adding useful features, and generally improving the experience for our users. I couldn't be more excited.</p>
-
-            </div>
-          </article>
-          <hr/>
-          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2016/11/pump.io-2.0.1-is-available">
-              <h2 class="p-name">Pump.io 2.0.4 is available</h2></a>
-            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
-              <time datetime="2016-11-11T23:49:14-08:00"><a href="/blog/2016/11/">November</a> 11, <a href="/blog/2016/">2016</a></time> in <a class="p-category" href="/blog/category/development/">development</a>, <a class="p-category" href="/blog/category/releases/">releases</a> and <a class="p-category" href="/blog/category/pump.io/">pump.io</a>. Last edited 
-              <time datetime="2018-01-11T20:10:06.000-07:00">January 11, 2018</time>.
-            </p>
-            <div class="e-content"><p>Greetings!</p>
-<p>After a beta period of just over a week, pump.io 2.0.4 is now available on npm and GitHub. Whoohoo!</p>
-<p>(This was originally going to be 2.0.0, but we had to do a couple patch releases due to some outdated documentation and several critical bugs. 2.0.4 is mostly the same thing as 2.0.0.)</p>
-<h3>Changes</h3>
-<p>Note that this release includes security improvements - namely, a newer Express version and a better TLS configuration - and therefore <strong>admins are encouraged to upgrade ASAP</strong>.</p>
-<p>For the full list of changes, see <a href="https://github.com/pump-io/pump.io/blob/master/CHANGELOG.md#204---2016-11-13">the change log</a>.</p>
-<h4>Breaking changes</h4>
-<p>(As I said in [the beta announcement][0]:)</p>
-<p>Pump.io 2.0.4 is a drop-in replacement for 1.0.0 <strong>unless</strong> you have any plugins configured or you modify the templates.</p>
-<p>Plugins are likely to be affected by the upgrade to Express 3.x. The easiest way to migrate is probably to just run pump.io, test out the relevant parts of the app, and see where your plugin crashes. You might also want to look at the <a href="https://github.com/expressjs/express/blob/master/History.md#300--2012-10-23">Express 3 change log</a>.</p>
-<p>If you modified the templates, you'll be affected by the templates' rewrite from utml into Jade. Migration should be relatively painless but has to be done manually. Your best bet will be to save a copy of the diff you created, undo your changes, upgrade, then use the diff you saved to reintroduce your changes. You'll have to run <code>npm run build</code> after making changes to Jade files.</p>
-<h4>Non-breaking changes</h4>
-<p>This release is actually relatively minor in terms of non-breaking changes; however, we <em>do</em> have some nice new improvements:</p>
-<ul>
-<li>A pump(1) manpage is now included</li>
-<li>Any internal web UI link with a <code>data-bypass</code> attribute is now ignored by the routing logic (useful for e.g. custom pages added by the admin)</li>
-<li>YouTube links in posts are now shown as  embeds by the web UI (<a href="https://github.com/expressjs/express/blob/master/History.md#300--2012-10-23">#1158</a>)</li>
-<li>TLS connections now use Mozilla's "intermediate" cipher suite and forces server cipher suite preferences (<a href="https://github.com/pump-io/pump.io/issues/1061">#1061</a>)</li>
-<li>Various minor fixes and improvements</li>
-</ul>
-<h3>Upgrading</h3>
-<p>Upgrading is dead-simple. If you used our recommended install method, and installed from npm, you can upgrade with:</p>
-<pre><code>sudo npm install -g pump.io@2
-</code></pre>
-<p>If you installed from source, you can upgrade with:</p>
-<pre><code>git fetch
-# If you modified templates, save the diff at this step
-git checkout .
-git checkout v2.0.4
-npm install
-# Restore your template changes
-npm run lint:jade # Optional but recommended if you changed templates
-npm run build
-</code></pre>
-<p>Both of these methods will work whether you're running 0.3.0, 1.0.0, or 2.0.0 beta. Make sure to restart pump.io after performing the upgrade.</p>
-<h3>Getting help</h3>
-<p>If you have any issues with the upgrade, get in touch with <a href="https://github.com/pump-io/pump.io/wiki/Community">the community</a>. You can also email me at <a href="mailto:alex@strugee.net">alex@strugee.net</a>.</p>
 
             </div>
           </article>

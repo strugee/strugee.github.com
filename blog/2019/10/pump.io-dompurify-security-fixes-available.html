@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--
+© Copyright 2012-2018 AJ Jordan
+This file is part of strugee.net.
+strugee.net is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+strugee.net is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!-- Made and coded by AJ Jordan-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="preload" href="https://members.internetdefenseleague.org/include/?url=&amp;campaign=&amp;variant=modal">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css" title="Original gray">
+    <link rel="author" href="/humans.txt"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <script src="/js/main.js" defer></script>
+    <title>pump.io DOMPurify security fixes available - strugee.net</title>
+    <link rel="preconnect" href="https://webmention.io/">
+    <link rel="pingback" href="https://webmention.io/strugee.net/xmlrpc">
+    <link rel="webmention" href="https://webmention.io/strugee.net/webmention">
+    <script src="/js/webmentions.js" defer></script>
+    <!-- IndieWeb components, with <3-->
+    <link rel="me" href="mailto:alex@strugee.net">
+    <link rel="me" href="sms:17607054581">
+    <link rel="me" href="xmpp:alex@strugee.net">
+    <link rel="me" href="https://github.com/strugee">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://pump.strugee.net/alex">
+    <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
+    <link rel="me" href="https://media.strugee.net/u/alex">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://www.instagram.com/strugee2/">
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1 id="topheader">strugee.net</h1>
+        <nav id="navbar">
+          <ul>
+            <li class="navlink" id="navlabel">Nav &nbsp;::</li>
+            <li class="navlink"><a href="/">Home</a></li>
+            <li class="navlink"><a href="/services">Services</a></li>
+            <li class="navlink"><a href="/projects/">Projects</a></li>
+            <li class="navlink"><a href="/talks">Talks</a></li>
+            <li class="navlink"><a href="/gpg">GPG Key</a></li>
+            <li class="navlink"><a href="/contact">Contact</a></li>
+            <li class="navlink"><a href="https://liberapay.com/strugee/">Tip me</a></li>
+            <li class="navlink"><a href="/blog/">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="content">
+        <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+          <h1 class="p-name">pump.io DOMPurify security fixes available</h1>
+          <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2019/10/pump.io-dompurify-security-fixes-available">here</a> on 
+            <time datetime="2019-10-15T18:28:01-04:00"><a href="/blog/2019/10/">October</a> 15, <a href="/blog/2019/">2019</a></time> in <a class="p-category" href="/blog/category/pump.io/">pump.io</a>, <a class="p-category" href="/blog/category/development/">development</a>, <a class="p-category" href="/blog/category/security/">security</a> and <a class="p-category" href="/blog/category/releases/">releases</a>
+          </p>
+          <div class="e-content"><p>Recently the cross-site-scripting sanitization library that pump.io uses, <a href="https://github.com/cure53/DOMPurify">DOMPurify</a>, published several security advisories for mXSS vulnerabilities affecting browsers based on the Blink rendering engine - you can find the latest one, for example, <a href="https://lists.ruhr-uni-bochum.de/pipermail/dompurify-security/2019-October/000012.html">here</a>. As we've done in the past, the pump.io project is publishing security releases to ensure that everyone is using the latest version of DOMPurify. Per our <a href="https://github.com/pump-io/pump.io/wiki/Security">security support policy</a>, we are providing patches for the current stable release and the previous stable release:</p>
+<ol>
+<li>pump.io 5.1.2 has been updated to pump.io 5.1.3</li>
+<li>pump.io 5.0.2 has been updated to pump.io 5.0.3</li>
+</ol>
+<p>As these are security releases we encourage administrators to upgrade as soon as possible. Both 5.1.3 and 5.0.3 are drop-in replacements for their predecessors. If you have pump.io 5.1 installed via npm - our recommended configuration - you can upgrade with:</p>
+<pre><code>$ npm install -g pump.io@5
+</code></pre>
+<p>If you're on pump.io 5.0, we recommend that you also run the above command to upgrade to 5.1 - it's a drop-in replacement for 5.0. However, if you want to stick with 5.0 for the time being, you can install a patched version with:</p>
+<pre><code>$ npm install -g pump.io@5.0
+</code></pre>
+<p>Note that if you have a source-based install, the above commands won't work and you will need to upgrade however you usually do - this will depend on how exactly you have pump.io set up.</p>
+<p>If you need help, or if you have questions about these security releases, get in touch with <a href="https://github.com/pump-io/pump.io/wiki/Community">the community</a>.</p>
+
+          </div>
+        </article>
+        <hr>
+        <p id="webmention-replies-header">WebMention replies</p>
+        <div id="webmentions"></div>
+        <noscript>
+          <p>Couldn't load WebMentions because you turned your JavaScript off. Sorry about that!</p>
+        </noscript>
+      </div>
+      <footer>
+        <p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a rel="license" href="https://github.com/strugee/strugee.github.com">on GitHub</a>. English copy is additionally licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons BY-SA 4.0</a>.</p>
+        <p>&copy; Copyright 2012-2019 AJ Jordan.</p>
+      </footer>
+      <div id="toys" data-turbolinks-permanent><a id="monospace-icon" href="javascript:void(0);" aria-label="Tilde button to enable monospace-style webpage display" title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was &quot;making [their] life&quot; monospace.">~</a><a id="lightbulb-icon" href="javascript:void(0);" aria-label="Lightbulb button to enable dark webpage display">
+          <div class="icon-lightbulb"></div></a></div>
+      <script data-turbolinks-eval="false">
+        window._idl = {};
+        _idl.variant = "modal";
+        (function() {
+        	var idl = document.createElement('script');
+        	idl.async = true;
+        	idl.src = 'https://members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'modal');
+        	document.getElementsByTagName('body')[0].appendChild(idl);
+        })();
+      </script>
+    </div>
+  </body>
+</html>
