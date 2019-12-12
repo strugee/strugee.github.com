@@ -2,14 +2,13 @@
 title: "filter-other-days 1.1.0 and 2.0.0 are now available"
 time:
   epoch: 1576104324
-  utcoffset: "UTC-4"
+  utcoffset: "UTC-5"
 author: "AJ Jordan"
 categories:
   - development
   - releases
   - sysadmin
   - blaggregator
-draft: true
 ---
 
 I'm pleased to announce that `filter-other-days` 1.1.0 and 2.0.0 are now available. In fact, they were both released simultaneously over three weeks ago while I was at [SeaGL](https://seagl.org/), but things at college have been so hectic I'm only just finding time to write about them! If you're not already familiar with `filter-other-days` - which provides reliable, Artificial Ignorance-compatible logfile date filtering even in the face of unknown formats - I would encourage you to read my blog post [introducing the tool for the first time](https://strugee.net/blog/2017/10/announcing-filter-other-days). Or, if you read this post late enough, you could even watch video of the [talk I gave at SeaGL](https://osem.seagl.org/conferences/seagl2019/program/proposals/682), which talks about `filter-other-days` before pivoting into a broader discussion of the kind of runaway complexity `filter-other-days` is designed to address.
