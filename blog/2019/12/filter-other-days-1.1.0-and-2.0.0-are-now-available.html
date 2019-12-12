@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+© Copyright 2012-2018 AJ Jordan
+This file is part of strugee.net.
+strugee.net is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+strugee.net is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<!-- Made and coded by AJ Jordan-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="preload" href="https://members.internetdefenseleague.org/include/?url=&amp;campaign=&amp;variant=modal">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css" title="Original gray">
+    <link rel="author" href="/humans.txt"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
+    <script src="/js/main.js" defer></script>
+    <title>filter-other-days 1.1.0 and 2.0.0 are now available - strugee.net</title>
+    <link rel="preconnect" href="https://webmention.io/">
+    <link rel="pingback" href="https://webmention.io/strugee.net/xmlrpc">
+    <link rel="webmention" href="https://webmention.io/strugee.net/webmention">
+    <script src="/js/webmentions.js" defer></script>
+    <!-- IndieWeb components, with <3-->
+    <link rel="me" href="mailto:alex@strugee.net">
+    <link rel="me" href="sms:17607054581">
+    <link rel="me" href="xmpp:alex@strugee.net">
+    <link rel="me" href="https://github.com/strugee">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://pump.strugee.net/alex">
+    <link rel="me" href="https://pod.strugee.net/people/82e1c9a030600133e0ca20474782d58c">
+    <link rel="me" href="https://media.strugee.net/u/alex">
+    <link rel="me" href="https://twitter.com/strugee2">
+    <link rel="me" href="https://plus.google.com/+AlexJordan">
+    <link rel="me" href="https://www.instagram.com/strugee2/">
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1 id="topheader">strugee.net</h1>
+        <nav id="navbar">
+          <ul>
+            <li class="navlink" id="navlabel">Nav &nbsp;::</li>
+            <li class="navlink"><a href="/">Home</a></li>
+            <li class="navlink"><a href="/services">Services</a></li>
+            <li class="navlink"><a href="/projects/">Projects</a></li>
+            <li class="navlink"><a href="/talks">Talks</a></li>
+            <li class="navlink"><a href="/gpg">GPG Key</a></li>
+            <li class="navlink"><a href="/contact">Contact</a></li>
+            <li class="navlink"><a href="https://liberapay.com/strugee/">Tip me</a></li>
+            <li class="navlink"><a href="/blog/">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="content">
+        <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+          <h1 class="p-name">filter-other-days 1.1.0 and 2.0.0 are now available</h1>
+          <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
+            <time datetime="2019-12-11T17:45:24-05:00"><a href="/blog/2019/12/">December</a> 11, <a href="/blog/2019/">2019</a></time> in <a class="p-category" href="/blog/category/development/">development</a>, <a class="p-category" href="/blog/category/releases/">releases</a> and <a class="p-category" href="/blog/category/sysadmin/">sysadmin</a>
+          </p>
+          <div class="e-content"><p>I'm pleased to announce that <code>filter-other-days</code> 1.1.0 and 2.0.0 are now available. In fact, they were both released simultaneously over three weeks ago while I was at <a href="https://seagl.org/">SeaGL</a>, but things at college have been so hectic I'm only just finding time to write about them! If you're not already familiar with <code>filter-other-days</code> - which provides reliable, Artificial Ignorance-compatible logfile date filtering even in the face of unknown formats - I would encourage you to read my blog post <a href="https://strugee.net/blog/2017/10/announcing-filter-other-days">introducing the tool for the first time</a>. Or, if you read this post late enough, you could even watch video of the <a href="https://osem.seagl.org/conferences/seagl2019/program/proposals/682">talk I gave at SeaGL</a>, which talks about <code>filter-other-days</code> before pivoting into a broader discussion of the kind of runaway complexity <code>filter-other-days</code> is designed to address.</p>
+<p>1.1.0 and 2.0.0 are both feature releases. Due to <code>filter-other-days</code> 2.0.0 breaking compatibility with OpenBSD, I'm providing 1.1.0 which contains everything that <code>filter-other-days</code> 2.0.0 does <em>except</em> for the feature that breaks OpenBSD support - localization in the logfile filters. (Localization does not and to my knowledge cannot work on OpenBSD because OpenBSD does not support the POSIX features that <code>filter-other-days</code>' localization relies on.)</p>
+<p>Here are the highlights of the engineering that both 1.1.0 and 2.0.0 share:</p>
+<ul>
+<li><code>filter-other-days -d</code> operates on any day instead of the current date on supported systems</li>
+<li><code>filter-other-days</code> is portable to OpenBSD, NetBSD, OpenIndiana and OmniOS (i.e. illumos), and Cygwin</li>
+<li>GNU <code>seq</code> is no longer required; the only requirement for core functionality is now POSIX</li>
+<li>Several bugs have been fixed</li>
+<li>Release artifacts are built <a href="https://reproducible-builds.org/">reproducibly</a></li>
+<li>Automated testing has been improved</li>
+</ul>
+<p>Note that <code>filter-other-days -d</code> <em>does</em> require more than POSIX - it needs a system with either GNU <code>date -d</code> semantics or BSD <code>date -r</code> semantics. This is because POSIX does not provide enough support to implement this feature otherwise. If your system does not support either of these, <code>filter-other-days</code> will simply turn the feature off. You can check if <code>-d</code> is available by looking for it in the help output - it will show up only if the system supports it.</p>
+<p>In addition to the above, <code>filter-other-days</code> 2.0.0 <em>also</em> includes support for filtering logfiles in different locales. This means that if your system logs things like month names in languages other than English, <code>filter-other-days</code> will now be able to process these logs! <code>filter-other-days</code> will automatically use the C locale (which is mandated to be available by POSIX) and will additionally use the locale defined by the <code>$LANG</code> environment variable, if set. You can also specify more locales to be loaded by specifiying the <code>-l</code> command line flag. <code>filter-other-days</code> extracts the information it needs using specific keywords in the system locales, which means that if you want <code>filter-other-days</code> to load a particular locale to filter with, you need to have that locale installed.</p>
+<p>Unfortunately, there's one more complication: some systems are buggy and do not have keywords that properly conform to POSIX. <a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=237752">FreeBSD 12.0 and below</a> as well as <a href="https://gnats.netbsd.org/cgi-bin/query-pr-single.pl?number=54693">NetBSD</a> are known to have these bugs. Since these systems are relatively popular, I am providing patched versions of <code>filter-other-days</code> that will work around these bugs. You can recognize these versions because they have <code>freebsd</code> in the tarball filename. They will also tell you they've been patched for FreeBSD (and NetBSD) in all relevant places, like the version output and the manpage.</p>
+<p>So, to summarize what version to use:</p>
+<ul>
+<li>If you're on OpenBSD, use 1.1.0</li>
+<li>If you're on FreeBSD 12.0 or below, or on NetBSD, use 2.0.0 with FreeBSD patches</li>
+<li>Otherwise, use the unpatched 2.0.0 tarballs</li>
+</ul>
+<p>I hope these releases of <code>filter-other-days</code> are useful to people! I'm super proud of them and I couldn't be more excited for people to try them out. And as always, feel free to <a href="https://github.com/strugee/filter-other-days/issues">report any bugs</a> you find!</p>
+
+          </div>
+        </article>
+        <hr>
+        <p id="webmention-replies-header">WebMention replies</p>
+        <div id="webmentions"></div>
+        <noscript>
+          <p>Couldn't load WebMentions because you turned your JavaScript off. Sorry about that!</p>
+        </noscript>
+      </div>
+      <footer>
+        <p>You may find the source code for this website, licensed to you under the GNU Affero GPL, <a rel="license" href="https://github.com/strugee/strugee.github.com">on GitHub</a>. English copy is additionally licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons BY-SA 4.0</a>.</p>
+        <p>&copy; Copyright 2012-2019 AJ Jordan.</p>
+      </footer>
+      <div id="toys" data-turbolinks-permanent><a id="monospace-icon" href="javascript:void(0);" aria-label="Tilde button to enable monospace-style webpage display" title="Inspired by a forgotten-by-me tilde.club member who (~droob?) was &quot;making [their] life&quot; monospace.">~</a><a id="lightbulb-icon" href="javascript:void(0);" aria-label="Lightbulb button to enable dark webpage display">
+          <div class="icon-lightbulb"></div></a></div>
+      <script data-turbolinks-eval="false">
+        window._idl = {};
+        _idl.variant = "modal";
+        (function() {
+        	var idl = document.createElement('script');
+        	idl.async = true;
+        	idl.src = 'https://members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'modal');
+        	document.getElementsByTagName('body')[0].appendChild(idl);
+        })();
+      </script>
+    </div>
+  </body>
+</html>

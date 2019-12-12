@@ -25,7 +25,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
     <link rel="stylesheet" href="/css/main.css" title="Original gray">
     <link rel="author" href="/humans.txt"><!--[if gte IE 8]> <link rel="stylesheet" href="/css/ie9.css"> <![endif]-->
     <script src="/js/main.js" defer></script>
-    <title>Posts from 2019 - strugee.net</title>
+    <title>Posts from December 2019 - strugee.net</title>
     <!-- TODO: apparently this technically isn't allowed to be relative but it seems to work fine, soooo...-->
     <link rel="alternate" type="application/rss+xml" href="index.rss">
     <!-- IndieWeb components, with <3-->
@@ -63,9 +63,7 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
       </header>
       <div id="content">
         <div class="h-feed">
-          <h2 class="p-name">Posts from 2019</h2>
-          <p id="postsFrom">Show only posts from <a href="/blog/2019/12/">December</a> <a href="/blog/2019/04/">April</a> <a href="/blog/2019/10/">October</a> 
-          </p>
+          <h2 class="p-name">Posts from December 2019</h2>
           <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2019/12/filter-other-days-1.1.0-and-2.0.0-are-now-available">
               <h2 class="p-name">filter-other-days 1.1.0 and 2.0.0 are now available</h2></a>
             <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
@@ -92,53 +90,6 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
 <li>Otherwise, use the unpatched 2.0.0 tarballs</li>
 </ul>
 <p>I hope these releases of <code>filter-other-days</code> are useful to people! I'm super proud of them and I couldn't be more excited for people to try them out. And as always, feel free to <a href="https://github.com/strugee/filter-other-days/issues">report any bugs</a> you find!</p>
-
-            </div>
-          </article>
-          <hr/>
-          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2019/10/pump.io-dompurify-security-fixes-available">
-              <h2 class="p-name">pump.io DOMPurify security fixes available</h2></a>
-            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> and cross-posted from <a href="http://pump.io/blog/2019/10/pump.io-dompurify-security-fixes-available">here</a> on 
-              <time datetime="2019-10-15T18:28:01-04:00"><a href="/blog/2019/10/">October</a> 15, <a href="/blog/2019/">2019</a></time> in <a class="p-category" href="/blog/category/pump.io/">pump.io</a>, <a class="p-category" href="/blog/category/development/">development</a>, <a class="p-category" href="/blog/category/security/">security</a> and <a class="p-category" href="/blog/category/releases/">releases</a>
-            </p>
-            <div class="e-content"><p>Recently the cross-site-scripting sanitization library that pump.io uses, <a href="https://github.com/cure53/DOMPurify">DOMPurify</a>, published several security advisories for mXSS vulnerabilities affecting browsers based on the Blink rendering engine - you can find the latest one, for example, <a href="https://lists.ruhr-uni-bochum.de/pipermail/dompurify-security/2019-October/000012.html">here</a>. As we've done in the past, the pump.io project is publishing security releases to ensure that everyone is using the latest version of DOMPurify. Per our <a href="https://github.com/pump-io/pump.io/wiki/Security">security support policy</a>, we are providing patches for the current stable release and the previous stable release:</p>
-<ol>
-<li>pump.io 5.1.2 has been updated to pump.io 5.1.3</li>
-<li>pump.io 5.0.2 has been updated to pump.io 5.0.3</li>
-</ol>
-<p>As these are security releases we encourage administrators to upgrade as soon as possible. Both 5.1.3 and 5.0.3 are drop-in replacements for their predecessors. If you have pump.io 5.1 installed via npm - our recommended configuration - you can upgrade with:</p>
-<pre><code>$ npm install -g pump.io@5
-</code></pre>
-<p>If you're on pump.io 5.0, we recommend that you also run the above command to upgrade to 5.1 - it's a drop-in replacement for 5.0. However, if you want to stick with 5.0 for the time being, you can install a patched version with:</p>
-<pre><code>$ npm install -g pump.io@5.0
-</code></pre>
-<p>Note that if you have a source-based install, the above commands won't work and you will need to upgrade however you usually do - this will depend on how exactly you have pump.io set up.</p>
-<p>If you need help, or if you have questions about these security releases, get in touch with <a href="https://github.com/pump-io/pump.io/wiki/Community">the community</a>.</p>
-
-            </div>
-          </article>
-          <hr/>
-          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2019/04/make-recaptchas-im-not-a-robot-accurate">
-              <h2 class="p-name">Make ReCaptcha's &quot;I'm not a robot&quot; accurate</h2></a>
-            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> on 
-              <time datetime="2019-04-20T22:05:58-04:00"><a href="/blog/2019/04/">April</a> 20, <a href="/blog/2019/">2019</a></time> in <a class="p-category" href="/blog/category/development/">development</a>. Last edited 
-              <time datetime="2019-04-20T23:31:50.000-04:00">April 20, 2019</time>.
-            </p>
-            <div class="e-content"><p>A month or two ago, my friend Evan <a href="https://twitter.com/evanpro/status/1098367574969077761">tweeted</a>:</p>
-<blockquote>
-<p>Fuck reCaptcha.</p>
-<p>I am sick of doing unpaid labour classifying images for Google.</p>
-<p>We need a captcha widget that contributes to the global commons instead of siphoning value into yet another proprietary lockbox.</p>
-</blockquote>
-<p>Frankly I agree. Not only am I being forced to do Google's dirty work, but ReCaptcha is known to make life extremely difficult for Tor users. I've literally spent 15 minutes before trying to solve a stupid captcha and eventually I gave up because Google just wouldn't let me past. ReCaptcha profits off of innocent users who are just trying to go about their business on the web, and Google is exploiting people in order to build a locked-up, proprietary image recognition system. Why are we, the users, not allowed to have access to the fruits of the labor that we are forced to provide for free? Because of this, today I am announcing an advanced, next-generation, cutting-edge platform that is poised to <em>revolutionize</em> this problem space.</p>
-<p>Nah, just kidding (mostly). Inspired by <a href="https://twitter.com/evanpro/status/1098987608020008961">another tweet from Evan</a>, I threw together a browser extension in like 30 minutes that changes "I'm not a robot" to "I want to do unpaid image classification". After a long exchange with the fine folks behind addons.mozilla.org (because my account is so old that when I logged in I hit <a href="https://github.com/mozilla/addons-server/issues/8765">this bug</a> and got 500 Internal Server Error), I've finally sorted out my logins, and today I've uploaded the latest version of this extension to both addons.mozilla.org and the Chrome Web Store. So at least if you're getting screwed by Google, you'll be able to make them be honest about how they're screwing you. Here's a screenshot:</p>
-<p><img src="/images/recaptcha-screenshot.jpg" alt="Screenshot of a test page with Google ReCaptcha on it; &#x22;I&#x27;m not a robot&#x22; has been replaced with &#x22;I would like to do unpaid image classification&#x22;"></p>
-<p>Also, for some extra irony, I took the icon from Google's Apache 2.0-licensed <a href="https://material.io/tools/icons/?search=image_search&#x26;icon=image_search&#x26;style=baseline">Material Design icon set</a>. If someone feels like contributing a real icon, I would probably replace the current icon with it. (I would also be happy to take translations into different languages!)</p>
-<p>In the words of the README:</p>
-<blockquote>
-<p>This was Evan Prodromou's idea unless you like it, in which case the idea to follow through and make an actual extension was totally all mine.</p>
-</blockquote>
-<p>I hope people enjoy this extension! <em>Make ReCaptcha's "I'm not a robot" accurate</em> is available as a <a href="https://addons.mozilla.org/en-US/firefox/addon/make-recaptcha-text-accurate/">Firefox extension</a> and as a <a href="https://chrome.google.com/webstore/detail/make-recaptchas-im-not-a/olbjmgkbokabjfaelgogjjllpnfjgdoe">Chrome extension</a>, and the source is published <a href="https://github.com/strugee/recaptcha-unpaid-labor">on GitHub</a>.</p>
 
             </div>
           </article>
