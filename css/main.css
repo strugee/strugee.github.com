@@ -194,6 +194,11 @@ hr {
 .talk-title {
   font-size: 24.5px;
 }
+.talk-subtitle {
+  font-size: 20px;
+  margin-top: -18px;
+  color: #595959;
+}
 .small-robotics-presentation,
 .rc-presentation {
   display: inline-block;

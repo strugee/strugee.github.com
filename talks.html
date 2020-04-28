@@ -148,6 +148,15 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           <p>Available in <a href="https://strugee.net/presentation-straticjs">slide form</a> and <a href="https://github.com/strugee/presentation-straticjs">source form</a>, as well as on <a href="https://www.youtube.com/watch?v=a9l-FmSgyt8">YouTube</a>.</p>
         </blockquote>
         <hr>
+        <h2 class="talk-title" id="chaosinthesystem">Chaos in the System</h2>
+        <h3 class="talk-subtitle">Why simple solutions don't work when they should</h3>
+        <blockquote class="talk-description">
+          <p>This talk will critically examine the current state of computing through the lens of a highly-portable POSIX shell script I wrote, <code>filter-other-days</code>. The problem that <code>filter-other-days</code> is solving is seemingly simple: find all log entries on the entire system from the current date. But because of modern systems' complexity as well as applications' tendency to use disparate logging systems, we need to turn to a counter-intuitive solution: filtering out all other dates from the logs, which is what <code>filter-other-days</code> does.</p>
+          <p>This seems perverse. I supposedly control most boxes on which I run <code>filter-other-days</code>, and yet I don't have enough control over them to solve this problem without the backwards approach <code>filter-other-days</code> takes. Using examples from <code>filter-other-days</code> we will briefly discuss the broader problem of UNIX portability and how hard it is to make a shell script reliably run everywhere before diving into an even larger problem that <code>filter-other-days</code> is emblematic of: our inability to understand and control the complexity of our own computing systems. At the end of the session I will present some ideas for possible ways to start thinking about the portability and complexity problems, and then facilitate an audience discussion around the same. Active participation is highly encouraged.</p>
+          <p>Presented at <a href="https://osem.seagl.org/conferences/seagl2019/program/proposals/682">SeaGL 2019</a>.</p>
+          <p>Available in <a href="https://strugee.net/presentation-chaos-in-the-system">slide form</a> and <a href="https://github.com/strugee/presentation-chaos-in-the-system">source form</a>, as well as in video on the <a href="https://archive.org/details/chaos_202001">Internet Archive</a>.</p>
+        </blockquote>
+        <hr>
         <section>
           <h2 id="cryptoparty">CryptoParty Seattle</h2>
           <blockquote>
