@@ -164,7 +164,7 @@ var jshint = exports.jshint = function jshint() {
 
 /* Helper tasks */
 
-var blog = exports.blog = gulp.parallel(exports.posts, postIndex, rss);
+var blog = exports.blog = gulp.parallel(posts, postIndex, rss);
 
 var build = exports.build = gulp.parallel(html, css, js, font, images, blog, misc);
 
