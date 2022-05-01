@@ -96,6 +96,118 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
             </div>
           </article>
           <hr/>
+          <article class="h-entry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><a href="/blog/2014/04/getting-started-with-version-controlled-configuration">
+              <h2 class="p-name">Getting started with version-controlled configurations</h2></a>
+            <p class="post-metadata">Published by <a class="p-author h-card" href="https://strugee.net/" rel="author">AJ Jordan</a> and cross-posted from <a href="https://web.archive.org/web/20150911232841/http://unix.blogoverflow.com/2014/04/getting-started-with-version-controlled-configurations/">here</a> on 
+              <time datetime="2014-04-15T11:00:00-07:00"><a href="/blog/2014/04/">April</a> 15, <a href="/blog/2014/">2014</a></time> in <a class="p-category" href="/blog/category/development/">development</a>, <a class="p-category" href="/blog/category/tips/">tips</a> and <a class="p-category" href="/blog/category/tutorials/">tutorials</a>
+            </p>
+            <div class="e-content"><p>Hey everyone, welcome to the inaugural <a href="https://unix.stackexchange.com/">Unix &#x26; Linux</a> community blog post. Let’s get started.</p>
+<h2>Introduction</h2>
+<p>If you’re like me, you work on many different kinds of computers. I have two <a href="https://en.wikipedia.org/wiki/Darwin_(operating_system)">Darwin</a> machines that I regularly work on; I have about four different installs of <a href="https://archlinux.org/">Arch GNU/Linux</a>, and I am planning to add even more esoteric distributions to one of my boxes. I work in Cygwin. And I have a Debian Sid box, which needs to be converted to something else.</p>
+<p>My point is not that I like distribution-hopping. My point is that many of us use very diverse environments, and even if we don’t use very diverse environments, we all have a <em>lot</em> of environments that we work in. I’m also guessing that most of us here have at least some basic configurations accumulated, and many of us have extremely tricked-out shells. Wouldn’t it be nice if there was a coherent way to manage all of your configurations?</p>
+<p>Enter version control. Not only can you use version control to synchronize your configurations between computers, but you’ll also inherit all the other benefits of (hosted) version control:</p>
+<ul>
+<li>A nice history of everything you’ve ever done to your configurations – and if you write good, proper commit messages, a nice history of why you made those changes!</li>
+<li>The ability to link to your configuration when you’re <a href="https://unix.stackexchange.com/questions/ask">asking for help</a>, so that people can see the overall context of the snippets that you post</li>
+<li>Nice ways to track subprojects (e.g. frameworks like <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>)</li>
+<li>Show off your stuff way more easily</li>
+</ul>
+<p>In this post, I’ll show you how to recreate the <a href="https://github.com/strugee/dots">exact setup</a> that I use to control my configurations. I prefer to use git, but you should be able to adapt most (if not all) of this guide to your preferred VCS. The only reason you might run into trouble is if your VCS has no equivalent of git submodules.</p>
+<h2>The initial import</h2>
+<p>First, create your repository online. The details will, of course, vary depending on what VCS host you use. Personally, I use GitHub, but again, anything will work.</p>
+<p>Next, we need to import all our stuff to the repository. First create a local clone.</p>
+<pre><code>git clone git@github.com:strugee/dots.git
+</code></pre>
+<p>If you don’t like whatever name you chose for the repository, you should rename it now, before you do anything else.</p>
+<pre><code>mv dots configs
+</code></pre>
+<p>Now, copy all the configs that you like into the repository.</p>
+<pre><code>cp .z* configs/ # copies all the zsh stuff
+</code></pre>
+<p>Take care to ensure that you create the directory structure properly and safely. For example, the following is a terrible idea:</p>
+<pre><code>cp -r .gnupg configs/
+</code></pre>
+<p>If you do this, you may accidentally commit <code>.gnupg/secring.gpg</code> into git! This is obviously something that you don’t want to do. Instead, do this:</p>
+<pre><code>mkdir configs/.gnupg
+cp .gnupg/gpg.conf configs/.gnupg/
+</code></pre>
+<p>Another thing that you should definitely watch out for is the <code>.ssh</code> directory, but you may have other tools that store secret data next to config files. Just be smart.</p>
+<p>That’s it! We’re done importing. Now let’s commit.</p>
+<pre><code>cd configs
+git status # double-check what you're commiting
+git commit -m "Initial commit"
+git push
+</code></pre>
+<p>We’re done. Your configuration is live on the internet. There’s just one problem…</p>
+<h2>Hooking up your configurations</h2>
+<p>…and that is that all of your <em>real</em> configurations are separate from your version controlled configurations! If you make changes in one, it won’t do anything to the other.</p>
+<p>When I was originally setting all this up for myself, I put my configurations straight into <code>~</code>. This is a horrible idea for two reasons:</p>
+<ul>
+<li>Every directory that’s a child of your home, indirect or direct, will be considered a part of a git repository, because a parent of that directory (said parent being <code>~</code>) has a <code>.git</code> directory.</li>
+<li>You either risk accidentally introducing tons of crap from your home directory into your repository, or you have to maintain a <a href="https://github.com/strugee/dots/blob/e8d7a133bd852794d8147fdeeab9651145f79409/.gitignore">large and ugly <code>.gitignore</code></a>.</li>
+</ul>
+<p>The solution that I now use is simply symlinking all my configurations into <code>~</code> (or wherever). If you find that this approach incurs too much overhead, you may want to look into a framework to do this for you, as I mention in the “taking it further” section. That being said, I’d encourage you to try simply symlinking, at least at first. It’s surprisingly robust.</p>
+<p>Anyway, creating your symlinks is dead-simple. Watch out for things that fail (you’ll want to remember them; if you’re feeling especially forgetful, redirect <code>stderr</code> to a file or something).</p>
+<pre><code>cd ~
+ln -s configs/.* configs/* .
+</code></pre>
+<p>This will symlink <em>everything</em> that’s in <code>configs/</code> into your home directory. This is probably not exactly what you want, so let’s do some cleanup:</p>
+<pre><code># pwd is still ~
+rm .git # if you don't remove this, git will think that ~ is a repository!
+rm COPYING # license information that doesn't need to be in your home directory
+</code></pre>
+<p>Notice that we haven’t removed <code>.ssh</code> and <code>.gnupg</code>. Why? These (probably) didn’t get symlinked when you ran <code>ln</code> because they’re (probably) already there. You’ll have to fix these manually, along with anything else that failed when you ran <code>ln</code>.</p>
+<pre><code>ln -s configs/.gnupg/gpg.conf .gnupg/
+ln -s configs/.ssh/config .ssh/
+# you'll have a fair amount of stuff in .config; anything that respects XDG_CONFIG_HOME puts stuff there
+ln -s configs/.config/awesome/ .config/awesome
+</code></pre>
+<p>All done! You’re now managing your configurations with git.</p>
+<h2>Adding a framework</h2>
+<p>If you’re like me, you use a framework, like the excellent <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>, or something like <a href="https://github.com/nojhan/liquidprompt">liquidprompt</a>, or whatever other whizzbang what-have-you project you have a preference for. What you’ve probably done right now is simply copied the directory of your framework straight into your repository. This means that whenever your framework updates, you have to commit all the new stuff into your repo. Not only that, but when you clone to a new computer, you have to do some black magic to restore the “repository state” on the new computer, because git automatically ignores any <code>.git</code> directory that isn’t a direct child of the root of your current repository. (It all gets very confusing to talk about at this point.)</p>
+<p>The solution is to use git submodules. If you’ve never used git submodules before, I’d encourage you to read up on them, either by invoking <code>man git-submodule</code> or by reading <a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">the relevant page of Pro Git</a>. I won’t go into details here, since it would just be duplicating information, but the tl;dr is that git submodules let you embed another git repository into your main repository, but in the Right Way(tm).</p>
+<p>Let’s take my old <code>.oh-my-zsh</code> setup and fix it to use git submodules.</p>
+<p>First, we simply get rid of the old stuff.</p>
+<pre><code># pwd is ~
+cd configs/
+rm -r .oh-my-zsh
+</code></pre>
+<p>Then we add it back as a git submodule:</p>
+<pre><code>git submodule add git://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh
+</code></pre>
+<p>And then we commit the result into the repository:</p>
+<pre><code>git add .gitmodules .oh-my-zsh
+git commit
+</code></pre>
+<p>And you’re done! Just push.</p>
+<p>Oh your other computers, you’ll have to initialize the submodule after you pull. This is also super easy. Just run:</p>
+<pre><code>git submodule init # only needs to be run the first time
+git submodule update
+</code></pre>
+<h2>Taking it further</h2>
+<p>There are a number of things that you can do (one of which you <em>should</em> do) to take your version-controlled configurations to the next level.</p>
+<h3>License your stuff (this is the thing that you <em>should</em> do)</h3>
+<p>Your configurations are now public and usable by other people. That means that you should add a license, otherwise people aren’t legally allowed ot reuse your stuff. At risk of starting a flame war, I’ll state that my personal preference for small projects like this is the <a href="http://www.wtfpl.net/">WTFPL</a>.</p>
+<p><em>Please, <strong>please</strong></em> do this. The public thanks you.</p>
+<h3>Getting something to manage it for you</h3>
+<p>There’s a bunch of stuff in our new setup that you need to run manually. You need to pull. If there are new files, you need to link them. If there are submodule updates, you need to run <code>git submodule update</code>. Wouldn’t it be nice if something could do all this for you?</p>
+<p>There are a bunch of solutions to this problem. Some people write makefiles. Some people write shell scripts. Some people use a real framework. It’s all up to you.</p>
+<p>Personally, I used this problem as an excuse to learn to use <code>make</code>. With the <a href="https://github.com/strugee/dots/blob/cd3d2c5b3f54538d87478f2ed56a5bf6ad53fe62/Makefile">Makefile</a> that I’m in the process of writing, I can pull, update my submodules, and reinstall all my symlinks, all with a simple invocation of</p>
+<pre><code>cd configs/
+make
+</code></pre>
+<p>However, like I said, it’s all up to you. If you prefer to use a framework, you should check out <a href="https://github.com/holman/dotfiles">Zach Holman’s dotfiles</a> (he has a <code>Rakefile</code> that helps you manage this stuff), <a href="https://github.com/technicalpickles/homesick">Homesick</a> (which is an even more organized framework), <a href="https://github.com/cowboy/dotfiles">Ben Alman’s dotfiles</a> (which has a more casual, loose organization), <a href="https://github.com/eduardolundgren/dotfiles">Eduardo Lundgren’s dotfiles</a> (which has a Grunt-powered configuration tool), <a href="https://github.com/philips/ghar">ghar</a>, and <a href="https://github.com/RichiH/vcsh">vcsh</a> (this may be especially interesting if you just <em>hate</em> the fact that you have to have a separate directory for your config repo). <a href="https://github.com/freshshell/fresh">fresh</a> is also pretty neat – it’s like a package manager for dotfiles.</p>
+<p>While I haven’t used any of these myself, they’re all excellent projects.</p>
+<h3>Further reading</h3>
+<p><a href="https://dotfiles.github.io/">dotfiles.github.io</a> is an excellent resource for all this stuff (and, in fact, it’s where I pulled the above list of frameworks from). You may also be interested in a <a href="https://github.com/search?q=dots+OR+dotfiles&#x26;type=Repositories&#x26;ref=advsearch&#x26;l=">list of all dotfiles repositories on GitHub</a>, sorted by popularity. <a href="https://web.archive.org/web/20150601022443/http://www.dotfiles.org/">dotfiles.org</a> is also a place where people share dotfiles, albeit in a much less organized fashion. I’ve never used it myself, but I’d encourage you to try it out.</p>
+<h2>Conclusion</h2>
+<p>git is awesome. Configurations are awesome. Sketchy <code>rsync</code> scripts aren’t the best when you could have organization (and history!) instead.</p>
+<p>Good luck and have fun! Let me know in the comments if you run into problems, find new resources, or have anything else to say. (Flames to <code>/dev/null</code>, but constructive criticism welcomed.)</p>
+<p>Thanks to <a href="https://unix.stackexchange.com/users/22222/terdon">@terdon</a> for editing this post prior to publication.</p>
+
+            </div>
+          </article>
+          <hr/>
           <div id="pages-footer">
             <p><a href="../13/">←</a> ⋅ Page 14 out of 14 ⋅ <span class="disabled-arrow">→</span></p>
           </div>
