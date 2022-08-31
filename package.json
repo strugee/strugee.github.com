@@ -19,7 +19,7 @@
     "gulp-attach-to-template": "github:straticjs/gulp-attach-to-template#417309e94db8491a96fd4a52b483f4db7dcc1290",
     "gulp-gray-matter": "^3.0.1",
     "gulp-jshint": "^2.1.0",
-    "gulp-pug": "^4.0.1",
+    "gulp-pug": "^5.0.0",
     "gulp-remark": "^6.0.3",
     "gulp-rename": "^1.2.0",
     "gulp-sort": "^2.0.0",
