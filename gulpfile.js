@@ -171,7 +171,7 @@ var build = exports.build = gulp.parallel(html, css, js, font, images, blog, mis
 var lint = exports.lint = gulp.series(csslint, jshint);
 
 var deploy = exports.deploy = gulp.series(build, function(done) {
-	ghpages.publish(path.join(__dirname, 'dist'), { logger: log, branch: 'master' }, done);
+	ghpages.publish(path.join(__dirname, 'dist'), { logger: log, branch: 'master', dotfiles: true }, done);
 });
 
 var watch = exports.watch = gulp.parallel(build, function watch() {
