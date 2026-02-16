@@ -12,37 +12,35 @@ block content
 	p All of these presentations were built with &lt;3 with 
 		a(href='https://github.com/bespokejs/bespoke') Bespoke.js
 		|  with the exception of "Introduction to Arch Linux" and "Pulling back the curtain with SeaGL's Tech team" (which were written with &lt;3 using LibreOffice Impress).
-	section
-		h2#intro-to-arch-linux.talk-title Introduction to Arch Linux
-		blockquote.talk-description
-			p An introduction to Arch Linux - why it's awesome, how to use the tools that it provides, and how to interact with the community.
-			p The presentation will roughly cover:
-			ul
-				li The Arch Way (basic philosophy of the distro, etc.)
-				li A basic outline of the system installation procedure
-				li How to use pacman, the PACkage MANager, and the AUR, the Arch User Repository (where you get software not in the official repos)
-				li How to engage with the community/get help (and not get flamed)
-		p Presented at 
-			a(href='http://2014.linuxfestnorthwest.org/2014/sessions/introduction-arch-linux') LinuxFest Northwest 2014
-			| .
-		//p Available in 
-			//a(href='TODO') slide form
-			//| .
+
+	h2#seagltech.talk-title Pulling back the curtain with SeaGL Tech
+	blockquote.talk-description
+		p Ever been curious how SeaGL has produced a conference for 10+ years - first in-person, then virtual and hybrid? It takes a lot of hard work, but also a lot of tech!
+		p This talk will give a whirlwind introduction to the free software projects we use to run SeaGL. We'll talk about how the Tech team works with - and benefits greatly from - the broader free software community and maybe even meet some of the humans behind your favorite grassroots conference!
+	p Presented at 
+		a(href='https://osem.seagl.org/conferences/seagl2023/program/proposals/983') SeaGL 2023
+		| .
+	p Available in 
+		a(href='/slides/Pulling back the curtain with SeaGL Tech.odp') slide form
+		| . Video coming soon!
+
 	hr
 
-	section
-		h2#just-do-it.talk-title Just Do It: The Approachability of Free Software for Beginners
-		blockquote.talk-description
-			p We all know that one of free software's greatest strengths is the ability to do whatever you're interested in, without asking for permission. But even though we all know, we don't talk about it that much, and in particular, we don't talk about the significance of what that strength means for those who are just beginning their programming careers.
-			p "Just Do It - The Approachability of Free Software for Beginners" will put forth the idea that the #[em only] tools that are approachable for beginners while still leading to the ability to produce what we would call "high quality" software are all free software tools. It will talk about the ability of free and open source software to inspire curiosity and interest and the role of that curiosity in bringing new programmers into our community. Finally, it will explore some of the areas that this model fails in, and what we can do to fix it.
-		p Presented at 
-			a(href='https://osem.seagl.org/conference/seagl2015/program/proposal/78') SeaGL 2015
-			| .
-		p Available in 
-			a(href='https://strugee.net/presentation-just-do-it') slide form
-			|  and 
-			a(href='https://github.com/strugee/presentation-just-do-it') source form
-			| .
+	h2#chaosinthesystem.talk-title Chaos in the System
+	h3.talk-subtitle Why simple solutions don't work when they should
+	blockquote.talk-description
+		p This talk will critically examine the current state of computing through the lens of a highly-portable POSIX shell script I wrote, #[code filter-other-days]. The problem that #[code filter-other-days] is solving is seemingly simple: find all log entries on the entire system from the current date. But because of modern systems' complexity as well as applications' tendency to use disparate logging systems, we need to turn to a counter-intuitive solution: filtering out all other dates from the logs, which is what #[code filter-other-days] does.
+		p This seems perverse. I supposedly control most boxes on which I run #[code filter-other-days], and yet I don't have enough control over them to solve this problem without the backwards approach #[code filter-other-days] takes. Using examples from #[code filter-other-days] we will briefly discuss the broader problem of UNIX portability and how hard it is to make a shell script reliably run everywhere before diving into an even larger problem that #[code filter-other-days] is emblematic of: our inability to understand and control the complexity of our own computing systems. At the end of the session I will present some ideas for possible ways to start thinking about the portability and complexity problems, and then facilitate an audience discussion around the same. Active participation is highly encouraged.
+	p Presented at 
+		a(href='https://osem.seagl.org/conferences/seagl2019/program/proposals/682') SeaGL 2019
+		| .
+	p Available in 
+		a(href='https://strugee.net/presentation-chaos-in-the-system') slide form
+		|  and 
+		a(href='https://github.com/strugee/presentation-chaos-in-the-system') source form
+		| , as well as in video on the 
+		a(href='https://archive.org/details/chaos_202001') Internet Archive
+		| .
 
 	hr
 
@@ -75,6 +73,23 @@ block content
 		h2.talk-title
 			a(href='https://strugee.net/presentation-cryptography-basics') Cryptography basics
 		p Basics of cryptographic protocol design
+
+	hr
+
+	h2#stratic.talk-title Stratic - the (super-modular) streaming static site generator
+	blockquote.talk-description
+		p Do you like the idea of static site generators - programs that spit out HTML files that can be served by any old webserver, #[em without] invoking a huge steaming pile of PHP - but find that Jekyll is way overcomplicated? Wintersmith too monolithic? Perhaps Pelican isn't flexible enough?
+		p If the above sounds like you, and you appreciate Node.js and the npm ecosystem's preference for small modules (aka the #[a(href='https://en.wikipedia.org/wiki/Unix_philosophy#Doug_McIlroy_on_Unix_programming') Unix Philosophy]), you'll love working with Stratic. This talk will teach you about a new kind of static site generator that, instead of reinventing the world (or wrapping it with brand-new plugins), builds on top of existing npm modules in order to provide you with greater modularity, flexibility, and clarity than any monolithic static site generator can hope to offer. Best of all, there's no steep learning curve: if you already know Gulp.js - and it isn't that hard to pick up - then you already know how to use Stratic.
+	p Presented at 
+		a(href='http://2017.linuxfestnorthwest.org/2017/sessions/stratic-super-modular-streaming-static-site-generator') LinuxFest Northwest 2017
+		| .
+	p Available in 
+		a(href='https://strugee.net/presentation-straticjs') slide form
+		|  and 
+		a(href='https://github.com/strugee/presentation-straticjs') source form
+		| , as well as on 
+		a(href='https://www.youtube.com/watch?v=a9l-FmSgyt8') YouTube
+		| .
 
 	hr
 
@@ -128,51 +143,19 @@ block content
 
 	hr
 
-	h2#stratic.talk-title Stratic - the (super-modular) streaming static site generator
-	blockquote.talk-description
-		p Do you like the idea of static site generators - programs that spit out HTML files that can be served by any old webserver, #[em without] invoking a huge steaming pile of PHP - but find that Jekyll is way overcomplicated? Wintersmith too monolithic? Perhaps Pelican isn't flexible enough?
-		p If the above sounds like you, and you appreciate Node.js and the npm ecosystem's preference for small modules (aka the #[a(href='https://en.wikipedia.org/wiki/Unix_philosophy#Doug_McIlroy_on_Unix_programming') Unix Philosophy]), you'll love working with Stratic. This talk will teach you about a new kind of static site generator that, instead of reinventing the world (or wrapping it with brand-new plugins), builds on top of existing npm modules in order to provide you with greater modularity, flexibility, and clarity than any monolithic static site generator can hope to offer. Best of all, there's no steep learning curve: if you already know Gulp.js - and it isn't that hard to pick up - then you already know how to use Stratic.
-	p Presented at 
-		a(href='http://2017.linuxfestnorthwest.org/2017/sessions/stratic-super-modular-streaming-static-site-generator') LinuxFest Northwest 2017
-		| .
-	p Available in 
-		a(href='https://strugee.net/presentation-straticjs') slide form
-		|  and 
-		a(href='https://github.com/strugee/presentation-straticjs') source form
-		| , as well as on 
-		a(href='https://www.youtube.com/watch?v=a9l-FmSgyt8') YouTube
-		| .
-
-	hr
-
-	h2#chaosinthesystem.talk-title Chaos in the System
-	h3.talk-subtitle Why simple solutions don't work when they should
-	blockquote.talk-description
-		p This talk will critically examine the current state of computing through the lens of a highly-portable POSIX shell script I wrote, #[code filter-other-days]. The problem that #[code filter-other-days] is solving is seemingly simple: find all log entries on the entire system from the current date. But because of modern systems' complexity as well as applications' tendency to use disparate logging systems, we need to turn to a counter-intuitive solution: filtering out all other dates from the logs, which is what #[code filter-other-days] does.
-		p This seems perverse. I supposedly control most boxes on which I run #[code filter-other-days], and yet I don't have enough control over them to solve this problem without the backwards approach #[code filter-other-days] takes. Using examples from #[code filter-other-days] we will briefly discuss the broader problem of UNIX portability and how hard it is to make a shell script reliably run everywhere before diving into an even larger problem that #[code filter-other-days] is emblematic of: our inability to understand and control the complexity of our own computing systems. At the end of the session I will present some ideas for possible ways to start thinking about the portability and complexity problems, and then facilitate an audience discussion around the same. Active participation is highly encouraged.
-	p Presented at 
-		a(href='https://osem.seagl.org/conferences/seagl2019/program/proposals/682') SeaGL 2019
-		| .
-	p Available in 
-		a(href='https://strugee.net/presentation-chaos-in-the-system') slide form
-		|  and 
-		a(href='https://github.com/strugee/presentation-chaos-in-the-system') source form
-		| , as well as in video on the 
-		a(href='https://archive.org/details/chaos_202001') Internet Archive
-		| .
-
-	hr
-
-	h2#chaosinthesystem.talk-title Pulling back the curtain with SeaGL Tech
-	blockquote.talk-description
-		p Ever been curious how SeaGL has produced a conference for 10+ years - first in-person, then virtual and hybrid? It takes a lot of hard work, but also a lot of tech!
-		p This talk will give a whirlwind introduction to the free software projects we use to run SeaGL. We'll talk about how the Tech team works with - and benefits greatly from - the broader free software community and maybe even meet some of the humans behind your favorite grassroots conference!
-	p Presented at 
-		a(href='https://osem.seagl.org/conferences/seagl2023/program/proposals/983') SeaGL 2023
-		| .
-	p Available in 
-		a(href='/slides/Pulling back the curtain with SeaGL Tech.odp') slide form
-		| . Video coming soon!
+	section
+		h2#just-do-it.talk-title Just Do It: The Approachability of Free Software for Beginners
+		blockquote.talk-description
+			p We all know that one of free software's greatest strengths is the ability to do whatever you're interested in, without asking for permission. But even though we all know, we don't talk about it that much, and in particular, we don't talk about the significance of what that strength means for those who are just beginning their programming careers.
+			p "Just Do It - The Approachability of Free Software for Beginners" will put forth the idea that the #[em only] tools that are approachable for beginners while still leading to the ability to produce what we would call "high quality" software are all free software tools. It will talk about the ability of free and open source software to inspire curiosity and interest and the role of that curiosity in bringing new programmers into our community. Finally, it will explore some of the areas that this model fails in, and what we can do to fix it.
+		p Presented at 
+			a(href='https://osem.seagl.org/conference/seagl2015/program/proposal/78') SeaGL 2015
+			| .
+		p Available in 
+			a(href='https://strugee.net/presentation-just-do-it') slide form
+			|  and 
+			a(href='https://github.com/strugee/presentation-just-do-it') source form
+			| .
 
 	hr
 
@@ -197,6 +180,24 @@ block content
 			a(href='/cryptoparty-seattle/') slide form
 			| .
 
+	hr
+
+	section
+		h2#intro-to-arch-linux.talk-title Introduction to Arch Linux
+		blockquote.talk-description
+			p An introduction to Arch Linux - why it's awesome, how to use the tools that it provides, and how to interact with the community.
+			p The presentation will roughly cover:
+			ul
+				li The Arch Way (basic philosophy of the distro, etc.)
+				li A basic outline of the system installation procedure
+				li How to use pacman, the PACkage MANager, and the AUR, the Arch User Repository (where you get software not in the official repos)
+				li How to engage with the community/get help (and not get flamed)
+		p Presented at 
+			a(href='http://2014.linuxfestnorthwest.org/2014/sessions/introduction-arch-linux') LinuxFest Northwest 2014
+			| .
+		//p Available in 
+			//a(href='TODO') slide form
+			//| .
 	hr
 
 	span#robotics-presentations
