@@ -63,6 +63,115 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
         <h1>Talks</h1>
         <p>All of these presentations were built with &lt;3 with <a href="https://github.com/bespokejs/bespoke">Bespoke.js</a> with the exception of "Introduction to Arch Linux" and "Pulling back the curtain with SeaGL's Tech team" (which were written with &lt;3 using LibreOffice Impress).</p>
         <section>
+          <h2 class="talk-title" id="seagltech">Pulling back the curtain with SeaGL's Tech team</h2>
+          <blockquote class="talk-description">
+            <p>Ever been curious how SeaGL has produced a conference for 10+ years - first in-person, then virtual and hybrid? It takes a lot of hard work, but also a lot of tech!</p>
+            <p>This talk will give a whirlwind introduction to the free software projects we use to run SeaGL. We'll talk about how the Tech team works with - and benefits greatly from - the broader free software community and maybe even meet some of the humans behind your favorite grassroots conference!</p>
+          </blockquote>
+          <p>Presented at <a href="https://osem.seagl.org/conferences/seagl2023/program/proposals/983">SeaGL 2023</a>.</p>
+          <p>Available in <a href="/slides/Pulling back the curtain with SeaGL Tech.odp">slide form</a>, as well as in video on the <a href="https://archive.org/details/SeaGL2023-Pulling_back_the_curtain_with_SeaGLs_Tech_team">Internet Archive</a>.</p>
+        </section>
+        <hr>
+        <section>
+          <h2 class="talk-title" id="chaosinthesystem">Chaos in the System</h2>
+          <h3 class="talk-subtitle">Why simple solutions don't work when they should</h3>
+          <blockquote class="talk-description">
+            <p>This talk will critically examine the current state of computing through the lens of a highly-portable POSIX shell script I wrote, <code>filter-other-days</code>. The problem that <code>filter-other-days</code> is solving is seemingly simple: find all log entries on the entire system from the current date. But because of modern systems' complexity as well as applications' tendency to use disparate logging systems, we need to turn to a counter-intuitive solution: filtering out all other dates from the logs, which is what <code>filter-other-days</code> does.</p>
+            <p>This seems perverse. I supposedly control most boxes on which I run <code>filter-other-days</code>, and yet I don't have enough control over them to solve this problem without the backwards approach <code>filter-other-days</code> takes. Using examples from <code>filter-other-days</code> we will briefly discuss the broader problem of UNIX portability and how hard it is to make a shell script reliably run everywhere before diving into an even larger problem that <code>filter-other-days</code> is emblematic of: our inability to understand and control the complexity of our own computing systems. At the end of the session I will present some ideas for possible ways to start thinking about the portability and complexity problems, and then facilitate an audience discussion around the same. Active participation is highly encouraged.</p>
+          </blockquote>
+          <p>Presented at <a href="https://osem.seagl.org/conferences/seagl2019/program/proposals/682">SeaGL 2019</a>.</p>
+          <p>Available in <a href="/presentation-chaos-in-the-system">slide form</a> and <a href="https://github.com/strugee/presentation-chaos-in-the-system">source form</a>, as well as in video on the <a href="https://archive.org/details/chaos_202001">Internet Archive</a>.</p>
+        </section>
+        <hr>
+        <section id="rc-security">
+          <p>I've written several longer presentations for workshops run at the <a href="https://www.recurse.com">Recurse Center</a>. All of the following were written for Security Club, which I ran weekly on Thursdays for three batches.</p>
+          <script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
+          <div class="rc-presentation">
+            <h2 class="talk-title"><a href="/presentation-security-design">Security design</a></h2>
+            <p>How to design programs securely</p>
+          </div>
+          <div class="rc-presentation">
+            <h2 class="talk-title"><a href="/presentation-webapp-security">Webapp security</a></h2>
+            <p>How to secure webapps</p>
+          </div>
+          <div class="rc-presentation">
+            <h2 class="talk-title"><a href="/presentation-operational-security">Operational security</a></h2>
+            <p>How to run a secure production environment</p>
+          </div>
+          <div class="rc-presentation">
+            <h2 class="talk-title"><a href="/presentation-https-deployment">HTTPS deployment</a></h2>
+            <p>Basics of HTTPS and how to deploy it</p>
+          </div>
+          <div class="rc-presentation">
+            <h2 class="talk-title"><a href="/presentation-cryptography-basics">Cryptography basics</a></h2>
+            <p>Basics of cryptographic protocol design</p>
+          </div>
+        </section>
+        <hr>
+        <section>
+          <h2 class="talk-title" id="stratic">Stratic - the (super-modular) streaming static site generator</h2>
+          <blockquote class="talk-description">
+            <p>Do you like the idea of static site generators - programs that spit out HTML files that can be served by any old webserver, <em>without</em> invoking a huge steaming pile of PHP - but find that Jekyll is way overcomplicated? Wintersmith too monolithic? Perhaps Pelican isn't flexible enough?</p>
+            <p>If the above sounds like you, and you appreciate Node.js and the npm ecosystem's preference for small modules (aka the <a href="https://en.wikipedia.org/wiki/Unix_philosophy#Doug_McIlroy_on_Unix_programming">Unix Philosophy</a>), you'll love working with Stratic. This talk will teach you about a new kind of static site generator that, instead of reinventing the world (or wrapping it with brand-new plugins), builds on top of existing npm modules in order to provide you with greater modularity, flexibility, and clarity than any monolithic static site generator can hope to offer. Best of all, there's no steep learning curve: if you already know Gulp.js - and it isn't that hard to pick up - then you already know how to use Stratic.</p>
+          </blockquote>
+          <p>Presented at <a href="http://2017.linuxfestnorthwest.org/2017/sessions/stratic-super-modular-streaming-static-site-generator">LinuxFest Northwest 2017</a>.</p>
+          <p>Available in <a href="/presentation-straticjs">slide form</a> and <a href="https://github.com/strugee/presentation-straticjs">source form</a>, as well as on <a href="https://www.youtube.com/watch?v=a9l-FmSgyt8">YouTube</a>.</p>
+        </section>
+        <hr>
+        <section>
+          <h2 class="talk-title" id="pump.io-community">Pump.io + Community = ♥</h2>
+          <blockquote class="talk-description">
+            <p>Pump.io is a promising project to create a federated social network. It was abandoned for a while, but its maintainer has recently started transferring governance and code maintenance to the community. Come to this talk to learn details about what Pump.io is, why it's awesome, and the future plans for it.</p>
+            <p>This was originally a lightning talk dealing mostly with the community, but was expanded to a full session. The extra time was used to talk a little about the history of where pump.io comes from and its API.</p>
+          </blockquote>
+          <p>Original <a href="https://www.linuxfestnorthwest.org/2016/sessions/pumpio-community">LinuxFest Northwest 2016</a> version available in <a href="/presentation-pumpio">slide form</a>, <a href="https://github.com/strugee/presentation-pumpio/releases/tag/lfnw-2016">source form</a>, and on <a href="https://media.strugee.net/u/alex/m/linuxfest-northwest-2016-pump-io-the-community/">MediaGoblin</a> and <a href="https://www.youtube.com/watch?v=uQ6RVTFdYNc">YouTube</a>.</p>
+          <p>Also presented at <a href="https://libreplanet.org/2017/program/">LibrePlanet 2017</a>; available in <a href="/presentation-pumpio/libreplanet">slide form</a>, <a href="https://github.com/strugee/presentation-pumpio">source form</a>, and on <a href="https://media.libreplanet.org/u/libreplanet/m/pump-io-the-federated-extensible-social-network/">MediaGoblin</a>.</p>
+        </section>
+        <hr>
+        <section id="rc-beginner-club">
+          <p>More presentations for workshops run or co-run at the <a href="https://www.recurse.com">Recurse Center</a>, mostly as a part of Beginner Club. I also ran workshops on intermediate Git usage (a two-parter), operating systems, and the Linux command line, but these workshops didn't have slides!</p>
+          <script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
+          <div class="rc-presentation">
+            <h2 class="talk-title"><a href="/presentation-webapp-performance">Webapp performance</a></h2>
+            <p>Making webapps fast</p>
+          </div>
+          <div class="rc-presentation">
+            <h2 class="talk-title"><a href="/presentation-publishing">Publishing</a></h2>
+            <p>How to publish a web app</p>
+          </div>
+          <div class="rc-presentation">
+            <h2 class="talk-title"><a href="/presentation-foss-intro">Intro to free software/open source</a></h2>
+            <p>Crash course on the basics of contributing to free software/open source</p>
+          </div>
+        </section>
+        <hr>
+        <section>
+          <h2 class="talk-title" id="just-do-it">Just Do It: The Approachability of Free Software for Beginners</h2>
+          <blockquote class="talk-description">
+            <p>We all know that one of free software's greatest strengths is the ability to do whatever you're interested in, without asking for permission. But even though we all know, we don't talk about it that much, and in particular, we don't talk about the significance of what that strength means for those who are just beginning their programming careers.</p>
+            <p>"Just Do It - The Approachability of Free Software for Beginners" will put forth the idea that the <em>only</em> tools that are approachable for beginners while still leading to the ability to produce what we would call "high quality" software are all free software tools. It will talk about the ability of free and open source software to inspire curiosity and interest and the role of that curiosity in bringing new programmers into our community. Finally, it will explore some of the areas that this model fails in, and what we can do to fix it.</p>
+          </blockquote>
+          <p>Presented at <a href="https://osem.seagl.org/conference/seagl2015/program/proposal/78">SeaGL 2015</a>.</p>
+          <p>Available in <a href="/presentation-just-do-it">slide form</a> and <a href="https://github.com/strugee/presentation-just-do-it">source form</a>.</p>
+        </section>
+        <hr>
+        <section>
+          <h2 id="cryptoparty">CryptoParty Seattle</h2><strong>These materials are outdated and are presented for historical purposes only.</strong>
+          <blockquote>
+            <p>CryptoParties are a global movement of people who get together to teach each other basic privacy tools, in order to ensure their right to privacy from spying eyes like Internet Service Providers, corporations like Google and Facebook, and the government (including the NSA!).</p>
+            <p>Participants will learn how to protect themselves against mass surveillance with technologies like:</p>
+            <ul>
+              <li>Tor Browser Bundle</li>
+              <li>Tor Messenger</li>
+              <li>Signal</li>
+            </ul>
+            <p>No prior experience is required.</p>
+          </blockquote>
+          <p>Presented at TA3M Seattle's <a href="https://lists.openitp.org/pipermail/ta3m-seattle/2014-August/000028.html">August 2014</a>, <a href="https://lists.openitp.org/pipermail/ta3m-seattle/2015-June/000061.html">June 2015</a>, and <a href="https://ta3mseattle.org/index.php/CryptoParty_Seattle_III_-_December_2016">December 2016</a> meetings. (The above description was written for the most recent event; earlier CryptoParties covered PGP, used Pidgin instead of Tor Messenger, and had different honorable mentions.)</p>
+          <p>All three versions available in <a href="/cryptoparty-seattle/">slide form</a>.</p>
+        </section>
+        <hr>
+        <section>
           <h2 class="talk-title" id="intro-to-arch-linux">Introduction to Arch Linux</h2>
           <blockquote class="talk-description">
             <p>An introduction to Arch Linux - why it's awesome, how to use the tools that it provides, and how to interact with the community.</p>
@@ -81,113 +190,16 @@ along with strugee.net.	If not, see <http://www.gnu.org/licenses/>.
           -->
         </section>
         <hr>
-        <section>
-          <h2 class="talk-title" id="just-do-it">Just Do It: The Approachability of Free Software for Beginners</h2>
-          <blockquote class="talk-description">
-            <p>We all know that one of free software's greatest strengths is the ability to do whatever you're interested in, without asking for permission. But even though we all know, we don't talk about it that much, and in particular, we don't talk about the significance of what that strength means for those who are just beginning their programming careers.</p>
-            <p>"Just Do It - The Approachability of Free Software for Beginners" will put forth the idea that the <em>only</em> tools that are approachable for beginners while still leading to the ability to produce what we would call "high quality" software are all free software tools. It will talk about the ability of free and open source software to inspire curiosity and interest and the role of that curiosity in bringing new programmers into our community. Finally, it will explore some of the areas that this model fails in, and what we can do to fix it.</p>
-          </blockquote>
-          <p>Presented at <a href="https://osem.seagl.org/conference/seagl2015/program/proposal/78">SeaGL 2015</a>.</p>
-          <p>Available in <a href="https://strugee.net/presentation-just-do-it">slide form</a> and <a href="https://github.com/strugee/presentation-just-do-it">source form</a>.</p>
-        </section>
-        <hr><span id="rc-security"></span>
-        <p>I've written several longer presentations for workshops run at the <a href="https://www.recurse.com">Recurse Center</a>. All of the following were written for Security Club, which I ran weekly on Thursdays for three batches. "Security design" in particular was originally presented as a part of Beginner Club, which was the genesis for Security Club.</p>
-        <script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
-        <section class="rc-presentation">
-          <h2 class="talk-title"><a href="https://strugee.net/presentation-security-design">Security design</a></h2>
-          <p>How to design programs securely</p>
-        </section>
-        <section class="rc-presentation">
-          <h2 class="talk-title"><a href="https://strugee.net/presentation-webapp-security">Webapp security</a></h2>
-          <p>How to secure webapps</p>
-        </section>
-        <section class="rc-presentation">
-          <h2 class="talk-title"><a href="https://strugee.net/presentation-operational-security">Operational security</a></h2>
-          <p>How to run a secure production environment</p>
-        </section>
-        <section class="rc-presentation">
-          <h2 class="talk-title"><a href="https://strugee.net/presentation-https-deployment">HTTPS deployment</a></h2>
-          <p>Basics of HTTPS and how to deploy it</p>
-        </section>
-        <section class="rc-presentation">
-          <h2 class="talk-title"><a href="https://strugee.net/presentation-cryptography-basics">Cryptography basics</a></h2>
-          <p>Basics of cryptographic protocol design</p>
-        </section>
-        <hr>
-        <section>
-          <h2 class="talk-title" id="pump.io-community">Pump.io + Community = ♥</h2>
-          <blockquote class="talk-description">
-            <p>Pump.io is a promising project to create a federated social network. It was abandoned for a while, but its maintainer has recently started transferring governance and code maintenance to the community. Come to this talk to learn details about what Pump.io is, why it's awesome, and the future plans for it.</p>
-            <p>This was originally a lightning talk dealing mostly with the community, but was expanded to a full session. The extra time was used to talk a little about the history of where pump.io comes from and its API.</p>
-          </blockquote>
-          <p>Original <a href="https://www.linuxfestnorthwest.org/2016/sessions/pumpio-community">LinuxFest Northwest 2016</a> version available in <a href="/presentation-pumpio">slide form</a>, <a href="https://github.com/strugee/presentation-pumpio/releases/tag/lfnw-2016">source form</a>, and on <a href="https://media.strugee.net/u/alex/m/linuxfest-northwest-2016-pump-io-the-community/">MediaGoblin</a> and <a href="https://www.youtube.com/watch?v=uQ6RVTFdYNc">YouTube</a>.</p>
-          <p>Also presented at <a href="https://libreplanet.org/2017/program/">LibrePlanet 2017</a>; available in <a href="/presentation-pumpio/libreplanet">slide form</a>, <a href="https://github.com/strugee/presentation-pumpio">source form</a>, and on <a href="https://media.libreplanet.org/u/libreplanet/m/pump-io-the-federated-extensible-social-network/">MediaGoblin</a>.</p>
-        </section>
-        <hr><span id="rc-beginner-club"></span>
-        <p>More presentations for workshops run or co-run at the <a href="https://www.recurse.com">Recurse Center</a>, mostly as a part of Beginner Club. I have omitted workshops on intermediate Git usage (parts 1 and 2), operating systems, and the Linux command line because these workshops didn't have slides.</p>
-        <script async defer src="https://www.recurse-scout.com/loader.js?t=3d49e64361d4b897ffd2fd56dcd93ca4"></script>
-        <section class="rc-presentation">
-          <h2 class="talk-title"><a href="https://strugee.net/presentation-webapp-performance">Webapp performance</a></h2>
-          <p>Making webapps fast</p>
-        </section>
-        <section class="rc-presentation">
-          <h2 class="talk-title"><a href="https://strugee.net/presentation-publishing">Publishing</a></h2>
-          <p>How to publish a web app</p>
-        </section>
-        <section class="rc-presentation">
-          <h2 class="talk-title"><a href="https://strugee.net/presentation-foss-intro">Intro to free software/open source</a></h2>
-          <p>Crash course on the basics of contributing to free software/open source</p>
-        </section>
-        <hr>
-        <h2 class="talk-title" id="stratic">Stratic - the (super-modular) streaming static site generator</h2>
-        <blockquote class="talk-description">
-          <p>Do you like the idea of static site generators - programs that spit out HTML files that can be served by any old webserver, <em>without</em> invoking a huge steaming pile of PHP - but find that Jekyll is way overcomplicated? Wintersmith too monolithic? Perhaps Pelican isn't flexible enough?</p>
-          <p>If the above sounds like you, and you appreciate Node.js and the npm ecosystem's preference for small modules (aka the <a href="https://en.wikipedia.org/wiki/Unix_philosophy#Doug_McIlroy_on_Unix_programming">Unix Philosophy</a>), you'll love working with Stratic. This talk will teach you about a new kind of static site generator that, instead of reinventing the world (or wrapping it with brand-new plugins), builds on top of existing npm modules in order to provide you with greater modularity, flexibility, and clarity than any monolithic static site generator can hope to offer. Best of all, there's no steep learning curve: if you already know Gulp.js - and it isn't that hard to pick up - then you already know how to use Stratic.</p>
-        </blockquote>
-        <p>Presented at <a href="http://2017.linuxfestnorthwest.org/2017/sessions/stratic-super-modular-streaming-static-site-generator">LinuxFest Northwest 2017</a>.</p>
-        <p>Available in <a href="https://strugee.net/presentation-straticjs">slide form</a> and <a href="https://github.com/strugee/presentation-straticjs">source form</a>, as well as on <a href="https://www.youtube.com/watch?v=a9l-FmSgyt8">YouTube</a>.</p>
-        <hr>
-        <h2 class="talk-title" id="chaosinthesystem">Chaos in the System</h2>
-        <h3 class="talk-subtitle">Why simple solutions don't work when they should</h3>
-        <blockquote class="talk-description">
-          <p>This talk will critically examine the current state of computing through the lens of a highly-portable POSIX shell script I wrote, <code>filter-other-days</code>. The problem that <code>filter-other-days</code> is solving is seemingly simple: find all log entries on the entire system from the current date. But because of modern systems' complexity as well as applications' tendency to use disparate logging systems, we need to turn to a counter-intuitive solution: filtering out all other dates from the logs, which is what <code>filter-other-days</code> does.</p>
-          <p>This seems perverse. I supposedly control most boxes on which I run <code>filter-other-days</code>, and yet I don't have enough control over them to solve this problem without the backwards approach <code>filter-other-days</code> takes. Using examples from <code>filter-other-days</code> we will briefly discuss the broader problem of UNIX portability and how hard it is to make a shell script reliably run everywhere before diving into an even larger problem that <code>filter-other-days</code> is emblematic of: our inability to understand and control the complexity of our own computing systems. At the end of the session I will present some ideas for possible ways to start thinking about the portability and complexity problems, and then facilitate an audience discussion around the same. Active participation is highly encouraged.</p>
-        </blockquote>
-        <p>Presented at <a href="https://osem.seagl.org/conferences/seagl2019/program/proposals/682">SeaGL 2019</a>.</p>
-        <p>Available in <a href="https://strugee.net/presentation-chaos-in-the-system">slide form</a> and <a href="https://github.com/strugee/presentation-chaos-in-the-system">source form</a>, as well as in video on the <a href="https://archive.org/details/chaos_202001">Internet Archive</a>.</p>
-        <hr>
-        <h2 class="talk-title" id="chaosinthesystem">Pulling back the curtain with SeaGL Tech</h2>
-        <blockquote class="talk-description">
-          <p>Ever been curious how SeaGL has produced a conference for 10+ years - first in-person, then virtual and hybrid? It takes a lot of hard work, but also a lot of tech!</p>
-          <p>This talk will give a whirlwind introduction to the free software projects we use to run SeaGL. We'll talk about how the Tech team works with - and benefits greatly from - the broader free software community and maybe even meet some of the humans behind your favorite grassroots conference!</p>
-        </blockquote>
-        <p>Presented at <a href="https://osem.seagl.org/conferences/seagl2023/program/proposals/983">SeaGL 2023</a>.</p>
-        <p>Available in <a href="/slides/Pulling back the curtain with SeaGL Tech.odp">slide form</a>. Video coming soon!</p>
-        <hr>
-        <section>
-          <h2 id="cryptoparty">CryptoParty Seattle</h2>
-          <blockquote>
-            <p>CryptoParties are a global movement of people who get together to teach each other basic privacy tools, in order to ensure their right to privacy from spying eyes like Internet Service Providers, corporations like Google and Facebook, and the government (including the NSA!).</p>
-            <p>Participants will learn how to protect themselves against mass surveillance with technologies like:</p>
-            <ul>
-              <li>Tor Browser Bundle</li>
-              <li>Tor Messenger</li>
-              <li>Signal</li>
-            </ul>
-            <p>No prior experience is required.</p>
-          </blockquote>
-          <p>Presented at TA3M Seattle's <a href="https://lists.openitp.org/pipermail/ta3m-seattle/2014-August/000028.html">August 2014</a>, <a href="https://lists.openitp.org/pipermail/ta3m-seattle/2015-June/000061.html">June 2015</a>, and <a href="https://ta3mseattle.org/index.php/CryptoParty_Seattle_III_-_December_2016">December 2016</a> meetings. (The above description was written for the most recent event; earlier CryptoParties covered PGP, used Pidgin instead of Tor Messenger, and had different honorable mentions.)</p>
-          <p>All three versions available in <a href="/cryptoparty-seattle/">slide form</a>.</p>
-        </section>
-        <hr><span id="robotics-presentations"></span>
-        <p>There are also a couple smaller/less interesting presentations written as 10-minute topic introductions for Seattle Academy's robotics program.</p>
-        <section class="small-robotics-presentation">
-          <h2 class="talk-title"><a href="http://saasrobotics.com/presentation-robotc-basics">RobotC basics</a></h2>
-          <p>Introductory presentation on RobotC (back when FTC <em>used</em> RobotC - thank god those days are over!).</p>
-        </section>
-        <section class="small-robotics-presentation">
-          <h2 class="talk-title"><a href="http://saasrobotics.com/presentation-sensors"> Sensors</a></h2>
-          <p>An overview of sensors available in robotics. Also written during the NXT/RobotC days.</p>
+        <section id="robotics-presentations">
+          <p>There are also a couple smaller/less interesting presentations written as 10-minute topic introductions for Seattle Academy's robotics program.</p>
+          <section class="small-robotics-presentation">
+            <h2 class="talk-title"><a href="http://saasrobotics.com/presentation-robotc-basics">RobotC basics</a></h2>
+            <p>Introductory presentation on RobotC (back when FTC <em>used</em> RobotC - thank god those days are over!).</p>
+          </section>
+          <section class="small-robotics-presentation">
+            <h2 class="talk-title"><a href="http://saasrobotics.com/presentation-sensors">Sensors</a></h2>
+            <p>An overview of sensors available in robotics. Also written during the NXT/RobotC days.</p>
+          </section>
         </section>
       </div>
       <footer>
